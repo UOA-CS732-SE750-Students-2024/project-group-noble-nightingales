@@ -96,7 +96,7 @@ This documentation outlines the User API endpoints, including methods for creati
 - Example Response:
 
   ```
-  jsonCopy code{
+  {
     "id": 2,
     "username": "janedoe",
     "password": "encrypted_password"
