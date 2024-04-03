@@ -95,7 +95,7 @@ This documentation outlines the User API endpoints, including methods for creati
 
 - Example Response:
 
-  ```
+  ```json
   {
     "id": 2,
     "username": "janedoe",
