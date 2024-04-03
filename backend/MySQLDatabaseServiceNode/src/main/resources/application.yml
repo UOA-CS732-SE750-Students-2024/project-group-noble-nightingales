@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: MySQLDatabaseServiceNode
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://119.28.99.149/healthTrackDatabase?useSSL=false&allowPublicKeyRetrieval=true
+    username:
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+server:
+  port: 30000
+
