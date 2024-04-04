@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: YouTubeServiceNode
+
+
+youtube:
+  api:
+    key: AIzaSyCHV9tc22-LSJDBjWdDdGUSB2teer6fp3g
+server:
+  port: 30050
