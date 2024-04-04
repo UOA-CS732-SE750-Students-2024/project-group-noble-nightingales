@@ -1,9 +1,9 @@
 package uoa.nightingales.youtubeservicenode.services;
 
+import uoa.nightingales.youtubeservicenode.domains.VideosResponse;
 import uoa.nightingales.youtubeservicenode.pojos.Video;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface VideoSearchService {
 
@@ -17,7 +17,7 @@ public interface VideoSearchService {
      * @return A list of {@link Video} objects that match the search criteria. If no videos are found, returns an empty list.
      * @throws IOException If there is an issue communicating with the YouTube Data API.
      */
-    List<Video> searchVideos(String query, long maxResults, String pageToken) throws IOException;
+    VideosResponse searchVideos(String query, long maxResults, String pageToken) throws IOException;
 
 
     /**
@@ -30,5 +30,8 @@ public interface VideoSearchService {
      * @return A list of {@link Video} objects published by the specified channel. If no videos are found, returns an empty list.
      * @throws IOException If there is an issue communicating with the YouTube Data API.
      */
-    List<Video> searchVideosByChannelId(String channelId, long maxResults, String pageToken) throws IOException;
+    VideosResponse searchVideosByChannelId(String channelId, long maxResults, String pageToken) throws IOException;
+
+
+    VideosResponse searchVideosOrderedByDate(String query, long maxResults, String pageToken) throws IOException;
 }

@@ -1,16 +1,16 @@
 package uoa.nightingales.youtubeservicenode.services;
 
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.SearchListResponse;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import uoa.nightingales.youtubeservicenode.pojos.Video;
+import uoa.nightingales.youtubeservicenode.domains.VideosResponse;
 import uoa.nightingales.youtubeservicenode.utils.ResponseParser;
 
 import java.io.IOException;
-import java.util.List;
 
+@Slf4j
 @Service("videoSearchService")
 public class VideoSearchServiceImpl implements VideoSearchService{
 
@@ -21,12 +21,14 @@ public class VideoSearchServiceImpl implements VideoSearchService{
     private YouTube youtube;
 
     @Override
-    public List<Video> searchVideos(String query, long maxResults, String pageToken) throws IOException {
+    public VideosResponse searchVideos(String query, long maxResults, String pageToken) throws IOException {
         YouTube.Search.List search = youtube.search().list("id,snippet");
+        log.info("generating video search request based on relevance, query: " + query);
         search.setKey(apiKey);
         search.setQ(query);
         search.setType("video");
         search.setMaxResults(maxResults);
+        search.setRelevanceLanguage("en");
         if (pageToken != null && !pageToken.isEmpty()) {
             search.setPageToken(pageToken);
         }
@@ -34,12 +36,30 @@ public class VideoSearchServiceImpl implements VideoSearchService{
     }
 
     @Override
-    public List<Video> searchVideosByChannelId(String channelId, long maxResults, String pageToken) throws IOException {
+    public VideosResponse searchVideosByChannelId(String channelId, long maxResults, String pageToken) throws IOException {
         YouTube.Search.List search = youtube.search().list("id,snippet");
+        log.info("generating video search query based on channel ID, ID: " + channelId);
         search.setKey(apiKey);
         search.setChannelId(channelId);
         search.setType("video");
         search.setMaxResults(maxResults);
+        search.setRelevanceLanguage("en");
+        if (pageToken != null && !pageToken.isEmpty()) {
+            search.setPageToken(pageToken);
+        }
+        return ResponseParser.parse(search.execute());
+    }
+
+    @Override
+    public VideosResponse searchVideosOrderedByDate(String query, long maxResults, String pageToken) throws IOException {
+        YouTube.Search.List search = youtube.search().list("id,snippet");
+        log.info("generating video search request based on date, query: " + query);
+        search.setKey(apiKey);
+        search.setQ(query);
+        search.setOrder("date");
+        search.setType("video");
+        search.setMaxResults(maxResults);
+        search.setRelevanceLanguage("en");
         if (pageToken != null && !pageToken.isEmpty()) {
             search.setPageToken(pageToken);
         }
