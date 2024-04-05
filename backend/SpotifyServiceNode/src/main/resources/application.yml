@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: SpotifyServiceNode
+
+
+spotify:
+  client:
+    id: 9131ed4b04044725a9c97dbd4a8722ff
+    secret: 3aa545bdf10b4a0994d3097b8e6008fc
+
+  baseUrl: https://api.spotify.com/v1
+  redirect:
+    uri: http://localhost:30051/error
+
+
+server:
+  port: 30051
