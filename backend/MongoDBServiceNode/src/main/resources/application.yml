@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: MongoDBServiceNode
+  data:
+    mongodb:
+      uri: mongodb://vhaegksahJJkaLLa:vsdoB8aef%5Ehfa%25%25av_h8@119.28.99.149:27017/UniMedia?authSource=admin&authMechanism=SCRAM-SHA-1
+
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=100,maximumSize=500,expireAfterAccess=1800s
+
+server:
+  port: 30053
