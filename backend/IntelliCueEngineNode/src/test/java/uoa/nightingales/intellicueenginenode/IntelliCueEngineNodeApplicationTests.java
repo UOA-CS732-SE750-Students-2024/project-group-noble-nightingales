@@ -186,6 +186,36 @@ class IntelliCueEngineNodeApplicationTests {
 
     }
 
+    @Test
+    void testService1(){
+        List<GenreData> genreDataList = new ArrayList<>();
+        genreDataList.add(new GenreData("Rock", 10));
+        genreDataList.add(new GenreData("Jazz", 9));
+        genreDataList.add(new GenreData("Pop", 8));
+        genreDataList.add(new GenreData("Classical", 7));
+        genreDataList.add(new GenreData("Electronic", 6));
+        genreDataList.add(new GenreData("Hip-Hop", 5));
+        genreDataList.add(new GenreData("Country", 4));
+        genreDataList.add(new GenreData("Reggae", 3));
+        genreDataList.add(new GenreData("Blues", 2));
+        genreDataList.add(new GenreData("Metal", 1));
+
+        Map<String, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < genreDataList.size(); i++) {
+            indexMap.put(genreDataList.get(i).getName(), i);
+        }
+        List<String> relatedGenreList = new ArrayList<>();
+        relatedGenreList.add("Metal");
+        relatedGenreList.add("Jazz");
+        relatedGenreList.add("something");
+        List<String> notWantedGenreList = new ArrayList<>();
+        notWantedGenreList.add("Country");
+
+        videoSignificanceAdjustmentService.adjustGenreSignificance(indexMap, genreDataList, relatedGenreList, true);
+        videoSignificanceAdjustmentService.adjustGenreSignificance(indexMap, genreDataList, notWantedGenreList, false);
+        System.out.println(genreDataList);
+    }
+
 
 
 }
