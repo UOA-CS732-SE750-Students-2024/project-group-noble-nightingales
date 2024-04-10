@@ -1,9 +1,11 @@
 package uoa.nightingales.intellicueenginenode;
 
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import uoa.nightingales.intellicueenginenode.pojos.GenreData;
+import uoa.nightingales.intellicueenginenode.services.VideoSignificanceAdjustmentService;
 import uoa.nightingales.intellicueenginenode.utils.AlgorithmsUtil;
 
 import java.util.ArrayList;
@@ -13,6 +15,9 @@ import java.util.Map;
 
 @SpringBootTest
 class IntelliCueEngineNodeApplicationTests {
+
+    @Resource
+    private VideoSignificanceAdjustmentService videoSignificanceAdjustmentService;
 
     @Test
     void contextLoads() {
@@ -148,6 +153,37 @@ class IntelliCueEngineNodeApplicationTests {
             Assertions.assertTrue(indexMap.containsKey(genreName), "Index map should contain " + genreName);
             Assertions.assertEquals(i, (int)indexMap.get(genreName), "Index map should have correct index for " + genreName);
         }
+    }
+
+
+    @Test
+    void testInsertionAndDeletion(){
+        List<GenreData> genreDataList = new ArrayList<>();
+        genreDataList.add(new GenreData("Rock", 10));
+        genreDataList.add(new GenreData("Jazz", 9));
+        genreDataList.add(new GenreData("Pop", 8));
+        genreDataList.add(new GenreData("Classical", 7));
+        genreDataList.add(new GenreData("Electronic", 6));
+        genreDataList.add(new GenreData("Hip-Hop", 5));
+        genreDataList.add(new GenreData("Country", 4));
+        genreDataList.add(new GenreData("Reggae", 3));
+        genreDataList.add(new GenreData("Blues", 2));
+        genreDataList.add(new GenreData("Metal", 1));
+
+        Map<String, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < genreDataList.size(); i++) {
+            indexMap.put(genreDataList.get(i).getName(), i);
+        }
+
+        System.out.println(genreDataList);
+        System.out.println(indexMap);
+        System.out.println("-----------------------------");
+        AlgorithmsUtil.efficientSwap(genreDataList, indexMap, "Electronic", -555);
+        AlgorithmsUtil.efficientSwap(genreDataList, indexMap, "Jazz", -222);
+
+        System.out.println(genreDataList);
+        System.out.println(indexMap);
+
     }
 
 

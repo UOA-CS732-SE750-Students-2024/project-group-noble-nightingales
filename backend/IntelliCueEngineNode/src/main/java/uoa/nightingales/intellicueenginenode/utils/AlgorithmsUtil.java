@@ -20,7 +20,8 @@ public class AlgorithmsUtil {
 
         if(genreDataToBeChanged.getSignificance() <= 0) {
             genreDataList.remove((int) index);
-            updateIndexMap(genreDataList, indexMap, index, genreDataList.size());
+            indexMap.remove(genreToChange);
+            updateIndexMap(genreDataList, indexMap, index, genreDataList.size() - 1);
             return;
         }
 

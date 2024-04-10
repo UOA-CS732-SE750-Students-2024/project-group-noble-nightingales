@@ -76,7 +76,7 @@ public class VideoSignificanceController {
      *         the updated list of ChannelData objects as the value. This structure allows for the encapsulation of both adjustments
      *         in a single return value, facilitating combined operations on genres and channels.
      */
-    @PostMapping("/adjustGenreSignificance")
+    @PostMapping("/adjust")
     public Map<List<GenreData>, List<ChannelData>> adjustAll(@RequestBody Map<String, Integer> indexMap,
                                      @RequestBody List<GenreData> genreDataList,
                                      @RequestBody List<String> relatedGenres,
