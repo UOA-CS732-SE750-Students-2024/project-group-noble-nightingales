@@ -75,12 +75,22 @@
 }
 
 .signUp {
+  text-align: center;
   color: #88888c;
   font-size: 16px;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
-.signUpLink {
+.signUpLink,
+.troubleLoggingLink {
   color: #685cf0;
   font-weight: 600;
+  cursor: pointer; 
+  text-decoration: none; 
+}
+
+/* 如果需要在鼠标悬停时改变样式 */
+.signUpLink:hover,
+.troubleLoggingLink:hover {
+  text-decoration: underline; /* 鼠标悬停时添加下划线 */
 }
