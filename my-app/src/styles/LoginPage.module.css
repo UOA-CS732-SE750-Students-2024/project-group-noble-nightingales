@@ -1,0 +1,86 @@
+/* LoginPage.module.css */
+.container {
+  width: 520px;
+  height: 529px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #151522;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.inputContainer {
+  width: 436px;
+  margin-bottom: 16px;
+}
+
+.inputLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 400px;
+  padding: 17px 20px;
+  background: #242436;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  color: #88888c;
+  font-size: 16px;
+  margin: 16px 0px;
+}
+
+.rememberMeLine {
+  display: flex;
+  justify-content: space-between;
+  width: 436px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #88888c;
+}
+
+.loginButton {
+  width: 436px;
+  padding: 17px;
+  background: #d3f85a;
+  border-radius: 50px;
+  border: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.signUp {
+  color: #88888c;
+  font-size: 16px;
+  margin-top: 16px;
+}
+
+.signUpLink {
+  color: #685cf0;
+  font-weight: 600;
+}
