@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate replace to="/explore" />} />
-        <Route path="explore" element={<Explore />}>
+        <Route path="explore" element={<><Nav /><Explore /></>}>
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<Signup />} />
         </Route>
