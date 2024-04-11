@@ -5,12 +5,12 @@
     color: white;
     flex-direction: row;
     justify-content: flex-start;
-    margin-left: 300px;
+    margin-left: 5vw;
     width:auto;
-
+    overflow-x: hidden;
 }
 .introRowContainer{
-    margin-top: 10px;
+    margin-top: 7vh;
     display: flex;
     flex-direction: row;
     width: auto;
@@ -31,27 +31,33 @@
 }
 .leftIntro .insideText{
   padding-top: 25px;
-  font-size: 25px;
+  font-size: 1.8vh;
   font-weight: 200;
+  padding-left:3vh;
+  height: 5vh;
+  width:27vw;
 }
 .introRowContainer .leftIntro .mediaIntro{
+  
+    padding-top: 2.4vh;
     display: flex;
     flex-direction: row;
     list-style-type: none; /* Removes bullets from list */
     padding-left: 0; /* Removes default padding */
     font-size: 35px;
-    
+    padding-bottom: 5vh;
+    padding-left:3vh ;
 }
-.leftIntro .mediaIntro .mediaTitle a{
-  color:white;
+.leftIntro .mediaIntro .mediaTitle a {
+  color: white;
   font-size: 35px;
   text-decoration: none;
-  transition: font-size 0.3s ease, text-decoration 0.3s ease;
+  transition: color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
   font-weight: bold;
 }
 .leftIntro .mediaIntro .mediaTitle a:hover{
   color: rgb(89, 207, 180); /* Lighten the text color on hover */
-  font-size: 1.1em; /* Increase the font size */
+  font-size: 1.03em; /* Increase the font size */
   text-decoration: underline; /* Add an underline */
 }
 
@@ -65,10 +71,11 @@
   
   /* Adjust the margin as needed for each media type */
   .introRowContainer .leftIntro .mediaIntro > li {
-    margin-right: 20px; /* Space between the media types */
+    margin-right: 3vw; /* Space between the media types */
   }
   .leftIntro .mediaIntro .mediaType{
     font-size: 20px;
+    padding-top: 2vh;
   }
 
   .leftIntro .buttonIntro {
@@ -77,6 +84,8 @@
     list-style-type: none; /* Removes bullets */
     padding: 10px; /* Removes padding */
     font-size: 30px;
+    padding-left: 2.9vh;
+   
   }
   .leftIntro .buttonIntro .startExplor{
     background-color: #D3F85A; /* The green background color */
@@ -84,6 +93,9 @@
     padding: 20px 40px; /* Padding inside the button */
     color: black;
     font-size: 20px;
+    transition: background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
+    
+    
   }
   .leftIntro .buttonIntro .startExplor:hover{
 
@@ -97,33 +109,46 @@
     padding: 20px 40px;
     color:white;
     text-decoration: none;
+    transition:  background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
 
   }
   .buttonIntro .newtoHere:hover{
     background-color: #D3F85A; /* The green background color */
-    color:black
+    color:black;
+    
   }
 
+
   .leftIntro .buttonIntro > li{
-    margin-right: 40px;
+    margin-right: 3vw;
   }
   .rightIntro{
     display: flex;
     flex-direction: column;
     min-width: 300px;
     width:auto;
-    margin-left:100px;
+    margin-left:8vw;
+  }
+  .rightIntro img{
+    scale: 1.15;
   }
   .rightIntro .firstRowPicture{
     display: flex;
     flex-direction: row;
     list-style-type: none;
   }
+  .rightIntro .firstRowPicture li{
+    margin-right: 3vw;
+  }
   .rightIntro .secondRowPicture{
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    margin-left:70px;
+    margin-left:6vw;
+  }
+  .rightIntro .secondRowPicture li{
+    margin-right: 3vw;
+    margin-top: 2.5vh;
   }
   
   

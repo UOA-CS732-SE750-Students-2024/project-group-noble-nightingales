@@ -1,9 +1,8 @@
 
    .ball {
-    margin-top: 70px;
     position: absolute;
-    width: 700px;
-    height: 700px;
+    width: 1000px;
+    height: 1000px;
     border-radius: 50%;
     background-image: radial-gradient(circle at center, rgb(89, 207, 180) 0%, rgba(2, 68, 52, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
     overflow: hidden;
@@ -11,8 +10,8 @@
     filter: blur(8px);
     overflow: hidden;
     mix-blend-mode: hard-light; 
-    right:70%;
-    top:10%;
+    right:65%;
+    top:4.5%;
     z-index: 1;
     pointer-events: none;
   }
