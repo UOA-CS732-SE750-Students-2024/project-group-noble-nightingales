@@ -37,6 +37,7 @@
 
   
   .nav-container .nav-links {
+    font-size: 20px;
     display: flex;
     justify-content: center;
     list-style: none;
@@ -52,7 +53,6 @@
 
   .nav-container .nav-links li a {
     margin-left: 20px; /* Space between the Sign In and Create Account links */
-    text-decoration: none;
     color: white; /* Set the text color */
     text-decoration: none; /* Remove the underline from links */
     transition: font-size 0.3s ease, text-decoration 0.3s ease;

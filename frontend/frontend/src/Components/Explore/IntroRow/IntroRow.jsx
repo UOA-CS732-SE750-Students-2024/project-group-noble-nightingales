@@ -1,20 +1,9 @@
 
-import './ExploreCSS/Explore.css'
-import { Outlet } from 'react-router-dom'
-import Ball from '../../Components/Ball/Ball'
 import { NavLink } from 'react-router-dom';
-import row11 from "../../assets/row1.png"
-import row12 from "../../assets/row2.png"
-import row13 from "../../assets/row3.png"
-import row21 from "../../assets/2row1.png"
-import row22 from "../../assets/2row2.png"
-import row23 from "../../assets/2row3.png"
-export default function Explore() {
+export default function IntroRow() {
   return (
     <div>
-      <Ball />
-      <div className="Explore-container">
-        <div className="introRowContainer">
+          <div className="introRowContainer">
           <div className="leftIntro">
             <ul className="headTextIntro">
               <li>Listen & Watch: </li>
@@ -73,25 +62,6 @@ export default function Explore() {
             </ul>
           </div>
         </div>
-        <div className="pictureRowContainer">
-
-        </div>
-        <div className="embeddAIContainer">
-
-        </div>
-        <div className="exploreYoutubeCOn">
-
-        </div>
-        <div className="popularTrackContainer">
-
-        </div>
-        <div className="subscribeContianer">
-
-        </div>
-
-      <Outlet />
     </div>
-    </div>
-
   )
 }
