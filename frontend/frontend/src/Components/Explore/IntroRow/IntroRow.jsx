@@ -1,8 +1,15 @@
 
 import { NavLink } from 'react-router-dom';
+import row11 from "../../../assets/row1.png"
+import row12 from "../../../assets/row2.png"
+import row13 from "../../../assets/row3.png"
+import row21 from "../../../assets/2row1.png"
+import row22 from "../../../assets/2row2.png"
+import row23 from "../../../assets/2row3.png"
+import './IntroCSS/Intro.css'
 export default function IntroRow() {
   return (
-    <div>
+    <div >
           <div className="introRowContainer">
           <div className="leftIntro">
             <ul className="headTextIntro">

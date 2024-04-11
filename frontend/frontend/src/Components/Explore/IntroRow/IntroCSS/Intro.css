@@ -1,0 +1,144 @@
+
+.introRowContainer{
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    z-index: 2;
+}
+.introRowContainer .leftIntro{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    width:auto;
+}
+
+.introRowContainer .leftIntro .headTextIntro li{
+    font-size: 60px;
+    list-style-type: none;
+    font-weight: bold;
+   
+}
+.leftIntro .insideText{
+  padding-top: 25px;
+  font-size: 1.8vh;
+  font-weight: 200;
+  padding-left:3vh;
+  height: 5vh;
+  width:27vw;
+}
+.introRowContainer .leftIntro .mediaIntro{
+  
+    padding-top: 2.4vh;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none; /* Removes bullets from list */
+    padding-left: 0; /* Removes default padding */
+    font-size: 35px;
+    padding-bottom: 5vh;
+    padding-left:3vh ;
+}
+.leftIntro .mediaIntro .mediaTitle a {
+  color: white;
+  font-size: 35px;
+  text-decoration: none;
+  transition: color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
+  font-weight: bold;
+}
+.leftIntro .mediaIntro .mediaTitle a:hover{
+  color: rgb(89, 207, 180); /* Lighten the text color on hover */
+  font-size: 1.03em; /* Increase the font size */
+  text-decoration: underline; /* Add an underline */
+}
+
+/* This targets the direct child ul of mediaIntro which should be laid out as a column */
+.introRowContainer .leftIntro .mediaIntro  > li > ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; /* Removes bullets from these nested list items */
+    padding-left: 0; /* Removes default padding */
+  }
+  
+  /* Adjust the margin as needed for each media type */
+  .introRowContainer .leftIntro .mediaIntro > li {
+    margin-right: 3vw; /* Space between the media types */
+  }
+  .leftIntro .mediaIntro .mediaType{
+    font-size: 20px;
+    padding-top: 2vh;
+  }
+
+  .leftIntro .buttonIntro {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none; /* Removes bullets */
+    padding: 10px; /* Removes padding */
+    font-size: 30px;
+    padding-left: 2.9vh;
+   
+  }
+  .leftIntro .buttonIntro .startExplor{
+    background-color: #D3F85A; /* The green background color */
+    border-radius: 25px; /* The rounded corners */
+    padding: 20px 40px; /* Padding inside the button */
+    color: black;
+    font-size: 20px;
+    transition: background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
+    
+    
+  }
+  .leftIntro .buttonIntro .startExplor:hover{
+
+    color:white;
+    background-color:#040914;
+  }
+  .buttonIntro .newtoHere{
+    font-size: 20px;
+    border: 2px solid #D3F85A;
+    border-radius: 25px; 
+    padding: 20px 40px;
+    color:white;
+    text-decoration: none;
+    transition:  background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
+
+  }
+  .buttonIntro .newtoHere:hover{
+    background-color: #D3F85A; /* The green background color */
+    color:black;
+    
+  }
+
+
+  .leftIntro .buttonIntro > li{
+    margin-right: 3vw;
+  }
+  .rightIntro{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    width:auto;
+    margin-left:8vw;
+  }
+  .rightIntro img{
+    scale: 1.15;
+  }
+  .rightIntro .firstRowPicture{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+  }
+  .rightIntro .firstRowPicture li{
+    margin-right: 3vw;
+  }
+  .rightIntro .secondRowPicture{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-left:6vw;
+  }
+  .rightIntro .secondRowPicture li{
+    margin-right: 3vw;
+    margin-top: 2.5vh;
+  }
+  
+  
