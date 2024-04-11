@@ -40,4 +40,6 @@ public interface UserService {
      * @return an Optional containing the User object if a user with the specified username exists, or an empty Optional if not.
      */
     Optional<User> findByUsername(String username);
+
+    Integer getIdOfUser(String username, String password);
 }

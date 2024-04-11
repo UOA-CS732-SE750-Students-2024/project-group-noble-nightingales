@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import uoa.nightingales.mysqldatabaseservicenode.domains.VerifyRequest;
 import uoa.nightingales.mysqldatabaseservicenode.pojos.User;
 import uoa.nightingales.mysqldatabaseservicenode.services.UserService;
 
@@ -67,5 +68,22 @@ public class UserController {
         log.info("Request to find user by username: " + username);
         Optional<User> user = userService.findByUsername(username);
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
+    /**
+     * Handles a POST request to verify a user's credentials and retrieve their unique user ID.
+     * This method logs the attempt and delegates to the userService to find the user's ID based on the provided username and password.
+     * <p>
+     * The method expects two request parameters: {@code username} and {@code password}. If the user is found and the credentials are valid,
+     * the user's ID is returned in the response body. If no user matches the provided credentials, a 404 Not Found status is returned.
+     *
+     * @return A {@link ResponseEntity} containing the user's ID if found and valid; otherwise, a notFound (404) response.
+     */
+    @PostMapping("/verify")
+    public ResponseEntity<Integer> getIdOfUser(@Validated @RequestBody VerifyRequest request) {
+        log.info("Request to find user by username: " + request.getUsername() + " and password: " + request.getPassword());
+        Integer userId = userService.getIdOfUser(request.getUsername(), request.getPassword());
+        return userId == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(userId);
     }
 }

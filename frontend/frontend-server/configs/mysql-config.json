@@ -1,0 +1,8 @@
+{
+    "host": "localhost",
+    "port": 30000,
+    "selectUserById": "/api/users",
+    "insertUser": "/api/users",
+    "findByUsername": "/api/users/find",
+    "getIdOfUser": "/api/users/verify"
+}
