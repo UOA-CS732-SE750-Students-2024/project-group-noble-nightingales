@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/Login'
 import Nav from "./Components/Nav/Nav"
-import Footer from "./Components/Footer/Footer"
 import Community from './Pages/CommunityPage/Community';
 import Explore from './Pages/ExplorePage/Explore';
 import Spotify from './Pages/SpotifyPage/Spotify';
@@ -14,7 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate replace to="/explore" />} />
-        <Route path="explore" element={<><Nav /><Explore /><Footer/></>}>
+        <Route path="explore" element={<Explore />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<Signup />} />
         </Route>
