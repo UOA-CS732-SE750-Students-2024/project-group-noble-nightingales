@@ -12,7 +12,7 @@ import row23 from "../../assets/2row3.png"
 export default function Explore() {
   return (
     <div>
-      <Ball />
+        <Ball />
       <div className="Explore-container">
         <div className="introRowContainer">
           <div className="leftIntro">
@@ -21,6 +21,7 @@ export default function Explore() {
               <li>Your Ultimate App</li>
               <li>For Media Content</li>
             </ul>
+
             <p className="insideText">Featuring a Diverse Library from Various Leading Platforms</p>
             <div >
               <ul className="mediaIntro">
