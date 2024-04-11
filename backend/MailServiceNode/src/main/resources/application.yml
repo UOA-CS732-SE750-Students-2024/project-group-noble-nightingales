@@ -21,4 +21,4 @@ server:
   port: 30056
 
 
-url: http://localhost:30056
+url: http://3.25.133.136:30056
