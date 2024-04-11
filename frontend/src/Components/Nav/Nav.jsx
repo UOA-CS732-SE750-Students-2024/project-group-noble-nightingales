@@ -19,8 +19,8 @@ export default function Nav() {
           <li><NavLink to="/community">Community</NavLink></li>
         </ul>
         <div className="nav-auth">
-          <NavLink className="signin"to="/login">Sign In</NavLink>
-          <NavLink to="/signup">Create Account</NavLink>
+          <NavLink className="signin"to="login">Sign In</NavLink>
+          <NavLink to="signup">Create Account</NavLink>
         </div>
     </div>
   );

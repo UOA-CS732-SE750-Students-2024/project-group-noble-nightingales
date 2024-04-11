@@ -14,12 +14,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate replace to="/explore" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/explore" element={<><Nav /><Explore /><Footer /></>} />
+        <Route path="explore" element={<><Nav /><Explore /><Footer/></>}>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<Signup />} />
+        </Route>
         <Route path="/community" element={<><Nav /><Community /></>} />
         <Route path="/spotify" element={<><Nav /><Spotify /></>} />
         <Route path="/youtube" element={<><Nav /><Youtube /></>} />
-        <Route path="/signup" element={<><Nav /><Signup /></>} />
+
         {/* Define other routes here */}
       </Routes>
     </Router>
