@@ -19,3 +19,6 @@ spring:
       spec: initialCapacity=100,maximumSize=500,expireAfterAccess=1800s
 server:
   port: 30056
+
+
+url: http://localhost:30056
