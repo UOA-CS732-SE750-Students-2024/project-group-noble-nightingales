@@ -48,4 +48,18 @@ public class UserServiceImpl implements UserService{
     public Optional<User> findByUsername(String username) {
         return userMapper.findByUsername(username);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public Integer getIdOfUser(String username, String password) {
+        Optional<User> user  = findByUsername(username);
+        if (user.isPresent()){
+            log.info("The user with username: " + username + " is found");
+            if (encodingService.match(password, user.get().getPassword())){
+                log.info("The user passwords match!");
+                return user.get().getUserID();
+            }
+        }
+        return null;
+    }
 }
