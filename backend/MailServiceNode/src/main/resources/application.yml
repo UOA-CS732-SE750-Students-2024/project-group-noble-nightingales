@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: MailServiceNode
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: uoa.media.noble.nightinales@gmail.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    password: rsdg xcva rack qwjo
+
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=100,maximumSize=500,expireAfterAccess=1800s
+server:
+  port: 30056
+
+
+url: http://localhost:30056
