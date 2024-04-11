@@ -1,0 +1,100 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    z-index: 10;
+    padding: 20px 40px ; /* Add padding to the left and right */
+  }
+  
+  .nav-container .nav-logo {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .nav-container .nav-logo img {
+    margin-right: 10px; /* Adjust the space between the logo and the text */
+    scale: 1.2;
+    margin-top: 10px;
+    transition: transform 0.3s ease; /* Smooth transition for the transform */
+  }
+  .nav-container .nav-logo img:hover{
+    transform: scale(1.1); /* Increase the size of the logo by 10% */
+    
+  }
+  .nav-container .nav-logo span{
+    font-size: 25px;
+    color:white;
+
+  }
+
+
+  
+  .nav-container .nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Allows it to take up as much space as possible */
+  }
+
+  
+  .nav-container .nav-links li {
+    padding: 10px 15px; /* Adjust the padding to space out the links */
+  }
+
+  .nav-container .nav-links li a {
+    margin-left: 20px; /* Space between the Sign In and Create Account links */
+    text-decoration: none;
+    color: white; /* Set the text color */
+    text-decoration: none; /* Remove the underline from links */
+    transition: font-size 0.3s ease, text-decoration 0.3s ease;
+  }
+  .nav-container .nav-links li a:hover {
+    color: #ddd; /* Lighten the text color on hover */
+    font-size: 1.1em; /* Increase the font size */
+    text-decoration: underline; /* Add an underline */
+  }
+  
+  .nav-container .nav-auth {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-container .nav-auth a {
+    margin-left: 20px; /* Space between the Sign In and Create Account links */
+    text-decoration: none;
+    color: white; /* Set the text color */
+    text-decoration: none; /* Remove the underline from links */
+    transition: font-size 0.3s ease, text-decoration 0.3s ease;
+  }
+  .nav-container .nav-auth .signin:hover {
+    color: #ddd; /* Lighten the text color on hover */
+    font-size: 1.1em; /* Increase the font size */
+    text-decoration: underline; /* Add an underline */
+  }
+  
+  .nav-container .nav-auth a:last-child {
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 1px solid #aaa; /* Visual separator between the two links */
+    margin-right: 80px;
+    background-color: #D3F85A; /* The green background color */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 20px; /* The rounded corners */
+    color: #040914;
+  }
+  .nav-container .nav-auth a:last-child:hover{
+    background-color: #c0ecf6; /* Darker shade of lime green */
+
+ 
+  }
+
+  

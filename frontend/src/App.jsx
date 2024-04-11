@@ -7,7 +7,7 @@ import Community from './Pages/CommunityPage/Community';
 import Explore from './Pages/ExplorePage/Explore';
 import Spotify from './Pages/SpotifyPage/Spotify';
 import Youtube from './Pages/YouTubePage/Youtube';
-
+import Signup from './Pages/FakeSignUpPage/Signup';
 import './App.css'
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="/community" element={<><Nav /><Community /></>} />
         <Route path="/spotify" element={<><Nav /><Spotify /></>} />
         <Route path="/youtube" element={<><Nav /><Youtube /></>} />
+        <Route path="/signup" element={<><Nav /><Signup /></>} />
         {/* Define other routes here */}
       </Routes>
     </Router>
