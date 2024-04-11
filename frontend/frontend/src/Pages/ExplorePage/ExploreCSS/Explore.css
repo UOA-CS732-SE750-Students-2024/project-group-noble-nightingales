@@ -1,4 +1,11 @@
 .Explore-container{
     z-index: 2;
-    padding-top:80px ;
+    padding:100px ;
+    display: flex;
+    color: white;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 5vw;
+    width:auto;
+    overflow-x: hidden;
 }

@@ -37,6 +37,7 @@
 
   
   .nav-container .nav-links {
+    font-size: 20px;
     display: flex;
     justify-content: center;
     list-style: none;
@@ -47,12 +48,11 @@
 
   
   .nav-container .nav-links li {
-    padding: 10px 15px; /* Adjust the padding to space out the links */
+    padding: 20px 40px; /* Adjust the padding to space out the links */
   }
 
   .nav-container .nav-links li a {
     margin-left: 20px; /* Space between the Sign In and Create Account links */
-    text-decoration: none;
     color: white; /* Set the text color */
     text-decoration: none; /* Remove the underline from links */
     transition: font-size 0.3s ease, text-decoration 0.3s ease;
@@ -69,15 +69,20 @@
   }
   
   .nav-container .nav-auth a {
+    font-size: 20px;
     margin-left: 20px; /* Space between the Sign In and Create Account links */
     text-decoration: none;
     color: white; /* Set the text color */
     text-decoration: none; /* Remove the underline from links */
-    transition: font-size 0.3s ease, text-decoration 0.3s ease;
+    transition: background-color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease;
+  }
+  .nav-container .nav-auth .signin{
+    padding-right: 2vw;
+    font-size: 20px;
   }
   .nav-container .nav-auth .signin:hover {
     color: #ddd; /* Lighten the text color on hover */
-    font-size: 1.1em; /* Increase the font size */
+    font-size: 22px; /* Increase the font size */
     text-decoration: underline; /* Add an underline */
   }
   
