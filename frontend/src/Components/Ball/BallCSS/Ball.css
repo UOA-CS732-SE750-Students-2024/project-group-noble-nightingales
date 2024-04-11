@@ -1,0 +1,46 @@
+
+   .ball {
+    margin-top: 70px;
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background-image: radial-gradient(circle at center, rgb(89, 207, 180) 0%, rgba(2, 68, 52, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    overflow: hidden;
+    opacity: 40%;
+    filter: blur(8px);
+    overflow: hidden;
+    mix-blend-mode: hard-light; 
+    right:70%;
+    top:10%;
+    z-index: 1;
+  }
+
+  
+  .ball::before,
+  .ball::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 300%;
+    height: 300%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-image: inherit;
+    
+  }
+  
+  .ball::before {
+    z-index: -1;
+    filter: blur(40px);
+    opacity: 0.6;
+  }
+  
+  .ball::after {
+    z-index: -2;
+    filter: blur(80px);
+    opacity: 0.2;
+  }
+  

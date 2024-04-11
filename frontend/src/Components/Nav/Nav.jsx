@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Layers from '../../assets/Layers.png';
 import './NavCss/Nav.css';
