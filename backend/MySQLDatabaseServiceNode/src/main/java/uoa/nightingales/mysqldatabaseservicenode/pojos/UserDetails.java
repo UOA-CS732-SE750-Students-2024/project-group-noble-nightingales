@@ -21,4 +21,6 @@ public class UserDetails {
     @NotBlank(message = "The user email must not be blank")
     private String email;
     private Integer age;
+    private Boolean isSubscribed;
+    private String mbti;
 }

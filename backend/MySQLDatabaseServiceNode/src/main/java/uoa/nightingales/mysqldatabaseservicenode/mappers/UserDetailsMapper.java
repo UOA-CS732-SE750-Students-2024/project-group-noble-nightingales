@@ -39,7 +39,7 @@ public interface UserDetailsMapper {
      * @param userDetails The UserDetails object containing the updated information for the user.
      * @return The number of rows affected by the update operation.
      */
-    @Update("UPDATE UserDetails SET gender = #{gender}, email = #{email}, age = #{age} WHERE userID = #{userID}")
+    @Update("UPDATE UserDetails SET gender = #{gender}, email = #{email}, age = #{age}, isSubscribed = #{isSubscribed}, mbti = #{mbti} WHERE userID = #{userID}")
     int updateUserDetails(UserDetails userDetails);
 
 
