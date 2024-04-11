@@ -10,10 +10,12 @@ CREATE TABLE IF NOT EXISTS Users (
 
 
 CREATE TABLE IF NOT EXISTS UserDetails (
-                                           userDetailsID INT AUTO_INCREMENT PRIMARY KEY,
-                                           userID INT,
-                                           gender ENUM('Male', 'Female', 'Other') NOT NULL,
-                                           email VARCHAR(255) NOT NULL UNIQUE,
-                                           age INT,
-                                           FOREIGN KEY (userID) REFERENCES Users(userID)
-);
+    userDetailsID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    gender VARCHAR(255),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    age INT,
+    isSubscribed BOOLEAN,
+    mbti CHAR(4),
+    CONSTRAINT fk_user FOREIGN KEY (userID) REFERENCES Users(userID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
