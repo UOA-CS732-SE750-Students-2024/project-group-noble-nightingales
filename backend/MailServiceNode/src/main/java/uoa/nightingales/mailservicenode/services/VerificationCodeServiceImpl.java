@@ -35,7 +35,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService{
         helper.setSubject("Email Verification");
         helper.setTo(targetEmailAddress);
         Context context = new Context();
-        context.setVariable("code", "1 2 3 4 5 6");
+        context.setVariable("code", verificationCode);
         context.setVariable("baseUrl", baseUrl);
 
         String htmlContent = templateEngine.process("verification.html", context);
