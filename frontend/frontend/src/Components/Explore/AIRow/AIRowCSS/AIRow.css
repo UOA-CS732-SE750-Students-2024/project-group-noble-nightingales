@@ -1,0 +1,175 @@
+.AIRowContainer{
+    display: flex;
+    flex-direction: row;
+    font-size: 2vw;
+    padding: 6.33vh ;
+    margin-left: 5vw;
+}
+.AIRowContainer .rightPicture{
+    margin-left: 3vw; /*change the picture to the right gap with text*/
+}
+.AIRowContainer .rightPicture img{
+    width:50vw;
+    height:50vh;
+}
+.AIRowContainer .leftAI{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+.AIRowContainer .leftAI .firstRow {
+    display: flex;
+    flex-direction: row;
+}
+.AIRowContainer .embeddedAI {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    background-color: rgba(123, 167, 211, 0.229);
+    border-radius: 2.33vh;
+    padding: 0.5vh 0.8vh;
+    margin-right: 7vw; /*human to the right with the embeddedAi text*/
+    width:14vw;
+    font-size: 2.3vh;
+
+}
+.AIRowContainer .embeddedAI img {
+    width:3vw;
+    padding-top: 0.7vh;
+}
+.AIRowContainer .embeddedAI .text{
+    padding-top: 1.4vh;
+}
+.AIRowContainer .embeddedAI li{
+    margin-right: 1vw;
+}
+.AIRowContainer .human{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding-right: 3vw;
+}
+.AIRowContainer .human li {
+    margin-right: 2vw;
+}
+.AIRowContainer .human img{
+    width:3vw;
+}
+.leftAI .firstLineText{
+    font-size: 5vh;
+ }
+ .leftAI .secondLineText{
+    font-size: 2vh;
+    font-weight: 100;
+    padding-top:2vh ;
+ }
+ .leftAI .imageList{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+    margin:0;
+    padding: 0;
+    padding-top: 3vh;
+    width:30vw
+ }
+
+ .image-container {
+    position: relative;
+    width: 145.79px; /* Adjust the size of the container based on your needs */
+    height: 145.79px;
+    padding-top: 3vh;
+  }
+  
+  .image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 0;
+
+    /* ensure that the images are centered within the container */
+  }
+  
+  /* You can also add specific styles to each image if needed, for example: */
+  .image-container .bubble-image {
+    /* z-index can ensure that the bubble appears on top if necessary */
+
+    z-index: 2;
+  }
+  
+  .image-container .chart-image {
+    /* Make any specific adjustments for this image */
+    z-index: 4;
+    padding-top:18vh ;
+  }
+  .image-container .blue-chart-image{
+    z-index: 4;
+    padding-bottom: 1.3vh;
+  }
+  .image-container .orange-chart-image{
+    z-index: 4;
+    padding-left: 1.4vw;
+    padding-bottom: 0.3vh;
+  }
+  
+  .image-container .indicator-image {
+    /* Make any specific adjustments for this image */
+    z-index: 3;
+    padding-top:18vh ;
+  }
+   .leftAI .ContentRecommandation{
+        position: relative;
+        list-style-type:none;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        justify-content: center;
+        width:32vw;
+        font-size: 1.5vw;
+        background-color: rgba(123, 167, 211, 0.229);
+        border-radius: 6vh;
+        padding: 3vh 1vh;
+        margin-top: 5vh;
+        z-index: 5;
+      
+   }
+   .ContentRecommendationinside{
+    display: flex; /* Establishes a flex container */
+    align-items: center; /* Centers flex items vertically */
+    justify-content: center; /* Centers flex items horizontally */
+    text-decoration: none; /* Optional: removes underline from links */
+
+   }
+    .ContentRecommendationinside .ContentText{
+            margin-right:4vw;
+            transition: font-size 0.5s ease;
+    }
+    .ContentRecommendationinside:hover .ContentText{
+        color:#D3F85A;
+        font-size: 1.65vw;
+    }
+
+   .leftAI .ContentRecommandation a {
+        color:white;
+        text-decoration: none;
+        z-index: 5;
+   }
+
+   .leftAI .ContentRecommandation .arrow{
+    background-color: #D3F85A;
+    border-radius: 50%;
+    width: 5vh; /* Adjust the width to fit the design */
+    height: 5vh; /* Adjust the height to fit the design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease;
+   }
+   .leftAI  .ContentRecommendationinside:hover .arrow{
+    color:black;
+    background-color: #91e217;
+   }
+
+

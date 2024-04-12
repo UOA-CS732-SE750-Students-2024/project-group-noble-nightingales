@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Ball from '../../Components/Ball/Ball'
 import IntroRow from '../../Components/Explore/IntroRow/IntroRow'
 import PictureRow from "../../Components/Explore/PictureSecondRow/PictureRow"
+import AIRow from '../../Components/Explore/AIRow/AIRow'
 export default function Explore() {
   return (
     <div>
@@ -11,7 +12,7 @@ export default function Explore() {
        
         <div className="Explore-container">
           <div>
-              <IntroRow/>
+              <IntroRow />
           </div>
       
           <div className="pictureRowContainer">
@@ -20,7 +21,7 @@ export default function Explore() {
           </div>
 
           <div className="embeddAIContainer">
-
+          <AIRow />
           </div>
 
           <div className="exploreYoutubeCOn">
