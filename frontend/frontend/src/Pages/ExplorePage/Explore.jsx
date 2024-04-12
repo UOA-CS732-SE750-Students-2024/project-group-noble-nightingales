@@ -6,6 +6,7 @@ import IntroRow from '../../Components/Explore/IntroRow/IntroRow'
 import PictureRow from "../../Components/Explore/PictureSecondRow/PictureRow"
 import AIRow from '../../Components/Explore/AIRow/AIRow'
 import YoutubeRow from '../../Components/Explore/YoutubeRow/YoutubeRow'
+import SpotifyRow from '../../Components/Explore/SpotifyRow/SpotifyRow'
 export default function Explore() {
   return (
     <div>
@@ -30,7 +31,7 @@ export default function Explore() {
           </div>
 
           <div className="popularTrackContainer">
-
+          <SpotifyRow/>
           </div>
           <div className="subscribeContianer">
 
