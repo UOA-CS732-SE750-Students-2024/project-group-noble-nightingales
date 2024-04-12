@@ -1,0 +1,66 @@
+ .YoutubeRowContainer{
+    display: flex;
+    flex-direction: column;
+    font-size: 2vw;
+    padding: 6.33vh ;
+
+}
+ .YoutubeRowContainer .firstYoutubeRow{
+ display: flex;
+ flex-direction: row;
+ list-style-type: none;
+ justify-content: space-between;
+ margin:0;
+ padding: 0;
+}
+
+ .YoutubeRowContainer  .secondYoutubeRow{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-between;
+    margin:0;
+    padding: 0;
+    margin-top: 10vh;
+}
+.YoutubeRowContainer .insideYoutubeList{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+.YoutubeRowContainer .insideYoutubeList img{
+    width: 22vw;
+}
+.YoutubeRowContainer .insideYoutubeList .titleList{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+.YoutubeRowContainer .insideYoutubeList .author{
+    margin:0;
+    padding: 0;
+    font-size: 0.9vw;
+    font-weight: 100;
+    margin-left: 4.3vw;
+    margin-top: -3vh;
+}
+.YoutubeRowContainer .insideYoutubeList .titleList .titleName{
+    font-size: 1.4vw;
+}
+
+.YoutubeRowContainer .insideYoutubeList .titleList .playButton {
+    transform: translate(-50%, -50%);
+    background-color: red;
+    border-radius: 50%;
+    width: 48px; /* Adjust the width to fit the design */
+    height: 48px; /* Adjust the height to fit the design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+    margin-left: 1.3vw;
+  }

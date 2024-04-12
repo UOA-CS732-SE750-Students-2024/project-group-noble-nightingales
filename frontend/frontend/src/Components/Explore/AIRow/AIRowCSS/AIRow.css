@@ -9,8 +9,8 @@
     margin-left: 3vw; /*change the picture to the right gap with text*/
 }
 .AIRowContainer .rightPicture img{
-    width:50vw;
-    height:50vh;
+    width:60vw;
+    height:60vh;
 }
 .AIRowContainer .leftAI{
     display: flex;

@@ -5,6 +5,7 @@ import Ball from '../../Components/Ball/Ball'
 import IntroRow from '../../Components/Explore/IntroRow/IntroRow'
 import PictureRow from "../../Components/Explore/PictureSecondRow/PictureRow"
 import AIRow from '../../Components/Explore/AIRow/AIRow'
+import YoutubeRow from '../../Components/Explore/YoutubeRow/YoutubeRow'
 export default function Explore() {
   return (
     <div>
@@ -25,7 +26,7 @@ export default function Explore() {
           </div>
 
           <div className="exploreYoutubeCOn">
-
+          <YoutubeRow />
           </div>
 
           <div className="popularTrackContainer">
