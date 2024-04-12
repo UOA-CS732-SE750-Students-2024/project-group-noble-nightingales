@@ -3,24 +3,23 @@
     margin-top: 7vh;
     display: flex;
     flex-direction: row;
-    width: auto;
     z-index: 2;
 }
 .introRowContainer .leftIntro{
-    margin-top: 5px;
+    margin-top: -2vh;
     display: flex;
     flex-direction: column;
-    width:auto;
+
 }
 
 .introRowContainer .leftIntro .headTextIntro li{
-    font-size: 60px;
+    font-size: 5.6vh;
     list-style-type: none;
     font-weight: bold;
    
 }
 .leftIntro .insideText{
-  padding-top: 25px;
+  padding-top: 2vh;
   font-size: 1.8vh;
   font-weight: 200;
   padding-left:3vh;
@@ -29,18 +28,18 @@
 }
 .introRowContainer .leftIntro .mediaIntro{
   
-    padding-top: 2.4vh;
+    padding-top: 0vh;
     display: flex;
     flex-direction: row;
     list-style-type: none; /* Removes bullets from list */
     padding-left: 0; /* Removes default padding */
-    font-size: 35px;
+    font-size: 3.27vh;
     padding-bottom: 5vh;
     padding-left:3vh ;
 }
 .leftIntro .mediaIntro .mediaTitle a {
   color: white;
-  font-size: 35px;
+  font-size:  3.27v;
   text-decoration: none;
   transition: color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
   font-weight: bold;
@@ -64,7 +63,7 @@
     margin-right: 3vw; /* Space between the media types */
   }
   .leftIntro .mediaIntro .mediaType{
-    font-size: 20px;
+    font-size: 1.87vh;
     padding-top: 2vh;
   }
 
@@ -72,17 +71,17 @@
     display: flex;
     flex-direction: row;
     list-style-type: none; /* Removes bullets */
-    padding: 10px; /* Removes padding */
-    font-size: 30px;
+    padding: -1vh; /* Removes padding */
+    font-size: 2.8vh;
     padding-left: 2.9vh;
    
   }
   .leftIntro .buttonIntro .startExplor{
     background-color: #D3F85A; /* The green background color */
-    border-radius: 25px; /* The rounded corners */
-    padding: 20px 40px; /* Padding inside the button */
+    border-radius: 2.33vh; /* The rounded corners */
+    padding: 1.87vh 3vh; /* Padding inside the button */
     color: black;
-    font-size: 20px;
+    font-size: 1.87vh;
     transition: background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
     
     
@@ -93,10 +92,10 @@
     background-color:#040914;
   }
   .buttonIntro .newtoHere{
-    font-size: 20px;
-    border: 2px solid #D3F85A;
-    border-radius: 25px; 
-    padding: 20px 40px;
+    font-size: 1.87vh;
+    border: 0.18vh solid #D3F85A;
+    border-radius:  2.33vh; 
+    padding: 1.87vh 3vh;
     color:white;
     text-decoration: none;
     transition:  background-color 0.3s ease, font-size 0.5s ease, text-decoration 0.5s ease; /* Apply transition to color as well */
@@ -112,33 +111,35 @@
   .leftIntro .buttonIntro > li{
     margin-right: 3vw;
   }
+
   .rightIntro{
     display: flex;
     flex-direction: column;
-    min-width: 300px;
-    width:auto;
     margin-left:8vw;
   }
   .rightIntro img{
-    scale: 1.15;
+    width:33.23vh;
+    height:33.6vh;
   }
   .rightIntro .firstRowPicture{
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    margin:0;
   }
   .rightIntro .firstRowPicture li{
-    margin-right: 3vw;
+    margin-right: 1vw;
   }
   .rightIntro .secondRowPicture{
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    margin:0;
     margin-left:6vw;
   }
   .rightIntro .secondRowPicture li{
-    margin-right: 3vw;
-    margin-top: 2.5vh;
+    margin-right: 1vw;
+    margin-top: 1vh;
   }
   
   
