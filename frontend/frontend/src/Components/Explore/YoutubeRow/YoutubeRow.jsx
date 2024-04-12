@@ -1,14 +1,21 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import './YoutubeCSS/Youtube.css'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import youtubeCover from '../../../assets/YoutubeCover.png'
 export default function YoutubeRow() {
   return (
     <div className='YoutubeRowContainer'>
+        <ul className="sectionTitleList">
+            <li className="sectionTitileName">Explore YouTube Videos</li>
+            <li className="SectionTitleLink"><NavLink to="/youtube"> See All </NavLink></li>
+        </ul>
     <ul className='firstYoutubeRow'>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -20,7 +27,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -32,7 +41,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -44,7 +55,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -56,9 +69,11 @@ export default function YoutubeRow() {
         </li>
     </ul>
     <ul className="secondYoutubeRow">
-    <li>
+        <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -70,7 +85,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -82,7 +99,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
@@ -94,7 +113,9 @@ export default function YoutubeRow() {
         </li>
         <li>
             <ul className='insideYoutubeList'>
-                <li><img src={youtubeCover} alt="Cover" /></li>
+                <li>
+                    <NavLink to="/youtube"> <img src={youtubeCover} alt="Cover" /> </NavLink>
+                </li>
                 <li>
                     <ul className='titleList'>
                         <li className="playButton"><PlayArrowIcon /></li>
