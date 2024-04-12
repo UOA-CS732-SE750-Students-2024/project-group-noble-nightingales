@@ -19,12 +19,10 @@
   color: white;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 32px;
 }
 
 .inputContainer {
   width: 436px;
-  margin-bottom: 16px;
 }
 
 .inputLabel {
@@ -45,22 +43,7 @@
   margin: 16px 0px;
 }
 
-.rememberMeLine {
-  display: flex;
-  justify-content: space-between;
-  width: 436px;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.checkboxLabel {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  color: #88888c;
-}
-
-.loginButton {
+.actionButton {
   width: 436px;
   padding: 17px;
   background: #d3f85a;
@@ -71,25 +54,30 @@
   font-weight: 600;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-}
-
-.signUp {
-  text-align: center;
-  color: #88888c;
-  font-size: 16px;
   margin-top: 24px;
 }
 
-.signUpLink,
-.troubleLoggingLink {
+.linkContainer {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.link {
+  color: #88888c;
+  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.linkHighlight {
   color: #685cf0;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
 }
 
-/* 如果需要在鼠标悬停时改变样式 */
-.signUpLink:hover,
-.troubleLoggingLink:hover {
-  text-decoration: underline; /* 鼠标悬停时添加下划线 */
+.linkHighlight:hover {
+  text-decoration: underline;
 }

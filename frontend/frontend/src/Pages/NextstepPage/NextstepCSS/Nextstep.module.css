@@ -1,0 +1,89 @@
+.container {
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #151522;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .title {
+    color: white;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 36px;
+  }
+  
+  .subtitle {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    line-height: 20px;
+  }
+  
+  .email {
+    color: white;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 28px;
+    margin-bottom: 39px;
+  }
+  
+  .codeInstruction {
+    color: white;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
+  }
+  
+  .codeInputContainer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 97px;
+  }
+  
+  .codeInput {
+    width: 30px;
+    height: 30px;
+    padding: 8px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 36px;
+  }
+  
+  .submitButton {
+    width: 388px;
+    padding: 8px 16px;
+    background: #D3F85A;
+    border-radius: 8px;
+    color: #1C1C1C;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+  }
+  
