@@ -9,7 +9,7 @@
     margin-top: -2vh;
     display: flex;
     flex-direction: column;
-
+    width:29vw;
 }
 
 .introRowContainer .leftIntro .headTextIntro li{
@@ -115,7 +115,7 @@
   .rightIntro{
     display: flex;
     flex-direction: column;
-    margin-left:8vw;
+    margin-left:6vw;
   }
   .rightIntro img{
     width:33.23vh;
