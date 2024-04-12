@@ -1,4 +1,4 @@
-import express, { query } from 'express';
+import express from 'express';
 import { concatenateUrl } from '../../helpers/UrlHelper.js';
 import spotifyConfig from '../../configs/spotify-config.json' assert { type: 'json' };
 import axios from 'axios';
@@ -11,7 +11,7 @@ router.get('/default', async (req, res) => {
 
     try {
         const params = {
-            query: "",
+            query: "a",
             maxResults: 6
         };
         const response = await axios.get(url, { params });
