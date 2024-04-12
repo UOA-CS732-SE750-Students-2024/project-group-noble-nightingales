@@ -4,12 +4,16 @@
     display: flex;
     flex-direction: row;
     z-index: 2;
+    padding: 9.33vh ;
+    margin-left: 5vw;
+    
 }
 .introRowContainer .leftIntro{
     margin-top: -2vh;
     display: flex;
     flex-direction: column;
     width:29vw;
+    
 }
 
 .introRowContainer .leftIntro .headTextIntro li{
@@ -22,7 +26,7 @@
   padding-top: 2vh;
   font-size: 1.8vh;
   font-weight: 200;
-  padding-left:3vh;
+  padding-left:1vh;
   height: 5vh;
   width:27vw;
 }
@@ -35,7 +39,7 @@
     padding-left: 0; /* Removes default padding */
     font-size: 3.27vh;
     padding-bottom: 5vh;
-    padding-left:3vh ;
+    padding-left:1vh ;
 }
 .leftIntro .mediaIntro .mediaTitle a {
   color: white;
@@ -106,7 +110,9 @@
     color:black;
     
   }
-
+  .leftIntro .buttonIntro{
+    width:35vw;
+  }
 
   .leftIntro .buttonIntro > li{
     margin-right: 3vw;

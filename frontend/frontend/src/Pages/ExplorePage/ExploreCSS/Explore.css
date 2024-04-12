@@ -1,11 +1,10 @@
 .Explore-container{
     z-index: 2;
-    padding: 9.33vh ;
     display: flex;
     color: white;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
-    margin-left: 5vw;
-    width:auto;
     overflow-x: hidden;
+    /* padding: 9.33vh ;
+    margin-left: 5vw; */
 }
