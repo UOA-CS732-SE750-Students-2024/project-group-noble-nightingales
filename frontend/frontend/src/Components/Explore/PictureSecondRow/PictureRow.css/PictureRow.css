@@ -1,0 +1,35 @@
+
+.pictureRow-container {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+    list-style-type: none;
+    justify-content: flex-start;
+  }
+  
+  .pictureRow-container .leftPicture {
+    display: flex;
+    flex-direction: row;
+    list-style: none; 
+    padding: 0; /* Removes default padding */
+    margin: 0;
+    margin-left: -6.5vw;
+  }
+  .pictureRow-container .leftPicture li{
+    margin-right: 3vh;
+  }
+  .pictureRow-container .leftPicture li img {
+    width:33.23vh;
+    height:33.6vh;
+  }
+
+  .pictureRow-container .rightBallPicture{
+    margin-left:15vw;
+
+  }
+  .pictureRow-container .rightBallPicture img {
+    width:33.23vh;
+    height:33.6vh;
+  }
+  
