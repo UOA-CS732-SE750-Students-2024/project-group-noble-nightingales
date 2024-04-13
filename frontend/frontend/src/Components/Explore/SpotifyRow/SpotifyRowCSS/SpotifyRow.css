@@ -5,6 +5,8 @@
     padding: 6.33vh ;
     padding-top: 3.6vh;
     height:40vh;
+    position: relative;
+    z-index: 2;
 }
 .SpotifyRowContainer .sectionTitleList{
     display: flex;
