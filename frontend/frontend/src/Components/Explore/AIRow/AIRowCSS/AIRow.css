@@ -1,9 +1,12 @@
 .AIRowContainer{
+    position: relative;
     display: flex;
     flex-direction: row;
     font-size: 2vw;
     padding: 6.33vh ;
     margin-left: 5vw;
+    z-index: 2;
+  
 }
 .AIRowContainer .rightPicture{
     margin-left: 3vw; /*change the picture to the right gap with text*/
@@ -11,6 +14,7 @@
 .AIRowContainer .rightPicture img{
     width:60vw;
     height:60vh;
+    
 }
 .AIRowContainer .leftAI{
     display: flex;

@@ -4,9 +4,13 @@
     align-items: center;
     font-size: 2vw;
     padding: 6.33vh ;
-    background-color: #334b2c;
     margin-top: 13vh;
-   
+    position: relative;
+    z-index: 2;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    
 }
 .SubscribeRowContainer .leftSub .leftList{
     margin:0;
