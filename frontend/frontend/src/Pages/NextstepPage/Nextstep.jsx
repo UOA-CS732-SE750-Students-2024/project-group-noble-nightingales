@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./NextstepCSS/Nextstep.module.css";
 import DeviceMobile from "../../assets/DeviceMobile.svg";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Nextstep() {
+  const navigate = useNavigate();
   const [code, setCode] = useState(new Array(6).fill(""));
   const location = useLocation();
   const email = location.state?.email; // 确保 email 有传递过来，或者另外处理
@@ -40,39 +42,49 @@ function Nextstep() {
       }
     }
   };
+  // 关闭登录模态框函数
+  const closeNextstep = () => {
+    navigate(-1); // 导航回上一个页面
+  };
 
   return (
-    <div className={styles.container}>
-      <img src={DeviceMobile} alt="Mobile Icon" className={styles.icon} />
-      <h1 className={styles.title}>Two Step Verification</h1>
-      <p className={styles.subtitle}>Enter the verification code we sent to</p>
-      <div className={styles.email}>{email}</div>
-      <p className={styles.codeInstruction}>Type your 6 digit security code</p>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.codeInputContainer}>
-          {code.map((num, index) => (
-            <input
-              key={index}
-              ref={inputRefs.current[index]}
-              className={styles.codeInput}
-              type="text"
-              maxLength="1"
-              value={num}
-              onChange={handleInputChange(index)}
-              onKeyDown={(e) => {
-                if (e.key === "Backspace" && !num) {
-                  // 触发 handleInputChange 函数来处理退格逻辑
-                  handleInputChange(index)(e);
-                }
-              }}
-              autoComplete="off"
-            />
-          ))}
-        </div>
-        <button type="submit" className={styles.submitButton}>
-          Submit
-        </button>
-      </form>
+    <div className={styles.overlay} onClick={closeNextstep}>
+      <div className={styles.container}>
+        <img src={DeviceMobile} alt="Mobile Icon" className={styles.icon} />
+        <h1 className={styles.title}>Two Step Verification</h1>
+        <p className={styles.subtitle}>
+          Enter the verification code we sent to
+        </p>
+        <div className={styles.email}>{email}</div>
+        <p className={styles.codeInstruction}>
+          Type your 6 digit security code
+        </p>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.codeInputContainer}>
+            {code.map((num, index) => (
+              <input
+                key={index}
+                ref={inputRefs.current[index]}
+                className={styles.codeInput}
+                type="text"
+                maxLength="1"
+                value={num}
+                onChange={handleInputChange(index)}
+                onKeyDown={(e) => {
+                  if (e.key === "Backspace" && !num) {
+                    // 触发 handleInputChange 函数来处理退格逻辑
+                    handleInputChange(index)(e);
+                  }
+                }}
+                autoComplete="off"
+              />
+            ))}
+          </div>
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
