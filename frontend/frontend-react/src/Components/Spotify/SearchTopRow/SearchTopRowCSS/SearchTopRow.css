@@ -7,7 +7,7 @@
 }
 
 .SearchTopRow-container .left {
-    flex: 7;
+    flex: 8;
     background-image: url('../../../../assets/SpotifyLogo.png');
     background-size: cover;
     background-position: center;
@@ -23,7 +23,7 @@
 }
 
 .SearchTopRow-container .right{
-    flex: 3;
+    flex: 2;
     background-color: rgb(68, 68, 68);
     border-radius: 5%;
     overflow: hidden;
@@ -46,12 +46,12 @@
 }
 
 .SearchTopRow-container .right .topMusicListElement .topMusicImage {
-    height: 6vh;
+    height: 6.5vh;
     transition: height 0.5s ease-in-out; 
 }
   
 .SearchTopRow-container .right .topMusicListElement .topMusicImage:hover {
-    height: 7vh;
+    height: 8vh;
 }
   
 .SearchTopRow-container .right .topMusicInfo {
