@@ -3,6 +3,7 @@ package uoa.nightingales.spotifyservicenode.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uoa.nightingales.spotifyservicenode.domains.FinalSpotifyAuthenticationResponse;
@@ -75,6 +76,43 @@ public class SpotifyAuthenticationController {
         }catch (JsonProcessingException e){
             return ResponseEntity.internalServerError().body("Failed to generate access token");
         }
+    }
+
+
+    /**
+     * Retrieves the access token for a specified user.
+     *
+     * @param userId The unique identifier of the user whose access token is being requested.
+     * @return a {@link ResponseEntity} containing the access token if present, or a {@link ResponseEntity} with a not-found status.
+     */
+    @GetMapping("/auth/token")
+    public ResponseEntity<String> getAccessToken(@RequestParam String userId) {
+        if(spotifyAuthenticationService.isAccessTokenPresent(userId)){
+            return ResponseEntity.ok(spotifyAuthenticationService.getAccessToken(userId));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    /**
+     * Saves both the access and refresh tokens for a specified user.
+     * This method handles the POST request to store new token values, which are essential for maintaining
+     * the user's session and authentication state across interactions with the Spotify API.
+     *
+     * @param userId The unique identifier of the user for whom the tokens are to be saved. This ID should
+     *               uniquely identify the user within the system.
+     * @param accessToken The access token obtained from Spotify that grants temporary access to the user's
+     *                    Spotify data.
+     * @param refreshToken The refresh token obtained from Spotify which can be used to renew the access token
+     *                     when it expires.
+     * @return a {@link ResponseEntity} object with HTTP status code indicating the result of the operation.
+     *         This typically returns HTTP status code 201 (Created) if tokens are successfully saved.
+     */
+    @PostMapping("/auth/token")
+    public ResponseEntity<Void> saveTokens(@RequestParam String userId, @RequestParam String accessToken
+                                            , @RequestParam String refreshToken) {
+        spotifyAuthenticationService.saveTokens(userId, accessToken, refreshToken);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

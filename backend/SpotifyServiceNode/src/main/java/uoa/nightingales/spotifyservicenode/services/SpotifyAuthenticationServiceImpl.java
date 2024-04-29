@@ -12,6 +12,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import uoa.nightingales.spotifyservicenode.caches.PrimaryAccessTokenCache;
+import uoa.nightingales.spotifyservicenode.caches.SecondaryRefreshTokenCache;
 import uoa.nightingales.spotifyservicenode.domains.FinalSpotifyAuthenticationResponse;
 import uoa.nightingales.spotifyservicenode.domains.SpotifyAuthenticationResponse;
 import uoa.nightingales.spotifyservicenode.utils.StringUtil;
@@ -31,6 +33,10 @@ public class SpotifyAuthenticationServiceImpl implements SpotifyAuthenticationSe
     private static final String TOKEN_URL = "https://accounts.spotify.com/api/token";
 
     final RestTemplate restTemplate;
+
+    final PrimaryAccessTokenCache primaryCache;
+
+    final SecondaryRefreshTokenCache secondaryCache;
 
     @Override
     public SpotifyAuthenticationResponse getSpotifyLoginUrl(String redirectUri) {
@@ -89,6 +95,45 @@ public class SpotifyAuthenticationServiceImpl implements SpotifyAuthenticationSe
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(response.getBody());
         return root.path("access_token").asText();
+    }
+
+    @Override
+    public boolean isAccessTokenPresent(String userId) {
+        String accessToken = primaryCache.retrieveCache(userId);
+
+        if (accessToken != null) {
+            return true;
+        }
+
+        String refreshToken = secondaryCache.retrieveCache(userId);
+
+        if(refreshToken == null){
+            return false;
+        }
+
+        try{
+            accessToken = refreshAccessToken(refreshToken);
+            primaryCache.saveEntry(userId, accessToken);
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public String getAccessToken(String userId) {
+        if(isAccessTokenPresent(userId)){
+            return primaryCache.retrieveCache(userId);
+        }
+
+        return null;
+    }
+
+    @Override
+    public void saveTokens(String userId, String accessToken, String refreshToken) {
+        primaryCache.saveEntry(userId, accessToken);
+        secondaryCache.saveEntry(userId, refreshToken);
     }
 
 
