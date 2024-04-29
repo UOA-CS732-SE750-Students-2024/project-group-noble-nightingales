@@ -1,0 +1,96 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+}
+
+.container {
+  width: auto;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #151522;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.inputContainer {
+  width: 436px;
+}
+
+.inputLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 400px;
+  padding: 17px 20px;
+  background: #242436;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  color: #88888c;
+  font-size: 16px;
+  margin: 16px 0px;
+}
+
+.actionButton {
+  width: 436px;
+  padding: 17px;
+  background: #d3f85a;
+  border-radius: 50px;
+  border: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.linkContainer {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.link {
+  color: #88888c;
+  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.linkHighlight {
+  color: #685cf0;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.linkHighlight:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,27 @@
+.Spotify-container{
+    z-index: 2;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-x: hidden;
+
+    /* padding: 9.33vh ;
+    margin-left: 5vw; */
+}
+
+.Spotify-container .subBall .staticBall{
+    top:211%;
+    right:40%;
+    background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    width: 120vh;
+    height: 100vh;
+}
+
+.Spotify-container .AIRecommendation-container .staticBall{
+    top: 85%;
+    right:10%;
+    background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    width: 50vh;
+    height: 50vh;
+}
