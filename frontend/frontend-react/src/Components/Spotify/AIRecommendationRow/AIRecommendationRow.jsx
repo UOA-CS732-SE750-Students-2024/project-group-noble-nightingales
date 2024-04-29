@@ -69,7 +69,7 @@ export default function AIRecommendationRow() {
         }}
         InputLabelProps={{ style: { color: "white" } }}
       />
-      <NavLink className="submitNavLink" style={{ top: "183%" }}>
+      <NavLink className="submitNavLink" style={{ top: "189%" }}>
         Submit
       </NavLink>
     </div>

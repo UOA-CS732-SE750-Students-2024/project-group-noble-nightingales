@@ -1,5 +1,7 @@
 import "./SearchTopRowCSS/SearchTopRow.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
+import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 import { NavLink } from "react-router-dom";
 
 export default function SearchTopRow() {
@@ -29,7 +31,26 @@ export default function SearchTopRow() {
   return (
     <div className="SearchTopRow-container">
       <div className="left">
-        <input className="searchBar" type="text" placeholder="Search..." />
+        <TextField
+          className="searchBar"
+          id="outlined-search"
+          label="Search field"
+          type="search"
+          variant="outlined"
+          InputProps={{
+            style: {
+              color: "white", // Input text color
+              backgroundColor: "gray", // Text field background color
+              borderRadius: "5px", // Adjust as needed
+              width: "200%",
+            },
+          }}
+          InputLabelProps={{
+            style: {
+              color: "white", // Label text color
+            },
+          }}
+        />
       </div>
       <div className="right">
         <h4 className="topTitle">Top Tracks</h4>

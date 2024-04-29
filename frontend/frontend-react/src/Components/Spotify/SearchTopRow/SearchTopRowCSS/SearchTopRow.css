@@ -17,9 +17,9 @@
 }
 
 .SearchTopRow-container .left .searchBar{
-    position: relative;
-    top: 3%;
-    left: 5%;
+    position: absolute;
+    top: 17%;
+    left: 8%;
 }
 
 .SearchTopRow-container .right{
