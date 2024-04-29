@@ -1,3 +1,14 @@
+import "./SpotifyCSS/Spotify.css";
+import BallDynamic from "../../Components/BallDynamic/Ball";
+
 export default function Spotify() {
-  return <div>Spotify PAGE HERE</div>;
+  return (
+    <div>
+      <BallDynamic />
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+      <h1>hello</h1>
+    </div>
+  );
 }

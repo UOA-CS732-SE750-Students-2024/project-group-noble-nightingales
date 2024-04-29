@@ -14,32 +14,28 @@
   backdrop-filter: blur(20px);
 }
 
-  
-  .nav-container .nav-logo {
+.nav-container .nav-logo {
     display: flex;
     align-items: center;
-    
-  }
+}
   
-  .nav-container .nav-logo img {
+.nav-container .nav-logo img {
     margin-right: 0.93vh; /* Adjust the space between the logo and the text */
     width:2.3vw;
     margin-top: 0.93vh;
     transition: transform 0.3s ease; /* Smooth transition for the transform */
-  }
-  .nav-container .nav-logo img:hover{
+}
+
+.nav-container .nav-logo img:hover{
     transform: scale(1.1); /* Increase the size of the logo by 10% */
-    
-  }
-  .nav-container .nav-logo span{
+}
+
+.nav-container .nav-logo span{
     font-size: 2.33vh;
     color:white;
+}
 
-  }
-
-
-  
-  .nav-container .nav-links {
+.nav-container .nav-links {
     font-size: 1.86vh;
     display: flex;
     justify-content: center;
@@ -47,49 +43,51 @@
     margin: 0px;
     padding: 0px;
     flex-grow: 1; /* Allows it to take up as much space as possible */
-  }
+}
 
-  
-  .nav-container .nav-links li {
+.nav-container .nav-links li {
     padding: 1.86vh 3.73vh; /* Adjust the padding to space out the links */
-  }
+}
 
-  .nav-container .nav-links li a {
+.nav-container .nav-links li a {
     margin-left: 1.86vh; /* Space between the Sign In and Create Account links */
     color: white; /* Set the text color */
     text-decoration: none; /* Remove the underline from links */
     transition: font-size 0.3s ease, text-decoration 0.3s ease;
-  }
-  .nav-container .nav-links li a:hover {
+}
+
+.nav-container .nav-links li a:hover {
     color: #ddd; /* Lighten the text color on hover */
     font-size: 1.1em; /* Increase the font size */
     text-decoration: underline; /* Add an underline */
-  }
+}
   
-  .nav-container .nav-auth {
+.nav-container .nav-auth {
     display: flex;
     align-items: center;
-  }
+}
   
-  .nav-container .nav-auth a {
+.nav-container .nav-auth a {
     font-size: 1.86vh;
     margin-left:  1.86vh; /* Space between the Sign In and Create Account links */
     text-decoration: none;
     color: white; /* Set the text color */
     text-decoration: none; /* Remove the underline from links */
     transition: background-color 0.5s ease, font-size 0.5s ease, text-decoration 0.5s ease;
-  }
-  .nav-container .nav-auth .signin{
+}
+
+.nav-container .nav-auth .signin{
     padding-right: 2vw;
     font-size:  1.86vh;
-  }
-  .nav-container .nav-auth .signin:hover {
+}
+
+.nav-container .nav-auth .signin:hover {
     color: #ddd; /* Lighten the text color on hover */
     font-size: 2.1vh; /* Increase the font size */
     text-decoration: underline; /* Add an underline */
-  }
+}
   
-  .nav-container .nav-auth a:last-child {
+.nav-container .nav-auth a:last-child {
     padding-left:  1.86vh;
     margin-left:  1.86vh;
     border-left: 1px solid #aaa; /* Visual separator between the two links */
@@ -98,11 +96,10 @@
     padding: 0.93vh 1.4vh; /* Padding inside the button */
     border-radius:  1.86vh; /* The rounded corners */
     color: #040914;
-  }
-  .nav-container .nav-auth a:last-child:hover{
-    background-color: #c0ecf6; /* Darker shade of lime green */
+}
 
- 
-  }
+.nav-container .nav-auth a:last-child:hover{
+    background-color: #c0ecf6; /* Darker shade of lime green */
+}
 
   

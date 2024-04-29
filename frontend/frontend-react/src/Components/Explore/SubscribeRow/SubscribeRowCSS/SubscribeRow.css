@@ -9,15 +9,15 @@
     z-index: 2;
     padding-bottom: 0;
     margin-bottom: 0;
-
-    
 }
+
 .SubscribeRowContainer .leftSub .leftList{
     margin:0;
     padding:0;
     list-style-type: none;
     margin-left: 15vw;
 }
+
 .SubscribeRowContainer .leftSub .humenPicture{
     display: flex;
     flex-direction: row;
@@ -30,18 +30,21 @@
     font-size: 3vh;
     margin-top: 1.5vh;
 }
+
 .SubscribeRowContainer .leftSub .Subext{
     margin-top: 1.5vh;
     margin-bottom: 4vh;
 }
+
 .SubscribeRowContainer .leftSub .humenPicture li{
     margin-right: 1vw;
 }
+
 .SubscribeRowContainer .leftSub .emailInputContainer{
     display: flex;
     flex-direction: row;
-    
 }
+
 .SubscribeRowContainer .leftSub .emailInputContainer .emailInput{
     flex-grow: 1;
     border: none;
@@ -56,7 +59,6 @@
     margin-top: -1vh;
     position:relative;
     font-size: 1vw;
-    
 }
 
 .SubscribeRowContainer .leftSub .submitButton{
@@ -69,18 +71,18 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.5s ease
-
 }
+
 .SubscribeRowContainer .leftSub .submitButton:hover{
     cursor: pointer;
     background-color: aqua;
 }
+
 .emailInputContainer .emailInput::placeholder {
     color: rgba(255, 255, 255, 0.7); /* Lighter text color for the placeholder */
     position:absolute;
     padding-left: 1vw;
-  }
-
+}
 
 .SubscribeRowContainer .rightSub{
     margin-left: 20vw;

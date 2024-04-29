@@ -8,6 +8,7 @@
     position: relative;
     z-index: 2;
 }
+
 .SpotifyRowContainer .sectionTitleList{
     display: flex;
     flex-direction: row;
@@ -17,6 +18,7 @@
     padding: 0;
     margin-bottom: 9vh;
 }
+
 .SpotifyRowContainer .sectionTitleList .sectionTitileName{
     font-size: 3.8vh;
 }
@@ -32,12 +34,13 @@
     border-radius:  3vh; /* The rounded corners */
     color: #040914;
     transition:  background-color 0.7s ease, font-size 0.5s ease, text-decoration 0.5s ease;
-
 }
+
 .SpotifyRowContainer .sectionTitleList .SectionTitleLink a:hover{
     background-color: green;
     border-color: green;
 }
+
 .SpotifyRowContainer .spotifyRow{
     display: flex;
     flex-direction: row;
@@ -54,23 +57,23 @@
     list-style-type: none;
     margin:0;
     padding: 0;
-    
 }
+
 .SpotifyRowContainer .spotifyRow .insideSpotifyList img {
     width: 12vw;
     transition: width 0.5s ease-in-out; 
-  }
+}
   
-  .SpotifyRowContainer .spotifyRow .insideSpotifyList img:hover {
+.SpotifyRowContainer .spotifyRow .insideSpotifyList img:hover {
     width: 14vw;
-  }
+}
 
 .SpotifyRowContainer .spotifyRow .insideSpotifyList .titleName{
     font-size: 1.4vw;
     margin-left: 1vw;
 }
-.SpotifyRowContainer .spotifyRow .insideSpotifyList .author{
 
+.SpotifyRowContainer .spotifyRow .insideSpotifyList .author{
     font-size: 0.9vw;
     font-weight: 100;
     margin-left: 1vw;
