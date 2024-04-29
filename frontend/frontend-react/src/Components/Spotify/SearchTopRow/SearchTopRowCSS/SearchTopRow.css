@@ -1,0 +1,25 @@
+.SearchTopRow-container{
+    margin-top: 7vh;
+    display: flex;
+    z-index: 2;
+    padding: 6vh;
+    height: 40vh;
+}
+
+.SearchTopRow-container .left {
+    flex: 7;
+    background-image: url('../../../../assets/SpotifyLogo.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    
+  }
+
+.SearchTopRow-container .right{
+    flex: 3;
+    background-color: rgb(68, 68, 68);
+}
+
+.searchBar{
+    position: relative;
+}

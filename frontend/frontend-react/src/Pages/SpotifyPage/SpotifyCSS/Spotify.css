@@ -1,0 +1,11 @@
+.Spotify-container{
+    z-index: 2;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* overflow-x: hidden; */
+
+    /* padding: 9.33vh ;
+    margin-left: 5vw; */
+}
