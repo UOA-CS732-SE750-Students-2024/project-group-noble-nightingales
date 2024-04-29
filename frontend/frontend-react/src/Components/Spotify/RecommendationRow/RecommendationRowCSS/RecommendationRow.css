@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 3.8vw;
+    margin-right: 3.0vw;
 }
 
 .RecommendationRow-container .recommendationImage{
@@ -37,19 +37,32 @@
     position: absolute;
     margin-top: 23vh;
     height: 12vh;
-    width: 15.6vw;
+    width: 16.3vw;
     border-radius: 1.9vh;
     background-color: rgba(23, 23, 23, 0.5);
     backdrop-filter: blur(8px);
 }
 
 .RecommendationRow-container .cover .coverImage{
-    height: 5vh;
-    width:  3vw;
+    height: 4.5vh;
+    width: 4.5vh;
+    background-color: white;
+    border-radius: 50%;
     margin-top: -115%;
-    margin-left: 200%;
-    border-radius: 1.9vh;
-    background-image: url('../../../../assets/playImage.png');
+    margin-left: 205%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-width: 2.5px;
+    border-style: solid; 
+    border-color: transparent;
     transition: ease-in-out 0.5s;
     cursor: pointer;
 }
+
+.RecommendationRow-container .cover .coverImage:hover {
+    border-color: rgb(0, 0, 0);
+}
+
+

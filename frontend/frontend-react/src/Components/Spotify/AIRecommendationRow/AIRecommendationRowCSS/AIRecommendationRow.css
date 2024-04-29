@@ -52,7 +52,7 @@
 .AIRecommendationRow-container .submitNavLinkOne{
     position: absolute;
     left: 85%;
-    top: 153%;
+    top: 150%;
     font-weight: bold;
     font-size: 1.87vh;
     text-decoration: none;
@@ -68,7 +68,7 @@
 .AIRecommendationRow-container .submitNavLink{
     position: absolute;
     left: 85%;
-    top: 153%;
+    top: 152%;
     font-weight: bold;
     font-size: 1.87vh;
     text-decoration: none;
