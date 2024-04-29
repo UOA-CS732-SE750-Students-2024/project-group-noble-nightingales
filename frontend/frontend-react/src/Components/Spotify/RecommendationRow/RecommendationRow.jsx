@@ -2,6 +2,10 @@ import "./RecommendationRowCSS/RecommendationRow.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 
+function getRandomBoolean() {
+  return Math.random() >= 0.5;
+}
+
 export default function RecommendationRow() {
   const dummyTopMusics = [
     {
@@ -33,7 +37,7 @@ export default function RecommendationRow() {
 
   return (
     <div className="RecommendationRow-container">
-      <h1>You May Like</h1>
+      <h2>You May Like</h2>
       <ul className="recommendationList">
         {dummyTopMusics.map((topMusic) => (
           <li className="recommendationElement" key={topMusic.name}>
@@ -44,9 +48,14 @@ export default function RecommendationRow() {
                 alt={topMusic.name}
               />
             </NavLink>
-            <div className="recommendationInfo">
-              <span style={{ fontSize: "1rem" }}>{topMusic.name}</span>
-              <span style={{ fontSize: "0.8rem" }}>{topMusic.author}</span>
+            
+            <div className="cover">
+              <div className="recommendationInfo">
+                <span style={getRandomBoolean() ? { fontSize: "0.8rem", color: "#EF2F62" } : { fontSize: "0.8rem", color: "#00FFFF" }}>New For You</span>
+                <span style={{ fontSize: "1rem", marginTop: "0.8vh" }}>{topMusic.name}</span>
+                <span style={{ fontSize: "0.8rem", marginTop: "1vh", opacity: "0.6" }}>{topMusic.author}</span>
+                <div className="coverImage"></div>
+              </div>
             </div>
           </li>
         ))}

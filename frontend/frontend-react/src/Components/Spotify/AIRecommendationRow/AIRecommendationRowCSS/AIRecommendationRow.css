@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.AIRecommendationRow-container h1{
+.AIRecommendationRow-container h2{
     text-align: right;
 }
 
@@ -15,16 +15,36 @@
     display: flex;
 }
 
+
+.AIRecommendationRow-container .label-container .label-subcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
 .AIRecommendationRow-container .recommendationLabel{
-    background-color: rgb(14, 202, 139);
+    background-color: #15FFAB;
     color: black;
-    padding: 0.5%;
+    text-align: center;
+    padding: 4%;
+    width: 15vw;
     border-radius: 10px;
-}  
+    box-shadow: 0vh 1vh 6vh rgba(29, 255, 138, 0.5);
+}
+
+.AIRecommendationRow-container .subLabel{
+    background-color: #2b5747;
+    text-align: center;
+    width: 13vw;
+    border-radius: 10px;
+    color: rgba(219, 219, 219, 0.74);
+}
 
 .AIRecommendationRow-container .FilterLabel{
-    background-color: rgb(168, 32, 198);
+    background-color: #a820c6;  
+    box-shadow: 0vh 1vh 6vh rgba(213, 69, 193, 0.5);
     color: black;
+    width: 15vw;
     padding: 0.5%;
     border-radius: 10px;
 }
