@@ -1,9 +1,3 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/Login";
 import Nav from "./Components/Nav/Nav";
 import Community from "./Pages/CommunityPage/Community";
@@ -12,7 +6,12 @@ import Spotify from "./Pages/SpotifyPage/Spotify";
 import Youtube from "./Pages/YouTubePage/Youtube";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
-import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
 function App() {
   return (
