@@ -28,6 +28,7 @@ public class SearchController {
     public ResponseEntity<SpotifyResponse<TrackInfo>> searchTracks(
             @RequestParam String query,
             @RequestParam(required = false, defaultValue = "10") int maxResults) {
+        log.info("received request to search for all the relevant tracks");
         try {
             SpotifyResponse<TrackInfo> response = searchService.searchMusics(query, maxResults);
             return ResponseEntity.ok(response);

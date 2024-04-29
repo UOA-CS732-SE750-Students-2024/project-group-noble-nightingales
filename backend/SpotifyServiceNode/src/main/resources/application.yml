@@ -10,7 +10,7 @@ spotify:
 
   baseUrl: https://api.spotify.com/v1
   redirect:
-    uri: http://localhost:30051/error
+    uri: http://localhost:30051/api/auth/callback
 
 
 server:

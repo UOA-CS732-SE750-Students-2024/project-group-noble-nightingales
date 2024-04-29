@@ -1,5 +1,6 @@
 {
     "host": "localhost",
     "port": 30051,
-    "orderTracksByPopularity": "/api/tracks/popularity"
+    "orderTracksByPopularity": "/api/tracks/popularity",
+    "searchTracks": "/api/tracks"
 }
