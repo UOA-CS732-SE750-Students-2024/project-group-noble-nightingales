@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import commonStyles from "./SignupCSS/CommonFormStyles.module.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Signup() {
   const [formFields, setFormFields] = useState({
     username: "",
