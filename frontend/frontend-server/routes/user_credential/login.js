@@ -49,7 +49,9 @@ router.post('/login', async (req, res) => {
         if (userId) {
             // Generate JWT
             const token = jwt.sign({ user_id: userId }, JWT_SECRET_KEY, { expiresIn: '1h' });
-
+            
+            // Set the userId cookie
+            res.cookie('userId', userId);
             // Send the token to the client
             res.json({ token, userId });
         } else {

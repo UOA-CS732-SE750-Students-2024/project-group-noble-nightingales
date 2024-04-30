@@ -38,6 +38,32 @@ public interface SpotifyAuthenticationService {
      */
     FinalSpotifyAuthenticationResponse getSpotifyTokens(String authorizationCode, String redirectUri) throws JsonProcessingException;
 
+    /**
+     * Refreshes and returns a new access token using the provided refresh token.
+     *
+     * @param refreshToken The refresh token used to obtain a new access token.
+     * @return The new access token as a {@link String}.
+     * @throws JsonProcessingException If there is an error processing the JSON data during the token refresh operation.
+     */
     String refreshAccessToken(String refreshToken) throws JsonProcessingException;
+
+    /**
+     * Checks if an access token is currently stored for a specified user.
+     *
+     * @param userId The unique identifier of the user to check for an existing access token.
+     * @return {@code true} if an access token exists for the user, otherwise {@code false}.
+     */
+    boolean isAccessTokenPresent(String userId);
+
+    /**
+     * Retrieves a stored access token for a specified user.
+     *
+     * @param userId The unique identifier of the user whose access token is to be retrieved.
+     * @return The access token as a {@link String}, or {@code null} if no token is available.
+     */
+    String getAccessToken(String userId);
+
+
+    void saveTokens(String userId, String accessToken, String refreshToken);
 
 }

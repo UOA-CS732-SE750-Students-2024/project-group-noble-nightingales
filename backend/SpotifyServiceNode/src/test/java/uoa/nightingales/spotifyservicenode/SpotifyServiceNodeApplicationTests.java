@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import uoa.nightingales.spotifyservicenode.configs.AccessTokenConfiguration;
 import uoa.nightingales.spotifyservicenode.services.SearchService;
+import uoa.nightingales.spotifyservicenode.services.SpotifyAuthenticationService;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
 class SpotifyServiceNodeApplicationTests {
@@ -15,6 +18,9 @@ class SpotifyServiceNodeApplicationTests {
 
     @Resource
     private SearchService searchService;
+
+    @Resource
+    private SpotifyAuthenticationService spotifyAuthenticationService;
 
 
     @Test
@@ -41,6 +47,21 @@ class SpotifyServiceNodeApplicationTests {
     @Test
     void testSearchArtists() throws JsonProcessingException {
         System.out.println(searchService.searchArtists("a", 3));
+    }
+
+    @Test
+    void testWrongQuery() {
+        String s = null;
+        try {
+            s = spotifyAuthenticationService.refreshAccessToken("123");
+            System.out.println(s);
+        } catch (JsonProcessingException e) {
+            fail();
+        } catch (Exception e){
+            if(s == null){
+                System.out.println("error occurred");
+            }
+        }
     }
 
 
