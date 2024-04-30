@@ -3,7 +3,7 @@ import Nav from "./Components/Nav/Nav";
 import Community from "./Pages/CommunityPage/Community";
 import Explore from "./Pages/ExplorePage/Explore";
 import Spotify from "./Pages/SpotifyPage/Spotify";
-import Youtube from "./Pages/YouTubePage/Youtube";
+import YoutubePage from "./Pages/YouTubePage/YoutubePage";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
 import {
@@ -54,7 +54,7 @@ function App() {
           element={
             <>
               <Nav />
-              <Youtube />
+              <YoutubePage />
             </>
           }
         />

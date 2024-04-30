@@ -15,12 +15,10 @@
     display: flex;
 }
 
-
 .AIRecommendationRow-container .label-container .label-subcontainer{
     display: flex;
     flex-direction: row;
 }
-
 
 .AIRecommendationRow-container .recommendationLabel{
     background-color: #15FFAB;
@@ -47,41 +45,4 @@
     width: 15vw;
     padding: 1vh;
     border-radius: 1vh;
-}
-
-.AIRecommendationRow-container .submitNavLinkOne{
-    position: absolute;
-    left: 85vw;
-    top: 150vh;
-    font-weight: bold;
-    font-size: 1.87vh;
-    text-decoration: none;
-    padding-left:  1.86vh;
-    margin-right: 6.47vh;
-    background-color: #D3F85A; /* The green background color */
-    padding: 1.4vh 4vh; /* Padding inside the button */
-    border-radius:  3vh; /* The rounded corners */
-    color: #040914;
-    transition:  background-color 0.7s ease, font-size 0.5s ease, text-decoration 0.5s ease;
-}
-
-.AIRecommendationRow-container .submitNavLink{
-    position: absolute;
-    left: 85vw;
-    top: 152vh;
-    font-weight: bold;
-    font-size: 1.87vh;
-    text-decoration: none;
-    padding-left:  1.86vh;
-    margin-right: 6.47vh;
-    background-color: #D3F85A; /* The green background color */
-    padding: 1.4vh 4vh; /* Padding inside the button */
-    border-radius: 3vh; /* The rounded corners */
-    color: #040914;
-    transition:  background-color 0.7s ease, font-size 0.5s ease, text-decoration 0.5s ease;
-}
-
-.AIRecommendationRow-container .submitNavLinkOne:hover{
-    background-color: green;
-    border-color: green;
 }
