@@ -18,6 +18,12 @@ export default function Spotify() {
         <div>
           <RecommendationRow />
         </div>
+        <div className="sideBall">
+          <BallStatic />
+        </div>
+        <div className="sideBall2">
+          <BallStatic />
+        </div>
         <div className="AIRecommendation-container">
           <AIRecommendationRow />
           <BallStatic />

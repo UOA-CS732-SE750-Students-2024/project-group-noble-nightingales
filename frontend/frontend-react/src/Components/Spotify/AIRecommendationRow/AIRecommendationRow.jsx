@@ -4,29 +4,62 @@ import RecommendationAI from "../../../assets/RecommendationAI.png";
 import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
 import { NavLink } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const themeGreen = createTheme({
+  components: {
+    MuiFilledInput: {
+      styleOverrides: {
+        underline: {
+          '&:after': {
+            borderBottomColor: '#15FFAB',
+          },
+        },
+      },
+    },
+  },
+});
+
+const themePurple = createTheme({
+  components: {
+    MuiFilledInput: {
+      styleOverrides: {
+        underline: {
+          '&:after': {
+            borderBottomColor: '#a820c6',
+          },
+        },
+      },
+    },
+  },
+});
 
 export default function AIRecommendationRow() {
+
   return (
     <div className="AIRecommendationRow-container">
-      <h1>
+      <h2>
         <img
           src={StatsIcon}
           alt="Icon"
           style={{ marginRight: "10px", verticalAlign: "-10%" }}
         />
         Embedded AI Recommendation
-      </h1>
+      </h2>
       <div className="label-container">
-        <h3 className="recommendationLabel">
-          <img
-            src={RecommendationAI}
-            alt="Icon"
-            style={{ marginRight: "10px", verticalAlign: "-10%" }}
-          />
-          AI Recommendations
-        </h3>
+        <div className="label-subcontainer">
+          <h3 className="recommendationLabel">
+            <img
+              src={RecommendationAI}
+              alt="Icon"
+              style={{marginRight: "1vw", verticalAlign: "-10%" }}
+            />
+            AI Recommendations
+          </h3>
+        </div>
         <div className="textfield-container"></div>
       </div>
+      <ThemeProvider theme={themeGreen}>
       <TextField
         id="outlined-multiline-static"
         multiline
@@ -36,40 +69,43 @@ export default function AIRecommendationRow() {
         InputProps={{
           style: {
             color: "white",
-            backgroundColor: "#424242",
+            backgroundColor: "#FFFFFF19",
             borderRadius: "10px",
           },
         }}
         InputLabelProps={{ style: { color: "white" } }}
       />
+      </ThemeProvider>
       <NavLink className="submitNavLink">Submit</NavLink>
       <div className="label-container">
         <h3 className="FilterLabel">
           <img
             src={FilterAI}
             alt="Icon"
-            style={{ marginRight: "10px", verticalAlign: "-10%" }}
+            style={{ marginLeft: "0.8vw",marginRight: "1vw", verticalAlign: "-10%" }}
           />
           AI Filtering
         </h3>
       </div>
       <div className="textfield-container"></div>
+      <ThemeProvider theme={themePurple}>
       <TextField
         id="outlined-multiline-static"
         multiline
-        placeholder="Simply describe what you want in natural language, and our AI will bring you videos that match the categories!"
+        placeholder="Simply describe what you do not want in natural language, and our AI will not bring you videos that match the categories!"
         rows={8}
         variant="filled"
         InputProps={{
           style: {
             color: "white",
-            backgroundColor: "#424242",
-            borderRadius: "10px",
+            backgroundColor: "#FFFFFF19",
+            borderRadius: "10px"
           },
         }}
         InputLabelProps={{ style: { color: "white" } }}
       />
-      <NavLink className="submitNavLink" style={{ top: "189%" }}>
+      </ThemeProvider>
+      <NavLink className="submitNavLink" style={{ top: "184%" }}>
         Submit
       </NavLink>
     </div>

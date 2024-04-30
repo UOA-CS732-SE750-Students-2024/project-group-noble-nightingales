@@ -1,13 +1,32 @@
 .SearchTopRow-container{
-    margin-top: 5vh;
+    margin-top: 2vh;
     display: flex;
     z-index: 2;
     padding: 6vh;
-    height: 40vh;
+    height: 55vh;
+}
+
+.TopRowText{
+    color: white;
+    font-size: 4.5vh;
+    margin-left: 58.5vw;
+    margin-top: 42vh;
+    position: absolute;
+    z-index: 3;
+}
+
+.TopRowImg{
+    position: absolute;
+    margin-left: 4.2vw;
+    margin-top: 20vh;
+    height: 20vh;
+    width: 3.3vw;
+    z-index: 4;
+    background-image: url('../../../../assets/musicGenre.png');
 }
 
 .SearchTopRow-container .left {
-    flex: 8;
+    flex: 6;
     background-image: url('../../../../assets/SpotifyLogo.png');
     background-size: cover;
     background-position: center;
@@ -18,13 +37,14 @@
 
 .SearchTopRow-container .left .searchBar{
     position: absolute;
-    top: 17%;
+    top: 15%;
     left: 8%;
 }
 
 .SearchTopRow-container .right{
     flex: 2;
-    background-color: rgb(68, 68, 68);
+    margin-top: 3vh;
+    background-color: rgba(37, 37, 37, 0.817);
     border-radius: 5%;
     overflow: hidden;
 }
@@ -36,7 +56,7 @@
 
 .SearchTopRow-container .right .topMusicList {
     list-style-type: none;
-    margin-top: -3%;
+    margin-top: 2%;
 }
   
 .SearchTopRow-container .right .topMusicListElement {
@@ -45,17 +65,36 @@
     margin-bottom: 5%;
 }
 
+
 .SearchTopRow-container .right .topMusicListElement .topMusicImage {
     height: 6.5vh;
+    margin-left: -30%;
     transition: height 0.5s ease-in-out; 
 }
   
 .SearchTopRow-container .right .topMusicListElement .topMusicImage:hover {
-    height: 8vh;
+    height: 7.5vh;
 }
   
 .SearchTopRow-container .right .topMusicInfo {
     display: flex;
     flex-direction: column;
     margin-left: 5%;
+}
+
+.topTitle{
+    padding-left: 0.5vw;
+    font-size: 2vh;
+}
+
+.topMusicPlay{
+    margin-left: 7vw;
+    color: white;
+    transition: transform 0.3s ease-in-out; 
+    cursor: pointer;
+}
+
+
+.search-icon:hover {
+    transform: scale(1.1);
 }
