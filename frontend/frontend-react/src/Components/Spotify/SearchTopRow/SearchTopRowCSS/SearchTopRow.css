@@ -10,7 +10,7 @@
     color: white;
     font-size: 4.5vh;
     margin-left: 58.5vw;
-    margin-top: 42vh;
+    margin-top: 44vh;
     position: absolute;
     z-index: 3;
 }
@@ -31,14 +31,14 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    margin: 2%;
+    margin: 2vh;
     border-radius: 5%;
 }
 
 .SearchTopRow-container .left .searchBar{
     position: absolute;
-    top: 15%;
-    left: 8%;
+    top: 15vh;
+    left: 8vw;
 }
 
 .SearchTopRow-container .right{
@@ -50,25 +50,25 @@
 }
 
 .SearchTopRow-container .right h4{
-    margin-top: 3%;
-    margin-left: 3%;
+    margin-top: 1.5vh;
+    margin-left: 1vw;
 }
 
 .SearchTopRow-container .right .topMusicList {
     list-style-type: none;
-    margin-top: 2%;
+    margin-top: 1.8vh;
 }
   
 .SearchTopRow-container .right .topMusicListElement {
     display: flex;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 1.8vh;
 }
 
 
 .SearchTopRow-container .right .topMusicListElement .topMusicImage {
     height: 6.5vh;
-    margin-left: -30%;
+    margin-left: -0.3vw;
     transition: height 0.5s ease-in-out; 
 }
   
@@ -79,7 +79,7 @@
 .SearchTopRow-container .right .topMusicInfo {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    margin-left: 1vw;
 }
 
 .topTitle{

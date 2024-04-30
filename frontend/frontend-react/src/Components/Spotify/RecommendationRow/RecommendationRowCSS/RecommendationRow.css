@@ -9,8 +9,9 @@
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    margin-left: -2.5%;
-    margin-top: 3%;
+    margin-left: -2.5vw;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 
 .RecommendationRow-container .recommendationElement{
@@ -22,20 +23,21 @@
 
 .RecommendationRow-container .recommendationImage{
     height: 35vh;
+    width: 16.3vw;
 }
   
 
 .RecommendationRow-container .recommendationInfo{
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
-    margin-left: 5%;
+    margin-top: 1.5vh;
+    margin-left: 1vw;
 }
 
 .RecommendationRow-container .cover{
     display: flex;
-    position: absolute;
-    margin-top: 23vh;
+    position: relative;
+    margin-top: -12.6vh;
     height: 12vh;
     width: 16.3vw;
     border-radius: 1.9vh;
@@ -48,8 +50,8 @@
     width: 4.5vh;
     background-color: white;
     border-radius: 50%;
-    margin-top: -115%;
-    margin-left: 205%;
+    margin-top: -11vh;
+    margin-left: 11vw;
     display: flex;
     justify-content: center;
     align-items: center;

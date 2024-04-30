@@ -3,7 +3,6 @@ import StatsIcon from "../../../assets/StatsIcon.png";
 import RecommendationAI from "../../../assets/RecommendationAI.png";
 import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
-import { NavLink } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const themeGreen = createTheme({
@@ -42,7 +41,7 @@ export default function AIRecommendationRow() {
         <img
           src={StatsIcon}
           alt="Icon"
-          style={{ marginRight: "10px", verticalAlign: "-10%" }}
+          style={{ marginRight: "1vw", verticalAlign: "-1vh" }}
         />
         Embedded AI Recommendation
       </h2>
@@ -52,7 +51,7 @@ export default function AIRecommendationRow() {
             <img
               src={RecommendationAI}
               alt="Icon"
-              style={{marginRight: "1vw", verticalAlign: "-10%" }}
+              style={{marginRight: "1vw", verticalAlign: "-0.4vh", marginLeft: "0.8vw"}}
             />
             AI Recommendations
           </h3>
@@ -70,19 +69,18 @@ export default function AIRecommendationRow() {
           style: {
             color: "white",
             backgroundColor: "#FFFFFF19",
-            borderRadius: "10px",
+            borderRadius: "1vh 1vh 0vh 0vh",
           },
         }}
         InputLabelProps={{ style: { color: "white" } }}
       />
       </ThemeProvider>
-      <NavLink className="submitNavLink">Submit</NavLink>
       <div className="label-container">
         <h3 className="FilterLabel">
           <img
             src={FilterAI}
             alt="Icon"
-            style={{ marginLeft: "0.8vw",marginRight: "1vw", verticalAlign: "-10%" }}
+            style={{ marginLeft: "0.8vw",marginRight: "1vw", verticalAlign: "-0.4vh" }}
           />
           AI Filtering
         </h3>
@@ -99,15 +97,12 @@ export default function AIRecommendationRow() {
           style: {
             color: "white",
             backgroundColor: "#FFFFFF19",
-            borderRadius: "10px"
-          },
+            borderRadius: "1vh 1vh 0vh 0vh",
+          }
         }}
         InputLabelProps={{ style: { color: "white" } }}
       />
       </ThemeProvider>
-      <NavLink className="submitNavLink" style={{ top: "184%" }}>
-        Submit
-      </NavLink>
     </div>
   );
 }
