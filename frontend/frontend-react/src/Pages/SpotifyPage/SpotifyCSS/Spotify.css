@@ -16,29 +16,32 @@
     background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
     width: 120vh;
     height: 100vh;
+    
 }
 
 .Spotify-container .AIRecommendation-container .staticBall{
-    top: 85%;
-    right: 10%;
+    top: 85vh;
+    right: 10vw;
     background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
     width: 50vh;
     height: 50vh;
 }
 
 .Spotify-container .sideBall .staticBall{
-    top: 110%;
-    right: 78%;
+    top: 110vh;
+    right: 78vw;
     width: 60vh;
     height: 60vh;
     z-index: -3;
+    position: absolute;
 }
 
 .Spotify-container .sideBall2 .staticBall{
-    top: 145%;
-    right: 80%;
+    top: 145vh;
+    right: 80vw;
     width: 50vh;
     background-image: radial-gradient(circle at center, rgb(224, 62, 230) 0%, rgba(110, 29, 119, 0.7) 50%, rgba(33, 10, 27, 0) 300%);;
     height: 50vh;
     z-index: -3;
+    position: absolute;
 }

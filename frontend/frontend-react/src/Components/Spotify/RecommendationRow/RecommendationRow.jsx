@@ -52,9 +52,9 @@ export default function RecommendationRow() {
             
             <div className="cover">
               <div className="recommendationInfo">
-                <span style={getRandomBoolean() ? { fontSize: "0.8rem", color: "#EF2F62" } : { fontSize: "0.8rem", color: "#00FFFF" }}>New For You</span>
-                <span style={{ fontSize: "1rem", marginTop: "0.8vh" }}>{topMusic.name}</span>
-                <span style={{ fontSize: "0.8rem", marginTop: "1vh", opacity: "0.6" }}>{topMusic.author}</span>
+                <span style={getRandomBoolean() ? { fontSize: "1.3vh", color: "#EF2F62" } : { fontSize: "1.3vh", color: "#00FFFF" }}>New For You</span>
+                <span style={{ fontSize: "1.5vh", marginTop: "0.8vh" }}>{topMusic.name}</span>
+                <span style={{ fontSize: "1.3vh", marginTop: "1vh", opacity: "0.6" }}>{topMusic.author}</span>
                 <div className="coverImage">
                   <img src={triangle} alt="cover" style={{width: "2vh"}}/>
                 </div>

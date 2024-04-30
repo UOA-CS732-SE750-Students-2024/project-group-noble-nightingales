@@ -4,7 +4,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import { NavLink } from "react-router-dom";
 import InputAdornment from '@mui/material/InputAdornment';
-import { Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -73,7 +72,7 @@ export default function SearchTopRow() {
               style: {
                 color: "white", // Input text color
                 backgroundColor: "#FFFFFF19", // Text field background color
-                borderRadius: "5px", // Adjust as needed
+                borderRadius: "0.2vh", // Adjust as needed
                 width: "200%",
                 height: "5.5vh",
               },
@@ -105,8 +104,8 @@ export default function SearchTopRow() {
                 />
               </NavLink>
               <div className="topMusicInfo">
-                <span style={{ fontSize: "0.9rem" }}>{topMusic.name}</span>
-                <span style={{ fontSize: "0.7rem" }}>{topMusic.author}</span>
+                <span style={{ fontSize: "1.6vh" }}>{topMusic.name}</span>
+                <span style={{ fontSize: "1.3vh" }}>{topMusic.author}</span>
               </div>
               <div className="topMusicPlay">
                 <SearchIcon className="search-icon" />
