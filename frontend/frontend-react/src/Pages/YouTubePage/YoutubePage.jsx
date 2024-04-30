@@ -1,10 +1,14 @@
-import "./YoutubePage.css";
+import "./YouTubeCSS/YoutubePage.css";
 import { useState } from "react";
 
 const YoutubePage = () => {
-let [AIRecommandation, setAIRecommandation] = useState("Simply describe what you want in natural language, and our AI will bring you videos that match your interests!");
-let [AIFiltering, setAIFiltering] = useState("Simply describe what you do not want in natural language, and our AI will not bring you videos that match the categories!");
-let [Search, setSearch] = useState("search Video, Channel")
+  let [AIRecommandation, setAIRecommandation] = useState(
+    "Simply describe what you want in natural language, and our AI will bring you videos that match your interests!"
+  );
+  let [AIFiltering, setAIFiltering] = useState(
+    "Simply describe what you do not want in natural language, and our AI will not bring you videos that match the categories!"
+  );
+  let [Search, setSearch] = useState("search Video, Channel");
   return (
     <div className="youtube-page">
       <img className="style-icon" alt="" src="/style.svg" />
@@ -88,7 +92,7 @@ let [Search, setSearch] = useState("search Video, Channel")
         className="youtube-page-child"
         placeholder={Search}
         type="text"
-        onChange={(e)=>setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
       <img className="youtube-page-item" alt="" src="/rectangle-3@2x.png" />
       <img className="path-1929-icon" alt="" src="/path-1929.svg" />
@@ -105,7 +109,7 @@ let [Search, setSearch] = useState("search Video, Channel")
           <div className="send">Send</div>
         </button>
       </form>
-      
+
       <form>
         <input
           className="form1"
@@ -119,7 +123,7 @@ let [Search, setSearch] = useState("search Video, Channel")
           <div className="send">Send</div>
         </button>
       </form>
-      
+
       <div className="task">
         <div className="bg" />
         <div className="icon-group">
