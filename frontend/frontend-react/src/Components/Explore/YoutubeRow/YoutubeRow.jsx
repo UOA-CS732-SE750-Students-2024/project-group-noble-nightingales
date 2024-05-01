@@ -32,21 +32,21 @@ export default function YouTubeRow() {
   const renderVideoList = (videos) => {
     return (
       <ul className="videoList">
-        {videos.map((topVideo) => (
-          <li className="videoListElement" key={topVideo.name}>
+        {videos.map((video) => (
+          <li className="videoListElement" key={video.name}>
             <NavLink to="/youtube">
               <img
                 className="videoImage"
-                src={topVideo.imageURL}
-                alt={topVideo.name}
+                src={video.imageURL}
+                alt={video.name}
               />
             </NavLink>
             <div className="videoInfo-container">
               <PlayArrowIcon className="playArrow" />
               <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh" }}>{topVideo.name}</span>
+                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
                 <span style={{ fontSize: "1.6vh", color: "gray" }}>
-                  Made By {topVideo.author}
+                  Made By {video.author}
                 </span>
               </div>
             </div>
