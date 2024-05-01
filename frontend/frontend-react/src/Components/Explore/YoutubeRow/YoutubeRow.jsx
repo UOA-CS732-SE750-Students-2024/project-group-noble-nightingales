@@ -1,4 +1,4 @@
-import "./YouTubeCSS/YouTube.css";
+import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import YouTubeCover from "../../../assets/YouTubeCover.png";
 import { NavLink } from "react-router-dom";
