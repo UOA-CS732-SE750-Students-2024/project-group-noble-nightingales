@@ -1,7 +1,6 @@
-.SpotifyRowContainer{
+.SpotifyRow-container{
     display: flex;
     flex-direction: column;
-    font-size: 2vw;
     padding: 6.33vh ;
     padding-top: 3.6vh;
     height:40vh;
@@ -9,54 +8,44 @@
     z-index: 2;
 }
 
-.SpotifyRowContainer .sectionTitleList{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-    margin:0;
-    padding: 0;
-    margin-bottom: 9vh;
-}
-
-.SpotifyRowContainer .sectionTitleList .sectionTitileName{
-    font-size: 3vh;
-}
-
-.SpotifyRowContainer .spotifyRow{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-    margin:0;
-    padding: 0;
-    height:30vh;
-}
-
-.SpotifyRowContainer .spotifyRow .insideSpotifyList{
+.SpotifyRow-container .music{
     display: flex;
     flex-direction: column;
-    list-style-type: none;
-    margin:0;
-    padding: 0;
 }
 
-.SpotifyRowContainer .spotifyRow .insideSpotifyList img {
+.SpotifyRow-container .musicList{
+    display: flex;
+    list-style-type: none;
+    padding-top: 1.8vh;
+    margin-left: -3vw
+}
+
+.SpotifyRow-container .musicList .musicListElement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 4vw; /* element gap*/
+}
+
+.SpotifyRow-container .musicList .musicListElement .musicImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 12vw;
     transition: width 0.5s ease-in-out; 
 }
-  
-.SpotifyRowContainer .spotifyRow .insideSpotifyList img:hover {
+
+.SpotifyRow-container .musicList .musicListElement .musicImage:hover {
     width: 14vw;
 }
 
-.SpotifyRowContainer .spotifyRow .insideSpotifyList .titleName{
-    font-size: 1.4vw;
-    margin-left: 1vw;
+.SpotifyRow-container .musicList .musicInfo-container{
+    display: flex;
+    margin-top: 1vh;
 }
 
-.SpotifyRowContainer .spotifyRow .insideSpotifyList .author{
-    font-size: 0.9vw;
-    font-weight: 100;
-    margin-left: 1vw;
+.SpotifyRow-container .musicList .musicInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
 }
