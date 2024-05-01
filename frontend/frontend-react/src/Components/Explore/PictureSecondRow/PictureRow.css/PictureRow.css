@@ -14,6 +14,18 @@
     padding: 0; /* Removes default padding */
     margin: 0;
     margin-left: -6.5vw;
+    animation: slideInLeftPicture 3s ease-in-out forwards;
+}
+
+@keyframes slideInLeftPicture {
+    from {
+        margin-left: -40vw;
+        opacity: 0; 
+    }
+    to {
+        margin-left: -6.5vw;
+        opacity: 1; 
+    }
 }
 
 .pictureRow-container .leftPicture li{
@@ -27,7 +39,16 @@
 
 .pictureRow-container .rightBallPicture{
     margin-left:15vw;
+    animation: slideInLeftPictureBall 5s ease-in-out forwards
+}
 
+@keyframes slideInLeftPictureBall {
+    from {
+        opacity: 0; 
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .pictureRow-container .rightBallPicture img {
