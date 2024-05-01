@@ -1,33 +1,19 @@
- .YoutubeRowContainer{
-    position: relative;
+.YouTubeRow-container{
     display: flex;
     flex-direction: column;
-    font-size: 2vw;
+    /* font-size: 2vw; */
     padding: 6.33vh ;
     padding-top: 0;
     z-index: 2;
 }
 
-.YoutubeRowContainer .sectionTitleList{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-    margin:0;
-    padding: 0;
-    margin-bottom: 9vh;
-}
-
-.YoutubeRowContainer .sectionTitleList .sectionTitileName{
-    font-size: 3.8vh;
-}
-
-.YoutubeRowContainer .sectionTitleList .SectionTitleLink a{
+.YouTubeRow-container .navigationAllLink{
+    position: absolute;
     font-weight: bold;
     font-size: 1.87vh;
     text-decoration: none;
-    padding-left:  1.86vh;
-    margin-right: 6.47vh;
+    margin-left: 137vh;
+    margin-top: 2.4vh;
     background-color: #D3F85A; /* The green background color */
     padding: 1.4vh 4vh; /* Padding inside the button */
     border-radius:  3vh; /* The rounded corners */
@@ -35,79 +21,61 @@
     transition:  background-color 0.7s ease, font-size 0.5s ease, text-decoration 0.5s ease;
 }
 
-.YoutubeRowContainer .sectionTitleList .SectionTitleLink a:hover{
-    background-color: rgb(255, 0, 0);
-    border-color: red;
+.YouTubeRow-container .navigationAllLink:hover{
+    background-color: green;
+    border-color: green;
 }
 
-.YoutubeRowContainer .firstYoutubeRow{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-    margin:0;
-    padding: 0;
-    height:30vh;
-}
-
-.YoutubeRowContainer  .secondYoutubeRow{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: space-between;
-    margin:0;
-    padding: 0;
-    margin-top: 10vh;
-    height:30vh;
-}
-
-.YoutubeRowContainer .insideYoutubeList{
+.YouTubeRow-container .video{
     display: flex;
     flex-direction: column;
-    list-style-type: none;
-    margin:0;
-    padding: 0;
 }
 
-.YoutubeRowContainer .insideYoutubeList img {
+.YouTubeRow-container .videoList{
+    display: flex;
+    list-style-type: none;
+    padding-top: 1.8vh;
+    margin-left: -3vw
+}
+
+.YouTubeRow-container .videoList .videoListElement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 1.4vw; /* element gap*/
+}
+
+.YouTubeRow-container .videoList .videoListElement .videoImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 22vw;
     transition: width 0.5s ease-in-out; 
 }
-  
-.YoutubeRowContainer .insideYoutubeList img:hover {
+
+.YouTubeRow-container .videoList .videoListElement .videoImage:hover {
     width: 24vw;
 }
 
-.YoutubeRowContainer .insideYoutubeList .titleList{
+.YouTubeRow-container .videoList .videoInfo-container{
     display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    margin:0;
-    padding: 0;
+    margin-top: 1vh;
 }
 
-.YoutubeRowContainer .insideYoutubeList .author{
-    margin:0;
-    padding: 0;
-    font-size: 0.9vw;
-    font-weight: 100;
-    margin-left: 4.3vw;
-    margin-top: -3vh;
-}
-
-.YoutubeRowContainer .insideYoutubeList .titleList .titleName{
-    font-size: 1.4vw;
-}
-
-.YoutubeRowContainer .insideYoutubeList .titleList .playButton {
+.YouTubeRow-container .videoList .videoInfo-container .playArrow{
+    position: absolute;
     transform: translate(-50%, -50%);
     background-color: red;
     border-radius: 50%;
-    width: 48px; /* Adjust the width to fit the design */
-    height: 48px; /* Adjust the height to fit the design */
+    width: 40px; /* Adjust the width to fit the design */
+    height: 40px; /* Adjust the height to fit the design */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3vh;
-    margin-left: 1.3vw;
+    margin-left: -4vw;
+    margin-top: 2.7vh;
+}
+
+.YouTubeRow-container .videoList .videoInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
 }
