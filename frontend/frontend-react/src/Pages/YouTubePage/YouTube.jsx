@@ -1,6 +1,7 @@
 import "./YouTubeCSS/YouTube.css";
 import PopularRow from "../../Components/YouTube/PopularRow/PopularRow";
 import AIRecommendationRow from "../../Components/Spotify/AIRecommendationRow/AIRecommendationRow";
+import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 
 export default function YouTube() {
   return (
@@ -12,6 +13,9 @@ export default function YouTube() {
         </div>
         <div>
           <AIRecommendationRow />
+        </div>
+        <div>
+          <YouTubeRow />
         </div>
       </div>
     </div>

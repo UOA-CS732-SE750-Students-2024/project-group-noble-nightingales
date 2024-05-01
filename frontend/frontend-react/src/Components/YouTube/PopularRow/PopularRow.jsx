@@ -83,7 +83,6 @@ export default function PopularRow() {
       <div className="right">
         <ThemeProvider theme={theme}>
           <TextField
-            fullWidth
             id="outlined-search"
             type="search"
             variant="outlined"
@@ -94,6 +93,7 @@ export default function PopularRow() {
                 backgroundColor: "#FFFFFF19",
                 borderRadius: "0.2vh",
                 height: "5.5vh",
+                width: "58vw",
               },
               endAdornment: (
                 <InputAdornment position="end">
