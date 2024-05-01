@@ -3,7 +3,6 @@ import SearchTopRow from "../../Components/Spotify/SearchTopRow/SearchTopRow";
 import RecommendationRow from "../../Components/Spotify/RecommendationRow/RecommendationRow";
 import AIRecommendationRow from "../../Components/Spotify/AIRecommendationRow/AIRecommendationRow";
 import SpotifyRow from "../../Components/Spotify/SpotifyRow/SpotifyRow";
-import SubRow from "../../Components/Explore/SubscribeRow/SubscribeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
 
@@ -18,24 +17,13 @@ export default function Spotify() {
         <div>
           <RecommendationRow />
         </div>
-        <div className="sideBall">
-          <BallStatic />
-        </div>
-        <div className="sideBall2">
-          <BallStatic />
-        </div>
-        <div className="AIRecommendation-container">
+        <div className="AIRecommendationContainer">
           <AIRecommendationRow />
           <BallStatic />
         </div>
-        <div>
+        <div className="SpotifyRowContainer">
           <SpotifyRow />
-        </div>
-        <div>
-          <SubRow />
-          <div className="subBall">
-            <BallStatic />
-          </div>
+          <BallStatic />
         </div>
       </div>
     </div>

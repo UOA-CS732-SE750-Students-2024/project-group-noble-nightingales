@@ -5,7 +5,7 @@
     margin-top: -5vh;
 }
 
-.RecommendationRow-container .recommendationList{
+.RecommendationRow-container .musicList{
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -14,19 +14,19 @@
     margin-bottom: 3vh;
 }
 
-.RecommendationRow-container .recommendationElement{
+.RecommendationRow-container .musicListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: 3.0vw;
 }
 
-.RecommendationRow-container .recommendationImage{
+.RecommendationRow-container .musicImage{
     height: 35vh;
     width: 16.3vw;
 }
   
-.RecommendationRow-container .recommendationInfo{
+.RecommendationRow-container .musicInfo{
     display: flex;
     flex-direction: column;
     margin-top: 1.5vh;

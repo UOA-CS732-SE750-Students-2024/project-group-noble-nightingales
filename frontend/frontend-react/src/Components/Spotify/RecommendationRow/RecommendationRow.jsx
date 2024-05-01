@@ -8,7 +8,7 @@ function getRandomBoolean() {
 }
 
 export default function RecommendationRow() {
-  const dummyTopMusics = [
+  const dummyMusics = [
     {
       imageURL: SpotifyCover,
       name: "义勇军进行曲1",
@@ -36,22 +36,22 @@ export default function RecommendationRow() {
     },
   ];
 
-  return (
-    <div className="RecommendationRow-container">
-      <h2>You May Like</h2>
-      <ul className="recommendationList">
-        {dummyTopMusics.map((topMusic) => (
-          <li className="recommendationElement" key={topMusic.name}>
+  // Function to render the music list
+  const renderMusicList = (musics) => {
+    return (
+      <ul className="musicList">
+        {musics.map((music) => (
+          <li className="musicListElement" key={music.name}>
             <NavLink to="/youtube">
               <img
-                className="recommendationImage"
-                src={topMusic.imageURL}
-                alt={topMusic.name}
+                className="musicImage"
+                src={music.imageURL}
+                alt={music.name}
               />
             </NavLink>
 
             <div className="cover">
-              <div className="recommendationInfo">
+              <div className="musicInfo">
                 <span
                   style={
                     getRandomBoolean()
@@ -62,7 +62,7 @@ export default function RecommendationRow() {
                   New For You
                 </span>
                 <span style={{ fontSize: "1.5vh", marginTop: "0.8vh" }}>
-                  {topMusic.name}
+                  {music.name}
                 </span>
                 <span
                   style={{
@@ -71,7 +71,7 @@ export default function RecommendationRow() {
                     opacity: "0.6",
                   }}
                 >
-                  {topMusic.author}
+                  {music.author}
                 </span>
                 <div className="coverImage">
                   <img src={triangle} alt="cover" style={{ width: "2vh" }} />
@@ -81,6 +81,13 @@ export default function RecommendationRow() {
           </li>
         ))}
       </ul>
+    );
+  };
+
+  return (
+    <div className="RecommendationRow-container">
+      <h2>You May Like</h2>
+      {renderMusicList(dummyMusics)}
     </div>
   );
 }
