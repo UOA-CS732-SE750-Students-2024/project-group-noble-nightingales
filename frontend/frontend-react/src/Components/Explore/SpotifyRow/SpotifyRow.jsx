@@ -3,7 +3,7 @@ import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 
 export default function SpotifyRow() {
-  const dummyTopMusics = [
+  const dummyMusics = [
     {
       imageURL: SpotifyCover,
       name: "义勇军进行曲1",
@@ -36,22 +36,21 @@ export default function SpotifyRow() {
     },
   ];
 
-  // Function to render the video list
+  // Function to render the music list
   const renderMusicList = (musics) => {
     return (
-      <ul className="videoList">
+      <ul className="musicList">
         {musics.map((music) => (
-          <li className="videoListElement" key={music.name}>
+          <li className="musicListElement" key={music.name}>
             <NavLink to="/youtube">
               <img
-                className="videoImage"
+                className="musicImage"
                 src={music.imageURL}
                 alt={music.name}
               />
             </NavLink>
-            <div className="videoInfo-container">
-              <PlayArrowIcon className="playArrow" />
-              <div className="videoInfo">
+            <div className="musicInfo-container">
+              <div className="musicInfo">
                 <span style={{ fontSize: "1.9vh" }}>{music.name}</span>
                 <span style={{ fontSize: "1.6vh", color: "gray" }}>
                   Made By {music.author}
@@ -65,81 +64,12 @@ export default function SpotifyRow() {
   };
 
   return (
-    <div className="SpotifyRowContainer">
-      <ul className="sectionTitleList">
-        <li className="sectionTitileName">Popular Tracks</li>
-        <li className="SectionTitleLink">
-          <NavLink to="/spotify"> See All </NavLink>
-        </li>
-      </ul>
-      <ul className="spotifyRow">
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideSpotifyList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={SpotifyCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li className="titleName"> Song Name </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-      </ul>
+    <div className="SpotifyRow-container">
+      <h2>Popular Tracks</h2>
+      <NavLink className="navigationAllLink" to="/spotify">
+        See All
+      </NavLink>
+      {renderMusicList(dummyMusics)}
     </div>
   );
 }
