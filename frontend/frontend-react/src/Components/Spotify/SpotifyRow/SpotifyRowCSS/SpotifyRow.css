@@ -8,11 +8,6 @@
     z-index: 2;
 }
 
-.SpotifyRow-container .music{
-    display: flex;
-    flex-direction: column;
-}
-
 .SpotifyRow-container .musicList{
     display: flex;
     list-style-type: none;

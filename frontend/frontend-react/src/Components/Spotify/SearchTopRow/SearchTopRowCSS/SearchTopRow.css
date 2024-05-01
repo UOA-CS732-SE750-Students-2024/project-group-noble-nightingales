@@ -54,28 +54,33 @@
     margin-left: 1vw;
 }
 
-.SearchTopRow-container .right .topMusicList {
+.SearchTopRow-container .musicList{
     list-style-type: none;
     margin-top: 1.8vh;
 }
-  
-.SearchTopRow-container .right .topMusicListElement {
+
+.SearchTopRow-container .musicList .musicListElement{
     display: flex;
     align-items: center;
-    margin-bottom: 1.8vh;
+    margin-bottom: 1.8vh; /* element gap */
 }
 
-.SearchTopRow-container .right .topMusicListElement .topMusicImage {
+.SearchTopRow-container .musicList .musicListElement .musicImage{
     height: 6.5vh;
     margin-left: -0.3vw;
-    transition: height 0.5s ease-in-out; 
+    transition: height 0.5s ease-in-out;  
 }
-  
-.SearchTopRow-container .right .topMusicListElement .topMusicImage:hover {
+
+.SearchTopRow-container .musicList .musicListElement .musicImage:hover {
     height: 7.5vh;
 }
-  
-.SearchTopRow-container .right .topMusicInfo {
+
+.SearchTopRow-container .musicList .musicInfo-container{
+    display: flex;
+    margin-top: 1vh;
+}
+
+.SearchTopRow-container .musicList .musicInfo{
     display: flex;
     flex-direction: column;
     margin-left: 1vw;

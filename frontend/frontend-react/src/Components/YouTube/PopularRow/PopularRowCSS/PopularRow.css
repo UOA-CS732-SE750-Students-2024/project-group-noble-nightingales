@@ -15,11 +15,6 @@
     flex: 7;
 }
 
-.PopularRow-container .video{
-    display: flex;
-    flex-direction: column;
-}
-
 .PopularRow-container .videoList{
     display: flex;
     list-style-type: none;

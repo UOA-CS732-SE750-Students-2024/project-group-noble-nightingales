@@ -26,11 +26,6 @@
     border-color: green;
 }
 
-.YouTubeRow-container .video{
-    display: flex;
-    flex-direction: column;
-}
-
 .YouTubeRow-container .videoList{
     display: flex;
     list-style-type: none;

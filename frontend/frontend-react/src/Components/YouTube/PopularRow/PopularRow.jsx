@@ -9,6 +9,26 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 
+const theme = createTheme({
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white !important",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important",
+          },
+        },
+      },
+    },
+  },
+});
+
 export default function PopularRow() {
   // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
   const dummyTopVideos = [
@@ -23,26 +43,6 @@ export default function PopularRow() {
       author: "Peter Wang",
     },
   ];
-
-  const theme = createTheme({
-    components: {
-      MuiOutlinedInput: {
-        styleOverrides: {
-          root: {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white !important",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#15FFAB !important",
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#15FFAB !important",
-            },
-          },
-        },
-      },
-    },
-  });
 
   // Function to render the video list
   const renderVideoList = (videos) => {

@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 export default function YouTubeRow() {
   // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
-  const dummyTopVideos = [
+  const dummyVideos = [
     {
       imageURL: YouTubeCover,
       name: "Starcraft1",
@@ -71,9 +71,9 @@ export default function YouTubeRow() {
           }}
         />
       </h2>
-      {renderVideoList(dummyTopVideos)}
-      {renderVideoList(dummyTopVideos)}
-      {renderVideoList(dummyTopVideos)}
+      {renderVideoList(dummyVideos)}
+      {renderVideoList(dummyVideos)}
+      {renderVideoList(dummyVideos)}
     </div>
   );
 }
