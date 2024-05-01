@@ -4,162 +4,66 @@ import YouTubeCover from "../../../assets/YouTubeCover.png";
 import { NavLink } from "react-router-dom";
 
 export default function YouTubeRow() {
+  // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
+  const dummyTopVideos = [
+    {
+      imageURL: YouTubeCover,
+      name: "Starcraft1",
+      author: "Peter Wang",
+    },
+    {
+      imageURL: YouTubeCover,
+      name: "Starcraft2",
+      author: "Peter Wang",
+    },
+    {
+      imageURL: YouTubeCover,
+      name: "Starcraft3",
+      author: "Peter Wang",
+    },
+    {
+      imageURL: YouTubeCover,
+      name: "Starcraft4",
+      author: "Peter Wang",
+    },
+  ];
+
+  // Function to render the video list
+  const renderVideoList = (videos) => {
+    return (
+      <ul className="videoList">
+        {videos.map((video) => (
+          <li className="videoListElement" key={video.name}>
+            <NavLink to="/youtube">
+              <img
+                className="videoImage"
+                src={video.imageURL}
+                alt={video.name}
+              />
+            </NavLink>
+            <div className="videoInfo-container">
+              <PlayArrowIcon className="playArrow" />
+              <div className="videoInfo">
+                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
+                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                  Made By {video.author}
+                </span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
-    <div className="YoutubeRowContainer">
-      <ul className="sectionTitleList">
-        <li className="sectionTitileName">Explore YouTube Videos</li>
-        <li className="SectionTitleLink">
-          <NavLink to="/youtube"> See All </NavLink>
-        </li>
-      </ul>
-      <ul className="firstYoutubeRow">
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-      </ul>
-      <ul className="secondYoutubeRow">
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-        <li>
-          <ul className="insideYoutubeList">
-            <li>
-              <NavLink to="/youtube">
-                <img src={YouTubeCover} alt="Cover" />
-              </NavLink>
-            </li>
-            <li>
-              <ul className="titleList">
-                <li className="playButton">
-                  <PlayArrowIcon />
-                </li>
-                <li className="titleName">YoutubeTitle</li>
-              </ul>
-            </li>
-            <li className="author">Made by WHO</li>
-          </ul>
-        </li>
-      </ul>
+    <div className="YouTubeRow-container">
+      <h2>YouTube Videos For You</h2>
+      <NavLink className="navigationAllLink" to="/youtube">
+        See All
+      </NavLink>
+      {renderVideoList(dummyTopVideos)}
+      {renderVideoList(dummyTopVideos)}
     </div>
   );
 }

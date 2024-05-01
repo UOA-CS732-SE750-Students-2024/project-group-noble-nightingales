@@ -121,13 +121,13 @@
 
 .image-container .blue-chart-image{
     z-index: 4;
-    padding-bottom: 1.3vh;
+    padding-bottom: 4vh;
 }
 
 .image-container .orange-chart-image{
     z-index: 4;
     padding-left: 1.4vw;
-    padding-bottom: 0.3vh;
+    padding-bottom: 2.5vh;
 }
 
 .image-container .indicator-image {

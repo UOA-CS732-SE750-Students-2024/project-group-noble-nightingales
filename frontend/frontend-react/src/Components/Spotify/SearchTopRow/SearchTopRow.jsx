@@ -55,6 +55,33 @@ export default function SearchTopRow() {
     },
   ];
 
+  // Function to render the music list
+  const renderMusicList = (musics) => {
+    return (
+      <ul className="musicList">
+        {musics.map((music) => (
+          <li className="musicListElement" key={music.name}>
+            <NavLink to="/youtube">
+              <img
+                className="musicImage"
+                src={music.imageURL}
+                alt={music.name}
+              />
+            </NavLink>
+            <div className="musicInfo-container">
+              <div className="musicInfo">
+                <span style={{ fontSize: "1.9vh" }}>{music.name}</span>
+                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                  Made By {music.author}
+                </span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div className="SearchTopRow-container">
       <div className="TopRowText">Spotify</div>
@@ -86,26 +113,7 @@ export default function SearchTopRow() {
       </div>
       <div className="right">
         <h4 className="topTitle">Top Tracks In Real Time</h4>
-        <ul className="topMusicList">
-          {dummyTopMusics.map((topMusic) => (
-            <li className="topMusicListElement" key={topMusic.name}>
-              <NavLink to="/youtube">
-                <img
-                  className="topMusicImage"
-                  src={topMusic.imageURL}
-                  alt={topMusic.name}
-                />
-              </NavLink>
-              <div className="topMusicInfo">
-                <span style={{ fontSize: "1.6vh" }}>{topMusic.name}</span>
-                <span style={{ fontSize: "1.3vh" }}>{topMusic.author}</span>
-              </div>
-              <div className="topMusicPlay">
-                <SearchIcon className="search-icon" />
-              </div>
-            </li>
-          ))}
-        </ul>
+        {renderMusicList(dummyTopMusics)}
       </div>
     </div>
   );

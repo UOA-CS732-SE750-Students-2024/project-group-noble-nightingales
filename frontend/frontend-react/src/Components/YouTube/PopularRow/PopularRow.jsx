@@ -5,12 +5,33 @@ import YouTubeCover from "../../../assets/YouTubeCover.png";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 
+const theme = createTheme({
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white !important",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important",
+          },
+        },
+      },
+    },
+  },
+});
+
 export default function PopularRow() {
   // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
-  const dummyTopVideosOne = [
+  const dummyTopVideos = [
     {
       imageURL: YouTubeCover,
       name: "Starcraft1",
@@ -23,38 +44,33 @@ export default function PopularRow() {
     },
   ];
 
-  const dummyTopVideosTwo = [
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft4",
-      author: "Peter Wang",
-    },
-  ];
-
-  const theme = createTheme({
-    components: {
-      MuiOutlinedInput: {
-        styleOverrides: {
-          root: {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "white !important",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#15FFAB !important",
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#15FFAB !important",
-            },
-          },
-        },
-      },
-    },
-  });
+  // Function to render the video list
+  const renderVideoList = (videos) => {
+    return (
+      <ul className="videoList">
+        {videos.map((video) => (
+          <li className="videoListElement" key={video.name}>
+            <NavLink to="/youtube">
+              <img
+                className="videoImage"
+                src={video.imageURL}
+                alt={video.name}
+              />
+            </NavLink>
+            <div className="videoInfo-container">
+              <PlayArrowIcon className="playArrow" />
+              <div className="videoInfo">
+                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
+                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                  Made By {video.author}
+                </span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <div className="PopularRow-container">
@@ -93,7 +109,7 @@ export default function PopularRow() {
                 backgroundColor: "#FFFFFF19",
                 borderRadius: "0.2vh",
                 height: "5.5vh",
-                width: "58vw",
+                width: "56vw",
               },
               endAdornment: (
                 <InputAdornment position="end">
@@ -103,40 +119,8 @@ export default function PopularRow() {
             }}
           />
         </ThemeProvider>
-        <ul className="topVideoList">
-          {dummyTopVideosOne.map((topVideo) => (
-            <li className="topVideoListElement" key={topVideo.name}>
-              <NavLink to="/youtube">
-                <img
-                  className="topVideoImage"
-                  src={topVideo.imageURL}
-                  alt={topVideo.name}
-                />
-              </NavLink>
-              <div>
-                <span style={{ fontSize: "1.9vh" }}>{topVideo.name} - </span>
-                <span style={{ fontSize: "1.6vh" }}>{topVideo.author}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <ul className="topVideoList">
-          {dummyTopVideosTwo.map((topVideo) => (
-            <li className="topVideoListElement" key={topVideo.name}>
-              <NavLink to="/youtube">
-                <img
-                  className="topVideoImage"
-                  src={topVideo.imageURL}
-                  alt={topVideo.name}
-                />
-              </NavLink>
-              <div>
-                <span style={{ fontSize: "1.9vh" }}>{topVideo.name} - </span>
-                <span style={{ fontSize: "1.6vh" }}>{topVideo.author}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {renderVideoList(dummyTopVideos)}
+        {renderVideoList(dummyTopVideos)}
       </div>
     </div>
   );
