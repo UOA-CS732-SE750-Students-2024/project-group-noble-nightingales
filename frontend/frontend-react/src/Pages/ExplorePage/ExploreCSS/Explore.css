@@ -10,14 +10,6 @@
     margin-left: 5vw; */
 }
 
-.subscribeContianer .subBall .staticBall{
-    top:330%;
-    right:40%;
-    background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
-    width: 120vh;
-    height: 100vh;
-}
-
 .embeddAIContainer .staticBall{
     top:120%;
     right:10%;
@@ -32,4 +24,12 @@
     width: 120vh;
     height: 100vh;
     background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+}
+
+.subscribeContianer .subBall .staticBall{
+    top:330%;
+    right:40%;
+    background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    width: 120vh;
+    height: 100vh;
 }

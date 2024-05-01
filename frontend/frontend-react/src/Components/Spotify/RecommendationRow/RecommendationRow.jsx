@@ -1,7 +1,7 @@
 import "./RecommendationRowCSS/RecommendationRow.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
-import { NavLink } from "react-router-dom";
 import triangle from "../../../assets/triangle2.png";
+import { NavLink } from "react-router-dom";
 
 function getRandomBoolean() {
   return Math.random() >= 0.5;
@@ -11,27 +11,27 @@ export default function RecommendationRow() {
   const dummyTopMusics = [
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲1",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲2",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲3",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲4",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲5",
       author: "Peter Wang",
     },
   ];
@@ -49,14 +49,32 @@ export default function RecommendationRow() {
                 alt={topMusic.name}
               />
             </NavLink>
-            
+
             <div className="cover">
               <div className="recommendationInfo">
-                <span style={getRandomBoolean() ? { fontSize: "1.3vh", color: "#EF2F62" } : { fontSize: "1.3vh", color: "#00FFFF" }}>New For You</span>
-                <span style={{ fontSize: "1.5vh", marginTop: "0.8vh" }}>{topMusic.name}</span>
-                <span style={{ fontSize: "1.3vh", marginTop: "1vh", opacity: "0.6" }}>{topMusic.author}</span>
+                <span
+                  style={
+                    getRandomBoolean()
+                      ? { fontSize: "1.3vh", color: "#EF2F62" }
+                      : { fontSize: "1.3vh", color: "#00FFFF" }
+                  }
+                >
+                  New For You
+                </span>
+                <span style={{ fontSize: "1.5vh", marginTop: "0.8vh" }}>
+                  {topMusic.name}
+                </span>
+                <span
+                  style={{
+                    fontSize: "1.3vh",
+                    marginTop: "1vh",
+                    opacity: "0.6",
+                  }}
+                >
+                  {topMusic.author}
+                </span>
                 <div className="coverImage">
-                  <img src={triangle} alt="cover" style={{width: "2vh"}}/>
+                  <img src={triangle} alt="cover" style={{ width: "2vh" }} />
                 </div>
               </div>
             </div>

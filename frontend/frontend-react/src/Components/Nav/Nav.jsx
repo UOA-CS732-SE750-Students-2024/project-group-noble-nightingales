@@ -21,9 +21,6 @@ export default function Nav() {
         <li>
           <NavLink to="/spotify">Spotify</NavLink>
         </li>
-        <li>
-          <NavLink to="/community">Community</NavLink>
-        </li>
       </ul>
       <div className="nav-auth">
         <NavLink className="signin" to="/explore/login">

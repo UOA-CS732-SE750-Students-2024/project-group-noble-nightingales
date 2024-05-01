@@ -1,0 +1,39 @@
+.PopularRow-container{
+    margin-top: 2vh;
+    display: flex;
+    z-index: 2;
+    padding: 6vh;
+    padding-top: 8vh;
+    height: 70vh;
+}
+
+.PopularRow-container .left{
+    flex: 3;
+}
+
+.PopularRow-container .right{
+    flex: 7;
+}
+
+.PopularRow-container .right .topVideoList {
+    display: flex;
+    list-style-type: none;
+    padding-top: 1.8vh;
+    margin-left: -1.9vw
+}
+
+.PopularRow-container .right .topVideoListElement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 1.8vw; /* element gap*/
+}
+
+.PopularRow-container .right .topVideoImage {
+    width: 27vw;
+    transition: width 0.5s ease-in-out; 
+}
+
+.PopularRow-container .right .topVideoImage:hover {
+    width: 29vw;
+}

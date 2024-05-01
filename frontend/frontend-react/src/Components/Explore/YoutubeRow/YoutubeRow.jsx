@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
-import "./YoutubeCSS/Youtube.css";
+import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import youtubeCover from "../../../assets/YoutubeCover.png";
-export default function YoutubeRow() {
+import YouTubeCover from "../../../assets/YouTubeCover.png";
+import { NavLink } from "react-router-dom";
+
+export default function YouTubeRow() {
   return (
     <div className="YoutubeRowContainer">
       <ul className="sectionTitleList">
@@ -16,7 +17,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -34,7 +35,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -52,7 +53,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -70,7 +71,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -90,7 +91,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -108,7 +109,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -126,7 +127,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
@@ -144,7 +145,7 @@ export default function YoutubeRow() {
           <ul className="insideYoutubeList">
             <li>
               <NavLink to="/youtube">
-                <img src={youtubeCover} alt="Cover" />
+                <img src={YouTubeCover} alt="Cover" />
               </NavLink>
             </li>
             <li>
