@@ -1,0 +1,175 @@
+.background {
+  /* Youtube Page */
+
+position: relative;
+width: 1920px;
+height: 1080px;
+
+/* Dark Background */
+background: #040914;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+}
+.main{
+/* Youtube Page */
+
+position: relative;
+width: 1920px;
+height: 1080px;
+
+/* Dark Background */
+background: #040914;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+}
+.Icon_and_navi{
+  background: rgba(71, 45, 119, 0.3);
+/* Top Header */
+
+position: absolute;
+width: 1170px;
+height: 60px;
+left: 375px;
+top: 30px;
+
+
+}
+.playerSection{
+  background: rgba(76, 175, 80, 0.3);
+  /* Main video */
+
+position: absolute;
+left: 2.24%;
+right: 37.14%;
+top: 13.15%;
+bottom: 15.93%;
+
+border-radius: 6px;
+
+
+}
+.Comments_content{
+  background: rgba(15, 92, 122, 0.3);
+  grid-column: 1/5;
+  grid-row: 31;
+}
+
+.relatedVideos_section{
+  background: rgba(153, 47, 100, 0.3);
+  grid-column: 7/9;
+  grid-row: 2/28;
+  gap: 20px;
+}
+.Comments_title{
+  background: rgba(150, 156, 67, 0.3);
+/* Title */
+
+position: absolute;
+width: 106px;
+height: 18px;
+left: 64px;
+top: 920px;
+
+/* Header/H6 */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 18px;
+/* identical to box height, or 90% */
+
+/* Dark Theme / Gray - 0 */
+color: #FFFFFF;
+
+
+}
+.relatedVideos{
+/* Rectangle 3825 */
+
+position: relative;
+width: 486px;
+height: 144px;
+left: 1301px;
+top: 200px;
+margin-top: 1ch;
+
+background: #2F2F2F;
+border-radius: 21px;
+
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+  z-index: 1000; /* Ensure the backdrop is above other content */
+}
+
+.modalContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1001; /* Ensure the modal content is above the backdrop */
+}
+.see_more{
+  /* See More */
+
+position: absolute;
+width: 64px;
+height: 18px;
+left: 1091px;
+top: 929px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* identical to box height, or 129% */
+
+color: #BBBBBB;
+
+
+}
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.related_video_title{
+  /* Title */
+
+width: 201px;
+height: 20px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 20px;
+/* identical to box height, or 111% */
+letter-spacing: -0.009em;
+
+/* Dark Theme / Gray - 1 */
+color: #F5F5FF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+

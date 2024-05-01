@@ -1,0 +1,33 @@
+.youtube-page-item{
+    position: relative;
+    top: 181.7px;
+    left: -108.2px;
+    width: 902.4px;
+    height: 876.7px;
+    object-fit: contain;
+    margin-bottom: 15vh;
+}
+.title{
+    /* Most Popular Videos */
+
+    position: relative;
+    width: 383px;
+    height: 50px;
+    left: 117px;
+    top: 195px;
+
+    font-family: 'Exo 2';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 50px;
+    /* identical to box height, or 125% */
+
+    color: #FFFFFF;
+
+
+}
+.YoutubeRow
+{
+    margin-top: 10vh;
+}
