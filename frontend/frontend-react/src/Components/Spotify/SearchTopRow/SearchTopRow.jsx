@@ -2,24 +2,23 @@ import "./SearchTopRowCSS/SearchTopRow.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
-import InputAdornment from '@mui/material/InputAdornment';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 
 const theme = createTheme({
   components: {
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'white !important', // Default border color
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white !important", // Default border color
           },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#15FFAB !important', // Border color on hover
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important", // Border color on hover
           },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#15FFAB !important', // Border color on focus
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#15FFAB !important", // Border color on focus
           },
         },
       },
@@ -31,27 +30,27 @@ export default function SearchTopRow() {
   const dummyTopMusics = [
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲1",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲2",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲3",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲4",
       author: "Peter Wang",
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲",
+      name: "义勇军进行曲5",
       author: "Peter Wang",
     },
   ];
@@ -65,7 +64,7 @@ export default function SearchTopRow() {
           <TextField
             className="searchBar"
             id="outlined-search"
-            label="Search field"
+            placeholder="Search..."
             type="search"
             variant="outlined"
             InputProps={{
@@ -81,12 +80,6 @@ export default function SearchTopRow() {
                   <SearchIcon style={{ color: "white" }} />
                 </InputAdornment>
               ),
-            }}
-            InputLabelProps={{
-              style: {
-                color: "white",
-                fontSize: "1.5vh" // Label text color
-              },
             }}
           />
         </ThemeProvider>

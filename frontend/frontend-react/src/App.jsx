@@ -1,6 +1,5 @@
 import LoginPage from "./Pages/LoginPage/Login";
 import Nav from "./Components/Nav/Nav";
-import Community from "./Pages/CommunityPage/Community";
 import Explore from "./Pages/ExplorePage/Explore";
 import Spotify from "./Pages/SpotifyPage/Spotify";
 import YouTube from "./Pages/YouTubePage/YouTube";
@@ -31,15 +30,6 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="nextstep" element={<Nextstep />} />
         </Route>
-        <Route
-          path="/community"
-          element={
-            <>
-              <Nav />
-              <Community />
-            </>
-          }
-        />
         <Route
           path="/spotify"
           element={

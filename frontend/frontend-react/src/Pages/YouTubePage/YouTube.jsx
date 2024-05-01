@@ -1,8 +1,15 @@
+import "./YouTubeCSS/YouTube.css";
+import PopularRow from "../../Components/YouTube/PopularRow/PopularRow";
+
 export default function YouTube() {
   return (
     <div>
-      <p>hi</p>
-      <p>hi</p>
+      {/* <BallDynamic /> */}
+      <div className="YouTube-container">
+        <div>
+          <PopularRow />
+        </div>
+      </div>
     </div>
   );
 }
