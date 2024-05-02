@@ -24,7 +24,7 @@ router.get('/signin', async (req, res) => {
     console.log(url);
 
     try{
-        const response = await axios.get(url);
+        const response = await axios.get(url, { params: {redirectUri: "http://localhost:3000/api/music/callback"} });
         res.json(response.data);
     }catch(error){
         console.error("Error during retrieving sign in url:", error.response ? error.response.data : error.message);
