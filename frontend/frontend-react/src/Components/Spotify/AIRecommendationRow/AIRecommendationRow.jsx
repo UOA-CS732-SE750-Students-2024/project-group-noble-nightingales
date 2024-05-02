@@ -75,6 +75,7 @@ export default function AIRecommendationRow() {
         InputLabelProps={{ style: { color: "white" } }}
       />
       </ThemeProvider>
+      <div style={{height: "3vh"}}></div>
       <div className="label-container">
         <h3 className="FilterLabel">
           <img

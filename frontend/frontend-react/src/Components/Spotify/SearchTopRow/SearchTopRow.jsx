@@ -75,6 +75,7 @@ export default function SearchTopRow() {
                   Made By {music.author}
                 </span>
               </div>
+              <SearchIcon className="search-icon" style={{marginLeft: "6.5vw", marginTop: "1vh"}}/>
             </div>
           </li>
         ))}

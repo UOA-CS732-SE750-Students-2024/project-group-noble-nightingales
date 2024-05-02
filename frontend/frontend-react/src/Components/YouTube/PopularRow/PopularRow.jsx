@@ -18,10 +18,10 @@ const theme = createTheme({
             borderColor: "white !important",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#15FFAB !important",
+            borderColor: "#34d5eb !important",
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#15FFAB !important",
+            borderColor: "#18bfd6 !important",
           },
         },
       },
@@ -58,10 +58,10 @@ export default function PopularRow() {
               />
             </NavLink>
             <div className="videoInfo-container">
-              <PlayArrowIcon className="playArrow" />
+              <PlayArrowIcon className="playArrow"/>
               <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>{video.name}</span>
+                <span style={{ fontSize: "1.6vh", color: "gray", marginLeft: "-1.2vw" }}>
                   Made By {video.author}
                 </span>
               </div>
@@ -81,14 +81,16 @@ export default function PopularRow() {
             src={Star}
             alt="Popular video star"
             style={{
-              verticalAlign: "-1.6vh",
+              verticalAlign: "-1.8vh",
               width: "3vw",
+              marginLeft: "1vw",
             }}
           />
         </h2>
         <img
           src={Cube}
           alt="Popular video cube"
+          className="rotate"
           style={{
             marginTop: "-10vh",
             width: "40vw",
@@ -109,7 +111,7 @@ export default function PopularRow() {
                 backgroundColor: "#FFFFFF19",
                 borderRadius: "0.2vh",
                 height: "5.5vh",
-                width: "56vw",
+                width: "53.5vw",
               },
               endAdornment: (
                 <InputAdornment position="end">

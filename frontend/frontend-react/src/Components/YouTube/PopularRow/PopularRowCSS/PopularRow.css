@@ -12,38 +12,40 @@
 }
 
 .PopularRow-container .right{
-    flex: 7;
+    flex: 6;
+    margin-top: 2vh;
 }
 
 .PopularRow-container .videoList{
     display: flex;
     list-style-type: none;
-    padding-top: 1.8vh;
-    margin-left: -1vw
+    padding-top: 2vh;
+    margin-left: -2.2vw
 }
 
 .PopularRow-container .videoList .videoListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-right: 2.5vw; /* element gap*/
+    padding-right: 5.5vw; /* element gap*/
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25vw; /* image width */
+    width: 24vw; /* image width */
     transition: width 0.5s ease-in-out; 
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage:hover {
-    width: 27vw;
+    width: 25vw;
 }
 
 .PopularRow-container .videoList .videoInfo-container{
     display: flex;
     margin-top: 1vh;
+    margin-left: -6.5vw;
 }
 
 .PopularRow-container .videoList .videoInfo-container .playArrow{
@@ -51,8 +53,8 @@
     transform: translate(-50%, -50%);
     background-color: red;
     border-radius: 50%;
-    width: 40px; /* Adjust the width to fit the design */
-    height: 40px; /* Adjust the height to fit the design */
+    width: 30px; /* Adjust the width to fit the design */
+    height: 30px; /* Adjust the height to fit the design */
     display: flex;
     margin-left: -4vw;
     margin-top: 2.7vh;
@@ -62,4 +64,17 @@
     display: flex;
     flex-direction: column;
     align-items: self-start;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 20s linear infinite; /* Adjust time as needed */
 }
