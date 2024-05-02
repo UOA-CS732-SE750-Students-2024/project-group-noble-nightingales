@@ -9,6 +9,7 @@ export default function Player({ accessToken, trackUri }) {
   if (!accessToken) return null
   return (
     <SpotifyPlayer
+      styles={{marginTop: "20vh"}}
       token={accessToken}
       showSaveIcon
       callback={state => {
