@@ -1,0 +1,26 @@
+@keyframes colorChange {
+    0% {
+      background-color: #FFC0CB; /* Light Pink */
+      box-shadow: 0 0.2vh 0.5vh 0.2vh #FFC0CB; /* Thinner Shadow in Light Pink */
+    }
+    25% {
+      background-color: #7FFFD4; /* Aquamarine */
+      box-shadow: 0 0.2vh 0.5vh 0.2vh #7FFFD4; /* Thinner Shadow in Aquamarine */
+    }
+    50% {
+      background-color: #87CEFA; /* Light Sky Blue */
+      box-shadow: 0 0.2vh 0.5vh 0.2vh #87CEFA; /* Thinner Shadow in Light Sky Blue */
+    }
+    75% {
+      background-color: #E0FFFF; /* Light Cyan */
+      box-shadow: 0 0.2vh 0.5vh 0.2vh #E0FFFF; /* Thinner Shadow in Light Cyan */
+    }
+    100% {
+      background-color: #FFC0CB; /* Light Pink */
+      box-shadow: 0 0.2vh 0.5vh 0.2vh #FFC0CB; /* Thinner Shadow in Light Pink */
+    }
+  }
+  
+  .animated-divider {
+    animation: colorChange 5s linear infinite;
+  }

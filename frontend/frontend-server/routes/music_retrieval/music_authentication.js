@@ -50,7 +50,7 @@ router.get('/callback', async (req, res) => {
         const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
         // axios.post(saveTokenUrl, {params: {userId, accessToken, refreshToken}});
 
-        res.redirect('http://localhost:3000/explore');
+        // res.redirect('http://localhost:3000/explore');
 
     }catch(error){
         console.error("Error during retrieving sign in url:", error.response ? error.response.data : error.message);

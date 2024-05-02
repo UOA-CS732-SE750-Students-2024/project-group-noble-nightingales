@@ -55,7 +55,7 @@ function App() {
             <>
               <Nav />
               <div style={{height: "20vh"}}></div>
-              <SpotifyPlayer accessToken={"BQD0zkxF3WUB0KT2ECd6znK3Kb6ZuV1YQeWZ3hx1NIfMULKqkrHB1qAWU8IjyYF-p45CA7O_hidctlqULEbYVzlvOmevUuphva-x_qh9G5_eDghyog_UPL3X8fLH7sqxz4c-4BrEQlShwRuuVz5IKiD8UXA5sMPRuA0ongYApEAGt3vM6HL0mYMj4DhalVjswbY0o75mg1-caSlWXB1u8bCQakC7G9MLYk4r8W5k7ugabw"} spotifyUri={"spotify:track:6cmm1LMvZdB5zsCwX5BjqE"}/>
+              <SpotifyPlayer accessToken={"BQB05Hcf-gcYL76Xgr6Xa37J8f56j27TX7fE1GxPwc1JwfWqaDC5OnFfHfc3drvVzNctr3lRK3nEF5N8udWNnR2b3lPN8zTyPiRfivU0kXquSap-HABB0e9YnKga5MAnzq3iDk0JNA0JOhJ6p9OPY4S9inlQQoO14OFq_TS44V6G7CVaYSfJTxr9q7R4Bp0302u6098KmFcfjhMW8CUSx2yjZWW0rG-Fn7TrYtUAmyohEg"} spotifyUri={"spotify:track:6cmm1LMvZdB5zsCwX5BjqE"}/>
             </>
           }
         />
