@@ -28,11 +28,6 @@ export default function YouTubePlayerRow() {
       name: "Starcraft4",
       author: "Peter Wang",
     },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft5",
-      author: "Peter Wang",
-    },
   ];
 
   // Function to render the video list
@@ -41,14 +36,14 @@ export default function YouTubePlayerRow() {
       <ul className="videoList">
         {videos.map((video) => (
           <li className="videoListElement" key={video.name}>
-            <NavLink to="/youtube/player">
-              <img
-                className="videoImage"
-                src={video.imageURL}
-                alt={video.name}
-              />
-            </NavLink>
             <div className="videoInfo-container">
+              <NavLink to="/youtube/player">
+                <img
+                  className="videoImage"
+                  src={video.imageURL}
+                  alt={video.name}
+                />
+              </NavLink>
               <div className="videoInfo">
                 <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>
                   {video.name}

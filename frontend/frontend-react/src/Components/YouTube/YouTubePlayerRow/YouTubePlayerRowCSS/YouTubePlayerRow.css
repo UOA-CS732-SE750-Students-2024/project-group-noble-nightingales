@@ -4,7 +4,7 @@
     z-index: 2;
     padding: 6vh;
     padding-top: 8vh;
-    /* height: 100vh; */
+    height: 80vh;
     overflow: hidden;
 }
 
@@ -73,32 +73,21 @@
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .YouTubePlayerRow-container .right{
     flex: 3;
+    margin-top: -3.5vh;
 }
 
 .YouTubePlayerRow-container .videoList{
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    margin-left: -2.2vw
+    margin-left: -2.9vw
 }
 
 .YouTubePlayerRow-container .videoList .videoListElement{
     display: flex;
-    padding-bottom: 1vw; /* element gap*/
+    padding-bottom: 2vw; /* element gap*/
 }
 
 .YouTubePlayerRow-container .videoList .videoListElement .videoImage{
@@ -114,10 +103,13 @@
 
 .YouTubePlayerRow-container .videoList .videoInfo-container{
     display: flex;
-    /* margin-top: 1vh; */
-    /* margin-left: -6.5vw; */
+    background-color: rgb(59, 57, 57);
+    border-radius: 10px;
+    padding: 0.5vw;
 }
 
 .YouTubePlayerRow-container .videoList .videoInfo{
     display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
 }
