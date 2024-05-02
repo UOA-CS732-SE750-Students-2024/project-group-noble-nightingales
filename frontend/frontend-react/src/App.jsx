@@ -54,7 +54,7 @@ function App() {
           element={
             <>
               <Nav />
-              <SpotifyPlayer />
+              <SpotifyPlayer accessToken={"BQCW1HyUUDmnS_gzO5KUWMIrf_zc1YtymHBzOAckdKdjsgPWwJi3bVUHOsoRhota91HinqYwskjB9KGLQLoUyGaTHOp5AwFlyBcN1Lsric_VAEugYEdRr8Sj7Ne1SwjZ5Ex25P8SBmdd5xXrY-CQpcjK-uLLSu-80vq_9-HlaZEEf3-Ju1GjiWaVK4KSbejzeEYqT_9_q2ZGpRkNLNnoBgHYHoJkcQ"} spotifyUri={"spotify:track:6pTKWN96v1dpEaBMzDYlww"}/>
             </>
           }
         />

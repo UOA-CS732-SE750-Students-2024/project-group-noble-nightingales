@@ -39,16 +39,16 @@ router.get('/callback', async (req, res) => {
 
     try{
         // receving the refresh token and access token
-        const response = await axios.get(url, { params: req.query });
+        const response = await axios.get(url, { params: {...req.query, redirectUri: "http://localhost:3000/api/music/callback"} });
         res.json(response.data);
         console.log(response.data);
 
         // saving the refresh token and access token
-        const userId = req.cookies.userId;
+        // const userId = req.cookies.userId;
         const { refreshToken, accessToken } = response.data;
 
         const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
-        axios.post(saveTokenUrl, {params: {userId, accessToken, refreshToken}});
+        // axios.post(saveTokenUrl, {params: {userId, accessToken, refreshToken}});
 
         res.redirect('http://localhost:3000/explore');
 
