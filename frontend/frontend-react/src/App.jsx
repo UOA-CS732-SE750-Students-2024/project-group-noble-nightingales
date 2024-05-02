@@ -5,6 +5,7 @@ import Spotify from "./Pages/SpotifyPage/Spotify";
 import YouTube from "./Pages/YouTubePage/YouTube";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
+import SpotifyPlayer from "./Pages/SpotifyPlayPage/SpotifyPlayPage";
 import {
   BrowserRouter as Router,
   Route,
@@ -45,6 +46,15 @@ function App() {
             <>
               <Nav />
               <YouTube />
+            </>
+          }
+        />
+        <Route
+          path="/spotify-play"
+          element={
+            <>
+              <Nav />
+              <SpotifyPlayer />
             </>
           }
         />
