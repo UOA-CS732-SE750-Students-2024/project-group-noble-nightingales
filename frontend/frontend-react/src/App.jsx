@@ -3,6 +3,7 @@ import Nav from "./Components/Nav/Nav";
 import Explore from "./Pages/ExplorePage/Explore";
 import Spotify from "./Pages/SpotifyPage/Spotify";
 import YouTube from "./Pages/YouTubePage/YouTube";
+import YouTubePlayer from "./Pages/YouTubePlayerPage/YouTubePlayer";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
 import {
@@ -48,7 +49,15 @@ function App() {
             </>
           }
         />
-
+        <Route
+          path="/youtube/player"
+          element={
+            <>
+              <Nav />
+              <YouTubePlayer />
+            </>
+          }
+        />
         {/* Define other routes here */}
       </Routes>
     </Router>
