@@ -1,0 +1,16 @@
+.YouTubePlayerRow-container{
+    margin-top: 2vh;
+    display: flex;
+    z-index: 2;
+    padding: 6vh;
+    padding-top: 8vh;
+    height: 70vh;
+}
+
+.YouTubePlayerRow-container .left{
+    flex: 3;
+}
+
+.YouTubePlayerRow-container .right{
+    flex: 6;
+}
