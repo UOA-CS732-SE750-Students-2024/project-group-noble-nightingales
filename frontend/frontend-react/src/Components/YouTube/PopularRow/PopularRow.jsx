@@ -50,7 +50,7 @@ export default function PopularRow() {
       <ul className="videoList">
         {videos.map((video) => (
           <li className="videoListElement" key={video.name}>
-            <NavLink to="/youtube">
+            <NavLink to="/youtube/player">
               <img
                 className="videoImage"
                 src={video.imageURL}
@@ -58,10 +58,18 @@ export default function PopularRow() {
               />
             </NavLink>
             <div className="videoInfo-container">
-              <PlayArrowIcon className="playArrow"/>
+              <PlayArrowIcon className="playArrow" />
               <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>{video.name}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray", marginLeft: "-1.2vw" }}>
+                <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>
+                  {video.name}
+                </span>
+                <span
+                  style={{
+                    fontSize: "1.6vh",
+                    color: "gray",
+                    marginLeft: "-1.2vw",
+                  }}
+                >
                   Made By {video.author}
                 </span>
               </div>

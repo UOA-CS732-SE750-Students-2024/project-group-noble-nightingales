@@ -34,7 +34,7 @@ export default function YouTubeRow() {
       <ul className="videoList">
         {videos.map((video) => (
           <li className="videoListElement" key={video.name}>
-            <NavLink to="/youtube">
+            <NavLink to="/youtube/player">
               <img
                 className="videoImage"
                 src={video.imageURL}

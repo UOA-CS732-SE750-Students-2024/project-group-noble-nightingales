@@ -1,0 +1,115 @@
+.YouTubePlayerRow-container{
+    margin-top: 2vh;
+    display: flex;
+    z-index: 2;
+    padding: 6vh;
+    padding-top: 8vh;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.YouTubePlayerRow-container .left{
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+.YouTubePlayerRow-container .left iframe{
+    width: 60vw;
+    height: 50vh;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container{
+    background-color: rgb(32, 32, 32);
+    width: 60.3vw;
+    height: 18vh;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container .videoInfoIcon{
+    width: 1.2vw;
+    margin-right: 0.3vw;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container h3{
+    padding-left: 1vw;
+    margin-top: 1vh;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container h5{
+    color: gray;
+    padding-left: 1vw;
+    margin-top: -2.8vh;
+    display: flex;
+    align-items: center;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container .authorInfo-container{
+    display: flex;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container .authorInfo-container .authorInfo{
+    padding-left: 0.7vw;
+    margin-top: -3vh;
+}
+
+.YouTubePlayerRow-container .left .videoInfo-container .authorInfo-container .videoDescription{
+    display: flex;
+    background-color: rgb(61, 59, 59);
+    width: 42vw;
+    padding-left: 0.7vw;
+    padding-top: 0.4vh;
+    margin-left: 2vw;
+    border-radius: 10px;
+}
+
+.YouTubePlayerRow-container .left .comment-container{
+    width: 60.3vw;
+}
+
+.YouTubePlayerRow-container .left .comment-container .commentTitle{
+    display: flex;
+    margin-top: 1vh;
+    width: 60.3vw;
+    align-items: center;
+}
+
+.YouTubePlayerRow-container .right{
+    flex: 3;
+    margin-top: -3.5vh;
+}
+
+.YouTubePlayerRow-container .videoList{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin-left: -2.9vw
+}
+
+.YouTubePlayerRow-container .videoList .videoListElement{
+    display: flex;
+    padding-bottom: 2vw; /* element gap*/
+}
+
+.YouTubePlayerRow-container .videoList .videoListElement .videoImage{
+    display: flex;
+    align-items: center;
+    width: 14vw; /* image width */
+    transition: width 0.5s ease-in-out; 
+}
+
+.YouTubePlayerRow-container .videoList .videoListElement .videoImage:hover {
+    width: 16vw;
+}
+
+.YouTubePlayerRow-container .videoList .videoInfo-container{
+    display: flex;
+    background-color: rgb(59, 57, 57);
+    border-radius: 10px;
+    padding: 0.5vw;
+}
+
+.YouTubePlayerRow-container .videoList .videoInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2vw;
+}
