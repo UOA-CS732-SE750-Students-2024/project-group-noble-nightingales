@@ -70,8 +70,8 @@ export default function SearchTopRow() {
             </NavLink>
             <div className="musicInfo-container">
               <div className="musicInfo">
-                <span style={{ fontSize: "1.9vh" }}>{music.name}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                <span style={{ fontSize: "1.6vh" }}>{music.name}</span>
+                <span style={{ fontSize: "1.2vh", color: "gray" }}>
                   Made By {music.author}
                 </span>
               </div>
