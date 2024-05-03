@@ -3,7 +3,7 @@
     flex-direction: column;
     /* font-size: 2vw; */
     padding: 6.33vh ;
-    padding-top: 0;
+    padding-top: 6vh;
     z-index: 2;
 }
 
@@ -36,6 +36,7 @@
 .YouTubeRow-container .videoList .videoInfo-container{
     display: flex;
     margin-top: 1vh;
+    margin-left: -2.5vw;
 }
 
 .YouTubeRow-container .videoList .videoInfo-container .playArrow{

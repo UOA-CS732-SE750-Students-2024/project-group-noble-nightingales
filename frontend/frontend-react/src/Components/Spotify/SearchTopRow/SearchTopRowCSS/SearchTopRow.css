@@ -77,13 +77,13 @@
 
 .SearchTopRow-container .musicList .musicInfo-container{
     display: flex;
-    margin-top: 1vh;
+    margin-top: 0vh;
 }
 
 .SearchTopRow-container .musicList .musicInfo{
     display: flex;
     flex-direction: column;
-    margin-left: 1vw;
+    margin-left: 1.3vw;
 }
 
 .topTitle{

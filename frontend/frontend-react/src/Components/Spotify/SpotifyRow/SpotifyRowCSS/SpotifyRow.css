@@ -37,6 +37,7 @@
 .SpotifyRow-container .musicList .musicInfo-container{
     display: flex;
     margin-top: 1vh;
+    margin-left: -3.8vw;
 }
 
 .SpotifyRow-container .musicList .musicInfo{
