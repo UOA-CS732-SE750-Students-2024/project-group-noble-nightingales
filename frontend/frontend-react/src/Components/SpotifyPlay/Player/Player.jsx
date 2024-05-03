@@ -14,7 +14,7 @@ export default function Player({ trackUri, setLoginDialogOpen }) {
 
   useEffect(() => setPlay(true), [trackUri])
 
-  // if (!spotifyAccessToken) return null
+  if (!spotifyAccessToken) return null
   return (
     <div style={{
       position: 'fixed',
@@ -24,21 +24,24 @@ export default function Player({ trackUri, setLoginDialogOpen }) {
       bottom: 0,
       padding: '1vh 0', // Add padding to lift the player from the very edge of the screen
       backgroundColor: '#000',
-      opacity: 1,
-      boxShadow: '0 -2px 10px rgba(0,0,0,0.2)' // Optional: adds shadow for a "lifted" effect
+      opacity: 1 // Optional: adds shadow for a "lifted" effect
     }}>
-      <div className="animated-divider" style={{width: '100%', backgroundColor: '#17FF7F', height: '0.3vh', }}></div>
+      <div className="animated-divider" style={{width: '100%',marginTop: '-1.5vh', backgroundColor: '#17FF7F', height: '0.3vh', }}></div>
       <SpotifyPlayer
-        token={1}
+        key={spotifyAccessToken}
+        token={spotifyAccessToken}
         showSaveIcon
         callback={state => {
           if (!state.isPlaying) setPlay(false);
           if (state.error == "Authentication failed"){
-            getSpotifyAccessToken("test", setLoginDialogOpen)
-          } 
+            getSpotifyAccessToken("test", setLoginDialogOpen).then((token) => {
+              console.log(token)
+              setSpotifyAccessToken(token)
+            }
+            )}
         }}
         play={play}
-        uris={["spotify:track:3FcUIVEdJEqBZfv3BY0ZjN"]}
+        uris={[trackUri]}
         styles={{ width: '100%', height: '100%', bgColor: 'transparent', activeColor: '#fff', color: '#fff', loaderColor: '#fff',trackArtistColor: '#ccc',
         trackNameColor: '#fff', sliderColor: '#7FFFD4', sliderHandleColor: 'transparent' }} // Ensure the player fills the container
       />

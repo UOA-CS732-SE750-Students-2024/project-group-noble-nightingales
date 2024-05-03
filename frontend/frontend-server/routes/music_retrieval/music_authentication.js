@@ -53,8 +53,8 @@ router.get('/callback', async (req, res) => {
         const { refreshToken, accessToken } = response.data;
 
         const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
-        axios.post(saveTokenUrl, {params: {"userId" : "test", accessToken, refreshToken}});
-
+        const responseFromFromSavingData = await axios.post(saveTokenUrl,null, {params: {"userId" : "test", accessToken, refreshToken}});
+        console.log(responseFromFromSavingData.data);
         res.redirect('http://localhost:3000/explore');
 
     }catch(error){

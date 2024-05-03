@@ -16,7 +16,6 @@ const getTrackUri = (trackId) => {
 
 export default function Spotify() {
 
-  const {spotifyAccessToken, setSpotifyAccessToken} = useContext(AuthContext);
 
   const [currentTrack, setCurrentTrack] = useState("3FcUIVEdJEqBZfv3BY0ZjN")
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
