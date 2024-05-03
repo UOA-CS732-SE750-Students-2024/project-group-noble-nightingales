@@ -5,7 +5,7 @@ import Spotify from "./Pages/SpotifyPage/Spotify";
 import YouTube from "./Pages/YouTubePage/YouTube";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
-import SpotifyPlayer from "./Pages/SpotifyPlayPage/SpotifyPlayPage";
+import SpotifyPlay from "./Pages/SpotifyPlayPage/SpotifyPlayPage.jsx";
 import {
   BrowserRouter as Router,
   Route,
@@ -55,7 +55,7 @@ function App() {
             <>
               <Nav />
               <div style={{height: "20vh"}}></div>
-              <SpotifyPlayer accessToken={"BQB05Hcf-gcYL76Xgr6Xa37J8f56j27TX7fE1GxPwc1JwfWqaDC5OnFfHfc3drvVzNctr3lRK3nEF5N8udWNnR2b3lPN8zTyPiRfivU0kXquSap-HABB0e9YnKga5MAnzq3iDk0JNA0JOhJ6p9OPY4S9inlQQoO14OFq_TS44V6G7CVaYSfJTxr9q7R4Bp0302u6098KmFcfjhMW8CUSx2yjZWW0rG-Fn7TrYtUAmyohEg"} spotifyUri={"spotify:track:6cmm1LMvZdB5zsCwX5BjqE"}/>
+              <SpotifyPlay accessToken={"BQDBfAp_lRRny81Mp0APbhIvuXyzaSgjBTUWIGo0aRE98OqYOlqv4Vv7PeUN0x8zpdeS-7gaiG2wD2thIILuS46ZnEfBlnjQC13vVsQfuYta2FoAORbf3swjFhy7OwuN6vTp6jUKwGWJrojSa42JmfLI0Iic7ZstN-s_fZESwG0H2OEW4FDWd09SVzVg1jYWvZ6uQlxFCQLDUK4hlB_T-xF5ZsAWPVx1Mpq3Vb02RN_uTA"} spotifyUri={"spotify:track:6cmm1LMvZdB5zsCwX5BjqE"}/>
             </>
           }
         />

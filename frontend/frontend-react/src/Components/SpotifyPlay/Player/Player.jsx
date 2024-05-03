@@ -21,7 +21,7 @@ export default function Player({ accessToken, trackUri }) {
     }}>
       <div className="animated-divider" style={{width: '100%', backgroundColor: '#17FF7F', height: '0.3vh'}}></div>
       <SpotifyPlayer
-        token={accessToken}
+        token={"BQDBfAp_lRRny81Mp0APbhIvuXyzaSgjBTUWIGo0aRE98OqYOlqv4Vv7PeUN0x8zpdeS-7gaiG2wD2thIILuS46ZnEfBlnjQC13vVsQfuYta2FoAORbf3swjFhy7OwuN6vTp6jUKwGWJrojSa42JmfLI0Iic7ZstN-s_fZESwG0H2OEW4FDWd09SVzVg1jYWvZ6uQlxFCQLDUK4hlB_T-xF5ZsAWPVx1Mpq3Vb02RN_uTA"}
         showSaveIcon
         callback={state => {
           if (!state.isPlaying) setPlay(false);
