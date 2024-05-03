@@ -30,6 +30,12 @@ export default function Spotify() {
         <div>
           <RecommendationRow />
         </div>
+        <div className="RecommendationBall">
+          <BallStatic />
+        </div>
+        <div className="FilterBall">
+          <BallStatic />
+        </div>
         <div className="AIRecommendationContainer">
           <AIRecommendationRow />
           <BallStatic />
