@@ -2,29 +2,34 @@ import { useState, useEffect } from "react"
 import SpotifyPlayer from "react-spotify-web-playback"
 import "./PlayerCSS/Player.css"
 import { getSpotifyAccessToken } from "../../../Requests/Spotify/SpotifySignInRequest"
+import { AuthContext } from "../../../ApplicationContext"
+import { useContext } from "react"
 
-export default function Player({ accessToken, trackUri, setLoginDialogOpen }) {
+export default function Player({ trackUri, setLoginDialogOpen }) {
 
   const [play, setPlay] = useState(false)
+  
+  const [spotifyAccessToken, setSpotifyAccessToken] = useContext(AuthContext);
   
 
   useEffect(() => setPlay(true), [trackUri])
 
-  if (!accessToken) return null
+  // if (!spotifyAccessToken) return null
   return (
     <div style={{
       position: 'fixed',
       left: 0,
       right: 0,
+      zIndex: 1000,
       bottom: 0,
       padding: '1vh 0', // Add padding to lift the player from the very edge of the screen
-      backgroundColor: '',
-      opacity: 1, // Assuming a white background; adjust as needed
+      backgroundColor: '#000',
+      opacity: 1,
       boxShadow: '0 -2px 10px rgba(0,0,0,0.2)' // Optional: adds shadow for a "lifted" effect
     }}>
-      <div className="animated-divider" style={{width: '100%', backgroundColor: '#17FF7F', height: '0.3vh'}}></div>
+      <div className="animated-divider" style={{width: '100%', backgroundColor: '#17FF7F', height: '0.3vh', }}></div>
       <SpotifyPlayer
-        token={accessToken}
+        token={1}
         showSaveIcon
         callback={state => {
           if (!state.isPlaying) setPlay(false);

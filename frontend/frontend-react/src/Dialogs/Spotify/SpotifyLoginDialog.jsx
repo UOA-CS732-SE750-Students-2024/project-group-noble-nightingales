@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LoginIcon from '@mui/icons-material/Login';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { getSpotifySignInUrl } from '../../Requests/Spotify/SpotifySignInRequest';
 
 const darkTheme = createTheme({
   palette: {
@@ -26,7 +27,7 @@ function LoginDialog({ open, handleClose }) {
                 </DialogContent>
                 <DialogActions style={{ justifyContent: 'space-between', padding: '8px 24px' }}>
                     <Button
-                      onClick={() => window.location.href = '/login'}
+                      onClick={() => getSpotifySignInUrl()}
                       color="primary"
                       startIcon={<LoginIcon />}
                       style={{ color: '#90EE90' }}

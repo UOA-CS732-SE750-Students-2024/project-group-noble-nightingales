@@ -7,13 +7,16 @@ import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
 import SpotifyLoginDialog from "../../Dialogs/Spotify/SpotifyLoginDialog";
 import Player from "../../Components/SpotifyPlay/Player/Player";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../ApplicationContext";
 
 const getTrackUri = (trackId) => {
   return `spotify:track:${trackId}`
 }
 
 export default function Spotify() {
+
+  const {spotifyAccessToken, setSpotifyAccessToken} = useContext(AuthContext);
 
   const [currentTrack, setCurrentTrack] = useState("3FcUIVEdJEqBZfv3BY0ZjN")
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);

@@ -5,7 +5,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ChatIcon from "@mui/icons-material/Chat";
 import Helen from "../../../assets/helen.jpg";
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
 

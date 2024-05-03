@@ -5,9 +5,12 @@ export const AuthContext = React.createContext(undefined);
 
 function ApplicationContext() {
 
+    const [spotifyAccessToken, setSpotifyAccessToken] = React.useState("1");
+
+
     return (
         <>
-            <AuthContext.Provider value={undefined}>
+            <AuthContext.Provider value={{spotifyAccessToken, setSpotifyAccessToken}}>
                 <App />
             </AuthContext.Provider>
         </>
