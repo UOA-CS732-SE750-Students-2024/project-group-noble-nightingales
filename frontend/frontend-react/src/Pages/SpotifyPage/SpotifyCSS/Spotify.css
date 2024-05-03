@@ -25,3 +25,21 @@
     width: 60vh;
     height: 60vh;
 }
+
+.RecommendationBall .staticBall{
+    top: 125vh;
+    right: 81vw;
+    background-image: radial-gradient(circle at center, rgb(35, 197, 162) 0%, rgba(31, 143, 115, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    width: 40vh;
+    height: 40vh;
+    z-index: -20;
+}
+
+.FilterBall .staticBall{
+    top: 145vh;
+    right: 78vw;
+    background-image: radial-gradient(circle at center, rgb(188, 93, 191) 0%, rgba(110, 46, 118, 0.7) 50%, rgba(33, 10, 27, 0) 300%);;
+    width: 60vh;
+    z-index: -20;
+    height: 60vh;
+}

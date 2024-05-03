@@ -6,17 +6,23 @@ import axios from 'axios';
 const router = express.Router();
 
 router.get('/token', async (req, res) => {
-    const url = concatenateUrl(spotifyConfig, spotifyConfig.getAccessToken);
-    console.log(url);
 
-    const response = await axios.get(url, { params: req.query });
-
-    // backend server will return 404 if user has not logged in via Spotify
-    if(response.status === 404) {
-        res.status(401).send('Need to login via Spotify');
-    } else {
-        res.json(response.data);
+    try{
+        const url = concatenateUrl(spotifyConfig, spotifyConfig.getAccessToken);
+        console.log(url);
+    
+        const response = await axios.get(url, { params: req.query });
+        res.send(response.data);
+    } catch(error) {
+        if(error.response.status === 404) {
+            res.status(403).send('Need to login via Spotify');
+        } else {
+            console.error("Error during retrieving token:", error.response ? error.response.data : error.message);
+            res.status(500).send('Error during retrieving token');
+        }
+        
     }
+
 });
 
 router.get('/signin', async (req, res) => {
@@ -47,8 +53,8 @@ router.get('/callback', async (req, res) => {
         const { refreshToken, accessToken } = response.data;
 
         const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
-        // axios.post(saveTokenUrl, {params: {userId, accessToken, refreshToken}});
-
+        const responseFromFromSavingData = await axios.post(saveTokenUrl,null, {params: {"userId" : "test", accessToken, refreshToken}});
+        console.log(responseFromFromSavingData.data);
         res.redirect('http://localhost:3000/explore');
 
     }catch(error){
