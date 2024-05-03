@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import SpotifyPlayer from "react-spotify-web-playback"
 import "./PlayerCSS/Player.css"
+import { getSpotifyAccessToken } from "../../../Requests/Spotify/SpotifySignInRequest"
 
-export default function Player({ accessToken, trackUri }) {
+export default function Player({ accessToken, trackUri, setLoginDialogOpen }) {
+
   const [play, setPlay] = useState(false)
+  
 
   useEffect(() => setPlay(true), [trackUri])
 
@@ -21,10 +24,13 @@ export default function Player({ accessToken, trackUri }) {
     }}>
       <div className="animated-divider" style={{width: '100%', backgroundColor: '#17FF7F', height: '0.3vh'}}></div>
       <SpotifyPlayer
-        token={"BQDBfAp_lRRny81Mp0APbhIvuXyzaSgjBTUWIGo0aRE98OqYOlqv4Vv7PeUN0x8zpdeS-7gaiG2wD2thIILuS46ZnEfBlnjQC13vVsQfuYta2FoAORbf3swjFhy7OwuN6vTp6jUKwGWJrojSa42JmfLI0Iic7ZstN-s_fZESwG0H2OEW4FDWd09SVzVg1jYWvZ6uQlxFCQLDUK4hlB_T-xF5ZsAWPVx1Mpq3Vb02RN_uTA"}
+        token={accessToken}
         showSaveIcon
         callback={state => {
           if (!state.isPlaying) setPlay(false);
+          if (state.error == "Authentication failed"){
+            getSpotifyAccessToken("test", setLoginDialogOpen)
+          } 
         }}
         play={play}
         uris={["spotify:track:3FcUIVEdJEqBZfv3BY0ZjN"]}

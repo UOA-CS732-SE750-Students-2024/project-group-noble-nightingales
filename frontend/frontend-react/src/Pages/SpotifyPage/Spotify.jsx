@@ -5,8 +5,19 @@ import AIRecommendationRow from "../../Components/Spotify/AIRecommendationRow/AI
 import SpotifyRow from "../../Components/Spotify/SpotifyRow/SpotifyRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
+import SpotifyLoginDialog from "../../Dialogs/Spotify/SpotifyLoginDialog";
+import Player from "../../Components/SpotifyPlay/Player/Player";
+import { useState } from "react";
+
+const getTrackUri = (trackId) => {
+  return `spotify:track:${trackId}`
+}
 
 export default function Spotify() {
+
+  const [currentTrack, setCurrentTrack] = useState("3FcUIVEdJEqBZfv3BY0ZjN")
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+
   return (
     <div>
       <BallDynamic />
@@ -26,6 +37,8 @@ export default function Spotify() {
           <BallStatic />
         </div>
       </div>
+      <SpotifyLoginDialog open={loginDialogOpen} handleClose={() => setLoginDialogOpen(false)}/>
+      <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen}/>
     </div>
   );
 }
