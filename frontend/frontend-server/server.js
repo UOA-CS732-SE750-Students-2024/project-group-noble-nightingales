@@ -3,7 +3,7 @@ import express from 'express';
 import apiRouter from './routes/api.js';
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(cors());
 app.use(express.json());

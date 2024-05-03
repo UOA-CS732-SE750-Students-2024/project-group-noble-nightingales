@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import uoa.nightingales.spotifyservicenode.configs.AccessTokenConfiguration;
+import uoa.nightingales.spotifyservicenode.services.LyricsService;
 import uoa.nightingales.spotifyservicenode.services.SearchService;
 import uoa.nightingales.spotifyservicenode.services.SpotifyAuthenticationService;
 
@@ -21,6 +22,9 @@ class SpotifyServiceNodeApplicationTests {
 
     @Resource
     private SpotifyAuthenticationService spotifyAuthenticationService;
+
+    @Resource
+    private LyricsService lyricsService;
 
 
     @Test
@@ -62,6 +66,12 @@ class SpotifyServiceNodeApplicationTests {
                 System.out.println("error occurred");
             }
         }
+    }
+
+    @Test
+    void testLyrics(){
+        String lyrics = lyricsService.getLyrics("Ed Sheeran", "Perfect");
+        System.out.println(lyrics);
     }
 
 

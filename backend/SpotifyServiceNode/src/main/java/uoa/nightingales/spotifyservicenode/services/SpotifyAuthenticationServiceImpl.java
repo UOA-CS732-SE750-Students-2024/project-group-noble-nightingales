@@ -28,7 +28,7 @@ public class SpotifyAuthenticationServiceImpl implements SpotifyAuthenticationSe
 
     @Value("${spotify.client.secret}")
     private String clientSecret;
-    private static final String SCOPE = "streaming user-read-email user-read-private";
+    private static final String SCOPE = "streaming user-read-email user-read-private user-library-read user-read-playback-state user-modify-playback-state";
 
     private static final String TOKEN_URL = "https://accounts.spotify.com/api/token";
 

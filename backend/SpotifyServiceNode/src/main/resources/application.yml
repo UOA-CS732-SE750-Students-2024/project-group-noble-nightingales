@@ -12,7 +12,6 @@ spotify:
   redirect:
     uri: http://localhost:30051/api/auth/callback
 
-
 cache:
   primary: primary_cache
   secondary: secondary_cache
