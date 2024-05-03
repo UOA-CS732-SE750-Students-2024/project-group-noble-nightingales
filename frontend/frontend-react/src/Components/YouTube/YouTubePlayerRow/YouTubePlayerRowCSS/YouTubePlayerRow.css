@@ -2,14 +2,14 @@
     margin-top: 2vh;
     display: flex;
     z-index: 2;
-    padding: 6vh;
-    padding-top: 8vh;
+    padding-left: 6vh;
+    padding-top: 10vh;
     height: 80vh;
     overflow: hidden;
 }
 
 .YouTubePlayerRow-container .left{
-    flex: 7;
+    flex: 6;
     display: flex;
     flex-direction: column;
 }
@@ -20,9 +20,10 @@
 }
 
 .YouTubePlayerRow-container .left .videoInfo-container{
-    background-color: rgb(32, 32, 32);
+    background-color: rgb(24, 24, 24);
     width: 60.3vw;
     height: 18vh;
+    border-radius: 0 0 2vh 2vh;
 }
 
 .YouTubePlayerRow-container .left .videoInfo-container .videoInfoIcon{
@@ -54,7 +55,7 @@
 
 .YouTubePlayerRow-container .left .videoInfo-container .authorInfo-container .videoDescription{
     display: flex;
-    background-color: rgb(61, 59, 59);
+    background-color: rgb(37, 37, 37);
     width: 42vw;
     padding-left: 0.7vw;
     padding-top: 0.4vh;
@@ -74,37 +75,41 @@
 }
 
 .YouTubePlayerRow-container .right{
-    flex: 3;
+    flex: 4;
     margin-top: -3.5vh;
+    margin-left: 0.5vw;
 }
 
 .YouTubePlayerRow-container .videoList{
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    margin-left: -2.9vw
+
 }
 
 .YouTubePlayerRow-container .videoList .videoListElement{
     display: flex;
-    padding-bottom: 2vw; /* element gap*/
+    width: 40vw;
+    padding-right: 0vh;
+    padding-bottom: 3vh; 
 }
 
 .YouTubePlayerRow-container .videoList .videoListElement .videoImage{
     display: flex;
     align-items: center;
-    width: 14vw; /* image width */
+    width: 12vw; /* image width */
     transition: width 0.5s ease-in-out; 
 }
 
 .YouTubePlayerRow-container .videoList .videoListElement .videoImage:hover {
-    width: 16vw;
+    width: 13vw;
 }
 
 .YouTubePlayerRow-container .videoList .videoInfo-container{
     display: flex;
-    background-color: rgb(59, 57, 57);
+    background-color: rgba(31, 31, 31, 0.849);
     border-radius: 10px;
+    width: 28vw;
     padding: 0.5vw;
 }
 

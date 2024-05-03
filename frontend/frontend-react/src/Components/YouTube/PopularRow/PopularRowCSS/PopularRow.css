@@ -66,15 +66,25 @@
     align-items: self-start;
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
+@keyframes rotate-and-float {
+    0% {
+        transform: rotate(0deg) translate(0, 0);
     }
-    to {
-        transform: rotate(360deg);
+    25% {
+        transform: rotate(90deg) translate(18vh, 2vw);
+    }
+    50% {
+        transform: rotate(180deg) translate(-3vh, -2vw);
+    }
+    75% {
+        transform: rotate(270deg) translate(-3vh, 2vw);
+    }
+    100% {
+        transform: rotate(360deg) translate(0, 0);
     }
 }
-
 .rotate {
-    animation: rotate 20s linear infinite; /* Adjust time as needed */
+
+    animation: rotate-and-float 20s linear infinite;
+
 }

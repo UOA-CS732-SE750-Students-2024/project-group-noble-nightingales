@@ -74,8 +74,8 @@ export default function YouTubePlayerRow() {
         />
         <div className="videoInfo-container">
           <h3>Video name</h3>
-          <h5>
-            <RemoveRedEyeIcon className="videoInfoIcon" />
+          <h5 style={{marginTop: "-1.5vh"}}>
+            <RemoveRedEyeIcon className="videoInfoIcon"/>
             11,234
             <ChatIcon className="videoInfoIcon" style={{ marginLeft: "2vw" }} />
             11,234
@@ -115,7 +115,7 @@ export default function YouTubePlayerRow() {
             <NavLink
               to="/youtube/player"
               style={{
-                marginLeft: "45vw",
+                marginLeft: "50.5vw",
                 marginTop: "-2vh",
                 textDecoration: "none",
                 color: "gray",
@@ -128,14 +128,14 @@ export default function YouTubePlayerRow() {
         </div>
       </div>
       <div className="right">
-        <h2>
+        <h2 style={{marginLeft: "2.5vw"}}>
           Related Videos
           <img
             src={Star}
             alt="Popular video star"
             style={{
-              verticalAlign: "-1.8vh",
-              width: "3vw",
+              verticalAlign: "-1.0vh",
+              width: "2vw",
               marginLeft: "1vw",
             }}
           />
