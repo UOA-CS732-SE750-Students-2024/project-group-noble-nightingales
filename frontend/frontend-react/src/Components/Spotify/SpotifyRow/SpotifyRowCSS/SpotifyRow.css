@@ -1,8 +1,9 @@
 .SpotifyRow-container{
     display: flex;
     flex-direction: column;
-    padding: 6.33vh ;
-    padding-top: 3.6vh;
+    padding: 9vh ;
+    padding-top: 3vh;
+    margin-bottom: 3rem;
     height: 46vh;
     position: relative;
     z-index: 2;

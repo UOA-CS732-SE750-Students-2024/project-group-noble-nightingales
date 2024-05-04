@@ -31,7 +31,7 @@ export default function SpotifyRow() {
     },
     {
       imageURL: SpotifyCover,
-      name: "义勇军进行曲5",
+      name: "义勇军进行曲6",
       author: "Peter Wang",
     },
   ];
@@ -42,7 +42,7 @@ export default function SpotifyRow() {
       <ul className="musicList">
         {musics.map((music) => (
           <li className="musicListElement" key={music.name}>
-            <NavLink to="/youtube">
+            <NavLink to="/spotify">
               <img
                 className="musicImage"
                 src={music.imageURL}
