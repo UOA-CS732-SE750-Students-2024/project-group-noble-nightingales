@@ -46,10 +46,13 @@ function Nextstep() {
   const closeNextstep = () => {
     navigate(-1); // 导航回上一个页面
   };
+  const stopPropagation = (event) => {
+    event.stopPropagation(); // 阻止事件冒泡
+  };
 
   return (
     <div className={styles.overlay} onClick={closeNextstep}>
-      <div className={styles.container}>
+      <div className={styles.container} onClick={stopPropagation}>
         <img src={DeviceMobile} alt="Mobile Icon" className={styles.icon} />
         <h1 className={styles.title}>Two Step Verification</h1>
         <p className={styles.subtitle}>
