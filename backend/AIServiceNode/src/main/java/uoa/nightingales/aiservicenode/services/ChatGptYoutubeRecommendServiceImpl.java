@@ -106,7 +106,7 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
         log.info("Get Relevant category based on userInput");
         // Combine userInput with the relevant prompt and all categories
         String message = String.format("%s %s %s", allCategories, userInput, notRelevantPrompt);
-            // Send the request to OpenAI's ChatGPT and get the response
+        // Send the request to OpenAI's ChatGPT and get the response
         String response = openAiChatClient.call(message);
         // Split 'response' into an array of strings using comma as the separator
         String[] responseArray = response.split(",");
