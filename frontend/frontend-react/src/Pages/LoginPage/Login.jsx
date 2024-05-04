@@ -12,13 +12,18 @@ export default function Login() {
     event.preventDefault();
     console.log("Submitted with:", { username, password, rememberMe });
   };
-  // 关闭登录模态框函数
+
   const closeLogin = () => {
     navigate(-1); // 导航回上一个页面
   };
+
+  const stopPropagation = (event) => {
+    event.stopPropagation(); // 阻止事件冒泡
+  };
+
   return (
     <div className={styles.overlay} onClick={closeLogin}>
-      <div className={styles.container}>
+      <div className={styles.container} onClick={stopPropagation}>
         <form onSubmit={handleSubmit}>
           <div className={styles.title}>Login to UniMedia</div>
           <div className={styles.inputContainer}>

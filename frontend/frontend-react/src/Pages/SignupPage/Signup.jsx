@@ -30,9 +30,13 @@ function Signup() {
   const closeLogin = () => {
     navigate(-1); // 导航回上一个页面
   };
+
+  const stopPropagation = (event) => {
+    event.stopPropagation(); // 阻止事件冒泡
+  };
   return (
     <div className={commonStyles.overlay} onClick={closeLogin}>
-      <div className={commonStyles.container}>
+      <div className={commonStyles.container}onClick={stopPropagation}>
         <h1 className={commonStyles.title}>Create Your Account</h1>
         <form onSubmit={handleSubmit}>
           <div className={commonStyles.inputContainer}>
