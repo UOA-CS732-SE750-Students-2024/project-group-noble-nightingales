@@ -3,7 +3,7 @@ spring:
     name: MongoDBServiceNode
   data:
     mongodb:
-      uri: mongodb://vhaegksahJJkaLLa:vsdoB8aef%5Ehfa%25%25av_h8@119.28.99.149:27017/UniMedia?authSource=admin&authMechanism=SCRAM-SHA-1
+      uri: ${MONGODB_URL}
 
   cache:
     type: caffeine

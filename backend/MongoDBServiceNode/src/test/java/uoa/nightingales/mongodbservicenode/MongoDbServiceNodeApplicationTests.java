@@ -4,9 +4,13 @@ import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import uoa.nightingales.mongodbservicenode.exceptions.DuplicateException;
 import uoa.nightingales.mongodbservicenode.pojos.ChannelData;
+import uoa.nightingales.mongodbservicenode.pojos.User;
 import uoa.nightingales.mongodbservicenode.pojos.YoutubeCommentData;
 import uoa.nightingales.mongodbservicenode.pojos.YoutubeHistoryData;
+import uoa.nightingales.mongodbservicenode.repositories.UserRepository;
+import uoa.nightingales.mongodbservicenode.services.UserService;
 import uoa.nightingales.mongodbservicenode.services.YoutubeCommentDataService;
 import uoa.nightingales.mongodbservicenode.services.YoutubeHistoryDataService;
 
@@ -14,6 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
 @RequiredArgsConstructor
@@ -23,7 +29,13 @@ class MongoDbServiceNodeApplicationTests {
     private YoutubeHistoryDataService youtubeHistoryDataService;
 
     @Resource
+    private UserRepository userRepository;
+
+    @Resource
     private YoutubeCommentDataService youtubeCommentDataService;
+
+    @Resource
+    private UserService userService;
 
     @Test
     void contextLoads() {
@@ -49,24 +61,43 @@ class MongoDbServiceNodeApplicationTests {
     }
 
     @Test
-    public void testYoutubeCommentService(){
-        YoutubeCommentData data = new YoutubeCommentData();
-        List<String> comments = new ArrayList<>();
-        comments.add("nihao");
-        comments.add("hello");
-        data.setComments(comments);
+    public void testUserCollection() {
+        userRepository.deleteAll();
+        User user = new User();
+        user.setUsername("James777G");
+        user.setEmail("jamesgong0719@gmail.com");
+        user.setPassword("ghx020719");
+        user.setDateOfBirth("2002/07/19");
+        userRepository.save(user);
+    }
 
-        data.setUserId("test-only");
-
-        data.setVideoId("test-only");
-        YoutubeCommentData data1 = youtubeCommentDataService.saveData(data);
-        System.out.println(data1);
+    @Test
+    public void testReadFromUserCollection() {
+        System.out.println(userRepository.findByEmail("jamesgong0719@gmail.com"));
+        System.out.println(userRepository.findByUsername("James777G"));
     }
 
     @Test
     public void testYoutubeSearchService(){
         List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test-only");
         System.out.println(commentsByVideoId);
+    }
+
+    @Test
+    public void testUserService(){
+        System.out.println(userService.getUserByEmail("jamesgong0719@gmail.com"));
+        User user = new User();
+        user.setUsername("James777G");
+        user.setEmail("jamesgong0719@gmail.com");
+        user.setPassword("ghx020719");
+        user.setDateOfBirth("2002/07/19");
+        try{
+            userService.saveData(user);
+            fail();
+        } catch (DuplicateException e) {
+            System.out.println("passed");
+        }
+
     }
 
 }
