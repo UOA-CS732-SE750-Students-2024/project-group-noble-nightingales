@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final CacheManager cacheManager;
+    private final EncodingService encodingService;
 
     private static final String COLLECTION_NAME = "user_data";
 
@@ -29,8 +30,9 @@ public class UserServiceImpl implements UserService {
             log.info("User already exists");
             throw new DuplicateException("user already exists!");
         }
+        user.setPassword(encodingService.encode(user.getPassword()));
         log.info("Saving user: " + user + " in collection: " + COLLECTION_NAME);
-        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(user.getId(), user);
+        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(user.getUsername(), user);
         log.info("Setting up cache for " + COLLECTION_NAME + " with ID: " + user.getId() + " and user: " + user);
         return userRepository.save(user);
     }
@@ -47,6 +49,16 @@ public class UserServiceImpl implements UserService {
         log.info("setting up cache for " + COLLECTION_NAME + " with username: " + userStored.getUsername());
         Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(userStored.getUsername(), userStored);
         return userRepository.save(userStored);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public boolean isUserInDatabase(String username, String password) {
+        User user = getUserByUsername(username);
+        if(user == null) {
+            return false;
+        }
+        return encodingService.match(password, user.getPassword());
     }
 
     @Override

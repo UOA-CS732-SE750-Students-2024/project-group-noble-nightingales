@@ -61,14 +61,14 @@ class MongoDbServiceNodeApplicationTests {
     }
 
     @Test
-    public void testUserCollection() {
+    public void testUserCollection() throws DuplicateException {
         userRepository.deleteAll();
         User user = new User();
         user.setUsername("James777G");
         user.setEmail("jamesgong0719@gmail.com");
         user.setPassword("ghx020719");
         user.setDateOfBirth("2002/07/19");
-        userRepository.save(user);
+        userService.saveData(user);
     }
 
     @Test
@@ -81,6 +81,12 @@ class MongoDbServiceNodeApplicationTests {
     public void testYoutubeSearchService(){
         List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test-only");
         System.out.println(commentsByVideoId);
+    }
+
+    @Test
+    public void testLogin(){
+        System.out.println(userService.isUserInDatabase("James777G", "ghx020719"));
+        System.out.println(userService.isUserInDatabase("James777G", "ghx020719a"));
     }
 
     @Test
