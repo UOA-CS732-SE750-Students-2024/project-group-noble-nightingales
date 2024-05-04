@@ -8,10 +8,9 @@ const router = express.Router();
 router.get('/default', async (req, res) => {
     const url = concatenateUrl(youtubeConfig, youtubeConfig.getPopularVideos);
     console.log(url);
-
     try {
         const params = {
-            maxResults: 6
+            maxResults: 8
         };
         const response = await axios.get(url, { params });
 

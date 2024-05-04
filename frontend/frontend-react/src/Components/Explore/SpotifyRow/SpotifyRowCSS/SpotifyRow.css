@@ -47,6 +47,7 @@
     align-items: center;
     width: 12vw;
     transition: width 0.5s ease-in-out; 
+    border-radius: 1rem;
 }
 
 .SpotifyRow-container .musicList .musicListElement .musicImage:hover {
@@ -58,8 +59,11 @@
     margin-top: 1vh;
 }
 
-.SpotifyRow-container .musicList .musicInfo{
+.SpotifyRow-container .musicList .musicInfo-container .musicInfo{
     display: flex;
     flex-direction: column;
-    align-items: self-start;
+    width:100%;
+    margin-left: 4rem;
+    
+
 }

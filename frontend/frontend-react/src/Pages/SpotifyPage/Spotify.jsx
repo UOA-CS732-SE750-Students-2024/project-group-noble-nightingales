@@ -7,17 +7,19 @@ import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
 import SpotifyLoginDialog from "../../Dialogs/Spotify/SpotifyLoginDialog";
 import Player from "../../Components/SpotifyPlay/Player/Player";
-import { useState, useContext } from "react";
-import { AuthContext } from "../../ApplicationContext";
-
+import { useState} from "react";
+import { useSearchParams } from 'react-router-dom';
 const getTrackUri = (trackId) => {
   return `spotify:track:${trackId}`
 }
 
 export default function Spotify() {
-
-
-  const [currentTrack, setCurrentTrack] = useState("3FcUIVEdJEqBZfv3BY0ZjN")
+  const [searchParams] = useSearchParams();
+  let trackId = searchParams.get('trackId');
+  if(trackId==null){
+    trackId="3FcUIVEdJEqBZfv3BY0ZjN";
+  }
+  const [currentTrack, setCurrentTrack] = useState(trackId)
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 
   return (
@@ -28,7 +30,7 @@ export default function Spotify() {
           <SearchTopRow />
         </div>
         <div>
-          <RecommendationRow />
+          <RecommendationRow setCurrentTrack={setCurrentTrack}/>
         </div>
         <div className="RecommendationBall">
           <BallStatic />

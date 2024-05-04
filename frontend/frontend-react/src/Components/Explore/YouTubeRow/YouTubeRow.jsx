@@ -1,52 +1,42 @@
 import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import YouTubeCover from "../../../assets/YouTubeCover.png";
 import { NavLink } from "react-router-dom";
-
+import { useEffect,useState } from "react";
+import {getYouTubePopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 export default function YouTubeRow() {
-  // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
-  const dummyTopVideos = [
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft4",
-      author: "Peter Wang",
-    },
-  ];
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+        const array = await getYouTubePopular(); 
+        setVideos(array);  
+        console.log(array)
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
 
   // Function to render the video list
   const renderVideoList = (videos) => {
     return (
-      <ul className="videoList">
+      <ul className="videoListt">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.name}>
-            <NavLink to="/youtube/player">
+          <li className="videoListElement" key={video.videoId}>
+              <NavLink  to={`/youtube/player?videoUrl=${video.videoUrl}`}>
               <img
-                className="videoImage"
-                src={video.imageURL}
-                alt={video.name}
+                className="videoImagee"
+                src={video.coverImgUrl}
+                alt={video.title}
               />
             </NavLink>
             <div className="videoInfo-container">
-              <PlayArrowIcon className="playArrow" />
+              <PlayArrowIcon className="playArroww" />
               <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
+                <span style={{ fontSize: "0.9rem", display:"flex", width:"12rem" }}>{video.title}</span>
                 <span style={{ fontSize: "1.6vh", color: "gray" }}>
-                  Made By {video.author}
+                  Made By {video.channel.channelName}
                 </span>
               </div>
             </div>
@@ -62,8 +52,8 @@ export default function YouTubeRow() {
       <NavLink className="navigationAllLink" to="/youtube">
         See All
       </NavLink>
-      {renderVideoList(dummyTopVideos)}
-      {renderVideoList(dummyTopVideos)}
+      {renderVideoList(videos)}
+
     </div>
   );
 }

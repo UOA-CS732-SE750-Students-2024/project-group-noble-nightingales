@@ -1,59 +1,41 @@
 import "./SpotifyRowCSS/SpotifyRow.css";
-import SpotifyCover from "../../../assets/SpotifyCover.png";
+import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 import { NavLink } from "react-router-dom";
+import { useEffect,useState } from "react";
 
 export default function SpotifyRow() {
-  const dummyMusics = [
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲4",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲5",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲5",
-      author: "Peter Wang",
-    },
-  ];
+  const [tracks, setTracks] = useState([]);
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+
+        const array = await getSpotifyPopular(); 
+        setTracks(array);  
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
 
   // Function to render the music list
   const renderMusicList = (musics) => {
     return (
       <ul className="musicList">
         {musics.map((music) => (
-          <li className="musicListElement" key={music.name}>
-            <NavLink to="/youtube">
+          <li className="musicListElement" key={music.trackId}>
+            <NavLink  to={`/spotify?trackId=${music.trackId}`}>
               <img
                 className="musicImage"
-                src={music.imageURL}
-                alt={music.name}
+                src={music.coverImageUrl}
+                alt={music.trackTitle}
               />
             </NavLink>
             <div className="musicInfo-container">
               <div className="musicInfo">
-                <span style={{ fontSize: "1.9vh" }}>{music.name}</span>
+                <span style={{ fontSize: "1.9vh" }}>{music.trackTitle}</span>
                 <span style={{ fontSize: "1.6vh", color: "gray" }}>
-                  Made By {music.author}
+                  Made By {music.artistName}
                 </span>
               </div>
             </div>
@@ -69,7 +51,7 @@ export default function SpotifyRow() {
       <NavLink className="navigationAllLink" to="/spotify">
         See All
       </NavLink>
-      {renderMusicList(dummyMusics)}
+      {renderMusicList(tracks)}
     </div>
   );
 }

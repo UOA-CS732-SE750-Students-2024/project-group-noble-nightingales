@@ -37,11 +37,14 @@
     display: flex;
     position: relative;
     margin-top: -12.6vh;
-    height: 12vh;
-    width: 16.3vw;
-    border-radius: 1.9vh;
+    /* height: 12vh;
+    width: 16.3vw; */
+    height: 7.2rem;
+    width: 100%;
+    /* border-radius: 1.9vh; */
     background-color: rgba(23, 23, 23, 0.5);
     backdrop-filter: blur(8px);
+
 }
 
 .RecommendationRow-container .cover .coverImage{
@@ -49,8 +52,8 @@
     width: 4.5vh;
     background-color: white;
     border-radius: 50%;
-    margin-top: -11vh;
-    margin-left: 11vw;
+    margin-top: -7rem;
+    margin-left: 14rem;
     display: flex;
     justify-content: center;
     align-items: center;

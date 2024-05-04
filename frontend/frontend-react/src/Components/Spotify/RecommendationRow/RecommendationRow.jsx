@@ -1,52 +1,39 @@
 import "./RecommendationRowCSS/RecommendationRow.css";
-import SpotifyCover from "../../../assets/SpotifyCover.png";
 import triangle from "../../../assets/triangle2.png";
 import { NavLink } from "react-router-dom";
-
+import { useEffect,useState } from "react";
+import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
 
-export default function RecommendationRow() {
-  const dummyMusics = [
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲4",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲5",
-      author: "Peter Wang",
-    },
-  ];
+export default function RecommendationRow({setCurrentTrack}) {
+  const [tracks, setTracks] = useState([]);
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+
+        const array = await getSpotifyPopular(); 
+        setTracks(array);  
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
+
 
   // Function to render the music list
   const renderMusicList = (musics) => {
     return (
       <ul className="musicList">
         {musics.map((music) => (
-          <li className="musicListElement" key={music.name}>
-            <NavLink to="/youtube">
+          <li className="musicListElement" key={music.trackId}>
+            <NavLink to={`/spotify?trackId=${music.trackId}`}>
               <img
                 className="musicImage"
-                src={music.imageURL}
-                alt={music.name}
+                src={music.coverImageUrl}
+                alt={music.trackTitle}
               />
             </NavLink>
 
@@ -62,7 +49,7 @@ export default function RecommendationRow() {
                   New For You
                 </span>
                 <span style={{ fontSize: "1.5vh", marginTop: "0.8vh" }}>
-                  {music.name}
+                  {music.trackTitle}
                 </span>
                 <span
                   style={{
@@ -71,10 +58,10 @@ export default function RecommendationRow() {
                     opacity: "0.6",
                   }}
                 >
-                  {music.author}
+                  {music.artistName}
                 </span>
-                <div className="coverImage">
-                  <img src={triangle} alt="cover" style={{ width: "2vh" }} />
+                <div className="coverImage" onClick={() => setCurrentTrack(music.trackId)}>
+                  <img src={triangle} alt="cover" style={{ width: "2vh" }}  />
                 </div>
               </div>
             </div>
@@ -87,7 +74,7 @@ export default function RecommendationRow() {
   return (
     <div className="RecommendationRow-container">
       <h2>You May Like</h2>
-      {renderMusicList(dummyMusics)}
+      {renderMusicList(tracks)}
     </div>
   );
 }
