@@ -8,15 +8,15 @@ const router = express.Router();
 router.get('/default', async (req, res) => {
     const url = concatenateUrl(spotifyConfig, spotifyConfig.orderTracksByPopularity);
     console.log(url);
-
+    const queryParameter = req.query.queryParameter;
     try {
         const params = {
-            query: "a",
+            query: queryParameter,
             maxResults: 6
         };
         const response = await axios.get(url, { params });
 
-        console.log(response.data);
+        console.log(response);
         res.json(response.data);
 
     } catch (error) {
