@@ -86,9 +86,8 @@ const comments = [
   // 更多评论
 ];
 
-export default function YouTubePlayerRow() {
+export default function YouTubePlayerRow({videoUrl}) {
   const [showComments, setShowComments] = useState(false);
-
   const toggleComments = () => {
     setShowComments(!showComments);
   };
@@ -154,7 +153,7 @@ export default function YouTubePlayerRow() {
     <div className="YouTubePlayerRow-container">
       <div className="left">
         <iframe
-          src="https://www.youtube.com/embed/9hb_0TZ_MVI?rel=0"
+          src={videoUrl}
           allowFullScreen
         />
         <div className="videoInfo-container">

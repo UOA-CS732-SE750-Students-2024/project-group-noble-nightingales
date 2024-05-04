@@ -21,4 +21,13 @@ export const getSpotifyPopular = async () => {
         console.error("Error retrieving data:", error);
     }
 }
+export const getYouTubePopular = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/video/default`);
+        console.log(response.data.videoList)
+        return response.data.videoList;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
 
