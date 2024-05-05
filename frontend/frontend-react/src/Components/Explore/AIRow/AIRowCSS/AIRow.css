@@ -116,24 +116,24 @@
 .image-container .chart-image {
     /* Make any specific adjustments for this image */
     z-index: 4;
-    padding-top:18vh ;
+    padding-top:19vh ;
 }
 
 .image-container .blue-chart-image{
     z-index: 4;
-    padding-bottom: 4vh;
+    padding-bottom: 1.5vh;
 }
 
 .image-container .orange-chart-image{
     z-index: 4;
     padding-left: 1.4vw;
-    padding-bottom: 2.5vh;
+    margin-top: 0.25vh;
 }
 
 .image-container .indicator-image {
 /* Make any specific adjustments for this image */
     z-index: 3;
-    padding-top:18vh ;
+    padding-top:19vh ;
 }
 
 .leftAI .ContentRecommandation{

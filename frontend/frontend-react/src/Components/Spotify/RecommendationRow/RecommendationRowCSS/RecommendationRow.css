@@ -1,7 +1,7 @@
 .RecommendationRow-container{
     z-index: 2;
-    padding-left: 6vh;
-    padding-right: 6vh;
+    /* padding-left: 6vh;
+    padding-right: 6vh; */
     margin-top: -5vh;
 }
 
@@ -12,18 +12,38 @@
     margin-left: -2.5vw;
     margin-top: 3vh;
     margin-bottom: 3vh;
+    padding-left: 6vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+    &::-webkit-scrollbar {
+        height: 0.5vh;  /* Adjust the height of the scrollbar using viewport height */
+        background-color: #333;  /* dark background for the scrollbar track */
+    }
+
+    /* Style the draggable part of the scrollbar (thumb) */
+    &::-webkit-scrollbar-thumb {
+        background-color: #48bd25;  /* light green color for the scrollbar thumb */
+        border-radius: 0.5vh;  /* rounded corners for the scrollbar using viewport height */
+        border: 0.1vw solid #444;  /* dark border around the scrollbar thumb using viewport width */
+    }
+
+    /* Style the part of the scrollbar track (part not being dragged over) */
+    &::-webkit-scrollbar-track {
+        background-color: #444;  /* slightly lighter dark shade for the track */
+    }
 }
 
 .RecommendationRow-container .musicListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 3.0vw;
+    margin-right: 3vw;
 }
 
 .RecommendationRow-container .musicImage{
     height: 35vh;
-    width: 16.3vw;
+    width: auto;
 }
   
 .RecommendationRow-container .musicInfo{

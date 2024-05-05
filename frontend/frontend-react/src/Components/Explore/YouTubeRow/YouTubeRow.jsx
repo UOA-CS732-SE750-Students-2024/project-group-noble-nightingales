@@ -35,7 +35,7 @@ export default function YouTubeRow() {
               <PlayArrowIcon className="playArroww" />
               <div className="videoInfo">
                 <span style={{ fontSize: "0.9rem", display:"flex", width:"12rem" }}>{video.title}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                <span style={{ fontSize: "1.6vh", color: "gray", paddingBottom: "2vh" }}>
                   Made By {video.channel.channelName}
                 </span>
               </div>
