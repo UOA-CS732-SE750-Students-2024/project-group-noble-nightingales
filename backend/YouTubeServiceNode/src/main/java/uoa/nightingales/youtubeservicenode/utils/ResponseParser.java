@@ -20,7 +20,7 @@ public class ResponseParser {
             video.setVideoId(searchResult.getId().getVideoId());
             video.setTitle(searchResult.getSnippet().getTitle());
             video.setDescription(searchResult.getSnippet().getDescription());
-            video.setCoverImgUrl(searchResult.getSnippet().getThumbnails().getDefault().getUrl());
+            video.setCoverImgUrl(searchResult.getSnippet().getThumbnails().getMaxres().getUrl());
             video.setPublishedAt(searchResult.getSnippet().getPublishedAt().toStringRfc3339());
             video.setChannel(new Channel(searchResult.getSnippet().getChannelTitle(), searchResult.getSnippet().getChannelId()));
             video.setVideoUrl("https://www.youtube.com/embed/" + video.getVideoId());
@@ -38,7 +38,7 @@ public class ResponseParser {
             videoData.setVideoId(video.getId());
             videoData.setTitle(video.getSnippet().getTitle());
             videoData.setDescription(video.getSnippet().getDescription());
-            videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getDefault().getUrl());
+            videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getMaxres().getUrl());
             videoData.setPublishedAt(video.getSnippet().getPublishedAt().toStringRfc3339());
             videoData.setChannel(new Channel(video.getSnippet().getChannelTitle(), video.getSnippet().getChannelId()));
             videoData.setVideoUrl("https://www.youtube.com/embed/" + videoData.getVideoId());

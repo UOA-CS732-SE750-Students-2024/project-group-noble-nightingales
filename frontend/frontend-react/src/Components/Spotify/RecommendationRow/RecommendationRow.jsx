@@ -73,7 +73,7 @@ export default function RecommendationRow({setCurrentTrack}) {
 
   return (
     <div className="RecommendationRow-container">
-      <h2>You May Like</h2>
+      <h2 style={{marginLeft: '3vw'}}>You May Like</h2>
       {renderMusicList(tracks)}
     </div>
   );

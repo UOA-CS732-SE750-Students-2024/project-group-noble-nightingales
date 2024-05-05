@@ -5,6 +5,6 @@ spring:
 
 youtube:
   api:
-    key: AIzaSyCHV9tc22-LSJDBjWdDdGUSB2teer6fp3g
+    key: ${YOUTUBE_API_KEY}
 server:
   port: 30050
