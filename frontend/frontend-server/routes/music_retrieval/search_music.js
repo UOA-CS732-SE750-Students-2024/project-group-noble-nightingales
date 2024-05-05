@@ -61,30 +61,46 @@ router.post('/click', async (req, res) => {
 
 router.get("/recommendation", async (req, res) => {
     const mongoDBUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.getCreatorsByUserId);
+    const spotifySearchUrl = concatenateUrl(spotifyConfig, spotifyConfig.searchTracks);
 
-    axios.get(mongoDBUrl, { params: { userId: "test" } })
-        .then(response => {
-            console.log(response.data);
-            console.log("Original data:", response.data);
-        
-        // Check if the data exists and is an array
-        if (response.data && Array.isArray(response.data)) {
-            // Ensure the list has at least 3 entries
-            while (response.data.length < 3) {
-                response.data.push("Taylor Swift");
+    try {
+        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: "test" } });
+        let creators = creatorsResponse.data;
+
+        if (!creators || !Array.isArray(creators) || creators.length === 0) {
+            creators = ["Taylor Swift", "Taylor Swift", "Taylor Swift"];
+        } else if (creators.length < 3) {
+            while (creators.length < 3) {
+                creators.push("Taylor Swift");
             }
-        } else {
-            // Initialize with Taylor Swift if no valid array exists
-            response.data = ["Taylor Swift", "Taylor Swift", "Taylor Swift"];
         }
 
-        console.log("Modified data:", response.data);
-        res.json(response.data.slice(0, 3));
-    })
-    .catch(error => {
-        console.error("Error during retrieving creator:", error.response ? error.response.data : error.message);
-    });
-}); 
+        // Remove duplicates and ensure only the first 3 are considered
+        const uniqueCreators = [...new Set(creators.slice(0, 3))];
+
+        // Store all tracks from each artist
+        let allTracks = [];
+
+        // Search for tracks for each creator
+        await Promise.all(uniqueCreators.map(async (creator) => {
+            const response = await axios.get(spotifySearchUrl, { 
+                params: { query: creator, maxResults: 50 } // Adjust maxResults as needed
+            });
+            allTracks = [...allTracks, ...response.data.data];
+        }));
+
+        // Shuffle array and pick the first 10 unique tracks
+        const shuffledTracks = allTracks.sort(() => 0.5 - Math.random());
+        const selectedTracks = shuffledTracks.slice(0, 10);
+
+        console.log("Selected tracks:", selectedTracks);
+        res.json(selectedTracks);
+    } catch (error) {
+        console.error("Error during retrieving or processing tracks:", error.response ? error.response.data : error.message);
+        res.status(500).send('Error during retrieving or processing tracks');
+    }
+});
+
 
 // add user input text to request body with name userInput
 router.post('/filter', async (req, res) => {
