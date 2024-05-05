@@ -75,3 +75,12 @@ export const getSpotifyAiSearchResult = async (input) => {
     }
 }
 
+export const clickOnMusic = async (authorName) => {
+    try {
+        axios.post(`${baseUrl}/api/music/click`, null, {
+            params: { creatorName: authorName }
+        });
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}

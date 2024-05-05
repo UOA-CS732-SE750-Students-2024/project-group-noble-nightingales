@@ -1,6 +1,7 @@
 import styles from"./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
+import { clickOnMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 
 export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
   const dummyMusics = [
@@ -34,6 +35,7 @@ export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
                 alt={music.trackTitle}
                 onClick={() => {
                   setCurrentTrack(music.trackId);
+                  clickOnMusic(music.artistName[0]);
                 }}
               />
             </NavLink>

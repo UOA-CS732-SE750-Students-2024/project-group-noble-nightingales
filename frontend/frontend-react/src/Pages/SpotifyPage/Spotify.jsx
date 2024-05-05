@@ -26,6 +26,7 @@ export default function Spotify() {
   const [currentTrack, setCurrentTrack] = useState(trackId)
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const [trackResult, setTrackResult] = useState([]);
+  const [currentTrackAuthor, setCurrentTrackAuthor] = useState("");
   useEffect(() => {
     async function fetchTracks() {
       try {
@@ -67,7 +68,7 @@ export default function Spotify() {
 
       </div>
       <SpotifyLoginDialog open={loginDialogOpen} handleClose={() => setLoginDialogOpen(false)}/>
-      <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen}/>
+      <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen} currentTrackAuthor={currentTrackAuthor}/>
     </div>
   );
 }

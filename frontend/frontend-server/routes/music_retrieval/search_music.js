@@ -27,6 +27,7 @@ router.get('/search', async (req, res) => {
 
 // query paramter "creatorName"
 router.post('/click', async (req, res) => {
+    console.log(req.query);
     const url = concatenateUrl(engineConfig, engineConfig.addCreator);
     const mongoDBUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.getCreatorsByUserId);
     const mongoDbSaveUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.saveCreatorList);

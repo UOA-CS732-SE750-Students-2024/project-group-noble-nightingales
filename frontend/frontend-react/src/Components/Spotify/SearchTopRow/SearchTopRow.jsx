@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect,useState } from "react";
 import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 import { getSpotifySearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+import { clickOnMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 
 const theme = createTheme({
   components: {
@@ -65,6 +66,7 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
                 alt={music.trackTitle}
                 onClick={() => {
                   setCurrentTrack(music.trackId);
+                  clickOnMusic(music.artistName[0]);
                 }}
               />
             </NavLink>

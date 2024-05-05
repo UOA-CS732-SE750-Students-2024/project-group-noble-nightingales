@@ -2,7 +2,7 @@ import "./RecommendationRowCSS/RecommendationRow.css";
 import triangle from "../../../assets/triangle2.png";
 import { NavLink } from "react-router-dom";
 import { useEffect,useState,useRef } from "react";
-import {getSpotifyPopular, getSpotifyRecommendation} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import {getSpotifyPopular, getSpotifyRecommendation, clickOnMusic} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
@@ -76,7 +76,10 @@ export default function RecommendationRow({setCurrentTrack}) {
                 >
                   {music.artistName}
                 </span>
-                <div className="coverImage" onClick={() => setCurrentTrack(music.trackId)}>
+                <div className="coverImage" onClick={() => {
+                    setCurrentTrack(music.trackId)
+                    clickOnMusic(music.artistName[0]);
+                  }}>
                   <img src={triangle} alt="cover" style={{ width: "2vh" }}  />
                 </div>
               </div>
