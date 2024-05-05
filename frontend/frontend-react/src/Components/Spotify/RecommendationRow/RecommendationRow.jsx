@@ -1,8 +1,8 @@
 import "./RecommendationRowCSS/RecommendationRow.css";
 import triangle from "../../../assets/triangle2.png";
 import { NavLink } from "react-router-dom";
-import { useEffect,useState } from "react";
-import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { useEffect,useState,useRef } from "react";
+import {getSpotifyPopular, getSpotifyRecommendation} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
@@ -13,7 +13,7 @@ export default function RecommendationRow({setCurrentTrack}) {
     async function fetchTracks() {
       try {
 
-        const array = await getSpotifyPopular(); 
+        const array = await getSpotifyRecommendation(); 
         setTracks(array);  
       } catch (error) {
         console.error('Failed to fetch tracks:', error);
@@ -22,11 +22,27 @@ export default function RecommendationRow({setCurrentTrack}) {
     fetchTracks();
   }, []);
 
+  const listRef = useRef(null);
+
+  useEffect(() => {
+      const handleWheel = (e) => {
+          if (!listRef.current) return;
+          listRef.current.scrollLeft += e.deltaY + e.deltaX;
+          e.preventDefault(); // Prevents vertical scrolling when mouse is over the list
+      };
+
+      const listEl = listRef.current;
+      listEl.addEventListener('wheel', handleWheel);
+
+      return () => {
+          listEl.removeEventListener('wheel', handleWheel);
+      };
+  }, []);
 
   // Function to render the music list
   const renderMusicList = (musics) => {
     return (
-      <ul className="musicList">
+      <ul className="musicList" ref={listRef}>
         {musics.map((music) => (
           <li className="musicListElement" key={music.trackId}>
             <NavLink to={`/spotify?trackId=${music.trackId}`}>
