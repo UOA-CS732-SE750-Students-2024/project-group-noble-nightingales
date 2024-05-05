@@ -35,6 +35,7 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
 
   const handleKeyDown = async(event) => {
     if (event.key === 'Enter') {
+        window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
         event.preventDefault();
         const data = await getSpotifySearchResult(input);
         setTrackResult(data);
@@ -110,6 +111,7 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon style={{ color: "white" }} onClick={async() => {
+                    window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
                     const data = await getSpotifySearchResult(input);
                     setTrackResult(data);
                   }}/>

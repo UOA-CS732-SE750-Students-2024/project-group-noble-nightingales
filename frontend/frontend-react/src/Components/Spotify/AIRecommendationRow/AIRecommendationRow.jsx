@@ -6,6 +6,12 @@ import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import { getSpotifyAiSearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+
 
 const themeGreen = createTheme({
   components: {
@@ -36,6 +42,8 @@ const themePurple = createTheme({
 });
 
 export default function AIRecommendationRow({setTrackResult}) {
+  const [open, setOpen] = useState(false);
+
 
   const [textValue, setTextValue] = useState('');  
 
@@ -45,6 +53,7 @@ export default function AIRecommendationRow({setTrackResult}) {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
+        
         event.preventDefault();
         performAiSearch();
     }
@@ -52,7 +61,11 @@ export default function AIRecommendationRow({setTrackResult}) {
 
 const performAiSearch = async() => {
   console.log("Executing AI search with value:", textValue);
-  
+  if(textValue === ""){
+    setOpen(true);
+    return;
+  } 
+  window.scrollBy({ top: window.innerHeight*0.8, left: 0, behavior: 'smooth' });
   const data = await getSpotifyAiSearchResult(textValue);
   console.log("Data:", data);
   setTrackResult(data);
@@ -130,6 +143,17 @@ const performAiSearch = async() => {
         InputLabelProps={{ style: { color: "white" } }}
       />
       </ThemeProvider>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+  <DialogTitle>{"Input Required"}</DialogTitle>
+  <DialogContent>
+    <p>You have to put something in the search field to perform a search.</p>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setOpen(false)} color="primary">
+      OK
+    </Button>
+  </DialogActions>
+</Dialog>
     </div>
   );
 }
