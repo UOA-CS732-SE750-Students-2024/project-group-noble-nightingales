@@ -1,4 +1,4 @@
-import "./SpotifyRowCSS/SpotifyRow.module.css";
+import styles from"./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 
@@ -24,18 +24,18 @@ export default function SpotifyRow( {trackResult} ) {
       return <p>No tracks found.</p>;
   }
     return (
-      <ul className="musicList">
+      <ul className={styles.musicList}>
         {musics.map((music) => (
-          <li className="musicListElement" key={music.trackId}>
+          <li className={styles.musicListElement} key={music.trackId}>
             <NavLink to="/spotify">
               <img
-                className="musicImage"
+                className={styles.musicImage}
                 src={music.coverImageUrl}
                 alt={music.trackTitle}
               />
             </NavLink>
-            <div className="musicInfo-container">
-              <div className="musicInfo">
+            <div className={styles.musicInfoContainer}>
+              <div className={styles.musicInfo}>
                 <span style={{ fontSize: "1.6vh" }}>{music.trackTitle}</span>
                 <span style={{ fontSize: "1.4vh", color: "gray" }}>
                   Made By {music.artistName}
@@ -49,7 +49,7 @@ export default function SpotifyRow( {trackResult} ) {
   };
 
   return (
-    <div className="SpotifyRow-container">
+    <div className={styles.SpotifyRowContainer}>
       <h2>Spotify Musics For You</h2>
       {renderMusicList(trackResult.data ? trackResult.data : dummyMusics)}
     </div>

@@ -1,16 +1,15 @@
-.SpotifyRow-container{
+.SpotifyRowContainer{
     display: flex;
     flex-direction: column;
     padding: 9vh ;
     padding-top: 3vh;
     margin-bottom: 3rem;
-    height: 46vh;
+    height: fit-content;
     position: relative;
     z-index: 2;
     
 }
-
-.SpotifyRow-container .musicList{
+.musicList{
     display: flex;
     list-style-type: none;
     padding-top: 1.8vh;
@@ -20,7 +19,7 @@
     flex-wrap: wrap;
 }
 
-.SpotifyRow-container .musicList .musicListElement{
+.musicListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +29,7 @@
     width: 12vw;
 }
 
-.SpotifyRow-container .musicList .musicListElement .musicImage{
+.musicImage{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,17 +37,17 @@
     transition: width 0.5s ease-in-out; 
 }
 
-.SpotifyRow-container .musicList .musicListElement .musicImage:hover {
+.musicImage:hover {
     width: 14vw;
 }
 
-.SpotifyRow-container .musicList .musicInfo-container{
+.musicInfoContainer{
     display: flex;
     margin-top: 1vh;
     margin-left: -3.8vw;
 }
 
-.SpotifyRow-container .musicList .musicInfo{
+.musicInfo{
     display: flex;
     flex-direction: column;
     width:100%;
