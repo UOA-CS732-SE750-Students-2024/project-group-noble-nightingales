@@ -17,13 +17,13 @@
     overflow-y: hidden;
     
     &::-webkit-scrollbar {
-        height: 1vh;  /* Adjust the height of the scrollbar using viewport height */
+        height: 0.5vh;  /* Adjust the height of the scrollbar using viewport height */
         background-color: #333;  /* dark background for the scrollbar track */
     }
 
     /* Style the draggable part of the scrollbar (thumb) */
     &::-webkit-scrollbar-thumb {
-        background-color: #4d873c;  /* light green color for the scrollbar thumb */
+        background-color: #48bd25;  /* light green color for the scrollbar thumb */
         border-radius: 0.5vh;  /* rounded corners for the scrollbar using viewport height */
         border: 0.1vw solid #444;  /* dark border around the scrollbar thumb using viewport width */
     }
