@@ -9,6 +9,10 @@ import SpotifyLoginDialog from "../../Dialogs/Spotify/SpotifyLoginDialog";
 import Player from "../../Components/SpotifyPlay/Player/Player";
 import { useState} from "react";
 import { useSearchParams } from 'react-router-dom';
+import { useEffect } from "react";
+import { getSpotifyRandomResult, getSpotifyPopular } from "../../Requests/Explore/YoutubeSpotifyRequest";
+
+
 const getTrackUri = (trackId) => {
   return `spotify:track:${trackId}`
 }
@@ -21,7 +25,19 @@ export default function Spotify() {
   }
   const [currentTrack, setCurrentTrack] = useState(trackId)
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
-
+  const [trackResult, setTrackResult] = useState([]);
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+        const data = await getSpotifyRandomResult(); 
+        console.log(data);
+        setTrackResult(data);  
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
   return (
     <div>
       <BallDynamic />
@@ -39,11 +55,11 @@ export default function Spotify() {
           <BallStatic />
         </div>
         <div className="AIRecommendationContainer">
-          <AIRecommendationRow />
+          <AIRecommendationRow setTrackResult={setTrackResult}/>
           <BallStatic />
         </div>
         <div className="SpotifyRowContainer">
-          <SpotifyRow />
+          <SpotifyRow trackResult={trackResult}/>
           <BallStatic />
         </div>
       </div>

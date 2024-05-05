@@ -4,6 +4,8 @@ import RecommendationAI from "../../../assets/RecommendationAI.png";
 import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from "react";
+import { getSpotifyAiSearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 
 const themeGreen = createTheme({
   components: {
@@ -33,7 +35,27 @@ const themePurple = createTheme({
   },
 });
 
-export default function AIRecommendationRow() {
+export default function AIRecommendationRow({setTrackResult}) {
+
+  const [textValue, setTextValue] = useState('');  
+
+  const handleTextChange = (event) => {
+      setTextValue(event.target.value);  
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        performAiSearch();
+    }
+};
+
+const performAiSearch = () => {
+  console.log("Executing AI search with value:", textValue);
+  
+  const data = getSpotifyAiSearchResult(textValue);
+  setTrackResult(data);
+};
 
   return (
     <div className="AIRecommendationRow-container">
@@ -73,6 +95,9 @@ export default function AIRecommendationRow() {
           },
         }}
         InputLabelProps={{ style: { color: "white" } }}
+        value={textValue}  
+        onChange={handleTextChange}
+        onKeyDown={handleKeyDown}
       />
       </ThemeProvider>
       <div style={{height: "3vh"}}></div>

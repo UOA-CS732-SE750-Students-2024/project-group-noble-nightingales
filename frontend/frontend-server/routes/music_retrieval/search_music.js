@@ -9,7 +9,7 @@ import authenticateJWT from '../../authenticate/authentication.js';
 
 const router = express.Router();
 
-router.get('/search', authenticateJWT, async (req, res) => {
+router.get('/search', async (req, res) => {
     const url = concatenateUrl(spotifyConfig, spotifyConfig.searchTracks);
     console.log(url);
     console.log(req.query);

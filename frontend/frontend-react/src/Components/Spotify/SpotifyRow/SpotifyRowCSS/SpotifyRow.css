@@ -13,14 +13,20 @@
     display: flex;
     list-style-type: none;
     padding-top: 1.8vh;
-    margin-left: -3vw
+    margin-left: -3vw;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .SpotifyRow-container .musicList .musicListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding-right: 4vw; /* element gap*/
+    padding-bottom: 2vh;
+    width: 12vw;
 }
 
 .SpotifyRow-container .musicList .musicListElement .musicImage{
@@ -44,5 +50,6 @@
 .SpotifyRow-container .musicList .musicInfo{
     display: flex;
     flex-direction: column;
-    align-items: self-start;
+    width:100%;
+    margin-left: 4rem;
 }

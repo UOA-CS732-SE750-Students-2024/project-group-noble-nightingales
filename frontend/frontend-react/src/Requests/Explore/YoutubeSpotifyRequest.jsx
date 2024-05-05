@@ -10,6 +10,18 @@ function generateRandomString() {
     return result;
 }
 
+export const getSpotifyRandomResult = async () => {
+    const randomString = generateRandomString();
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/search`, {
+            params: { query: randomString, maxResults: 30 }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 export const getSpotifyPopular = async () => {
     const randomString = generateRandomString();
     try {
@@ -36,6 +48,17 @@ export const getYouTubePopular = async () => {
         const response = await axios.get(`${baseUrl}/api/video/default`);
         console.log(response.data.videoList)
         return response.data.videoList;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getSpotifyAiSearchResult = async (input) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/ai-search`, {
+            params: { userInput: input }
+        });
+        return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error);
     }
