@@ -170,6 +170,46 @@ router.post('/filter', async (req, res) => {
 });
 
 
+// query parameter: userInput
+router.get('/ai-search', async (req, res) => {
+    const gptServiceUrl = concatenateUrl(aiConfig, aiConfig.getSpotifySearchText);
+    const spotifySearchUrl = concatenateUrl(spotifyConfig, spotifyConfig.searchTracks);
+
+    // Assume `userInput` is passed as a query parameter
+    const userInput = req.query.userInput;
+    if (!userInput) {
+        return res.status(400).send("No input provided for search");
+    }
+
+    let searchText;
+
+    // Step 1: Post to GPT service to get search text
+    try {
+        const searchResponse = await axios.post(gptServiceUrl, { text: userInput }, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        searchText = searchResponse.data;
+        console.log("Generated search text:", searchText);
+    } catch (error) {
+        console.error("Error generating Spotify search text:", error.response ? error.response.data : error.message);
+        return res.status(500).send('Failed to generate Spotify search text');
+    }
+
+    // Step 2: Use the obtained search text to search Spotify
+    try {
+        const musicSearchResponse = await axios.get(spotifySearchUrl, { 
+            params: { query: searchText }
+        });
+        console.log("Search results:", musicSearchResponse.data);
+        res.json(musicSearchResponse.data);
+    } catch (error) {
+        console.error("Error during searching music:", error.response ? error.response.data : error.message);
+        res.status(500).send('Error during searching music');
+    }
+});
+
+
+
 
 
 export default router;
