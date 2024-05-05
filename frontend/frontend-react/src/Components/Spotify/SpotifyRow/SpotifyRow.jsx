@@ -1,4 +1,4 @@
-import "./SpotifyRowCSS/SpotifyRow.css";
+import "./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 

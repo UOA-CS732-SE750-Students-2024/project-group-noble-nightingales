@@ -63,6 +63,9 @@ export default function Spotify() {
           <BallStatic />
         </div>
       </div>
+      <div style={{paddingBottom: "10vh"}}>
+
+      </div>
       <SpotifyLoginDialog open={loginDialogOpen} handleClose={() => setLoginDialogOpen(false)}/>
       <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen}/>
     </div>
