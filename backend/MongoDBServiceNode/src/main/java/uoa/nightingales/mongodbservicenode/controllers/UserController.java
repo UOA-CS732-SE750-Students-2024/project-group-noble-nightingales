@@ -7,9 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import uoa.nightingales.mongodbservicenode.exceptions.DuplicateException;
+import uoa.nightingales.mongodbservicenode.pojos.SpotifyCreatorData;
 import uoa.nightingales.mongodbservicenode.pojos.User;
+import uoa.nightingales.mongodbservicenode.pojos.YoutubeHistoryData;
+import uoa.nightingales.mongodbservicenode.services.SpotifyCreatorService;
 import uoa.nightingales.mongodbservicenode.services.UserService;
+import uoa.nightingales.mongodbservicenode.services.YoutubeHistoryDataService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -18,16 +24,21 @@ import java.util.Map;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService userService;
+    final UserService userService;
+    final YoutubeHistoryDataService youtubeHistoryDataService;
+    final SpotifyCreatorService spotifyCreatorService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@Validated @RequestBody User user) {
         try {
             User savedUser = userService.saveData(user);
+            YoutubeHistoryData youtubeData = YoutubeHistoryData.initializeData(user.getId());
+            youtubeHistoryDataService.saveData(youtubeData);
+            SpotifyCreatorData spotifyData = SpotifyCreatorData.initializeData(user.getId());
+            spotifyCreatorService.saveCreatorList(spotifyData);
             return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
         } catch (DuplicateException e) {
             log.error("Error creating user: " + e.getMessage());
-            // 409
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }

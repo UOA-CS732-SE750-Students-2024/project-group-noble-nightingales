@@ -31,6 +31,7 @@ public class SpotifyCreatorServiceImpl implements SpotifyCreatorService{
     public List<String> getCreatorListByUserId(String userId) {
         log.info("Fetching creator list for user ID: " + userId);
         Optional<SpotifyCreatorData> data = spotifyCreatorRepository.findByUserId(userId);
+        log.info("the retrieved spotify creator data with userId: " + userId + " is " + data);
         return data.map(SpotifyCreatorData::getCreatorList).orElse(null);
     }
 
@@ -38,7 +39,7 @@ public class SpotifyCreatorServiceImpl implements SpotifyCreatorService{
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveCreatorList(SpotifyCreatorData data) {
         log.info("Saving Spotify creator data: " + data);
-        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(data.getUserId(), data);
+        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(data.getUserId(), data.getCreatorList());
         log.info("Setting up cache for " + COLLECTION_NAME + " with user ID: " + data.getUserId());
         spotifyCreatorRepository.save(data);
     }
