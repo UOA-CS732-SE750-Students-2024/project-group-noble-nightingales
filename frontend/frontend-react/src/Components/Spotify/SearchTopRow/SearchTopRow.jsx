@@ -27,7 +27,7 @@ const theme = createTheme({
   },
 });
 
-export default function SearchTopRow() {
+export default function SearchTopRow({setCurrentTrack}) {
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
@@ -54,12 +54,15 @@ export default function SearchTopRow() {
                 className="musicImage"
                 src={music.coverImageUrl}
                 alt={music.trackTitle}
+                onClick={() => {
+                  setCurrentTrack(music.trackId);
+                }}
               />
             </NavLink>
             <div className="musicInfo-container">
               <div className="musicInfo">
-                <span style={{ fontSize: "1.9vh" }}>{music.trackTitle}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                <span style={{ fontSize: "1.6vh" }}>{music.trackTitle}</span>
+                <span style={{ fontSize: "1.3vh", color: "gray" }}>
                   Made By {music.artistName}
                 </span>
               </div>
@@ -100,7 +103,7 @@ export default function SearchTopRow() {
         </ThemeProvider>
       </div>
       <div className="right">
-        <h4 className="topTitle">Top Tracks In Real Time</h4>
+        <h4 className="topTitle">Top Tracks</h4>
         {renderMusicList(tracks)}
       </div>
     </div>

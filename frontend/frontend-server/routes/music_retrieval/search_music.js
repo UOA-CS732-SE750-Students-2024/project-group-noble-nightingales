@@ -198,7 +198,7 @@ router.get('/ai-search', async (req, res) => {
     // Step 2: Use the obtained search text to search Spotify
     try {
         const musicSearchResponse = await axios.get(spotifySearchUrl, { 
-            params: { query: searchText }
+            params: { query: searchText, maxResults: 30 }
         });
         console.log("Search results:", musicSearchResponse.data);
         res.json(musicSearchResponse.data);

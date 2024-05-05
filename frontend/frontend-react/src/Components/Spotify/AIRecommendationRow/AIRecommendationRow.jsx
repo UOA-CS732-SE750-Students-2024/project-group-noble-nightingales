@@ -50,10 +50,11 @@ export default function AIRecommendationRow({setTrackResult}) {
     }
 };
 
-const performAiSearch = () => {
+const performAiSearch = async() => {
   console.log("Executing AI search with value:", textValue);
   
-  const data = getSpotifyAiSearchResult(textValue);
+  const data = await getSpotifyAiSearchResult(textValue);
+  console.log("Data:", data);
   setTrackResult(data);
 };
 

@@ -43,7 +43,7 @@ export default function Spotify() {
       <BallDynamic />
       <div className="Spotify-container">
         <div>
-          <SearchTopRow />
+          <SearchTopRow setCurrentTrack={setCurrentTrack}/>
         </div>
         <div>
           <RecommendationRow setCurrentTrack={setCurrentTrack}/>
@@ -59,7 +59,7 @@ export default function Spotify() {
           <BallStatic />
         </div>
         <div className="SpotifyRowContainer">
-          <SpotifyRow trackResult={trackResult}/>
+          <SpotifyRow trackResult={trackResult} setCurrentTrack={setCurrentTrack}/>
           <BallStatic />
         </div>
       </div>

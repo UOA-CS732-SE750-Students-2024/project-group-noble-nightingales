@@ -2,7 +2,7 @@ import styles from"./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 
-export default function SpotifyRow( {trackResult} ) {
+export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
   const dummyMusics = [
     {
       coverImageUrl: SpotifyCover,
@@ -32,6 +32,9 @@ export default function SpotifyRow( {trackResult} ) {
                 className={styles.musicImage}
                 src={music.coverImageUrl}
                 alt={music.trackTitle}
+                onClick={() => {
+                  setCurrentTrack(music.trackId);
+                }}
               />
             </NavLink>
             <div className={styles.musicInfoContainer}>

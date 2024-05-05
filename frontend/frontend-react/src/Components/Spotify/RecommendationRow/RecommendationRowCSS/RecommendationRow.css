@@ -44,6 +44,7 @@
 .RecommendationRow-container .musicImage{
     height: 35vh;
     width: auto;
+    border-radius: 5% 5% 0 0;
 }
   
 .RecommendationRow-container .musicInfo{

@@ -87,6 +87,7 @@
     height: 6.5vh;
     margin-left: -0.3vw;
     transition: height 0.5s ease-in-out;  
+    border-radius: 10%;
 }
 
 .SearchTopRow-container .musicList .musicListElement .musicImage:hover {
