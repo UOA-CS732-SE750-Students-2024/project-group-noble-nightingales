@@ -22,6 +22,17 @@ export const getSpotifyRandomResult = async () => {
     }
 }
 
+export const getSpotifySearchResult = async (userInput) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/search`, {
+            params: { query: userInput, maxResults: 30 }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 export const getSpotifyPopular = async () => {
     const randomString = generateRandomString();
     try {

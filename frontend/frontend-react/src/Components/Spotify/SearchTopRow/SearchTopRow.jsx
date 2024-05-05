@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { useEffect,useState } from "react";
 import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { getSpotifySearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 
 const theme = createTheme({
   components: {
@@ -27,9 +28,17 @@ const theme = createTheme({
   },
 });
 
-export default function SearchTopRow({setCurrentTrack}) {
+export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
   const [tracks, setTracks] = useState([]);
+  const [input, setInput] = useState("");
 
+  const handleKeyDown = async(event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const data = await getSpotifySearchResult(input);
+        setTrackResult(data);
+    }
+  }
   useEffect(() => {
     async function fetchTracks() {
       try {
@@ -84,6 +93,9 @@ export default function SearchTopRow({setCurrentTrack}) {
             id="outlined-search"
             placeholder="Search..."
             type="search"
+            value={input}
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setInput(e.target.value)}
             variant="outlined"
             InputProps={{
               style: {
@@ -95,7 +107,10 @@ export default function SearchTopRow({setCurrentTrack}) {
               },
               endAdornment: (
                 <InputAdornment position="end">
-                  <SearchIcon style={{ color: "white" }} />
+                  <SearchIcon style={{ color: "white" }} onClick={async() => {
+                    const data = await getSpotifySearchResult(input);
+                    setTrackResult(data);
+                  }}/>
                 </InputAdornment>
               ),
             }}
