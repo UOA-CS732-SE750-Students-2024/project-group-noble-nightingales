@@ -43,10 +43,12 @@ public class GptSpotifyRecommendController {
     @PostMapping("/filter")
     public ResponseEntity<List<String>> getUnwantedSpotifyCreators(@RequestBody String userInput) {
         try {
+            log.info("request received to get unwanted spotify creators");
             List<String> unwantedCreators = gptSpotifyRecommendService.getUnwantedSpotifyCreators(userInput);
             if (unwantedCreators.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
+            log.info("the unwanted creators are: " + unwantedCreators);
             return ResponseEntity.ok(unwantedCreators);
         } catch (Exception e) {
             log.error("Error filtering Spotify creators for input: {}", userInput, e);
