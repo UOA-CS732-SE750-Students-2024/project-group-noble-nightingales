@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "port": 30056,
+    "getVerificationCode": "/api/verification/get",
+    "verifyCode": "/api/verification/verify"
+}

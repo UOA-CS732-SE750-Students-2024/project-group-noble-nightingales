@@ -15,6 +15,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import SpotifySignIn from "./Pages/SpotifySignInPage/SpotifySignIn.jsx";
 
 function App() {
   return (
@@ -85,6 +86,15 @@ function App() {
               <Comment />
             </>
           }
+        />
+        <Route 
+          path="/spotify/signin"
+          element={
+            <>
+              <Nav />
+              <SpotifySignIn />
+            </>
+            }
         />
 
         {/* Define other routes here */}

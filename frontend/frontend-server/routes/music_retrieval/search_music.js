@@ -32,9 +32,8 @@ router.post('/click', async (req, res) => {
     const mongoDBUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.getCreatorsByUserId);
     const mongoDbSaveUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.saveCreatorList);
 
-    // const userId = req.cookies.userId;
 
-    axios.get(mongoDBUrl, { params: { userId: "test" } })
+    axios.get(mongoDBUrl, { params: { userId: req.query.userId } })
         .then(response => {
             console.log(response.data);
             axios.post(url, response.data, {
@@ -42,7 +41,7 @@ router.post('/click', async (req, res) => {
             }).then(response => {
                 console.log(response.data);
                 const creatorData = {
-                    userId: "test",
+                    userId: req.query.userId,
                     creatorList: response.data
                 }
                 axios.post(mongoDbSaveUrl, creatorData);
@@ -65,7 +64,7 @@ router.get("/recommendation", async (req, res) => {
     const spotifySearchUrl = concatenateUrl(spotifyConfig, spotifyConfig.searchTracks);
 
     try {
-        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: "test" } });
+        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: req.query.userId } });
         let creators = creatorsResponse.data;
 
         if (!creators || !Array.isArray(creators) || creators.length === 0) {
@@ -115,7 +114,7 @@ router.post('/filter', async (req, res) => {
 
     // Step 1: Get creators from MongoDB by userId
     try {
-        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: "test" } });
+        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: req.query.userId } });
         creatorList = creatorsResponse.data;
         console.log("Fetched creators:", creatorList);
     } catch (error) {
@@ -158,7 +157,7 @@ router.post('/filter', async (req, res) => {
     // Step 4: Save the updated creator list
     try {
         const spotifyData = {
-            userId: "test",
+            userId: req.query.userId,
             creatorList: filteredData
         };
         const saveResponse = await axios.post(saveCreatorUrl, spotifyData);

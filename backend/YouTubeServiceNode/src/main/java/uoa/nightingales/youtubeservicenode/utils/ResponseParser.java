@@ -2,6 +2,7 @@ package uoa.nightingales.youtubeservicenode.utils;
 
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Thumbnail;
 import com.google.api.services.youtube.model.VideoListResponse;
 import uoa.nightingales.youtubeservicenode.domains.VideosResponse;
 import uoa.nightingales.youtubeservicenode.pojos.Channel;
@@ -38,7 +39,11 @@ public class ResponseParser {
             videoData.setVideoId(video.getId());
             videoData.setTitle(video.getSnippet().getTitle());
             videoData.setDescription(video.getSnippet().getDescription());
-            videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getMaxres().getUrl());
+            if(video.getSnippet().getThumbnails().getMaxres() == null){
+                videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getDefault().getUrl());
+            }else {
+                videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getMaxres().getUrl());
+            }
             videoData.setPublishedAt(video.getSnippet().getPublishedAt().toStringRfc3339());
             videoData.setChannel(new Channel(video.getSnippet().getChannelTitle(), video.getSnippet().getChannelId()));
             videoData.setVideoUrl("https://www.youtube.com/embed/" + videoData.getVideoId());

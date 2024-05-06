@@ -45,9 +45,13 @@ export const getSpotifyPopular = async () => {
     }
 }
 
-export const getSpotifyRecommendation = async () => {
+export const getSpotifyRecommendation = async (userId) => {
     try {
-        const response = await axios.get(`${baseUrl}/api/music/recommendation`);
+        const response = await axios.get(`${baseUrl}/api/music/recommendation`, {
+            params: {
+                userId: userId
+            }
+        });
         return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error);
@@ -75,21 +79,21 @@ export const getSpotifyAiSearchResult = async (input) => {
     }
 }
 
-export const clickOnMusic = async (authorName) => {
+export const clickOnMusic = async (authorName, userId) => {
     try {
         axios.post(`${baseUrl}/api/music/click`, null, {
-            params: { creatorName: authorName }
+            params: { creatorName: authorName, userId: userId }
         });
     } catch (error) {
         console.error("Error retrieving data:", error);
     }
 }
 
-export const filterMusic = async (userInput) => {
+export const filterMusic = async (userInput, userId) => {
     try {
         const response = await axios.post(`${baseUrl}/api/music/filter`, {
             userInput: userInput
-        });
+        }, {params: {userId: userId}});
         return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error);

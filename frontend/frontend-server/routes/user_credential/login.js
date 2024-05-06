@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
         // If authentication is successful, authenticationResult is truthy (e.g., user ID)
         if (userId) {
             // Generate JWT
-            const token = jwt.sign({ user_id: userId }, JWT_SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ user_id: userId }, JWT_SECRET_KEY);
             
             // Set the userId cookie
             res.cookie('userId', userId);

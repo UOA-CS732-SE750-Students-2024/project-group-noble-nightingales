@@ -4,13 +4,14 @@ import RecommendationAI from "../../../assets/RecommendationAI.png";
 import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { getSpotifyAiSearchResult, filterMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import { AuthContext } from "../../../ApplicationContext";
 
 
 const darkTheme = createTheme({
@@ -50,7 +51,7 @@ const themePurple = createTheme({
 
 export default function AIRecommendationRow({setTrackResult, open, setOpen, recommendationChange, setRecommendationChange}) {
   
-
+  const [,,,,,,userId] = useContext(AuthContext)
 
   const [textValue, setTextValue] = useState('');  
   const [filterTextValue, setFilterTextValue] = useState('');
@@ -91,7 +92,7 @@ const performAiFilter = async() => {
     return;
   } 
   window.scrollBy({ top: window.innerHeight*-0.8, left: 0, behavior: 'smooth' });
-  await filterMusic(filterTextValue);
+  await filterMusic(filterTextValue, userId);
   setRecommendationChange(!recommendationChange);
 }
 
