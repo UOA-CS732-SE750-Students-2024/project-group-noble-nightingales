@@ -3,12 +3,17 @@ import styles from "./NextstepCSS/Nextstep.module.css";
 import DeviceMobile from "../../assets/DeviceMobile.svg";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { VerifyCodeRequest, SignupRequest } from "../../Requests/Auth/SignupRequest";
 
 function Nextstep() {
   const navigate = useNavigate();
   const [code, setCode] = useState(new Array(6).fill(""));
   const location = useLocation();
   const email = location.state?.email; // 确保 email 有传递过来，或者另外处理
+  const [displayText, setDisplayText] = useState("");
+  const username = location.state?.username;
+  const password = location.state?.password;
+  const birthDate = location.state?.birthDate;
   const inputRefs = useRef(
     new Array(6).fill(null).map(() => React.createRef())
   );
@@ -17,10 +22,22 @@ function Nextstep() {
     inputRefs.current[0].current.focus(); // 当页面加载时，自动聚焦到第一个输入框
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     console.log("Verification Code:", code.join(""));
-    // 添加逻辑以处理验证代码
+    const response = await VerifyCodeRequest(email, code.join("")); // 调用验证函数
+    if(response === 401){
+      setDisplayText("Invalid code. Please try again.");
+    } else {
+      console.log("Verification successful");
+      setDisplayText("");
+      const signupResponse = await SignupRequest(username, email, birthDate, password);
+      if(signupResponse === 409){
+        setDisplayText("Username or email already exists - Retry");
+      } else {
+        navigate("/explore/login");
+      }
+    }
   };
 
   const handleInputChange = (index) => (e) => {
@@ -83,8 +100,8 @@ function Nextstep() {
               />
             ))}
           </div>
-          <button type="submit" className={styles.submitButton}>
-            Submit
+          <button type="submit" className={styles.submitButton} style={displayText ? {background: "#f8725a"} : {}}>
+            {displayText ? displayText : "Submit"}
           </button>
         </form>
       </div>

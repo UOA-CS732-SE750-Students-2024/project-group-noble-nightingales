@@ -1,19 +1,21 @@
 import "./RecommendationRowCSS/RecommendationRow.css";
 import triangle from "../../../assets/triangle2.png";
 import { NavLink } from "react-router-dom";
-import { useEffect,useState,useRef } from "react";
+import { useEffect,useState,useRef, useContext } from "react";
 import {getSpotifyPopular, getSpotifyRecommendation, clickOnMusic} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { AuthContext } from "../../../ApplicationContext";
 function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
 
 export default function RecommendationRow({setCurrentTrack, recommendationChange}) {
   const [tracks, setTracks] = useState([]);
+  const [,,,,,,userId] = useContext(AuthContext);
   useEffect(() => {
     async function fetchTracks() {
       try {
 
-        const array = await getSpotifyRecommendation(); 
+        const array = await getSpotifyRecommendation(userId); 
         setTracks(array);  
       } catch (error) {
         console.error('Failed to fetch tracks:', error);
@@ -78,7 +80,7 @@ export default function RecommendationRow({setCurrentTrack, recommendationChange
                 </span>
                 <div className="coverImage" onClick={() => {
                     setCurrentTrack(music.trackId)
-                    clickOnMusic(music.artistName[0]);
+                    clickOnMusic(music.artistName[0], userId);
                   }}>
                   <img src={triangle} alt="cover" style={{ width: "2vh" }}  />
                 </div>

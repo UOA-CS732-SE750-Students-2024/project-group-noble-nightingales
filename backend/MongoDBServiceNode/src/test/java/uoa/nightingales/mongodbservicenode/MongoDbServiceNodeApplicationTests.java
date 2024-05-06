@@ -9,6 +9,7 @@ import uoa.nightingales.mongodbservicenode.pojos.ChannelData;
 import uoa.nightingales.mongodbservicenode.pojos.User;
 import uoa.nightingales.mongodbservicenode.pojos.YoutubeCommentData;
 import uoa.nightingales.mongodbservicenode.pojos.YoutubeHistoryData;
+import uoa.nightingales.mongodbservicenode.repositories.SpotifyCreatorRepository;
 import uoa.nightingales.mongodbservicenode.repositories.UserRepository;
 import uoa.nightingales.mongodbservicenode.services.UserService;
 import uoa.nightingales.mongodbservicenode.services.YoutubeCommentDataService;
@@ -36,6 +37,9 @@ class MongoDbServiceNodeApplicationTests {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private SpotifyCreatorRepository spotifyCreatorRepository;
 
     @Test
     void contextLoads() {
@@ -71,6 +75,12 @@ class MongoDbServiceNodeApplicationTests {
         System.out.println(userService.saveData(user));
     }
 
+    @Test
+    public void testDeleteAll(){
+        userRepository.deleteAll();
+        spotifyCreatorRepository.deleteAll();
+
+    }
     @Test
     public void testReadFromUserCollection() {
         System.out.println(userRepository.findByEmail("jamesgong0719@gmail.com"));

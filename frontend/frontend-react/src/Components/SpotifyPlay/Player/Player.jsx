@@ -9,7 +9,7 @@ export default function Player({ trackUri, setLoginDialogOpen }) {
 
   const [play, setPlay] = useState(false)
   
-  const [spotifyAccessToken, setSpotifyAccessToken] = useContext(AuthContext);
+  const [spotifyAccessToken, setSpotifyAccessToken,,,,,userId] = useContext(AuthContext);
   
 
   useEffect(() => setPlay(true), [trackUri])
@@ -34,7 +34,7 @@ export default function Player({ trackUri, setLoginDialogOpen }) {
         callback={state => {
           if (!state.isPlaying) setPlay(false);
           if (state.error == "Authentication failed"){
-            getSpotifyAccessToken("test", setLoginDialogOpen).then((token) => {
+            getSpotifyAccessToken(userId, setLoginDialogOpen).then((token) => {
               console.log(token)
               setSpotifyAccessToken(token)
             }

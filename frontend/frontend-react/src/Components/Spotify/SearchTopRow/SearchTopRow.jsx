@@ -8,6 +8,8 @@ import { useEffect,useState } from "react";
 import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 import { getSpotifySearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 import { clickOnMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+import { useContext } from "react";
+import { AuthContext } from "../../../ApplicationContext";
 
 const theme = createTheme({
   components: {
@@ -32,6 +34,7 @@ const theme = createTheme({
 export default function SearchTopRow({setCurrentTrack, setTrackResult, setOpen}) {
   const [tracks, setTracks] = useState([]);
   const [input, setInput] = useState("");
+  const [,,,,,,userId] = useContext(AuthContext);
 
   const handleKeyDown = async(event) => {
     
@@ -72,7 +75,7 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult, setOpen})
                 alt={music.trackTitle}
                 onClick={() => {
                   setCurrentTrack(music.trackId);
-                  clickOnMusic(music.artistName[0]);
+                  clickOnMusic(music.artistName[0], userId);
                 }}
               />
             </NavLink>

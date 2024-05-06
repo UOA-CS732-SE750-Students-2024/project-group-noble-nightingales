@@ -1,7 +1,7 @@
 import commonStyles from "./SignupCSS/CommonFormStyles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SignupRequest, CheckIfUserExistRequest } from "../../Requests/Auth/SignupRequest";
+import { CheckIfUserExistRequest, SendVerificationCodeRequest } from "../../Requests/Auth/SignupRequest";
 
 function Signup() {
 
@@ -26,6 +26,7 @@ function Signup() {
       // username already exists
       setDisplayText("Username or email already exists - Retry")
     } else {
+      SendVerificationCodeRequest(formFields.email);
       navigate("/explore/nextstep", { state: { email: formFields.email, username: formFields.username, password: formFields.password, birthDate: formFields.birthDate } });
       setDisplayText("");
     }

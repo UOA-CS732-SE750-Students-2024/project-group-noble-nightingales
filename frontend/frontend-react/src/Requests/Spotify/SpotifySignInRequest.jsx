@@ -33,3 +33,14 @@ export const getSpotifyAccessToken = async (userId, setLoginDialogOpen) => {
         throw error;
     }
 }
+
+export const saveSpotifyTokens = async (userId, accessToken, refreshToken) => {
+    try {
+        const response = await axios.post(`${baseUrl}/api/music/save`, null, {params: {userId: userId, accessToken: accessToken, refreshToken: refreshToken}});
+        console.log('Spotify tokens saved:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error saving Spotify tokens:', error.response ? error.response.data : error.message);
+        throw error;
+    }
+}

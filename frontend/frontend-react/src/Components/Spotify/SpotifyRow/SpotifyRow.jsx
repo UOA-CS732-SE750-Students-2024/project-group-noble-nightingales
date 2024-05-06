@@ -2,8 +2,13 @@ import styles from"./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
 import { clickOnMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+import { useContext } from "react";
+import { AuthContext } from "../../../ApplicationContext";
 
 export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
+
+  const [,,,,,,userId] = useContext(AuthContext);
+
   const dummyMusics = [
     {
       coverImageUrl: SpotifyCover,
@@ -37,7 +42,7 @@ export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
                 alt={music.trackTitle}
                 onClick={() => {
                   setCurrentTrack(music.trackId);
-                  clickOnMusic(music.artistName[0]);
+                  clickOnMusic(music.artistName[0], userId);
                 }}
               />
             </NavLink>

@@ -49,18 +49,32 @@ router.get('/callback', async (req, res) => {
         console.log(response.data);
 
         // saving the refresh token and access token
-        // const userId = req.cookies.userId;
         const { refreshToken, accessToken } = response.data;
-
-        const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
-        const responseFromFromSavingData = await axios.post(saveTokenUrl,null, {params: {"userId" : "test", accessToken, refreshToken}});
-        console.log(responseFromFromSavingData.data);
-        res.redirect('http://localhost:3000/explore');
+        res.redirect('http://localhost:3000/spotify/signin?accessToken=' + accessToken + '&refreshToken=' + refreshToken);
 
     }catch(error){
         console.error("Error during retrieving sign in url:", error.response ? error.response.data : error.message);
         res.status(500).send('Error during retrieving sign in url');
     }
 });
+
+router.post('/save', async (req, res) => {
+    const saveTokenUrl = concatenateUrl(spotifyConfig, spotifyConfig.saveTokens);
+    try{
+        const responseFromFromSavingData = await axios.post(saveTokenUrl,null, 
+            {params: {
+                "userId" : req.query.userId,
+                "accessToken": req.query.accessToken,
+                "refreshToken": req.query.refreshToken}
+            }
+        );
+       console.log(responseFromFromSavingData.data);
+       res.send(responseFromFromSavingData.data);
+    }catch(error){
+        console.error("Error during saving tokens:", error.response ? error.response.data : error.message);
+        res.status(500).send('Error during saving tokens');
+    }
+    
+})
 
 export default router;

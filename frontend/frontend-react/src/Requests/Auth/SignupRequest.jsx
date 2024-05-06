@@ -31,3 +31,31 @@ export const CheckIfUserExistRequest = async (username, email) => {
         }
     }
 }
+
+export const SendVerificationCodeRequest = async (email) => {
+    try{
+        axios.get(`${baseUrl}/api/user/verify`, {params: {userEmail: email}});
+    }catch(error){
+        console.error('Error sending verification code:', error.response ? error.response.data : error.message);
+    }
+}
+
+export const VerifyCodeRequest = async (email, code) => {
+    try {
+        const response = await axios.post(`${baseUrl}/api/user/verify`, {
+            userEmail: email,
+            verificationCode: code
+        });
+
+        console.log('Verification success:', response.data);
+        return response.data;
+    } catch (error) {
+        if(error.response.status === 401) {
+            return 401;
+        }
+        console.error('Error verifying code:', error.response ? error.response.data : error.message);
+        // You may want to re-throw the error to handle it elsewhere in your app
+        throw error;
+        
+    }
+}
