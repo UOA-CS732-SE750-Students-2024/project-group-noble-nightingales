@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "port": 30053,
+    "getCreatorsByUserId": "/api/spotify/creators",
+    "saveCreatorList": "/api/spotify/creators"
+}

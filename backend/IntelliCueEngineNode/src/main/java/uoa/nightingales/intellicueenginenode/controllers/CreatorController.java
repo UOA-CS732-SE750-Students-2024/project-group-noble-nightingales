@@ -2,14 +2,17 @@ package uoa.nightingales.intellicueenginenode.controllers;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uoa.nightingales.intellicueenginenode.configs.QueueDeserializer;
+import uoa.nightingales.intellicueenginenode.domains.DataBody;
 import uoa.nightingales.intellicueenginenode.services.CreatorAdjustmentService;
 
 import java.util.List;
 import java.util.Queue;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/creators")
@@ -41,9 +44,9 @@ public class CreatorController {
      * @return ResponseEntity containing the updated queue.
      */
     @DeleteMapping("/remove")
-    public ResponseEntity<Queue<String>> removeCreator(@RequestBody @JsonDeserialize(using = QueueDeserializer.class) Queue<String> creatorQueue,
-                                                       @RequestParam List<String> creatorName) {
-        Queue<String> updatedQueue = creatorAdjustmentService.removeCreator(creatorQueue, creatorName);
+    public ResponseEntity<Queue<String>> removeCreator(@RequestBody DataBody dataBody) {
+        log.info("request received with creator names: " + dataBody.getUnwantedCreators() + " and creator queue: " + dataBody.getCreatorList());
+        Queue<String> updatedQueue = creatorAdjustmentService.removeCreator(dataBody.getCreatorList(), dataBody.getUnwantedCreators());
         return ResponseEntity.ok(updatedQueue);
     }
 

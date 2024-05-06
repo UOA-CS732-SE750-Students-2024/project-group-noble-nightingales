@@ -57,13 +57,14 @@
 .SpotifyRow-container .musicList .musicInfo-container{
     display: flex;
     margin-top: 1vh;
+    width: 100%;
 }
 
 .SpotifyRow-container .musicList .musicInfo-container .musicInfo{
     display: flex;
     flex-direction: column;
     width:100%;
-    margin-left: 4rem;
-    
+    margin-left: 0.5vw; 
+    text-align: start;
 
 }

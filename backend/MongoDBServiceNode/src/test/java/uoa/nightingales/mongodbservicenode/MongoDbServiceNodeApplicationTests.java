@@ -68,7 +68,7 @@ class MongoDbServiceNodeApplicationTests {
         user.setEmail("jamesgong0719@gmail.com");
         user.setPassword("ghx020719");
         user.setDateOfBirth("2002/07/19");
-        userService.saveData(user);
+        System.out.println(userService.saveData(user));
     }
 
     @Test

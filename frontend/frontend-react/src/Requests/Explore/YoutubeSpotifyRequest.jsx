@@ -10,6 +10,29 @@ function generateRandomString() {
     return result;
 }
 
+export const getSpotifyRandomResult = async () => {
+    const randomString = generateRandomString();
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/search`, {
+            params: { query: randomString, maxResults: 30 }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getSpotifySearchResult = async (userInput) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/search`, {
+            params: { query: userInput, maxResults: 30 }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 export const getSpotifyPopular = async () => {
     const randomString = generateRandomString();
     try {
@@ -21,6 +44,16 @@ export const getSpotifyPopular = async () => {
         console.error("Error retrieving data:", error);
     }
 }
+
+export const getSpotifyRecommendation = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/recommendation`);
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 export const getYouTubePopular = async () => {
     try {
         const response = await axios.get(`${baseUrl}/api/video/default`);
@@ -31,3 +64,23 @@ export const getYouTubePopular = async () => {
     }
 }
 
+export const getSpotifyAiSearchResult = async (input) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/music/ai-search`, {
+            params: { userInput: input }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const clickOnMusic = async (authorName) => {
+    try {
+        axios.post(`${baseUrl}/api/music/click`, null, {
+            params: { creatorName: authorName }
+        });
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}

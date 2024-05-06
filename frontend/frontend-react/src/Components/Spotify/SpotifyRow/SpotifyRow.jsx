@@ -1,59 +1,49 @@
-import "./SpotifyRowCSS/SpotifyRow.css";
+import styles from"./SpotifyRowCSS/SpotifyRow.module.css";
 import SpotifyCover from "../../../assets/SpotifyCover.png";
 import { NavLink } from "react-router-dom";
+import { clickOnMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 
-export default function SpotifyRow() {
+export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
   const dummyMusics = [
     {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲1",
-      author: "Peter Wang",
+      coverImageUrl: SpotifyCover,
+      artistName: "Peter Wang",
+      trackTitle: "义勇军进行曲1",
+      trackId: 1,
     },
     {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲4",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲5",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: SpotifyCover,
-      name: "义勇军进行曲6",
-      author: "Peter Wang",
-    },
+      coverImageUrl: SpotifyCover,
+      artistName: "Peter Wang",
+      trackTitle: "义勇军进行曲1",
+      trackId: 2,
+    }
   ];
 
   // Function to render the music list
   const renderMusicList = (musics) => {
+    if (!musics || musics.length === 0) {
+      return <p>No tracks found.</p>;
+  }
     return (
-      <ul className="musicList">
+      <ul className={styles.musicList}>
         {musics.map((music) => (
-          <li className="musicListElement" key={music.name}>
+          <li className={styles.musicListElement} key={music.trackId}>
             <NavLink to="/spotify">
               <img
-                className="musicImage"
-                src={music.imageURL}
-                alt={music.name}
+                className={styles.musicImage}
+                src={music.coverImageUrl}
+                alt={music.trackTitle}
+                onClick={() => {
+                  setCurrentTrack(music.trackId);
+                  clickOnMusic(music.artistName[0]);
+                }}
               />
             </NavLink>
-            <div className="musicInfo-container">
-              <div className="musicInfo">
-                <span style={{ fontSize: "1.6vh" }}>{music.name}</span>
+            <div className={styles.musicInfoContainer}>
+              <div className={styles.musicInfo}>
+                <span style={{ fontSize: "1.6vh" }}>{music.trackTitle}</span>
                 <span style={{ fontSize: "1.4vh", color: "gray" }}>
-                  Made By {music.author}
+                  Made By {music.artistName}
                 </span>
               </div>
             </div>
@@ -64,9 +54,9 @@ export default function SpotifyRow() {
   };
 
   return (
-    <div className="SpotifyRow-container">
+    <div className={styles.SpotifyRowContainer}>
       <h2>Spotify Musics For You</h2>
-      {renderMusicList(dummyMusics)}
+      {renderMusicList(trackResult.data ? trackResult.data : dummyMusics)}
     </div>
   );
 }

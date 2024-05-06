@@ -21,12 +21,12 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager(primaryCache, secondaryCache);
         cacheManager.registerCustomCache("primary_cache", Caffeine.newBuilder()
-                .expireAfterAccess(1800, TimeUnit.SECONDS)
+                .expireAfterAccess(600, TimeUnit.SECONDS)
                 .initialCapacity(100)
                 .maximumSize(500)
                 .build());
         cacheManager.registerCustomCache("secondary_cache", Caffeine.newBuilder()
-                .expireAfterAccess(1, TimeUnit.DAYS)
+                .expireAfterAccess(1, TimeUnit.HOURS)
                 .initialCapacity(50)
                 .maximumSize(100)
                 .build());

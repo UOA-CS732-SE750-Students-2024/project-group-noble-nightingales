@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow-x: hidden;
+    overflow-y: hidden;
 
     /* padding: 9.33vh ;
     margin-left: 5vw; */

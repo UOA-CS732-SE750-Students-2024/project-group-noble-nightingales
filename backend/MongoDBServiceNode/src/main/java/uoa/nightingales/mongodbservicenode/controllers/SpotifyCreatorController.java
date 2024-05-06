@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uoa.nightingales.mongodbservicenode.pojos.SpotifyCreatorData;
 import uoa.nightingales.mongodbservicenode.services.SpotifyCreatorService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -23,11 +24,11 @@ public class SpotifyCreatorController {
      * @param userId The user ID for which to retrieve creator data.
      * @return ResponseEntity containing the list of creators or an empty response if no data found.
      */
-    @GetMapping("/creators/{userId}")
-    public ResponseEntity<List<String>> getCreatorsByUserId(@PathVariable String userId) {
+    @GetMapping("/creators")
+    public ResponseEntity<List<String>> getCreatorsByUserId(@RequestParam String userId) {
         List<String> creators = spotifyCreatorService.getCreatorListByUserId(userId);
         if (creators == null || creators.isEmpty()) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(new ArrayList<>());
         }
         return ResponseEntity.ok(creators);
     }

@@ -9,6 +9,11 @@ import SpotifyLoginDialog from "../../Dialogs/Spotify/SpotifyLoginDialog";
 import Player from "../../Components/SpotifyPlay/Player/Player";
 import { useState} from "react";
 import { useSearchParams } from 'react-router-dom';
+import { useEffect } from "react";
+import { getSpotifyRandomResult, getSpotifyPopular } from "../../Requests/Explore/YoutubeSpotifyRequest";
+
+
+
 const getTrackUri = (trackId) => {
   return `spotify:track:${trackId}`
 }
@@ -21,13 +26,26 @@ export default function Spotify() {
   }
   const [currentTrack, setCurrentTrack] = useState(trackId)
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
-
+  const [trackResult, setTrackResult] = useState([]);
+  const [currentTrackAuthor, setCurrentTrackAuthor] = useState("");
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+        const data = await getSpotifyRandomResult(); 
+        console.log(data);
+        setTrackResult(data);  
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
   return (
     <div>
       <BallDynamic />
       <div className="Spotify-container">
         <div>
-          <SearchTopRow />
+          <SearchTopRow setCurrentTrack={setCurrentTrack} setTrackResult={setTrackResult}/>
         </div>
         <div>
           <RecommendationRow setCurrentTrack={setCurrentTrack}/>
@@ -39,16 +57,19 @@ export default function Spotify() {
           <BallStatic />
         </div>
         <div className="AIRecommendationContainer">
-          <AIRecommendationRow />
+          <AIRecommendationRow setTrackResult={setTrackResult}/>
           <BallStatic />
         </div>
         <div className="SpotifyRowContainer">
-          <SpotifyRow />
+          <SpotifyRow trackResult={trackResult} setCurrentTrack={setCurrentTrack}/>
           <BallStatic />
         </div>
       </div>
+      <div style={{paddingBottom: "10vh"}}>
+
+      </div>
       <SpotifyLoginDialog open={loginDialogOpen} handleClose={() => setLoginDialogOpen(false)}/>
-      <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen}/>
+      <Player trackUri={getTrackUri(currentTrack)} setLoginDialogOpen={setLoginDialogOpen} currentTrackAuthor={currentTrackAuthor}/>
     </div>
   );
 }
