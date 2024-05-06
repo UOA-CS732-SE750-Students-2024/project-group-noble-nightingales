@@ -61,7 +61,7 @@ function Nextstep() {
   };
   // 关闭登录模态框函数
   const closeNextstep = () => {
-    navigate(-1); // 导航回上一个页面
+    navigate("/explore"); // 导航回上一个页面
   };
   const stopPropagation = (event) => {
     event.stopPropagation(); // 阻止事件冒泡
