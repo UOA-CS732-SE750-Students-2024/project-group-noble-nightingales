@@ -24,7 +24,7 @@ export default function Spotify() {
   const [searchParams] = useSearchParams();
   let trackId = searchParams.get('trackId');
   if(trackId==null){
-    trackId="3FcUIVEdJEqBZfv3BY0ZjN";
+    trackId="0tgVpDi06FyKpA1z0VMD4v";
   }
   const [currentTrack, setCurrentTrack] = useState(trackId)
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);

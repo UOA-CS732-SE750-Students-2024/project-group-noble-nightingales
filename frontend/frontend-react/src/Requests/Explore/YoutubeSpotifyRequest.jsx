@@ -89,11 +89,11 @@ export const clickOnMusic = async (authorName, userId) => {
     }
 }
 
-export const filterMusic = async (userInput) => {
+export const filterMusic = async (userInput, userId) => {
     try {
         const response = await axios.post(`${baseUrl}/api/music/filter`, {
             userInput: userInput
-        });
+        }, {params: {userId: userId}});
         return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error);

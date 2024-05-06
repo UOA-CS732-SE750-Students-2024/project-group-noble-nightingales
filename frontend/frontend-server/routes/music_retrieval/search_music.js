@@ -114,7 +114,7 @@ router.post('/filter', async (req, res) => {
 
     // Step 1: Get creators from MongoDB by userId
     try {
-        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: "test" } });
+        const creatorsResponse = await axios.get(mongoDBUrl, { params: { userId: req.query.userId } });
         creatorList = creatorsResponse.data;
         console.log("Fetched creators:", creatorList);
     } catch (error) {
@@ -157,7 +157,7 @@ router.post('/filter', async (req, res) => {
     // Step 4: Save the updated creator list
     try {
         const spotifyData = {
-            userId: "test",
+            userId: req.query.userId,
             creatorList: filteredData
         };
         const saveResponse = await axios.post(saveCreatorUrl, spotifyData);

@@ -23,7 +23,7 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginFailed, setIsLoginFailed] = useState(false);
-  const [,,, setUserToken, isAuthenticated, setIsAuthenticated,] = useContext(AuthContext);
+  const [,,, setUserToken, isAuthenticated, setIsAuthenticated,, setUserId] = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
   const handleClose = (event, reason) => {
@@ -41,12 +41,13 @@ export default function Login() {
   const login = async() => {
     setIsLoading(true);
     const data = await LoginRequest(username, password);
-    // setIsLoading(false);
+    setIsLoading(false);
     if(data){
       console.log("Login successful");
       setOpen(true);
-      navigate(-1);
+      navigate("/explore");
       setUserToken(data.token);
+      setUserId(data.userId);
       setIsAuthenticated(true);
     } else {
       console.error("Login failed");
@@ -109,7 +110,7 @@ export default function Login() {
             </div>
           </div>
           
-          {isLoading ? <ThemeProvider theme={progressTheme}><LinearProgress /></ThemeProvider> :<button disabled={isAuthenticated} onClick={() => {
+          {isLoading ? <ThemeProvider theme={progressTheme}><LinearProgress /></ThemeProvider> :<button onClick={() => {
             login();
           }} className={styles.loginButton} type="submit" style={isLoginFailed ? {background: "#f8725a"} : {}}>
             {isAuthenticated ? "Already Signed In" : (isLoginFailed ? "Invalid User - Retry" : "Login")}
