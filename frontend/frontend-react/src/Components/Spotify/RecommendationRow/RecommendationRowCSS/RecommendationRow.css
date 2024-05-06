@@ -23,7 +23,7 @@
 
     /* Style the draggable part of the scrollbar (thumb) */
     &::-webkit-scrollbar-thumb {
-        background-color: #48bd25;  /* light green color for the scrollbar thumb */
+        background-color: #6ce946;  /* light green color for the scrollbar thumb */
         border-radius: 0.5vh;  /* rounded corners for the scrollbar using viewport height */
         border: 0.1vw solid #444;  /* dark border around the scrollbar thumb using viewport width */
     }

@@ -34,11 +34,12 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult, setOpen})
   const [input, setInput] = useState("");
 
   const handleKeyDown = async(event) => {
-    if (input === "") {
-      setOpen(true);
-      return;
-    }
+    
     if (event.key === 'Enter') {
+      if (input === "") {
+        setOpen(true);
+        return;
+      }
         window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
         event.preventDefault();
         const data = await getSpotifySearchResult(input);

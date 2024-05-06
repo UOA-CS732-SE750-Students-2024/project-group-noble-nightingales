@@ -5,7 +5,7 @@ import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
-import { getSpotifyAiSearchResult } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+import { getSpotifyAiSearchResult, filterMusic } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -48,11 +48,12 @@ const themePurple = createTheme({
   },
 });
 
-export default function AIRecommendationRow({setTrackResult, open, setOpen}) {
+export default function AIRecommendationRow({setTrackResult, open, setOpen, recommendationChange, setRecommendationChange}) {
   
 
 
   const [textValue, setTextValue] = useState('');  
+  const [filterTextValue, setFilterTextValue] = useState('');
 
   const handleTextChange = (event) => {
       setTextValue(event.target.value);  
@@ -60,11 +61,17 @@ export default function AIRecommendationRow({setTrackResult, open, setOpen}) {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-        
         event.preventDefault();
         performAiSearch();
     }
-};
+  };
+
+  const handleKeyDownForFiltering = (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        performAiFilter();
+    }
+  };
 
 const performAiSearch = async() => {
   console.log("Executing AI search with value:", textValue);
@@ -77,6 +84,16 @@ const performAiSearch = async() => {
   console.log("Data:", data);
   setTrackResult(data);
 };
+
+const performAiFilter = async() => {
+  if(filterTextValue === ""){
+    setOpen(true);
+    return;
+  } 
+  window.scrollBy({ top: window.innerHeight*-0.8, left: 0, behavior: 'smooth' });
+  await filterMusic(filterTextValue);
+  setRecommendationChange(!recommendationChange);
+}
 
   return (
     <div className="AIRecommendationRow-container">
@@ -140,6 +157,9 @@ const performAiSearch = async() => {
         placeholder="Simply describe what you do not want in natural language, and our AI will not bring you videos that match the categories!"
         rows={8}
         variant="filled"
+        value={filterTextValue}
+        onChange={(event) => setFilterTextValue(event.target.value)}
+        onKeyDown={handleKeyDownForFiltering}
         InputProps={{
           style: {
             color: "white",

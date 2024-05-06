@@ -19,6 +19,8 @@ export default function SpotifyRow( {trackResult, setCurrentTrack} ) {
     }
   ];
 
+
+
   // Function to render the music list
   const renderMusicList = (musics) => {
     if (!musics || musics.length === 0) {

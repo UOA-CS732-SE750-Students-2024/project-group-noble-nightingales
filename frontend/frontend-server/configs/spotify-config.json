@@ -6,5 +6,6 @@
     "redirectToSpotify": "/api/auth/login",
     "handleSpotifyCallback": "/api/auth/callback",
     "getAccessToken": "/api/auth/token",
-    "saveTokens": "/api/auth/token"
+    "saveTokens": "/api/auth/token",
+    "nextTracksPage": "/api/tracks/switch"
 }
