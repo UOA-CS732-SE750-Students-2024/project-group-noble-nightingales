@@ -209,6 +209,23 @@ router.get('/ai-search', async (req, res) => {
     }
 });
 
+// need to pass in request query pageUrl:
+router.get("/more", async (req, res) => {
+    const url = concatenateUrl(spotifyConfig, spotifyConfig.nextTracksPage);
+
+    axios.get(url, { params: {
+        pageUrl: req.query.pageUrl
+        } })
+    .then(response => {
+        console.log(response.data);
+        res.json(response.data);
+    })
+    .catch(error => {
+        console.error("Error during searching music:", error.response ? error.response.data : error.message);
+        res.status(500).send('Error during searching music');
+    });
+})
+
 
 
 

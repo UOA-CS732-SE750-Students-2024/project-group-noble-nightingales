@@ -84,3 +84,23 @@ export const clickOnMusic = async (authorName) => {
         console.error("Error retrieving data:", error);
     }
 }
+
+export const filterMusic = async (userInput) => {
+    try {
+        const response = await axios.post(`${baseUrl}/api/music/filter`, {
+            userInput: userInput
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getMoreMusic = async (pageUrl) => {
+    try{
+        const response = await axios.get(`${baseUrl}/api/music/more`, {params: {pageUrl: pageUrl}});
+        return response.data;
+    } catch (error) { 
+        console.error("Error retrieving data:", error);
+    }
+}

@@ -2,6 +2,7 @@ package uoa.nightingales.intellicueenginenode.services;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -23,9 +24,7 @@ public class CreatorAdjustmentServiceImpl implements CreatorAdjustmentService{
 
     @Override
     public Queue<String> removeCreator(Queue<String> creatorQueue, List<String> creatorNames) {
-        for (String s : creatorNames){
-            creatorQueue.remove(s);
-        }
+        creatorQueue.removeIf(creatorNames::contains);
         return creatorQueue;
     }
 

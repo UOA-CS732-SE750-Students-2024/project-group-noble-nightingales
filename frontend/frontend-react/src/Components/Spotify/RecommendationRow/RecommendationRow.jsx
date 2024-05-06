@@ -7,7 +7,7 @@ function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
 
-export default function RecommendationRow({setCurrentTrack}) {
+export default function RecommendationRow({setCurrentTrack, recommendationChange}) {
   const [tracks, setTracks] = useState([]);
   useEffect(() => {
     async function fetchTracks() {
@@ -20,7 +20,7 @@ export default function RecommendationRow({setCurrentTrack}) {
       }
     }
     fetchTracks();
-  }, []);
+  }, [recommendationChange]);
 
   const listRef = useRef(null);
 

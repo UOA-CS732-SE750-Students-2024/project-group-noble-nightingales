@@ -29,12 +29,17 @@ const theme = createTheme({
   },
 });
 
-export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
+export default function SearchTopRow({setCurrentTrack, setTrackResult, setOpen}) {
   const [tracks, setTracks] = useState([]);
   const [input, setInput] = useState("");
 
   const handleKeyDown = async(event) => {
+    
     if (event.key === 'Enter') {
+      if (input === "") {
+        setOpen(true);
+        return;
+      }
         window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
         event.preventDefault();
         const data = await getSpotifySearchResult(input);
@@ -111,6 +116,10 @@ export default function SearchTopRow({setCurrentTrack, setTrackResult}) {
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon style={{ color: "white" }} onClick={async() => {
+                    if (input === "") {
+                      setOpen(true);
+                      return;
+                    }
                     window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
                     const data = await getSpotifySearchResult(input);
                     setTrackResult(data);
