@@ -14,11 +14,11 @@ export default function Login() {
   };
 
   const closeLogin = () => {
-    navigate(-1); // 导航回上一个页面
+    navigate(-1);
   };
 
   const stopPropagation = (event) => {
-    event.stopPropagation(); // 阻止事件冒泡
+    event.stopPropagation();
   };
 
   return (

@@ -2,5 +2,7 @@
     "host": "localhost",
     "port": 30053,
     "getCreatorsByUserId": "/api/spotify/creators",
-    "saveCreatorList": "/api/spotify/creators"
+    "saveCreatorList": "/api/spotify/creators",
+    "isUserInDatabase": "/api/users/check-user",
+    "getUserByUsername": "/api/users/by-username"
 }

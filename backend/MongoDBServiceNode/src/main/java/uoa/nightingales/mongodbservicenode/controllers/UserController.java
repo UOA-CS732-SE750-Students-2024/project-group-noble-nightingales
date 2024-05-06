@@ -50,12 +50,19 @@ public class UserController {
      * @return ResponseEntity with true if user exists and password matches, otherwise false.
      */
     @PostMapping("/check-user")
-    public ResponseEntity<Boolean> isUserInDatabase(@RequestBody Map<String, String> loginDetails) {
+    public ResponseEntity<String> isUserInDatabase(@RequestBody Map<String, String> loginDetails) {
         String username = loginDetails.get("username");
         String password = loginDetails.get("password");
 
         boolean userExists = userService.isUserInDatabase(username, password);
-        return ResponseEntity.ok(userExists);
+        if(userExists){
+            User user = userService.getUserByUsername(username);
+            return ResponseEntity.ok(user.getId());
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+
+
     }
 
     @PutMapping("/update/{email}")
@@ -68,8 +75,8 @@ public class UserController {
         }
     }
 
-    @GetMapping("/by-username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+    @GetMapping("/by-username")
+    public ResponseEntity<User> getUserByUsername(@RequestParam String username) {
         User user = userService.getUserByUsername(username);
         return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
