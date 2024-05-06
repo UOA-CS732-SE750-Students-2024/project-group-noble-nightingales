@@ -28,6 +28,7 @@ export default function Spotify() {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const [trackResult, setTrackResult] = useState([]);
   const [currentTrackAuthor, setCurrentTrackAuthor] = useState("");
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     async function fetchTracks() {
       try {
@@ -45,7 +46,7 @@ export default function Spotify() {
       <BallDynamic />
       <div className="Spotify-container">
         <div>
-          <SearchTopRow setCurrentTrack={setCurrentTrack} setTrackResult={setTrackResult}/>
+          <SearchTopRow setCurrentTrack={setCurrentTrack} setTrackResult={setTrackResult} setOpen={setOpen}/>
         </div>
         <div>
           <RecommendationRow setCurrentTrack={setCurrentTrack}/>
@@ -57,7 +58,7 @@ export default function Spotify() {
           <BallStatic />
         </div>
         <div className="AIRecommendationContainer">
-          <AIRecommendationRow setTrackResult={setTrackResult}/>
+          <AIRecommendationRow setTrackResult={setTrackResult} open={open} setOpen={setOpen}/>
           <BallStatic />
         </div>
         <div className="SpotifyRowContainer">

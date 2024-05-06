@@ -13,6 +13,13 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
+
 const themeGreen = createTheme({
   components: {
     MuiFilledInput: {
@@ -41,8 +48,8 @@ const themePurple = createTheme({
   },
 });
 
-export default function AIRecommendationRow({setTrackResult}) {
-  const [open, setOpen] = useState(false);
+export default function AIRecommendationRow({setTrackResult, open, setOpen}) {
+  
 
 
   const [textValue, setTextValue] = useState('');  
@@ -95,24 +102,24 @@ const performAiSearch = async() => {
         <div className="textfield-container"></div>
       </div>
       <ThemeProvider theme={themeGreen}>
-      <TextField
-        id="outlined-multiline-static"
-        multiline
-        placeholder="Simply describe what you want in natural language, and our AI will bring you videos that match the categories!"
-        rows={8}
-        variant="filled"
-        InputProps={{
-          style: {
-            color: "white",
-            backgroundColor: "#FFFFFF19",
-            borderRadius: "1vh 1vh 0vh 0vh",
-          },
-        }}
-        InputLabelProps={{ style: { color: "white" } }}
-        value={textValue}  
-        onChange={handleTextChange}
-        onKeyDown={handleKeyDown}
-      />
+        <TextField
+          id="outlined-multiline-static"
+          multiline
+          placeholder="Simply describe what you want in natural language, and our AI will bring you videos that match the categories!"
+          rows={8}
+          variant="filled"
+          InputProps={{
+            style: {
+              color: "white",
+              backgroundColor: "#FFFFFF19",
+              borderRadius: "1vh 1vh 0vh 0vh",
+            },
+          }}
+          InputLabelProps={{ style: { color: "white" } }}
+          value={textValue}  
+          onChange={handleTextChange}
+          onKeyDown={handleKeyDown}
+        />
       </ThemeProvider>
       <div style={{height: "3vh"}}></div>
       <div className="label-container">
@@ -143,17 +150,19 @@ const performAiSearch = async() => {
         InputLabelProps={{ style: { color: "white" } }}
       />
       </ThemeProvider>
-      <Dialog open={open} onClose={() => setOpen(false)}>
-  <DialogTitle>{"Input Required"}</DialogTitle>
-  <DialogContent>
-    <p>You have to put something in the search field to perform a search.</p>
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={() => setOpen(false)} color="primary">
-      OK
-    </Button>
-  </DialogActions>
-</Dialog>
+      <ThemeProvider theme={darkTheme}>
+        <Dialog open={open} onClose={() => setOpen(false)}>
+          <DialogTitle sx={{fontFamily: 'Helvetica'}}>{"Input Required"}</DialogTitle>
+          <DialogContent>
+            <p>You have to put something in the text field to perform this operation.</p>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpen(false)} style={{color: "#15FFAB"}}>
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </ThemeProvider>
     </div>
   );
 }
