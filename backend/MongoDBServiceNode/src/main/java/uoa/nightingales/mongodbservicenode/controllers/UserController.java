@@ -86,4 +86,13 @@ public class UserController {
         User user = userService.getUserByEmail(email);
         return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/verify")
+    public ResponseEntity<Boolean> isUserAlreadyCreated(@RequestParam String username, @RequestParam String emailAddress) {
+        if(userService.getUserByUsername(username) == null && userService.getUserByEmail(emailAddress) == null){
+            return ResponseEntity.ok(false);
+        }else {
+            return ResponseEntity.ok(true);
+        }
+    }
 }

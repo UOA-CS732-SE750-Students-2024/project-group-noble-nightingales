@@ -1,17 +1,59 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginRequest } from "../../Requests/Auth/LoginRequest";
 import styles from "./LoginCSS/Login.module.css";
+import { AuthContext } from "../../ApplicationContext";
+import { LinearProgress } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const progressTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#685cf0', // Your custom color
+    },
+  },
+});
 
 export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
+  const [,,, setUserToken, isAuthenticated, setIsAuthenticated,] = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+    setOpen(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted with:", { username, password, rememberMe });
   };
+
+  const login = async() => {
+    setIsLoading(true);
+    const data = await LoginRequest(username, password);
+    // setIsLoading(false);
+    if(data){
+      console.log("Login successful");
+      setOpen(true);
+      navigate(-1);
+      setUserToken(data.token);
+      setIsAuthenticated(true);
+    } else {
+      console.error("Login failed");
+      setIsAuthenticated(false);
+      setIsLoginFailed(true);
+    }
+  }
 
   const closeLogin = () => {
     navigate(-1);
@@ -62,15 +104,18 @@ export default function Login() {
               />
               Remember Me
             </label>
-            <a href="/forgot-password" className={styles.troubleLoggingLink}>
-              Trouble Logging in?
-            </a>
+            <div className={styles.troubleLoggingLink} style={isAuthenticated ? {color: "#d3f85a"} : {color: "#f8725a"}}>
+              {isAuthenticated ? "You have signed in" : "Not Signed In"} 
+            </div>
           </div>
-          <button className={styles.loginButton} type="submit">
-            Login
-          </button>
+          
+          {isLoading ? <ThemeProvider theme={progressTheme}><LinearProgress /></ThemeProvider> :<button disabled={isAuthenticated} onClick={() => {
+            login();
+          }} className={styles.loginButton} type="submit" style={isLoginFailed ? {background: "#f8725a"} : {}}>
+            {isAuthenticated ? "Already Signed In" : (isLoginFailed ? "Invalid User - Retry" : "Login")}
+          </button>}
           <div className={styles.signUp}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/explore/signup" className={styles.signUpLink}>
               Sign Up
             </a>

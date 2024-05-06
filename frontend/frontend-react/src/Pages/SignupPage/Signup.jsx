@@ -1,8 +1,12 @@
 import commonStyles from "./SignupCSS/CommonFormStyles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SignupRequest, CheckIfUserExistRequest } from "../../Requests/Auth/SignupRequest";
 
 function Signup() {
+
+  const [displayText, setDisplayText] = useState("");
+
   const [formFields, setFormFields] = useState({
     username: "",
     email: "",
@@ -11,13 +15,23 @@ function Signup() {
   });
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    // 在这里处理表单提交逻辑
     console.log("Signup Details:", formFields);
-    // 数据发送后，跳转到下一个页面
-    navigate("/explore/nextstep", { state: { email: formFields.email } });
+    const response = await CheckIfUserExistRequest(formFields.username, formFields.email);
+    if (response === 400) {
+      // some fields are empty
+      setDisplayText("Please enter all fields")
+    } else if (response === 409) {
+      // username already exists
+      setDisplayText("Username or email already exists - Retry")
+    } else {
+      navigate("/explore/nextstep", { state: { email: formFields.email, username: formFields.username, password: formFields.password, birthDate: formFields.birthDate } });
+      setDisplayText("");
+    }
+    
   };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,13 +40,15 @@ function Signup() {
       [name]: value,
     }));
   };
-  // 关闭登录模态框函数
+
+
+
   const closeLogin = () => {
-    navigate(-1); // 导航回上一个页面
+    navigate("/explore");
   };
 
   const stopPropagation = (event) => {
-    event.stopPropagation(); // 阻止事件冒泡
+    event.stopPropagation();
   };
   return (
     <div className={commonStyles.overlay} onClick={closeLogin}>
@@ -100,8 +116,8 @@ function Signup() {
             />
           </div>
 
-          <button type="submit" className={commonStyles.actionButton}>
-            Next Step
+          <button type="submit" className={commonStyles.actionButton} style={displayText ? {background: "#f8725a"} : {}}>
+            {displayText ? displayText :  "Next Step" }
           </button>
         </form>
         <div className={commonStyles.linkContainer}>

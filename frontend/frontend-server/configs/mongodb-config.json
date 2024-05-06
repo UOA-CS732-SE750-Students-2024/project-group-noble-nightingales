@@ -4,5 +4,7 @@
     "getCreatorsByUserId": "/api/spotify/creators",
     "saveCreatorList": "/api/spotify/creators",
     "isUserInDatabase": "/api/users/check-user",
-    "getUserByUsername": "/api/users/by-username"
+    "getUserByUsername": "/api/users/by-username",
+    "createUser": "/api/users/create",
+    "isUserAlreadyCreated": "/api/users/verify"
 }
