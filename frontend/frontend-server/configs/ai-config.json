@@ -3,5 +3,5 @@
     "port": 30054,
     "getSpotifySearchText": "/api/spotify-recommendations/search",
     "getUnwantedSpotifyCreators": "/api/spotify-recommendations/filter",
-    "getRelevantCategories": "/api/gpt/youtube/relevant"
+    "getYoutubeCategories": "/api/gpt/youtube/youtube"
 }

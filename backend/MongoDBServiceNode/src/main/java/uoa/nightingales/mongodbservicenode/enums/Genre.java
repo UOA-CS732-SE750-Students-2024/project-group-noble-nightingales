@@ -124,5 +124,5 @@ public enum Genre {
     TALK_SHOWS,
     COMPETITIONS,
     AWARDS,
-    STREAMING
+    STREAMING,
 }

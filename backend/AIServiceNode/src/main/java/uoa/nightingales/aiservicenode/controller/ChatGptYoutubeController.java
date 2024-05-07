@@ -25,6 +25,7 @@ public class ChatGptYoutubeController {
     @GetMapping("/relevant")
     public ResponseEntity<List<String>> getRelevantCategories(@RequestParam String userInput) {
         List<String> categories = chatGptYoutubeRecommendService.getUserInputRelevantCategory(userInput);
+        log.info(categories.toString());
         return ResponseEntity.ok(categories);
     }
 
@@ -36,7 +37,9 @@ public class ChatGptYoutubeController {
 
     @GetMapping("/youtube")
     public ResponseEntity<List<String>> getYoutubeCategories(@RequestParam String youtubeDesc) {
+        log.info("request received on youtube description: " + youtubeDesc);
         List<String> categories = chatGptYoutubeRecommendService.getYoutubeRelevantCategory(youtubeDesc);
+        log.info("final categories: " + categories.toString());
         return ResponseEntity.ok(categories);
     }
 }

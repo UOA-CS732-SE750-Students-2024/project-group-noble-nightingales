@@ -1,7 +1,9 @@
 package uoa.nightingales.intellicueenginenode.controllers;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import uoa.nightingales.intellicueenginenode.domains.GenreDataRequest;
 import uoa.nightingales.intellicueenginenode.domains.GenreDataResponse;
 import uoa.nightingales.intellicueenginenode.pojos.ChannelData;
 import uoa.nightingales.intellicueenginenode.pojos.GenreData;
@@ -11,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/youtube")
@@ -18,22 +21,12 @@ public class VideoSignificanceController {
 
     final VideoSignificanceAdjustmentService videoSignificanceAdjustmentService;
 
-    /**
-     * Adjusts the significance of specified genres.
-     *
-     * @param indexMap A map linking genre names to their indices.
-     * @param genreDataList List of GenreData objects.
-     * @param relatedGenres List of related genres to adjust.
-     * @param isWanted Flag indicating whether to increase (true) or decrease (false) the significance.
-     * @return The updated list of GenreData objects.
-     */
+
     @PostMapping("/adjustGenreSignificance")
-    public GenreDataResponse adjustGenreSignificance(@RequestBody Map<String, Integer> indexMap,
-                                                     @RequestBody List<GenreData> genreDataList,
-                                                     @RequestBody List<String> relatedGenres,
-                                                     @RequestParam boolean isWanted) {
-        List<GenreData> genreData = videoSignificanceAdjustmentService.adjustGenreSignificance(indexMap, genreDataList, relatedGenres, isWanted);
-        return new GenreDataResponse(genreData, indexMap);
+    public GenreDataResponse adjustGenreSignificance(@RequestBody GenreDataRequest request) {
+        log.info("received request to adjust genre significance");
+        List<GenreData> genreData = videoSignificanceAdjustmentService.adjustGenreSignificance(request.getIndexMap(), request.getGenreDataList(), request.getRelatedGenres(), request.getIsWanted());
+        return new GenreDataResponse(genreData, request.getIndexMap());
     }
 
     /**

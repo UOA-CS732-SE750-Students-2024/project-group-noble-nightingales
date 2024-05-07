@@ -48,7 +48,7 @@ router.get('/recommendation', async (req, res) => {
             // Send the results
             res.status(200).send(searchResult.data);
         } catch (searchError) {
-            console.error('Error during YouTube search:', searchError);
+            console.error('Error during YouTube search:',searchError); 
             res.status(500).send({ message: 'Error during YouTube search' });
         }
     } catch (historyError) {
@@ -64,15 +64,15 @@ router.post('/click', async (req, res) => {
 
    // URLs configured from your system's configuration
    const findYoutubeHistoryUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.findById);
-   const increaseSignificanceUrl = concatenateUrl(mongoDBConfig, engineConfig.adjustGenreSignificance);
+   const increaseSignificanceUrl = concatenateUrl(engineConfig, engineConfig.adjustGenreSignificance);
    const saveYoutubeHistoryUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.saveData);
-   const getAiExtractionsUrl = concatenateUrl(aiConfig, aiConfig.getRelevantCategories);
+   const getAiExtractionsUrl = concatenateUrl(aiConfig, aiConfig.getYoutubeCategories);
 
    let relatedGenres, historyData;
 
    // Step 1: Send videoDescription to AI Endpoint
    try {
-       const aiResponse = await axios.get(getAiExtractionsUrl, { params: { userInput: videoDescription } });
+       const aiResponse = await axios.get(getAiExtractionsUrl, { params: { youtubeDesc: videoDescription } });
        relatedGenres = aiResponse.data;
    } catch (aiError) {
        console.error('Error fetching AI extractions:', aiError);
@@ -85,6 +85,7 @@ router.post('/click', async (req, res) => {
        if (!historyResponse.data) {
            return res.status(404).send({ message: 'YouTube history data not found' });
        }
+       console.log(historyResponse.data)
        historyData = historyResponse.data;
    } catch (historyError) {
        console.error('Error fetching YouTube history data:', historyError);
@@ -97,8 +98,9 @@ router.post('/click', async (req, res) => {
            indexMap: historyData.indexGenreMap,
            genreDataList: historyData.genreDataList,
            relatedGenres: relatedGenres,
-           isWanted: true 
+           isWanted: true
        });
+       
        historyData.genreDataList = updatedGenresResponse.data.genreDataList;
        historyData.indexGenreMap = updatedGenresResponse.data.indexMap;
    } catch (adjustError) {
