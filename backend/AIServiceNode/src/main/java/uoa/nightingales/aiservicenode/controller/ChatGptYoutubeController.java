@@ -17,8 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/gpt/youtube")
 public class ChatGptYoutubeController {
-    @Resource
-   final ChatGptYoutubeRecommendService chatGptYoutubeRecommendService;
+
+
+    final ChatGptYoutubeRecommendService chatGptYoutubeRecommendService;
 
 
     @GetMapping("/relevant")

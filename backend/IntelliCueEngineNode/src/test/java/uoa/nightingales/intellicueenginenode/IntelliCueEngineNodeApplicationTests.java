@@ -4,6 +4,7 @@ import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import uoa.nightingales.intellicueenginenode.pojos.ChannelData;
 import uoa.nightingales.intellicueenginenode.pojos.GenreData;
 import uoa.nightingales.intellicueenginenode.services.VideoSignificanceAdjustmentService;
 import uoa.nightingales.intellicueenginenode.utils.AlgorithmsUtil;
@@ -216,6 +217,33 @@ class IntelliCueEngineNodeApplicationTests {
         System.out.println(genreDataList);
     }
 
+    @Test
+    void testEmptyHistory(){
+        List<String> relatedGenreList = new ArrayList<>();
+        relatedGenreList.add("Metal");
+        relatedGenreList.add("ss");
+        relatedGenreList.add("aa");
+        Map<String, Integer> emptyMap = new HashMap<>();
+        List<GenreData> list = new ArrayList<>();
+        System.out.println(videoSignificanceAdjustmentService.adjustGenreSignificance(emptyMap, list, relatedGenreList, true));
+        System.out.println(emptyMap);
+        System.out.println(list);
+
+        System.out.println(videoSignificanceAdjustmentService.adjustGenreSignificance(emptyMap, list, relatedGenreList, true));
+        System.out.println(emptyMap);
+        System.out.println(list);
+
+        List<String> relatedGenreList2 = new ArrayList<>();
+        relatedGenreList2.add("aa");
+        System.out.println(videoSignificanceAdjustmentService.adjustGenreSignificance(emptyMap, list, relatedGenreList2, true));
+        System.out.println(emptyMap);
+        System.out.println(list);
+
+
+        System.out.println(videoSignificanceAdjustmentService.adjustGenreSignificance(emptyMap, list, relatedGenreList2, false));
+        System.out.println(emptyMap);
+        System.out.println(list);
+    }
 
 
 }

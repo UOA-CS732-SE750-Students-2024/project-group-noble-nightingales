@@ -2,6 +2,7 @@ package uoa.nightingales.intellicueenginenode.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import uoa.nightingales.intellicueenginenode.domains.GenreDataResponse;
 import uoa.nightingales.intellicueenginenode.pojos.ChannelData;
 import uoa.nightingales.intellicueenginenode.pojos.GenreData;
 import uoa.nightingales.intellicueenginenode.services.VideoSignificanceAdjustmentService;
@@ -27,11 +28,12 @@ public class VideoSignificanceController {
      * @return The updated list of GenreData objects.
      */
     @PostMapping("/adjustGenreSignificance")
-    public List<GenreData> adjustGenreSignificance(@RequestBody Map<String, Integer> indexMap,
-                                                   @RequestBody List<GenreData> genreDataList,
-                                                   @RequestBody List<String> relatedGenres,
-                                                   @RequestParam boolean isWanted) {
-        return videoSignificanceAdjustmentService.adjustGenreSignificance(indexMap, genreDataList, relatedGenres, isWanted);
+    public GenreDataResponse adjustGenreSignificance(@RequestBody Map<String, Integer> indexMap,
+                                                     @RequestBody List<GenreData> genreDataList,
+                                                     @RequestBody List<String> relatedGenres,
+                                                     @RequestParam boolean isWanted) {
+        List<GenreData> genreData = videoSignificanceAdjustmentService.adjustGenreSignificance(indexMap, genreDataList, relatedGenres, isWanted);
+        return new GenreDataResponse(genreData, indexMap);
     }
 
     /**

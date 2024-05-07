@@ -21,7 +21,7 @@ public class ResponseParser {
             video.setVideoId(searchResult.getId().getVideoId());
             video.setTitle(searchResult.getSnippet().getTitle());
             video.setDescription(searchResult.getSnippet().getDescription());
-            video.setCoverImgUrl(searchResult.getSnippet().getThumbnails().getMaxres().getUrl());
+            video.setCoverImgUrl(searchResult.getSnippet().getThumbnails().getDefault().getUrl());
             video.setPublishedAt(searchResult.getSnippet().getPublishedAt().toStringRfc3339());
             video.setChannel(new Channel(searchResult.getSnippet().getChannelTitle(), searchResult.getSnippet().getChannelId()));
             video.setVideoUrl("https://www.youtube.com/embed/" + video.getVideoId());

@@ -6,5 +6,7 @@
     "isUserInDatabase": "/api/users/check-user",
     "getUserByUsername": "/api/users/by-username",
     "createUser": "/api/users/create",
-    "isUserAlreadyCreated": "/api/users/verify"
+    "isUserAlreadyCreated": "/api/users/verify",
+    "findById": "/api/youtube/history",
+    "saveData": "/api/youtube/history"
 }

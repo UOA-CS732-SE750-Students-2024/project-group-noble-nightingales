@@ -3,5 +3,6 @@
     "port": 30055,
     "addCreator": "/api/creators/add",
     "removeCreator": "/api/creators/remove",
-    "getRandomCreators": "/api/creators/random"
+    "getRandomCreators": "/api/creators/random",
+    "adjustGenreSignificance": "/api/youtube/adjustGenreSignificance"
 }

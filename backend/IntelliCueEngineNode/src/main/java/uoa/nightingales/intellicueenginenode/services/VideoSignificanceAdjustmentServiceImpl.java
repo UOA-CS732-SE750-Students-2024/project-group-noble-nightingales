@@ -7,7 +7,7 @@ import uoa.nightingales.intellicueenginenode.utils.AlgorithmsUtil;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service("videoSignificanceAdjustmentService")
 public class VideoSignificanceAdjustmentServiceImpl implements VideoSignificanceAdjustmentService {
@@ -19,6 +19,7 @@ public class VideoSignificanceAdjustmentServiceImpl implements VideoSignificance
             relatedGenres.forEach(s -> {
                 if(!indexMap.containsKey(s)){
                     genreDataList.add(new GenreData(s, 1));
+                    indexMap.put(s, genreDataList.size() - 1);
                 }
             });
             return increaseSignificance(indexMap, genreDataList, relatedGenres);
@@ -32,6 +33,7 @@ public class VideoSignificanceAdjustmentServiceImpl implements VideoSignificance
         relatedChannels.forEach(s -> {
             if(!indexMap.containsKey(s)){
                 channelDataList.add(new ChannelData(s, 1));
+                indexMap.put(s, channelDataList.size() - 1);
             }
         });
         relatedChannels.forEach(s -> AlgorithmsUtil.efficientSwapForChannel(channelDataList, indexMap, s, 1));
