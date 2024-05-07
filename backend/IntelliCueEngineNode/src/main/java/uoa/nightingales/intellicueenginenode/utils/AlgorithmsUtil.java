@@ -113,7 +113,7 @@ public class AlgorithmsUtil {
 
         for (int i = start; i <= end; i++) {
             GenreData genreData = genreDataList.get(i);
-            indexMap.put(genreData.getName(), i);
+            indexMap.put(genreData.getName().trim(), i);
         }
     }
 
@@ -124,7 +124,7 @@ public class AlgorithmsUtil {
 
         for (int i = start; i <= end; i++) {
             ChannelData genreData = genreDataList.get(i);
-            indexMap.put(genreData.getChannelId(), i);
+            indexMap.put(genreData.getChannelId().trim(), i);
         }
     }
 }

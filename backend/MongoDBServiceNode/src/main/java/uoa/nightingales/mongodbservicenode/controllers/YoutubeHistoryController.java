@@ -25,12 +25,13 @@ public class YoutubeHistoryController {
         return ResponseEntity.ok(savedData);
     }
 
-    @GetMapping("/history/{id}")
-    public ResponseEntity<YoutubeHistoryData> findById(@PathVariable String id) {
+    @GetMapping("/history")
+    public ResponseEntity<YoutubeHistoryData> findById(@RequestParam String id) {
         log.info("Fetching YoutubeHistoryData with id: {}", id);
         Optional<YoutubeHistoryData> data = youtubeHistoryDataService.findById(id);
+        System.out.println(data);
         return data.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.ok(null));
     }
 
 }
