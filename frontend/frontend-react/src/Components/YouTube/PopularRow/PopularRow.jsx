@@ -8,6 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import { useState,useEffect } from "react";
+import {getYouTubeSearch,getYouTubeRandomSearch} from "../../../Requests/Youtube/YoutubeRequest"
 
 const theme = createTheme({
   components: {
@@ -29,49 +31,72 @@ const theme = createTheme({
   },
 });
 
-export default function PopularRow() {
-  // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
-  const dummyTopVideos = [
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft2",
-      author: "Peter Wang",
-    },
-  ];
+export default function PopularRow({setVideoResults}) {
+  const [videos, setVideos] = useState([]);
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    async function fetchTracks() {
+      try {
+        const data = await getYouTubeRandomSearch(); 
+        console.log(data);
+        setVideos(data.videoList);  
+      } catch (error) {
+        console.error('Failed to fetch tracks:', error);
+      }
+    }
+    fetchTracks();
+  }, []);
+
+  
+  const handleKeyDown = async(event) => {
+    if (event.key === 'Enter') {
+      if (input === "") {
+        return;
+      }
+        window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
+        event.preventDefault();
+        const data = await getYouTubeSearch(input);
+        console.log(data);
+        setVideoResults(data.videoList);
+    }
+  }
 
   // Function to render the video list
   const renderVideoList = (videos) => {
     return (
       <ul className="videoList">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.name}>
+          <li className="videoListElement" key={video.videoId}>
             <NavLink to="/youtube/player">
               <img
                 className="videoImage"
-                src={video.imageURL}
-                alt={video.name}
+                src={video.coverImgUrl}
+                alt={video.title}
               />
             </NavLink>
             <div className="videoInfo-container">
               <PlayArrowIcon className="playArrow" />
-              <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>
-                  {video.name}
-                </span>
-                <span
-                  style={{
-                    fontSize: "1.6vh",
-                    color: "gray",
-                    marginLeft: "-1.2vw",
-                  }}
-                >
-                  Made By {video.author}
-                </span>
+              <div >
+                {/* Change here to ul li to make them start align */}
+                <ul className="videoInfo">
+                  <li>
+                    {/* style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }} */}
+                    <span className="videoTitle" >
+                      {video.title}
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      style={{
+                        fontSize: "1.6vh",
+                        color: "gray",
+                      }}
+                    >
+                      Made By {video.channel.channelName}
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </li>
@@ -113,6 +138,8 @@ export default function PopularRow() {
             type="search"
             variant="outlined"
             placeholder="Search..."
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setInput(e.target.value)}
             InputProps={{
               style: {
                 color: "white",
@@ -129,8 +156,7 @@ export default function PopularRow() {
             }}
           />
         </ThemeProvider>
-        {renderVideoList(dummyTopVideos)}
-        {renderVideoList(dummyTopVideos)}
+        {renderVideoList(videos)}
       </div>
     </div>
   );

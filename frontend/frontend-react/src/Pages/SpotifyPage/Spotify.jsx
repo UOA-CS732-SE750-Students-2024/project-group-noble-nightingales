@@ -10,7 +10,7 @@ import Player from "../../Components/SpotifyPlay/Player/Player";
 import { useState} from "react";
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from "react";
-import { getSpotifyRandomResult, getSpotifyPopular, getMoreMusic } from "../../Requests/Explore/YoutubeSpotifyRequest";
+import { getSpotifyRandomResult, getMoreMusic } from "../../Requests/Explore/YoutubeSpotifyRequest";
 import { Button } from "@mui/material";
 import LoadingAnimation from "../../Dialogs/Spotify/LoadingAnimation";
 

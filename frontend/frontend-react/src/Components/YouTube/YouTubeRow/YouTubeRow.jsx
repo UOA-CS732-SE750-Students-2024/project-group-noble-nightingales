@@ -1,54 +1,36 @@
 import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import YouTubeCover from "../../../assets/YouTubeCover.png";
 import StatsIcon from "../../../assets/StatsIcon.png";
 import { NavLink } from "react-router-dom";
 
-export default function YouTubeRow() {
-  // Might need to refactor dummy data lists alongside subsequent <li> components to reduce code duplication
-  const dummyVideos = [
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft4",
-      author: "Peter Wang",
-    },
-  ];
-
+export default function YouTubeRow({videoResults}) {
   // Function to render the video list
   const renderVideoList = (videos) => {
     return (
       <ul className="videoList">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.name}>
+          <li className="videoListElement" key={video.videoId}>
             <NavLink to="/youtube/player">
               <img
                 className="videoImage"
-                src={video.imageURL}
-                alt={video.name}
+                src={video.
+                  coverImgUrl}
+                alt={video.title}
               />
             </NavLink>
             <div className="videoInfo-container">
               <PlayArrowIcon className="playArrow" />
-              <div className="videoInfo">
-                <span style={{ fontSize: "1.9vh" }}>{video.name}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray" }}>
-                  Made By {video.author}
-                </span>
+              <div >
+                <ul className="videoInfo">
+                  <li>
+                    <span className="videoTitle">{video.title}</span>
+                  </li>
+                  <li>     
+                    <span style={{ fontSize: "1.6vh", color: "gray" }}>
+                    Made By {video.channel.channelName}
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </li>
@@ -71,9 +53,7 @@ export default function YouTubeRow() {
           }}
         />
       </h2>
-      {renderVideoList(dummyVideos)}
-      {renderVideoList(dummyVideos)}
-      {renderVideoList(dummyVideos)}
+      {renderVideoList(videoResults)}
     </div>
   );
 }
