@@ -4,7 +4,7 @@ import AIRecommendationRow from "../../Components/YouTube/AIRecommendationRow/AI
 import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
-import {getMoreVideo,getYouTubeRecommendation, getYouTubeRandomSearch} from "../../Requests/Youtube/YoutubeRequest"
+import {getMoreVideo,getYouTubeRecommendation} from "../../Requests/Youtube/YoutubeRequest"
 import { useState ,useEffect,useContext} from "react";
 
 
@@ -23,11 +23,11 @@ export default function YouTube() {
 
   useEffect(() => {
     async function fetchVideos() {
-      //TODO: 把这里改成成推荐的function
+
       try {
 
         console.log(userId)
-        const data = await getYouTubeRecommendation(userId); 
+        const data = await getYouTubeRecommendation(userId,20); 
         setVideoResults(data);  
 
       } catch (error) {

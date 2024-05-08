@@ -67,11 +67,12 @@ export const filterVideo = async (userInput, userId) => {
     }
 }
 
-export const getYouTubeRecommendation = async (userId) => {
+export const getYouTubeRecommendation = async (userId,maxResults) => {
     try {
         const response = await axios.get(`${baseUrl}/api/video/recommendation`, {
             params: {
-                userId: userId
+                userId: userId,
+                maxResults:maxResults
             }
         });
         return response.data;

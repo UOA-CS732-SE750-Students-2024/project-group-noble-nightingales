@@ -34,6 +34,22 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
   const [comments, setComments] = useState([{}]);
   const [commentText, setCommentText] = useState('')
   const [recommendedVideos, setRecommendedVideos] = useState([])
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    async function fetchVideos() {
+
+      try {
+
+        console.log(userId)
+        const data = await getYouTubeRecommendation(userId,4); 
+        setVideos(data.videoList);  
+
+      } catch (error) {
+        console.error("Failed to fetch tracks:", error);
+      }
+    }
+    fetchVideos();
+  }, []);
 
   function handleKeyPress(event) {
     if (event.key === 'Enter') {
@@ -56,28 +72,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
     setShowComments(!showComments);
   };
 
-  const dummyVideos = [
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft1",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft2",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft3",
-      author: "Peter Wang",
-    },
-    {
-      imageURL: YouTubeCover,
-      name: "Starcraft4",
-      author: "Peter Wang",
-    },
-  ];
+  
 
   useEffect(() => {
 
@@ -94,18 +89,18 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
     return (
       <ul className="videoList">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.name}>
+          <li className="videoListElement" key={video.videoId}>
             <div className="videoInfo-container">
               <NavLink to="/youtube/player">
                 <img
                   className="videoImage"
-                  src={video.imageURL}
-                  alt={video.name}
+                  src={video.coverImgUrl}
+                  alt={video.title}
                 />
               </NavLink>
               <div className="videoInfo">
                 <span style={{ fontSize: "1.9vh", marginLeft: "-1.2vw" }}>
-                  {video.name}
+                  {video.title}
                 </span>
                 <span
                   style={{
@@ -114,7 +109,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
                     marginLeft: "-1.2vw",
                   }}
                 >
-                  Made By {video.author}
+                  Made By {video.channel.channelName}
                 </span>
               </div>
             </div>
@@ -242,7 +237,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
             }}
           />
         </h2>
-        {renderVideoList(dummyVideos)}
+        {renderVideoList(videos)}
       </div>}
       
     </div>

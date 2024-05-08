@@ -9,7 +9,7 @@ import axios from 'axios';
 const router = express.Router();
 
 router.get('/recommendation', async (req, res) => {
-    const { userId } = req.query;  // Correct extraction of userId from query
+    const { userId,maxResults } = req.query;  // Correct extraction of userId from query
 
     // Construct URLs using configuration files
     const findYoutubeHistoryUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.findById);
@@ -38,7 +38,7 @@ router.get('/recommendation', async (req, res) => {
             const searchResult = await axios.get(searchUrl, { 
                 params: {
                     query: randomGenre.name,
-                    maxResults: 20,
+                    maxResults:maxResults,
                     pageToken: req.query.pageToken ? req.query.pageToken : ''
                 }
             });
