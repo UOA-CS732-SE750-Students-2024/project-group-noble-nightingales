@@ -98,7 +98,7 @@ export default function YouTubePlayerRow() {
         {videos.map((video) => (
           <li className="videoListElement" key={video.videoId}>
             <div className="videoInfo-container">
-              <NavLink to="/youtube/player">
+              <NavLink to="/youtube/player" onClick={() => setCurrentVideo(video)}>
                 <img
                   className="videoImage"
                   src={video.coverImgUrl}
