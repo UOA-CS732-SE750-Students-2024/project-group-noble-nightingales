@@ -9,6 +9,7 @@ import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
 import { getCommentsByVideoId, saveComment } from "../../../Requests/Comment/CommentRequest";
 import { AuthContext } from "../../../ApplicationContext";
+import {getYouTubeRecommendation} from "../../../Requests/Youtube/YoutubeRequest"
 
 const colors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4'];
 
@@ -40,7 +41,7 @@ export default function YouTubePlayerRow() {
   const [comments, setComments] = useState([{}]);
   const [commentText, setCommentText] = useState('')
   const [recommendedVideos, setRecommendedVideos] = useState([])
-  const [videos, setVideos] = useState([]);
+
   useEffect(() => {
     async function fetchVideos() {
 
@@ -48,7 +49,7 @@ export default function YouTubePlayerRow() {
 
         console.log(userId)
         const data = await getYouTubeRecommendation(userId,4); 
-        setVideos(data.videoList);  
+        setRecommendedVideos(data.videoList);  
 
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
@@ -243,7 +244,7 @@ export default function YouTubePlayerRow() {
             }}
           />
         </h2>
-        {renderVideoList(videos)}
+        {renderVideoList(recommendedVideos)}
       </div>}
       
     </div>
