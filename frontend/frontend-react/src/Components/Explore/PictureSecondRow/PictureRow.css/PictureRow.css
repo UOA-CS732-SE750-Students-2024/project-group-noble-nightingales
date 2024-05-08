@@ -39,7 +39,7 @@
 
 .pictureRow-container .rightBallPicture{
     margin-left:15vw;
-    animation: slideInLeftPictureBall 5s ease-in-out forwards
+    animation: slideInLeftPictureBall 5s ease-in-out forwards,  rotateBall infinite 10s linear;
 }
 
 @keyframes slideInLeftPictureBall {
@@ -48,6 +48,15 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes rotateBall {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 

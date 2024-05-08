@@ -21,7 +21,7 @@ public class ResponseParser {
             video.setVideoId(searchResult.getId().getVideoId());
             video.setTitle(searchResult.getSnippet().getTitle());
             video.setDescription(searchResult.getSnippet().getDescription());
-            video.setCoverImgUrl(searchResult.getSnippet().getThumbnails().getDefault().getUrl());
+            video.setCoverImgUrl(getProperThumbnailUrl(searchResult));
             video.setPublishedAt(searchResult.getSnippet().getPublishedAt().toStringRfc3339());
             video.setChannel(new Channel(searchResult.getSnippet().getChannelTitle(), searchResult.getSnippet().getChannelId()));
             video.setVideoUrl("https://www.youtube.com/embed/" + video.getVideoId());
@@ -39,11 +39,7 @@ public class ResponseParser {
             videoData.setVideoId(video.getId());
             videoData.setTitle(video.getSnippet().getTitle());
             videoData.setDescription(video.getSnippet().getDescription());
-            if(video.getSnippet().getThumbnails().getMaxres() == null){
-                videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getDefault().getUrl());
-            }else {
-                videoData.setCoverImgUrl(video.getSnippet().getThumbnails().getMaxres().getUrl());
-            }
+            videoData.setCoverImgUrl(getProperThumbnailUrl(video));
             videoData.setPublishedAt(video.getSnippet().getPublishedAt().toStringRfc3339());
             videoData.setChannel(new Channel(video.getSnippet().getChannelTitle(), video.getSnippet().getChannelId()));
             videoData.setVideoUrl("https://www.youtube.com/embed/" + videoData.getVideoId());
@@ -51,6 +47,49 @@ public class ResponseParser {
         }).toList();
 
         return new VideosResponse(response.getPrevPageToken(), response.getNextPageToken(), list);
+    }
+
+
+     private static String getProperThumbnailUrl(com.google.api.services.youtube.model.Video video) {
+        if (video == null || video.getSnippet() == null) {
+            return null; // Return null if video or snippet is null
+        }
+
+        // Try to get the maximum resolution thumbnail first
+        if (video.getSnippet().getThumbnails().getMaxres() != null) {
+            return video.getSnippet().getThumbnails().getMaxres().getUrl();
+        } else if (video.getSnippet().getThumbnails().getStandard() != null) {
+            return video.getSnippet().getThumbnails().getStandard().getUrl();
+        } else if (video.getSnippet().getThumbnails().getHigh() != null) {
+            return video.getSnippet().getThumbnails().getHigh().getUrl();
+        } else if (video.getSnippet().getThumbnails().getMedium() != null) {
+            return video.getSnippet().getThumbnails().getMedium().getUrl();
+        } else if (video.getSnippet().getThumbnails().getDefault() != null) {
+            return video.getSnippet().getThumbnails().getDefault().getUrl();
+        }
+
+        return null; // Return null if no thumbnails are available
+    }
+
+    private static String getProperThumbnailUrl(SearchResult video) {
+        if (video == null || video.getSnippet() == null) {
+            return null; // Return null if video or snippet is null
+        }
+
+        // Try to get the maximum resolution thumbnail first
+        if (video.getSnippet().getThumbnails().getMaxres() != null) {
+            return video.getSnippet().getThumbnails().getMaxres().getUrl();
+        } else if (video.getSnippet().getThumbnails().getStandard() != null) {
+            return video.getSnippet().getThumbnails().getStandard().getUrl();
+        } else if (video.getSnippet().getThumbnails().getHigh() != null) {
+            return video.getSnippet().getThumbnails().getHigh().getUrl();
+        } else if (video.getSnippet().getThumbnails().getMedium() != null) {
+            return video.getSnippet().getThumbnails().getMedium().getUrl();
+        } else if (video.getSnippet().getThumbnails().getDefault() != null) {
+            return video.getSnippet().getThumbnails().getDefault().getUrl();
+        }
+
+        return null; // Return null if no thumbnails are available
     }
 
 
