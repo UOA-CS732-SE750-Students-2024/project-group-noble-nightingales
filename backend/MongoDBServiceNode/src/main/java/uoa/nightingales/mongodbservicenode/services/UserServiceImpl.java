@@ -32,9 +32,10 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword(encodingService.encode(user.getPassword()));
         log.info("Saving user: " + user + " in collection: " + COLLECTION_NAME);
-        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(user.getUsername(), user);
         log.info("Setting up cache for " + COLLECTION_NAME + " with ID: " + user.getId() + " and user: " + user);
-        return userRepository.save(user);
+        User save = userRepository.save(user);
+        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(user.getUsername(), user);
+        return save;
     }
 
     @Override
@@ -47,8 +48,9 @@ public class UserServiceImpl implements UserService {
         }
         userStored.setPassword(password);
         log.info("setting up cache for " + COLLECTION_NAME + " with username: " + userStored.getUsername());
+        User save = userRepository.save(userStored);
         Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(userStored.getUsername(), userStored);
-        return userRepository.save(userStored);
+        return save;
     }
 
     @Override

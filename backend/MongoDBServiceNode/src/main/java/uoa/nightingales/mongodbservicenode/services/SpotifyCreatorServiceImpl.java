@@ -39,8 +39,8 @@ public class SpotifyCreatorServiceImpl implements SpotifyCreatorService{
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveCreatorList(SpotifyCreatorData data) {
         log.info("Saving Spotify creator data: " + data);
-        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(data.getUserId(), data.getCreatorList());
         log.info("Setting up cache for " + COLLECTION_NAME + " with user ID: " + data.getUserId());
         spotifyCreatorRepository.save(data);
+        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(data.getUserId(), data.getCreatorList());
     }
 }
