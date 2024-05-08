@@ -14,9 +14,9 @@ export default function YouTubeRow() {
   useEffect(() => {
     async function fetchTracks() {
       try {
-        // const array = await getYouTubePopular();
-        // setVideos(array);
-        // console.log(array)
+        const array = await getYouTubePopular();
+        setVideos(array);
+        console.log(array)
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
       }

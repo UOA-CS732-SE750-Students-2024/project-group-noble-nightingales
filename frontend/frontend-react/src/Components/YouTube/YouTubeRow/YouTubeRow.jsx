@@ -5,40 +5,45 @@ import { NavLink } from "react-router-dom";
 import{clickOnYoutube} from "../../../Requests/Youtube/YoutubeRequest"
 import { AuthContext } from "../../../ApplicationContext";
 import { useContext} from "react";
-export default function YouTubeRow({videoResults}) {
-  const [,,,,,,userId] = useContext(AuthContext)
+import ThumbnailSkeleton from "../../../Dialogs/General/ThumbnailSkeleton";
+
+export default function YouTubeRow({videoResults, isVideoLoading}) {
+  const [,,,,,,userId,,,setCurrentVideo] = useContext(AuthContext)
   // Function to render the video list
   const renderVideoList = (videos) => {
     return (
-      <ul className="videoList">
-        {videos.map((video) => (
-          <li className="videoListElement" key={video.videoId} onClick={() => {clickOnYoutube(video.description, userId);}}>
-             <NavLink  to={`/youtube/player?videoUrl=${video.videoUrl}`}>
-              <img
-                className="videoImage"
-                src={video.
-                  coverImgUrl}
-                alt={video.title}
-              />
+    <ul className="videoList">
+      {!isVideoLoading ? (
+        videos.map((video) => (
+          <li className="videoListElement" key={video.videoId} onClick={() => clickOnYoutube(video.description, userId)}>
+            <NavLink to={`/youtube/player?videoUrl=${video.videoUrl}`} onClick={() => setCurrentVideo(video)}>
+              <img className="videoImage" src={video.coverImgUrl} alt={video.title} />
             </NavLink>
             <div className="videoInfo-container">
               <PlayArrowIcon className="playArrow" />
-              <div >
+              <div>
                 <ul className="videoInfo">
                   <li>
                     <span className="videoTitle">{video.title}</span>
                   </li>
-                  <li>     
+                  <li>
                     <span style={{ fontSize: "1.6vh", color: "gray" }}>
-                    Made By {video.channel.channelName}
+                      Made By {video.channel.channelName}
                     </span>
                   </li>
                 </ul>
               </div>
             </div>
           </li>
-        ))}
-      </ul>
+        ))
+      ) : (
+        Array.from({ length: 20 }).map((_, index) => (
+          <li key={index} className="videoListElement">
+            <ThumbnailSkeleton />
+          </li>
+        ))
+      )}
+    </ul>
     );
   };
 

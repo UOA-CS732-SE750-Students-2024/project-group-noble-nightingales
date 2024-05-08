@@ -10,7 +10,7 @@ export default function YouTubePlayer() {
       {/* <BallDynamic /> */}
       <div className="YouTubePlayer-container">
         <div>
-          <YouTubePlayerRow videoUrl={videoUrl} />
+          <YouTubePlayerRow />
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@
     align-items: center; 
     padding-right: 1vw;
     align-content: space-between;
+    padding-bottom: 2vh;
 }
 
 .YouTubeRow-container .videoList .videoListElement .videoImage{
@@ -30,6 +31,7 @@
     align-items: center;
     width: 20vw;
     transition: width 0.5s ease-in-out; 
+    border-radius: 5%;
 }
 
 .YouTubeRow-container .videoList .videoListElement .videoImage:hover {

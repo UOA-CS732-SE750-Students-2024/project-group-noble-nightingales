@@ -8,8 +8,8 @@ export default function SpotifyRow() {
   useEffect(() => {
     async function fetchTracks() {
       try {
-        // const array = await getSpotifyPopular();
-        // setTracks(array);
+        const array = await getSpotifyPopular();
+        setTracks(array);
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
       }
