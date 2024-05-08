@@ -6,7 +6,6 @@ import YouTube from "./Pages/YouTubePage/YouTube";
 import YouTubePlayer from "./Pages/YouTubePlayerPage/YouTubePlayer";
 import Signup from "./Pages/SignupPage/Signup";
 import Nextstep from "./Pages/NextstepPage/Nextstep";
-import SpotifyPlay from "./Pages/SpotifyPlayPage/SpotifyPlayPage.jsx";
 import Comment from "./Pages/CommentPage/Comment";
 
 import {
@@ -16,8 +15,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import SpotifySignIn from "./Pages/SpotifySignInPage/SpotifySignIn.jsx";
+import { useContext } from "react";
+import { AuthContext } from "./ApplicationContext.jsx";
 
 function App() {
+
+  const [,,,,isAuthenticated] = useContext(AuthContext)
+
   return (
     <Router>
       <Routes>
@@ -36,7 +40,7 @@ function App() {
           <Route path="nextstep" element={<Nextstep />} />
         </Route>
         <Route
-          path="/spotify"
+          path={isAuthenticated ? "/spotify" : "/explore"}
           element={
             <>
               <Nav />
@@ -45,7 +49,7 @@ function App() {
           }
         />
         <Route
-          path="/youtube"
+          path={isAuthenticated ? "/youtube" : "/explore"}
           element={
             <>
               <Nav />
@@ -54,22 +58,7 @@ function App() {
           }
         />
         <Route
-          path="/spotify-play"
-          element={
-            <>
-              <Nav />
-              <div style={{ height: "20vh" }}></div>
-              <SpotifyPlay
-                accessToken={
-                  "BQDBfAp_lRRny81Mp0APbhIvuXyzaSgjBTUWIGo0aRE98OqYOlqv4Vv7PeUN0x8zpdeS-7gaiG2wD2thIILuS46ZnEfBlnjQC13vVsQfuYta2FoAORbf3swjFhy7OwuN6vTp6jUKwGWJrojSa42JmfLI0Iic7ZstN-s_fZESwG0H2OEW4FDWd09SVzVg1jYWvZ6uQlxFCQLDUK4hlB_T-xF5ZsAWPVx1Mpq3Vb02RN_uTA"
-                }
-                spotifyUri={"spotify:track:6cmm1LMvZdB5zsCwX5BjqE"}
-              />
-            </>
-          }
-        />
-        <Route
-          path="/youtube/player"
+          path={isAuthenticated ? "/youtube/player" : "/explore"}
           element={
             <>
               <Nav />
@@ -78,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/comments"
+          path={isAuthenticated ? "/comments" : "/explore"}
           element={
             <>
               <Nav />
@@ -88,7 +77,7 @@ function App() {
           }
         />
         <Route
-          path="/spotify/signin"
+          path={isAuthenticated ? "/spotify/signin" : "/explore"}
           element={
             <>
               <Nav />
