@@ -1,26 +1,31 @@
 import "./RecommendationRowCSS/RecommendationRow.css";
 import triangle from "../../../assets/triangle2.png";
 import { NavLink } from "react-router-dom";
-import { useEffect,useState,useRef, useContext } from "react";
-import {getSpotifyPopular, getSpotifyRecommendation, clickOnMusic} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { useEffect, useState, useRef, useContext } from "react";
+import {
+  getSpotifyPopular,
+  getSpotifyRecommendation,
+  clickOnMusic,
+} from "../../../Requests/Explore/YoutubeSpotifyRequest";
 import { AuthContext } from "../../../ApplicationContext";
 function getRandomBoolean() {
   return Math.random() >= 0.5;
 }
 
-export default function RecommendationRow({setCurrentTrack, recommendationChange}) {
+export default function RecommendationRow({
+  setCurrentTrack,
+  recommendationChange,
+}) {
   const [tracks, setTracks] = useState([]);
-  const [,,,,,,userId] = useContext(AuthContext);
+  const [, , , , , , userId] = useContext(AuthContext);
   useEffect(() => {
     async function fetchTracks() {
       try {
-
-        const array = await getSpotifyRecommendation(userId); 
-        console.log(array)
-        setTracks(array);  
-
+        // const array = await getSpotifyRecommendation(userId);
+        // console.log(array)
+        // setTracks(array);
       } catch (error) {
-        console.error('Failed to fetch tracks:', error);
+        console.error("Failed to fetch tracks:", error);
       }
     }
     fetchTracks();
@@ -29,18 +34,18 @@ export default function RecommendationRow({setCurrentTrack, recommendationChange
   const listRef = useRef(null);
 
   useEffect(() => {
-      const handleWheel = (e) => {
-          if (!listRef.current) return;
-          listRef.current.scrollLeft += e.deltaY + e.deltaX;
-          e.preventDefault(); // Prevents vertical scrolling when mouse is over the list
-      };
+    const handleWheel = (e) => {
+      if (!listRef.current) return;
+      listRef.current.scrollLeft += e.deltaY + e.deltaX;
+      e.preventDefault(); // Prevents vertical scrolling when mouse is over the list
+    };
 
-      const listEl = listRef.current;
-      listEl.addEventListener('wheel', handleWheel);
+    const listEl = listRef.current;
+    listEl.addEventListener("wheel", handleWheel);
 
-      return () => {
-          listEl.removeEventListener('wheel', handleWheel);
-      };
+    return () => {
+      listEl.removeEventListener("wheel", handleWheel);
+    };
   }, []);
 
   // Function to render the music list
@@ -80,11 +85,14 @@ export default function RecommendationRow({setCurrentTrack, recommendationChange
                 >
                   {music.artistName}
                 </span>
-                <div className="coverImage" onClick={() => {
-                    setCurrentTrack(music.trackId)
+                <div
+                  className="coverImage"
+                  onClick={() => {
+                    setCurrentTrack(music.trackId);
                     clickOnMusic(music.artistName[0], userId);
-                  }}>
-                  <img src={triangle} alt="cover" style={{ width: "2vh" }}  />
+                  }}
+                >
+                  <img src={triangle} alt="cover" style={{ width: "2vh" }} />
                 </div>
               </div>
             </div>
@@ -96,7 +104,7 @@ export default function RecommendationRow({setCurrentTrack, recommendationChange
 
   return (
     <div className="RecommendationRow-container">
-      <h2 style={{marginLeft: '3vw'}}>You May Like</h2>
+      <h2 style={{ marginLeft: "3vw" }}>You May Like</h2>
       {renderMusicList(tracks)}
     </div>
   );
