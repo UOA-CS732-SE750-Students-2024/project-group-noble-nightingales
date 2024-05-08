@@ -24,7 +24,7 @@ export default function Explore() {
           <BallStatic />
           <AIRow />
         </div>
-        <div>
+        <div data-testid="youtube-row">
           <YouTubeRow />
         </div>
         <div className="popularTrackContainer">
