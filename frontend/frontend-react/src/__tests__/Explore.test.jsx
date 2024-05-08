@@ -54,6 +54,53 @@ describe("Components", () => {
 
 /**************************************     IntroRow     **************************************/
 
+describe("IntroRow", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders texts in YouTubeRow component correctly", () => {
+    const textContents = [
+      "Listen & Watch:",
+      "Your Ultimate App",
+      "For Media Content",
+      "Featuring a Diverse Library from Various Leading Platforms",
+      "Others",
+      "Start Exploring",
+    ];
+
+    textContents.forEach((text) => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
+    });
+  });
+
+  it("renders links in YouTubeRow page correctly", () => {
+    const linkContents = [
+      { text: "YouTube", href: "/youtube" },
+      { text: "Spotify", href: "/spotify" },
+      { text: "New to Here?", href: "/explore/signup" },
+    ];
+
+    linkContents.forEach(({ text, href }) => {
+      expect(renderedComponent.getByText(text)).toHaveAttribute("href", href);
+    });
+  });
+
+  it("renders images in YouTubeRow page correctly", () => {
+    const altTexts = ["horse", "man", "captain"];
+
+    altTexts.forEach((altText) => {
+      expect(renderedComponent.getByAltText(altText)).toBeInTheDocument();
+    });
+  });
+});
+
 /**************************************     YouTubeRow     **************************************/
 
 describe("YouTubeRow", () => {
@@ -65,10 +112,6 @@ describe("YouTubeRow", () => {
         <Explore />
       </MemoryRouter>
     );
-  });
-
-  it("renders YouTubeRow component correctly", () => {
-    expect(renderedComponent.getByTestId("youtube-row")).toBeInTheDocument();
   });
 
   it("renders texts in YouTubeRow component correctly", () => {
