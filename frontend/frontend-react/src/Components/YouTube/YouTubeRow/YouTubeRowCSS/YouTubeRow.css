@@ -70,3 +70,11 @@
     text-overflow: ellipsis;
 }
 
+.videoListElementSkeleton{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-right: 1.5vw;
+    align-content: space-between;
+    padding-bottom: 4vh;
+}

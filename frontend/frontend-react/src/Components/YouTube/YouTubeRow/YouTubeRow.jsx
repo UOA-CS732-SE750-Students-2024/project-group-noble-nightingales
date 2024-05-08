@@ -38,7 +38,7 @@ export default function YouTubeRow({videoResults, isVideoLoading}) {
         ))
       ) : (
         Array.from({ length: 20 }).map((_, index) => (
-          <li key={index} className="videoListElement">
+          <li key={index} className="videoListElementSkeleton">
             <ThumbnailSkeleton />
           </li>
         ))
