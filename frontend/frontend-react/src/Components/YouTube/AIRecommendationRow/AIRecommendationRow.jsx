@@ -68,7 +68,7 @@ export default function AIRecommendationRow({setVideoResults}) {
     window.scrollBy({ top: offsetHeight*0.5, left: 0, behavior: 'smooth' });
     await filterVideo(filterTextValue, userId);
 
-    const data = await getYouTubeRecommendation(userId); 
+    const data = await getYouTubeRecommendation(userId,20); 
     setVideoResults(data);  
 
   }
