@@ -1,10 +1,16 @@
 import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getYouTubePopular } from "../../../Requests/Explore/YoutubeSpotifyRequest";
+
+import { useContext, useEffect,useState } from "react";
+import {getYouTubePopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { AuthContext } from "../../../ApplicationContext";
+
+
+
 export default function YouTubeRow() {
   const [videos, setVideos] = useState([]);
+  const [,,,,,,,,,setCurrentVideo] = useContext(AuthContext)
   useEffect(() => {
     async function fetchTracks() {
       try {
@@ -23,8 +29,12 @@ export default function YouTubeRow() {
     return (
       <ul className="videoListt">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.videoId}>
-            <NavLink to={`/youtube/player?videoUrl=${video.videoUrl}`}>
+
+          <li className="videoListElement" key={video}>
+              <NavLink to={{pathname: `/youtube/player`}} onClick={() => {
+                  setCurrentVideo(video)
+              }}>
+
               <img
                 className="videoImagee"
                 src={video.coverImgUrl}

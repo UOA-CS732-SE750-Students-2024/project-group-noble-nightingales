@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import uoa.nightingales.mongodbservicenode.pojos.YoutubeCommentData;
+import uoa.nightingales.mongodbservicenode.services.UserService;
 import uoa.nightingales.mongodbservicenode.services.YoutubeCommentDataService;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class YoutubeCommentController {
 
     final YoutubeCommentDataService youtubeCommentDataService;
+    final UserService userService;
 
 
     /**
@@ -31,6 +33,7 @@ public class YoutubeCommentController {
     @PostMapping("/comments")
     public ResponseEntity<YoutubeCommentData> saveComment(@Validated @RequestBody YoutubeCommentData data) {
         log.info("receiving data: " + data + " from comments data saving request");
+        data.setUsername(userService.getUserById(data.getUserId()).getUsername());
         YoutubeCommentData savedData = youtubeCommentDataService.saveData(data);
         return ResponseEntity.ok(savedData);
     }
