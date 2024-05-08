@@ -28,10 +28,11 @@ public class YoutubeHistoryDataServiceImpl implements YoutubeHistoryDataService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public YoutubeHistoryData saveData(YoutubeHistoryData data) {
+        YoutubeHistoryData save = youtubeHistoryDataRepository.save(data);
         log.info("saving of data: " + data + " in collection: " + COLLECTION_NAME);
         Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).put(data.getUserId(), data);
         log.info("setting up cache for " + COLLECTION_NAME + " with id: " + data.getUserId() + " and data: " + data);
-        return youtubeHistoryDataRepository.save(data);
+        return save;
     }
 
     @Override

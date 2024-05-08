@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import uoa.nightingales.aiservicenode.services.ChatGptYoutubeRecommendService;
 import uoa.nightingales.aiservicenode.services.GptSpotifyRecommendService;
 
+import java.util.HashSet;
+
 @Slf4j
 @SpringBootTest
 class AiServiceNodeApplicationTests {
@@ -38,6 +40,14 @@ class AiServiceNodeApplicationTests {
     @Test
     void testSpotifyFilter(){
         System.out.println(gptSpotifyRecommendService.getUnwantedSpotifyCreators("I dont like musics from talo swift and jaychou"));
+    }
+
+    @Test
+    void testSet(){
+        HashSet<String> set = new HashSet<>();
+        set.add("VIDEO_GAMES");
+
+        System.out.println(set.contains("VIDEO GAMES"));
     }
 
 }

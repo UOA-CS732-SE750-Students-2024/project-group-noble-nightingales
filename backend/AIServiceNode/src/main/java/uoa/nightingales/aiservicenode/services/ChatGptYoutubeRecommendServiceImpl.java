@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Service;
 import uoa.nightingales.aiservicenode.utils.CategoryCheck;
 
+import java.awt.event.WindowFocusListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -85,7 +86,7 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
                         businessCategories,
                         miscellaneousCategories
                 ).flatMap(List::stream)
-                .collect(Collectors.joining(", ")); // Join them with comma and space
+                .collect(Collectors.joining(",")); // Join them with comma and space
         allCategoriesSet = Stream.of(
                         newsCategories,
                         entertainmentCategories,
@@ -106,14 +107,14 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
         log.info("Get Relevant category based on userInput");
         // Combine userInput with the relevant prompt and all categories
         String message = String.format("%s %s %s", allCategories, userInput, notRelevantPrompt);
+        System.out.println(message);
         // Send the request to OpenAI's ChatGPT and get the response
         String response = openAiChatClient.call(message);
         // Split 'response' into an array of strings using comma as the separator
         String[] responseArray = response.split(",");
-        List<String> responseList=new ArrayList<>(Arrays.asList(responseArray));
-        CategoryCheck.CategoryExist(allCategoriesSet,responseList);
-
-        return responseList;
+        List<String> responseList = new ArrayList<>(Arrays.asList(responseArray));
+        log.info(responseList.toString());
+        return CategoryCheck.CategoryExist(allCategoriesSet, responseList);
 
     }
 
@@ -126,14 +127,13 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
         String response = openAiChatClient.call(message);
         // Split 'response' into an array of strings using comma as the separator
         String[] responseArray = response.split(",");
-        List<String> responseList=new ArrayList<>(Arrays.asList(responseArray));
-        CategoryCheck.CategoryExist(allCategoriesSet,responseList);
-
-        return new ArrayList<>(Arrays.asList(responseArray));
+        List<String> responseList = new ArrayList<>(Arrays.asList(responseArray));
+        return CategoryCheck.CategoryExist(allCategoriesSet, responseList);
     }
 
     @Override
     public List<String> getYoutubeRelevantCategory(String youtubeDesc) {
+        log.info(allCategoriesSet.toString());
         log.info("Get Relevant category based on youtube Description");
         // Combine userInput with the relevant prompt and all categories
         String message = String.format("%s %s %s", allCategories, youtubeDesc, relevantPrompt);
@@ -141,10 +141,10 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
         String response = openAiChatClient.call(message);
         // Split 'response' into an array of strings using comma as the separator
         String[] responseArray = response.split(",");
-        List<String> responseList=new ArrayList<>(Arrays.asList(responseArray));
-        CategoryCheck.CategoryExist(allCategoriesSet,responseList);
+        List<String> responseList = new ArrayList<>(Arrays.asList(responseArray));
+        log.info(responseList.toString());
+        return CategoryCheck.CategoryExist(allCategoriesSet, responseList);
 
-        return new ArrayList<>(Arrays.asList(responseArray));
     }
 
 }
