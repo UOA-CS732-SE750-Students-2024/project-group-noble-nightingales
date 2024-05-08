@@ -3,10 +3,8 @@ const baseUrl = import.meta.env.VITE_API_URL
 
 export function generateRandomString() {
     const characters = 'abcdefghiklmnopqrstuvwxyz';
-    let result = '';
-    for (let i = 0; i < 4; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
+    let result = characters.charAt(Math.floor(Math.random() * characters.length));
+
     return result;
 }
 

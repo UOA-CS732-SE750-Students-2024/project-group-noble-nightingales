@@ -4,20 +4,9 @@ import RecommendationAI from "../../../assets/RecommendationAI.png";
 import FilterAI from "../../../assets/FilterAI.png";
 import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from "react";
-import {getYouTubeAiSearchResult} from '../../../Requests/Youtube/YoutubeRequest'
-// import Dialog from '@mui/material/Dialog';
-// import DialogTitle from '@mui/material/DialogTitle';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogActions from '@mui/material/DialogActions';
-// import Button from '@mui/material/Button';
-
-
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark',
-//   },
-// });
+import { useState ,useContext} from "react";
+import {getYouTubeAiSearchResult,filterVideo,getYouTubeRecommendation} from '../../../Requests/Youtube/YoutubeRequest'
+import { AuthContext } from "../../../ApplicationContext";
 
 
 const themeGreen = createTheme({
@@ -50,6 +39,7 @@ const themePurple = createTheme({
 
 export default function AIRecommendationRow({setVideoResults}) {
     const [filterTextValue, setFilterTextValue] = useState('');
+    const [,,,,,,userId] = useContext(AuthContext)
   const [textValue, setTextValue] = useState('');  
   
 
@@ -63,20 +53,25 @@ export default function AIRecommendationRow({setVideoResults}) {
         performAiSearch();
     }
   };
-//   const handleKeyDownForFiltering = (event) => {
-//     if (event.key === 'Enter') {
-//         event.preventDefault();
-//         performAiFilter();
-//     }
-//   };
-//   const performAiFilter = async() => {
-//     if(filterTextValue === ""){
-//       return;
-//     } 
-//     window.scrollBy({ top: window.innerHeight*-0.8, left: 0, behavior: 'smooth' });
-//     await filterMusic(filterTextValue, userId);
-//     setRecommendationChange(!recommendationChange);
-//   }
+  const handleKeyDownForFiltering = (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        performAiFilter();
+    }
+  };
+  const performAiFilter = async() => {
+    if(filterTextValue === ""){
+      return;
+    } 
+    const aiRecommendationRow = document.querySelector('.AIRecommendationRow-container'); 
+    const offsetHeight = aiRecommendationRow.getBoundingClientRect().height;
+    window.scrollBy({ top: offsetHeight*0.5, left: 0, behavior: 'smooth' });
+    await filterVideo(filterTextValue, userId);
+
+    const data = await getYouTubeRecommendation(userId); 
+    setVideoResults(data);  
+
+  }
 
 
 
@@ -85,7 +80,9 @@ const performAiSearch = async() => {
   if(textValue === ""){
     return;
   } 
-  window.scrollBy({ top: window.innerHeight*0.8, left: 0, behavior: 'smooth' });
+  const aiRecommendationRow = document.querySelector('.AIRecommendationRow-container'); 
+  const offsetHeight = aiRecommendationRow.getBoundingClientRect().height;
+  window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
   const data = await getYouTubeAiSearchResult(textValue);
   console.log("Data:", data);
   setVideoResults(data);
@@ -156,7 +153,7 @@ const performAiSearch = async() => {
         variant="filled"
         value={filterTextValue}
         onChange={(event) => setFilterTextValue(event.target.value)}
-        // onKeyDown={handleKeyDownForFiltering}
+        onKeyDown={handleKeyDownForFiltering}
         InputProps={{
           style: {
             color: "white",

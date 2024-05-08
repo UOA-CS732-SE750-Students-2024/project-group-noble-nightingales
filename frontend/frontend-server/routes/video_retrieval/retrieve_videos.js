@@ -38,7 +38,7 @@ router.get('/recommendation', async (req, res) => {
             const searchResult = await axios.get(searchUrl, { 
                 params: {
                     query: randomGenre.name,
-                    maxResults: 30,
+                    maxResults: 20,
                     pageToken: req.query.pageToken ? req.query.pageToken : ''
                 }
             });

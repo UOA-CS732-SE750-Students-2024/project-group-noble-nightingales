@@ -4,29 +4,31 @@ import AIRecommendationRow from "../../Components/YouTube/AIRecommendationRow/AI
 import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
+import {getMoreVideo,getYouTubeRecommendation, getYouTubeRandomSearch} from "../../Requests/Youtube/YoutubeRequest"
+import { useState ,useEffect,useContext} from "react";
 
-import {getYouTubeRandomSearch,getMoreVideo} from "../../Requests/Youtube/YoutubeRequest"
-import { useState ,useEffect} from "react";
+
 import LoadingAnimation from "../../Dialogs/Spotify/LoadingAnimation";
 import { Button } from "@mui/material";
+import { AuthContext } from "../../ApplicationContext";
+
 
 export default function YouTube() {
   const [videoResults, setVideoResults] = useState({ videoList: [], nextPageToken: null, prevPageToken: null });
   const [input, setInput] = useState("");
+
+  const [,,,,,,userId] = useContext(AuthContext)
 
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchVideos() {
       //TODO: 把这里改成成推荐的function
-      console.log("YOUTUBR.jsx")
       try {
 
-        const data = await getYouTubeRandomSearch(); 
-        console.log(data.videoList);
-        // setVideoResults(data.videoList);  
+        console.log(userId)
+        const data = await getYouTubeRecommendation(userId); 
         setVideoResults(data);  
-        console.log(videoResults)
 
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
