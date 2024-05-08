@@ -7,8 +7,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import {getYouTubeSearch,getYouTubeRandomSearch} from "../../../Requests/Youtube/YoutubeRequest"
+import { AuthContext } from "../../../ApplicationContext";
+import{clickOnYoutube} from "../../../Requests/Youtube/YoutubeRequest"
 
 const theme = createTheme({
   components: {
@@ -32,6 +34,7 @@ const theme = createTheme({
 
 export default function PopularRow({setVideoResults,setInput,input}) {
   const [videos, setVideos] = useState([]);
+  const [,,,,,,userId] = useContext(AuthContext)
   // const [input, setInput] = useState("");
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export default function PopularRow({setVideoResults,setInput,input}) {
       if (input === "") {
         return;
       }
-        window.scrollBy({ top: window.innerHeight*4, left: 0, behavior: 'smooth' });
+        window.scrollBy({ top: window.innerHeight*1.7, left: 0, behavior: 'smooth' });
         event.preventDefault();
         const data = await getYouTubeSearch(input);
         console.log("HandleKeyDown");
@@ -67,8 +70,8 @@ export default function PopularRow({setVideoResults,setInput,input}) {
     return (
       <ul className="videoList">
         {videos.map((video) => (
-          <li className="videoListElement" key={video.videoId}>
-            <NavLink to="/youtube/player">
+          <li className="videoListElement" key={video.videoId} >
+             <NavLink  to={`/youtube/player?videoUrl=${video.videoUrl}`} onClick={() => {clickOnYoutube(video.description, userId);}}>
               <img
                 className="videoImage"
                 src={video.coverImgUrl}

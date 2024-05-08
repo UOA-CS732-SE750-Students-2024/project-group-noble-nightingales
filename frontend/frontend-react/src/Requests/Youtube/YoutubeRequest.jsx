@@ -15,6 +15,14 @@ export const getYouTubeSearch = async (query) => {
     }
 }
 
+export const clickOnYoutube = async (description, userId) => {
+    try {
+        axios.post(`${baseUrl}/api/video/click`, { videoDescription: description, userId: userId });
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 
 export const getYouTubeRandomSearch = async () => {
     const randomString = generateRandomString();
@@ -41,6 +49,30 @@ export const getYouTubeAiSearchResult = async (input) => {
     try {
         const response = await axios.get(`${baseUrl}/api/video/ai-search`, {
             params: { userInput: input }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const filterVideo = async (userInput, userId) => {
+    try {
+        const response = await axios.post(`${baseUrl}/api/video/filter`, {
+            filterText: userInput
+        }, {params: {userId: userId}});
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getYouTubeRecommendation = async (userId) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/video/recommendation`, {
+            params: {
+                userId: userId
+            }
         });
         return response.data;
     } catch (error) {
