@@ -34,6 +34,7 @@
     align-items: center;
     width: 20vw;
     padding-right: 1vw; 
+    padding-bottom: 2vh;
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage{
@@ -42,6 +43,7 @@
     align-items: center;
     width: 18vw; /* image width */
     transition: width 0.5s ease-in-out; 
+    border-radius: 5%;
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage:hover {

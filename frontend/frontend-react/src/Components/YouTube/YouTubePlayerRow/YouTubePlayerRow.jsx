@@ -3,7 +3,7 @@ import Star from "../../../assets/Star.png";
 import YouTubeCover from "../../../assets/YouTubeCover.png";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ChatIcon from "@mui/icons-material/Chat";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
@@ -26,8 +26,14 @@ function getInitialLetter(string) {
   return string[0].toUpperCase(); // Get the first character and convert it to uppercase
 }
 
+function generateRandomNumber() {
+  const min = 10000;
+  const max = 1000000;
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDescription}) {
+const randomNumber = generateRandomNumber();
+export default function YouTubePlayerRow() {
 
   const [showComments, setShowComments] = useState(false);
   const [,,,,,,userId,, currentVideo, setCurrentVideo] = useContext(AuthContext)
@@ -128,16 +134,16 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
     <div className="YouTubePlayerRow-container">
       <div className="left">
         <iframe
-          src={currentVideo ? currentVideo.videoUrl : videoUrl}
+          src={currentVideo ? currentVideo.videoUrl : "https://www.youtube.com/embed/6JYIGclVQdw"}
           allowFullScreen
         />
         <div className="videoInfo-container">
           <h3>{currentVideo ? currentVideo.title : "Video Title"}</h3>
           <h5 style={{ marginTop: "-1.5vh" }}>
             <RemoveRedEyeIcon className="videoInfoIcon" />
-            11,234
+            {randomNumber}
             <ChatIcon className="videoInfoIcon" style={{ marginLeft: "2vw" }} />
-            11,234
+            {comments.length}
           </h5>
           <div className="authorInfo-container">
           <div

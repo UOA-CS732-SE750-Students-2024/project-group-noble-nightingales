@@ -16,7 +16,7 @@ import { AuthContext } from "../../ApplicationContext";
 export default function YouTube() {
   const [videoResults, setVideoResults] = useState({ videoList: [], nextPageToken: null, prevPageToken: null });
   const [input, setInput] = useState("");
-
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
   const [,,,,,,userId] = useContext(AuthContext)
 
   const [isLoading, setIsLoading] = useState(false);
@@ -25,10 +25,11 @@ export default function YouTube() {
     async function fetchVideos() {
       //TODO: 把这里改成成推荐的function
       try {
-
+        setIsVideoLoading(true)
         console.log(userId)
         const data = await getYouTubeRecommendation(userId); 
         setVideoResults(data);  
+        setIsVideoLoading(false);
 
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
@@ -67,7 +68,7 @@ export default function YouTube() {
           <BallStatic />
         </div>
         <div data-testid="explore-youtube-row">
-          <YouTubeRow videoResults={videoResults} />
+          <YouTubeRow videoResults={videoResults} isVideoLoading={isVideoLoading}/>
         </div>
         <div style={{scale: 0.1, paddingBottom: "10vh", display: "flex", alignContent: "center", justifyContent: "center"}}>
         {isLoading ? <LoadingAnimation /> :<Button sx={{color: "#6ce946"}} onClick={() => loadMoreData()}>

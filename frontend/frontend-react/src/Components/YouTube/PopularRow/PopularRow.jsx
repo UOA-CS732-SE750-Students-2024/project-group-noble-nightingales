@@ -34,7 +34,7 @@ const theme = createTheme({
 
 export default function PopularRow({setVideoResults,setInput,input}) {
   const [videos, setVideos] = useState([]);
-  const [,,,,,,userId] = useContext(AuthContext)
+  const [,,,,,,userId,,,setCurrentVideo] = useContext(AuthContext)
   // const [input, setInput] = useState("");
 
   useEffect(() => {
@@ -71,7 +71,10 @@ export default function PopularRow({setVideoResults,setInput,input}) {
       <ul className="videoList">
         {videos.map((video) => (
           <li className="videoListElement" key={video.videoId} >
-             <NavLink  to={`/youtube/player?videoUrl=${video.videoUrl}`} onClick={() => {clickOnYoutube(video.description, userId);}}>
+             <NavLink  to={`/youtube/player?videoUrl=${video.videoUrl}`} onClick={() => {
+                clickOnYoutube(video.description, userId);
+                setCurrentVideo(video);
+              }}>
               <img
                 className="videoImage"
                 src={video.coverImgUrl}
