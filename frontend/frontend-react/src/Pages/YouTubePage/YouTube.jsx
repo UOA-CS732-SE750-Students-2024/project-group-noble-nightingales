@@ -1,6 +1,6 @@
 import "./YouTubeCSS/YouTube.css";
 import PopularRow from "../../Components/YouTube/PopularRow/PopularRow";
-import AIRecommendationRow from "../../Components/Spotify/AIRecommendationRow/AIRecommendationRow";
+import AIRecommendationRow from "../../Components/YouTube/AIRecommendationRow/AIRecommendationRow";
 import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
@@ -55,7 +55,7 @@ export default function YouTube() {
           <PopularRow setVideoResults={setVideoResults} setInput={setInput} input={input}/>
         </div>
         <div className="AIRecommendationContainer">
-          <AIRecommendationRow />
+          <AIRecommendationRow  setVideoResults={setVideoResults} />
           <BallStatic />
         </div>
         <div>

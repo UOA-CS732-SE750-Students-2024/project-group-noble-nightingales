@@ -18,13 +18,10 @@ export const getYouTubeSearch = async (query) => {
 
 export const getYouTubeRandomSearch = async () => {
     const randomString = generateRandomString();
-    console.log("RANDOM SEARCH")
     try {
         const response = await axios.get(`${baseUrl}/api/video/search`, {
             params: { query: randomString, maxResults: 6  }
         });
-        console.log("RANDOM SEARCH")
-        console.log(response.data)
         return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error.response.status);
@@ -36,6 +33,17 @@ export const getMoreVideo = async (nextPageToken,input) => {
         const response = await axios.get(`${baseUrl}/api/video/more`, {params: {nextPageToken: nextPageToken,query:input,maxResults: 20 }});
         return response.data;
     } catch (error) { 
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getYouTubeAiSearchResult = async (input) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/video/ai-search`, {
+            params: { userInput: input }
+        });
+        return response.data;
+    } catch (error) {
         console.error("Error retrieving data:", error);
     }
 }
