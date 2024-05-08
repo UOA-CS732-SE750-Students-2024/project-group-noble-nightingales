@@ -6,17 +6,20 @@
   padding-top: 10vh;
   height: 80vh;
   overflow: hidden;
+  height: fit-content;
 }
 
 .YouTubePlayerRow-container .left {
   flex: 6;
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
 
 .YouTubePlayerRow-container .left iframe {
   width: 60vw;
-  height: 50vh;
+  height: 50vh !important; 
+  overflow: visible;
 }
 
 .YouTubePlayerRow-container .left .videoInfo-container {

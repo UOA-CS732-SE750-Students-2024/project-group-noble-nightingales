@@ -3,16 +3,24 @@ import Star from "../../../assets/Star.png";
 import YouTubeCover from "../../../assets/YouTubeCover.png";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ChatIcon from "@mui/icons-material/Chat";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
 import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
+import { AuthContext } from "../../../ApplicationContext";
 
 const colors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4'];
 
 const getRandomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
+
+function getInitialLetter(string) {
+  if (!string || typeof string !== 'string') {
+      return ''; // Return an empty string if input is not valid
+  }
+  return string[0].toUpperCase(); // Get the first character and convert it to uppercase
+}
 
 const comments = [
   // 示例评论
@@ -93,7 +101,9 @@ const comments = [
 
 
 export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDescription}) {
+
   const [showComments, setShowComments] = useState(false);
+  const [,,,,,,,,currentVideo, setCurrentVideo] = useContext(AuthContext)
   const toggleComments = () => {
     setShowComments(!showComments);
   };
@@ -159,11 +169,11 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
     <div className="YouTubePlayerRow-container">
       <div className="left">
         <iframe
-          src={videoUrl}
+          src={currentVideo ? currentVideo.videoUrl : videoUrl}
           allowFullScreen
         />
         <div className="videoInfo-container">
-          <h3>Video name</h3>
+          <h3>{currentVideo ? currentVideo.title : "Video Title"}</h3>
           <h5 style={{ marginTop: "-1.5vh" }}>
             <RemoveRedEyeIcon className="videoInfoIcon" />
             11,234
@@ -186,11 +196,11 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
                 fontWeight: 'bold',
             }}
         >
-            J
+            {getInitialLetter(currentVideo.title)}
         </div>
             <div className="authorInfo">
               <h4>
-                Helen
+                {currentVideo ? currentVideo.channel.channelName : "Channel Name"}
                 <img
                   src={Star}
                   alt="Popular video star"
@@ -204,7 +214,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
 
             </div>
             <div className="videoDescription">
-              {videoDescription ? videoDescription : "Video descriptions"}
+              {currentVideo ? currentVideo.description : "Video descriptions"}
             </div>
           </div>
         </div>
@@ -269,6 +279,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
               verticalAlign: "-1.0vh",
               width: "2vw",
               marginLeft: "1vw",
+              paddingBottom: "0.5vh",
             }}
           />
         </h2>

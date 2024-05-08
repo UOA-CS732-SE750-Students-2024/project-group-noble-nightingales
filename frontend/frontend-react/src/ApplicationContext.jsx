@@ -35,12 +35,13 @@ function ApplicationContext() {
     const [userToken, setUserToken] = useLocalStorage('userToken-uoamedia', '');
     const [isAuthenticated, setIsAuthenticated] = useLocalStorage('isAuthenticated-uoamedia', false);
     const [userId, setUserId] = useLocalStorage('userId-uoamedia', '');
+    const [currentVideo, setCurrentVideo] = useState({});
     
 
 
     return (
         <>
-            <AuthContext.Provider value={[spotifyAccessToken, setSpotifyAccessToken, userToken, setUserToken, isAuthenticated, setIsAuthenticated, userId, setUserId]}>
+            <AuthContext.Provider value={[spotifyAccessToken, setSpotifyAccessToken, userToken, setUserToken, isAuthenticated, setIsAuthenticated, userId, setUserId, currentVideo, setCurrentVideo]}>
                 <App />
             </AuthContext.Provider>
         </>
