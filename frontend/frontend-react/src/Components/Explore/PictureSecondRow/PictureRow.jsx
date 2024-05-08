@@ -21,7 +21,7 @@ export default function PictureRow() {
         </ul>
       </div>
       <div className="rightBallPicture">
-        <img src={pinkBall} alt="cat" />
+        <img src={pinkBall} alt="pinkBall" />
       </div>
     </div>
   );

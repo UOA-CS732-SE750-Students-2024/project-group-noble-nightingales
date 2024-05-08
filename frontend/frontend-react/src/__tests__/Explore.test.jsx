@@ -101,6 +101,28 @@ describe("IntroRow", () => {
   });
 });
 
+/**************************************     PictureRow     **************************************/
+
+describe("PictureRow", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders images in PictureRow component correctly", () => {
+    const altTexts = ["cat", "pinkBall"];
+
+    altTexts.forEach((altText) => {
+      expect(renderedComponent.getByAltText(altText)).toBeInTheDocument();
+    });
+  });
+});
+
 /**************************************     YouTubeRow     **************************************/
 
 describe("YouTubeRow", () => {
@@ -115,37 +137,58 @@ describe("YouTubeRow", () => {
   });
 
   it("renders texts in YouTubeRow component correctly", () => {
-    const textContents = [
-      "Listen & Watch:",
-      "Your Ultimate App",
-      "For Media Content",
-      "Featuring a Diverse Library from Various Leading Platforms",
-      "Others",
-      "Start Exploring",
-    ];
+    const textContents = ["YouTube Videos For You"];
 
     textContents.forEach((text) => {
       expect(renderedComponent.getByText(text)).toBeInTheDocument();
     });
   });
+});
 
-  it("renders links in YouTubeRow page correctly", () => {
-    const linkContents = [
-      { text: "YouTube", href: "/youtube" },
-      { text: "Spotify", href: "/spotify" },
-      { text: "New to Here?", href: "/explore/signup" },
-    ];
+/**************************************     SpotifyRow     **************************************/
 
-    linkContents.forEach(({ text, href }) => {
-      expect(renderedComponent.getByText(text)).toHaveAttribute("href", href);
-    });
+describe("SpotifyRow", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
   });
 
-  it("renders images in YouTubeRow page correctly", () => {
-    const altTexts = ["horse", "man", "captain"];
+  it("renders texts in SpotifyRow component correctly", () => {
+    const textContents = ["Popular Tracks"];
 
-    altTexts.forEach((altText) => {
-      expect(renderedComponent.getByAltText(altText)).toBeInTheDocument();
+    textContents.forEach((text) => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
+    });
+  });
+});
+
+/**************************************     SubRow     **************************************/
+
+describe("SubRow", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders texts in SubRow component correctly", () => {
+    const textContents = [
+      "Popular Tracks",
+      "News letter",
+      "Subscribe Our Newsletter",
+    ];
+
+    textContents.forEach((text) => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
     });
   });
 });
