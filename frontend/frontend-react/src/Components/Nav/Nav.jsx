@@ -37,12 +37,18 @@ export default function Nav() {
           }}>Spotify</NavLink>
         </li>
       </ul>
-      <div className="nav-auth">
-        <NavLink className="signin" to="/explore/login">
-          Sign In
-        </NavLink>
-        <NavLink to="/explore/signup">Create Account</NavLink>
-      </div>
+        {isAuthenticated ? (
+            <NavLink className="logout" to="/explore/login">
+              Logout
+            </NavLink>
+          ) : (
+            <div className="nav-auth">
+              <NavLink className="signin" to="/explore/login">
+                Sign In
+              </NavLink>
+              <NavLink to="/explore/signup">Create Account</NavLink>
+            </div>
+          )}
       <BackToLoginDialog open={open} handleClose={() => setOpen(false)}/>
     </div>
   );

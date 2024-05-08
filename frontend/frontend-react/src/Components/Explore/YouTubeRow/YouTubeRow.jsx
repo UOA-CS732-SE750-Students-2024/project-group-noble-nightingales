@@ -1,6 +1,7 @@
 import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import { NavLink } from "react-router-dom";
+
+import { NavLink , useNavigate} from "react-router-dom";
 
 import { useContext, useEffect,useState } from "react";
 import {getYouTubePopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
@@ -11,6 +12,20 @@ import { AuthContext } from "../../../ApplicationContext";
 export default function YouTubeRow() {
   const [videos, setVideos] = useState([]);
   const [,,,,,,,,,setCurrentVideo] = useContext(AuthContext)
+  const [,,,,isAuthenticated] = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const handleNavigation = (event, path, video = null) => {
+    event.preventDefault(); 
+    if (!isAuthenticated) {
+      navigate('/explore/login');
+    } else {
+      if (video) {
+        setCurrentVideo(video); 
+      }
+      navigate(path);
+    }
+  };
   useEffect(() => {
     async function fetchTracks() {
       try {
@@ -31,9 +46,7 @@ export default function YouTubeRow() {
         {videos.map((video) => (
 
           <li className="videoListElement" key={video}>
-              <NavLink to={{pathname: `/youtube/player`}} onClick={() => {
-                  setCurrentVideo(video)
-              }}>
+              <NavLink to={{pathname: `/youtube/player`}} onClick={(event) => handleNavigation(event, '/youtube/player', video)}>
 
               <img
                 className="videoImagee"
@@ -73,7 +86,7 @@ export default function YouTubeRow() {
   return (
     <div className="YouTubeRow-container">
       <h2>YouTube Videos For You</h2>
-      <NavLink className="navigationAllLink" to="/youtube">
+      <NavLink className="navigationAllLink" to="/youtube" onClick={(event) => handleNavigation(event, '/youtube')}>
         See All
       </NavLink>
       {renderVideoList(videos)}
