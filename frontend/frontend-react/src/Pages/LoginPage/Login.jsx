@@ -103,6 +103,12 @@ export default function Login() {
           </div>
           
           {isLoading ? <ThemeProvider theme={progressTheme}><LinearProgress /></ThemeProvider> :<button onClick={() => {
+            if(isAuthenticated){
+              setIsAuthenticated(false);
+              setUserId("");
+              setUserToken("")
+              return;
+            }
             login();
           }} className={styles.loginButton} type="submit" style={isLoginFailed ? {background: "#f8725a"} : {}}>
             {isAuthenticated ? "Sign Out " : (isLoginFailed ? "Invalid User - Retry" : "Login")}
