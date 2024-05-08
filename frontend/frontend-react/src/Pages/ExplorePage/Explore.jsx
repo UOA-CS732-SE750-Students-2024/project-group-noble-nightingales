@@ -14,24 +14,24 @@ export default function Explore() {
     <div>
       <BallDynamic />
       <div className="Explore-container">
-        <div>
+        <div data-testid="intro-row">
           <IntroRow />
         </div>
-        <div>
+        <div data-testid="picture-row">
           <PictureRow />
         </div>
-        <div className="embeddAIContainer">
+        <div className="embeddAIContainer" data-testid="ai-row">
           <BallStatic />
           <AIRow />
         </div>
         <div data-testid="youtube-row">
           <YouTubeRow />
         </div>
-        <div className="popularTrackContainer">
+        <div className="popularTrackContainer" data-testid="spotify-row">
           <BallStatic />
           <SpotifyRow />
         </div>
-        <div className="subscribeContianer">
+        <div className="subscribeContianer" data-testid="sub-row">
           <SubRow />
           <div className="subBall">
             <BallStatic />

@@ -14,77 +14,95 @@ it("execute test suite", () => {
   expect(sum(1, 2)).toBe(3);
 });
 
-/**
- * Test that, if YouTubeRow component is rendered successfully
- */
-it("renders YouTubeRow component correctly", () => {
-  const { getByTestId } = render(
-    <MemoryRouter initialEntries={["/"]}>
-      <Explore />
-    </MemoryRouter>
-  );
+/**************************************     Components     **************************************/
 
-  expect(getByTestId("youtube-row")).toBeInTheDocument();
+describe("Components", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders IntroRow component correctly", () => {
+    expect(renderedComponent.getByTestId("intro-row")).toBeInTheDocument();
+  });
+
+  it("renders IntroRow component correctly", () => {
+    expect(renderedComponent.getByTestId("picture-row")).toBeInTheDocument();
+  });
+
+  it("renders IntroRow component correctly", () => {
+    expect(renderedComponent.getByTestId("ai-row")).toBeInTheDocument();
+  });
+
+  it("renders YouTubeRow component correctly", () => {
+    expect(renderedComponent.getByTestId("youtube-row")).toBeInTheDocument();
+  });
+
+  it("renders IntroRow component correctly", () => {
+    expect(renderedComponent.getByTestId("spotify-row")).toBeInTheDocument();
+  });
+
+  it("renders IntroRow component correctly", () => {
+    expect(renderedComponent.getByTestId("sub-row")).toBeInTheDocument();
+  });
 });
 
-/**
- * Test that, when YouTubeRow component is rendered, texts are also rendered successfully
- */
-it("renders texts in YouTubeRow component correctly", () => {
-  const { getByTestId, getByText, queryByText } = render(
-    <MemoryRouter initialEntries={["/"]}>
-      <Explore />
-    </MemoryRouter>
-  );
+/**************************************     IntroRow     **************************************/
 
-  expect(getByTestId("youtube-row")).toBeInTheDocument();
+/**************************************     YouTubeRow     **************************************/
 
-  expect(getByText("Listen & Watch:", { selector: "li" })).toBeInTheDocument();
-  expect(
-    getByText("Your Ultimate App", { selector: "li" })
-  ).toBeInTheDocument();
-  expect(
-    getByText("For Media Content", { selector: "li" })
-  ).toBeInTheDocument();
-  expect(
-    queryByText("Featuring a Diverse Library from Various Leading Platforms")
-  ).toBeInTheDocument();
-  expect(getByText("Others", { selector: "li" })).toBeInTheDocument();
-  expect(
-    getByText("Start Exploring", { selector: "span" })
-  ).toBeInTheDocument();
-});
+describe("YouTubeRow", () => {
+  let renderedComponent;
 
-/**
- * Test that, when YouTubeRow component is rendered, links are also rendered successfully
- */
-it("renders links in YouTubeRow page correctly", () => {
-  const { getByTestId, getByText } = render(
-    <MemoryRouter initialEntries={["/"]}>
-      <Explore />
-    </MemoryRouter>
-  );
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
 
-  expect(getByTestId("youtube-row")).toBeInTheDocument();
+  it("renders YouTubeRow component correctly", () => {
+    expect(renderedComponent.getByTestId("youtube-row")).toBeInTheDocument();
+  });
 
-  expect(getByText("YouTube")).toHaveAttribute("href", "/youtube");
-  expect(getByText("Spotify")).toHaveAttribute("href", "/spotify");
-  expect(getByText("New to Here?")).toHaveAttribute("href", "/explore/signup");
-});
+  it("renders texts in YouTubeRow component correctly", () => {
+    const textContents = [
+      "Listen & Watch:",
+      "Your Ultimate App",
+      "For Media Content",
+      "Featuring a Diverse Library from Various Leading Platforms",
+      "Others",
+      "Start Exploring",
+    ];
 
-/**
- * Test that, when YouTubeRow component is rendered, images are also rendered successfully
- */
-it("renders images in YouTubeRow page correctly", () => {
-  const { getByTestId, getByAltText } = render(
-    <MemoryRouter initialEntries={["/"]}>
-      <Explore />
-    </MemoryRouter>
-  );
+    textContents.forEach((text) => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
+    });
+  });
 
-  expect(getByTestId("youtube-row")).toBeInTheDocument();
+  it("renders links in YouTubeRow page correctly", () => {
+    const linkContents = [
+      { text: "YouTube", href: "/youtube" },
+      { text: "Spotify", href: "/spotify" },
+      { text: "New to Here?", href: "/explore/signup" },
+    ];
 
-  expect(getByAltText("horse")).toBeInTheDocument();
-  expect(getByAltText("man")).toBeInTheDocument();
-  expect(getByAltText("captain")).toBeInTheDocument();
+    linkContents.forEach(({ text, href }) => {
+      expect(renderedComponent.getByText(text)).toHaveAttribute("href", href);
+    });
+  });
+
+  it("renders images in YouTubeRow page correctly", () => {
+    const altTexts = ["horse", "man", "captain"];
+
+    altTexts.forEach((altText) => {
+      expect(renderedComponent.getByAltText(altText)).toBeInTheDocument();
+    });
+  });
 });
