@@ -24,6 +24,8 @@ public class YoutubeCommentData {
     @NotNull(message = "User ID cannot be null")
     private String userId;
 
+    private String username;
+
     @NotBlank(message = "Comments cannot be blank")
     @NotNull(message = "Comments cannot be null")
     private String comments;

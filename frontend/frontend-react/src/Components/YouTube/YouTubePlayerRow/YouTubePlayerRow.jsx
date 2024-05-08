@@ -4,9 +4,10 @@ import YouTubeCover from "../../../assets/YouTubeCover.png";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ChatIcon from "@mui/icons-material/Chat";
 import { NavLink, useLocation } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
+import { getCommentsByVideoId, saveComment } from "../../../Requests/Comment/CommentRequest";
 import { AuthContext } from "../../../ApplicationContext";
 
 const colors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4'];
@@ -15,6 +16,9 @@ const getRandomColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
+const backgroundColor = getRandomColor();
+const secondBackgroundColor = getRandomColor();
+
 function getInitialLetter(string) {
   if (!string || typeof string !== 'string') {
       return ''; // Return an empty string if input is not valid
@@ -22,91 +26,36 @@ function getInitialLetter(string) {
   return string[0].toUpperCase(); // Get the first character and convert it to uppercase
 }
 
-const comments = [
-  // 示例评论
-  {
-    id: 1,
-    author: "Mary Cooper",
-    text: "5 key components for aspiring designers that shape stylish design. Practice in Figma and create our first layout. That's all we're going to do in this lesson, buddy!",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 2,
-    author: "John Doe",
-    text: "React makes it painless to create interactive UIs.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 3,
-    author: "Jane Smith",
-    text: "Always start with a good design in Figma before coding.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 4,
-    author: "Mike Johnson",
-    text: "Responsive web design is essential in today's world.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 5,
-    author: "Emily Roberts",
-    text: "I think understanding hooks deeply can really elevate your React skills.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 6,
-    author: "Alex Thompson",
-    text: "TypeScript offers you a super set of JavaScript with type safety.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 7,
-    author: "Mary Cooper",
-    text: "5 key components for aspiring designers that shape stylish design. Practice in Figma and create our first layout. That's all we're going to do in this lesson, buddy!",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 8,
-    author: "John Doe",
-    text: "React makes it painless to create interactive UIs.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 9,
-    author: "Jane Smith",
-    text: "Always start with a good design in Figma before coding.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 10,
-    author: "Mike Johnson",
-    text: "Responsive web design is essential in today's world.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 11,
-    author: "Emily Roberts",
-    text: "I think understanding hooks deeply can really elevate your React skills.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  {
-    id: 12,
-    author: "Alex Thompson",
-    text: "TypeScript offers you a super set of JavaScript with type safety.",
-    avatar: "https://via.placeholder.com/40x40",
-  },
-  // 更多评论
-];
-
 
 export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDescription}) {
 
   const [showComments, setShowComments] = useState(false);
-  const [,,,,,,,,currentVideo, setCurrentVideo] = useContext(AuthContext)
+  const [,,,,,,userId,, currentVideo, setCurrentVideo] = useContext(AuthContext)
+  const [comments, setComments] = useState([{}]);
+  const [commentText, setCommentText] = useState('')
+  const [recommendedVideos, setRecommendedVideos] = useState([])
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();  // This will stop the default action of entering a new line
+        console.log('Enter key was pressed');
+        postComment(); // Call whatever function you need to execute
+    }
+  }
+
+  function handleChange(event) {
+    setCommentText(event.target.value);
+}
+
+  async function postComment() {
+    const newData = await saveComment(currentVideo.videoId, userId, commentText)
+    setComments([...comments, newData])
+  }
+
   const toggleComments = () => {
     setShowComments(!showComments);
   };
+
   const dummyVideos = [
     {
       imageURL: YouTubeCover,
@@ -129,6 +78,16 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
       author: "Peter Wang",
     },
   ];
+
+  useEffect(() => {
+
+    async function fetchComments() {
+      const response = await getCommentsByVideoId(currentVideo ? currentVideo.videoId : "1")
+      console.log("retrieved comments are: " + response)
+      setComments(response)
+    }
+    fetchComments();
+  }, [currentVideo])
 
   // Function to render the video list
   const renderVideoList = (videos) => {
@@ -183,7 +142,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
           <div className="authorInfo-container">
           <div
             style={{
-                backgroundColor: getRandomColor(),
+                backgroundColor: backgroundColor,
                 width: '5vh', // Set the width of the circle
                 height: '5vh', // Set the height of the circle
                 borderRadius: '50%', // Make it circular
@@ -200,7 +159,7 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
         </div>
             <div className="authorInfo">
               <h4>
-                {currentVideo ? currentVideo.channel.channelName : "Channel Name"}
+                {currentVideo.channel ? currentVideo.channel.channelName : "Channel Name"}
                 <img
                   src={Star}
                   alt="Popular video star"
@@ -221,10 +180,10 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
         <div className="comment-container">
           <div className="commentTitle">
             <h3 style={{ marginTop: "1vh" }}>Comments</h3>
-            <div key={comments[0].id} className="comments">
+            <div key={comments[0] ? comments[0].id : null} className="comments">
             <div
             style={{
-                backgroundColor: getRandomColor(),
+                backgroundColor: secondBackgroundColor,
                 width: '5vh', // Set the width of the circle
                 height: '5vh', // Set the height of the circle
                 borderRadius: '50%', // Make it circular
@@ -238,13 +197,13 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
                 fontWeight: 'bold',
             }}
         >
-            J
+            {getInitialLetter(comments[0] ? comments[0].username : "Y")}
         </div>
               <div>
                 <div className="comments-author" style={{marginLeft: "0.6vw",
                   paddingBottom: "0.2vh"
-                }}>{comments[0].author}</div>
-                <div className="comments-text" style={{width: "50vw"}}>{comments[0].text}</div>
+                }}>{comments[0] ? comments[0].username : "No Comment Yet"}</div>
+                <div className="comments-text" style={{width: "50vw"}}>{comments[0] ? comments[0].comments : "Be the first one to comment"}</div>
               </div>
             </div>
             <button
@@ -264,14 +223,14 @@ export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDe
             </button>
             <div>Write your comments</div>
             
-            <textarea type="text" className="custom-input-youtube-play" rows="4" placeholder="Write a comment..." />
+            <textarea type="text" className="custom-input-youtube-play" rows="4" placeholder="Write a comment..."  onKeyDown={handleKeyPress} onChange={handleChange} value={commentText}/>
           </div>
-          {showComments && <Comment />}
+          {showComments && <Comment comments={comments}/>}
         </div>
       </div>
       {!showComments && <div className="right">
         <h2 style={{ marginLeft: "2.5vw" }}>
-          Related Videos
+          Recommended Videos
           <img
             src={Star}
             alt="Popular video star"

@@ -11,6 +11,7 @@ import uoa.nightingales.mongodbservicenode.pojos.User;
 import uoa.nightingales.mongodbservicenode.repositories.UserRepository;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -61,6 +62,13 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         return encodingService.match(password, user.getPassword());
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public User getUserById(String userId) {
+        Optional<User> user = userRepository.findById(userId);
+        return user.orElse(null);
     }
 
     @Override

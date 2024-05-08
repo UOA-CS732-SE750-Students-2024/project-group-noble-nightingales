@@ -14,4 +14,6 @@ public interface UserService {
     User updateUser(String email, String password);
 
     boolean isUserInDatabase(String username, String password);
+
+    User getUserById(String userId);
 }

@@ -88,8 +88,18 @@ class MongoDbServiceNodeApplicationTests {
     }
 
     @Test
+    public void testWriteToCommentTable() {
+        YoutubeCommentData data = new YoutubeCommentData();
+        data.setComments("Hello World!");
+        data.setVideoId("test");
+        data.setUserId("test");
+        data.setUsername("Tester");
+        youtubeCommentDataService.saveData(data);
+    }
+
+    @Test
     public void testYoutubeSearchService(){
-        List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test-only");
+        List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test");
         System.out.println(commentsByVideoId);
     }
 

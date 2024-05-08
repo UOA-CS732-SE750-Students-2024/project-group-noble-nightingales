@@ -74,7 +74,25 @@
   margin-left: 2vw;
   font-size: 1.5vh;
   border-radius: 10px;
-  height: fit-content;
+  height: 10vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.5vh;  /* Adjust the height of the scrollbar using viewport height */
+    background-color: #333;  /* dark background for the scrollbar track */
+  }
+
+/* Style the draggable part of the scrollbar (thumb) */
+&::-webkit-scrollbar-thumb {
+    background-color: #46c0e9;  /* light green color for the scrollbar thumb */
+    border-radius: 0.5vh;  /* rounded corners for the scrollbar using viewport height */
+    border: 0.1vw solid #444;  /* dark border around the scrollbar thumb using viewport width */
+}
+
+/* Style the part of the scrollbar track (part not being dragged over) */
+&::-webkit-scrollbar-track {
+    background-color: #444;  /* slightly lighter dark shade for the track */
+}
 }
 
 .YouTubePlayerRow-container .left .comment-container {

@@ -9,7 +9,15 @@ const getRandomColor = () => {
 };
 
 
-const comments = [
+
+function getInitialLetter(string) {
+  if (!string || typeof string !== 'string') {
+      return ''; // Return an empty string if input is not valid
+  }
+  return string[0].toUpperCase(); // Get the first character and convert it to uppercase
+}
+
+const dummyComments = [
   {
     id: 1,
     author: "Mary Cooper",
@@ -85,15 +93,21 @@ const comments = [
   // more comments
 ];
 
-const Comment = () => {
+const Comment = ({comments}) => {
+
+  
+  let backgroundColor = []
+  for (let i = 0; i < comments.length; i++) {
+    backgroundColor.push(getRandomColor());
+  }
   return (
     <div className="comments-container">
-      {comments.slice(1).map((comment) => (
+      {comments.slice(0).map((comment, index) => (
         <div key={comment.id} className="comments">
           <div
             style={{
-                backgroundColor: getRandomColor(),
-                width: '5vh', // Set the width of the circle
+                backgroundColor: backgroundColor[index],
+                width: '5vh', // Set the width of the circlesdf
                 height: '5vh', // Set the height of the circle
                 borderRadius: '50%', // Make it circular
                 display: 'flex',
@@ -104,11 +118,11 @@ const Comment = () => {
                 fontWeight: 'bold',
             }}
         >
-            J
+            {getInitialLetter(comment.username)}
         </div>
           <div>
-            <div className="comments-author">{comment.author}</div>
-            <div className="comments-text">{comment.text}</div>
+            <div className="comments-author">{comment.username}</div>
+            <div className="comments-text">{comment.comments}</div>
           </div>
         </div>
       ))}
