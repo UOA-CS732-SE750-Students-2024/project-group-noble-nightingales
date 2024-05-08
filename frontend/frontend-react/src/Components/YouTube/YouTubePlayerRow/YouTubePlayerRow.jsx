@@ -3,11 +3,16 @@ import Star from "../../../assets/Star.png";
 import YouTubeCover from "../../../assets/YouTubeCover.png";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ChatIcon from "@mui/icons-material/Chat";
-import Helen from "../../../assets/helen.jpg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Comment from "../../../Pages/CommentPage/Comment";
 import "../../../Pages/CommentPage/CommentCSS/Comment.css";
+
+const colors = ['#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4'];
+
+const getRandomColor = () => {
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 const comments = [
   // 示例评论
@@ -86,7 +91,8 @@ const comments = [
   // 更多评论
 ];
 
-export default function YouTubePlayerRow({videoUrl}) {
+
+export default function YouTubePlayerRow({videoUrl, authorName, videoId, videoDescription}) {
   const [showComments, setShowComments] = useState(false);
   const toggleComments = () => {
     setShowComments(!showComments);
@@ -165,14 +171,23 @@ export default function YouTubePlayerRow({videoUrl}) {
             11,234
           </h5>
           <div className="authorInfo-container">
-            <img
-              src={Helen}
-              style={{
-                width: "auto",
-                height: "6vh",
-                marginLeft: "1vw",
-              }}
-            />
+          <div
+            style={{
+                backgroundColor: getRandomColor(),
+                width: '5vh', // Set the width of the circle
+                height: '5vh', // Set the height of the circle
+                borderRadius: '50%', // Make it circular
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: '#fff', // Set text color to white
+                fontSize: '2.5vh', // Adjust font size as needed
+                marginLeft: '1vw',
+                fontWeight: 'bold',
+            }}
+        >
+            J
+        </div>
             <div className="authorInfo">
               <h4>
                 Helen
@@ -180,16 +195,16 @@ export default function YouTubePlayerRow({videoUrl}) {
                   src={Star}
                   alt="Popular video star"
                   style={{
-                    verticalAlign: "-0.6vh",
+                    verticalAlign: "-1vh",
                     width: "1.5vw",
                     marginLeft: "0.5vw",
                   }}
                 />
               </h4>
-              <h5 style={{ marginLeft: "-1vw" }}>230,000 subscribers</h5>
+
             </div>
             <div className="videoDescription">
-              <span>description...</span>
+              {videoDescription ? videoDescription : "Video descriptions"}
             </div>
           </div>
         </div>
@@ -197,20 +212,36 @@ export default function YouTubePlayerRow({videoUrl}) {
           <div className="commentTitle">
             <h3 style={{ marginTop: "1vh" }}>Comments</h3>
             <div key={comments[0].id} className="comments">
-              <img
-                className="comments-avatar"
-                src={comments[0].avatar}
-                alt="Avatar"
-              />
+            <div
+            style={{
+                backgroundColor: getRandomColor(),
+                width: '5vh', // Set the width of the circle
+                height: '5vh', // Set the height of the circle
+                borderRadius: '50%', // Make it circular
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: '#fff', // Set text color to white
+                fontSize: '2.5vh', // Adjust font size as needed
+                marginRight: "0.6vw",
+                marginLeft: '0.3vw',
+                fontWeight: 'bold',
+            }}
+        >
+            J
+        </div>
               <div>
-                <div className="comments-author">{comments[0].author}</div>
-                <div className="comments-text">{comments[0].text}</div>
+                <div className="comments-author" style={{marginLeft: "0.6vw",
+                  paddingBottom: "0.2vh"
+                }}>{comments[0].author}</div>
+                <div className="comments-text" style={{width: "50vw"}}>{comments[0].text}</div>
               </div>
             </div>
             <button
               onClick={toggleComments}
+              className="see-more-button-youtube-play"
               style={{
-                marginLeft: "50.5vw",
+                marginLeft: "56.5vw",
                 marginTop: "-2vh",
                 textDecoration: "none",
                 background: "none",
@@ -221,11 +252,14 @@ export default function YouTubePlayerRow({videoUrl}) {
             >
               See More
             </button>
+            <div>Write your comments</div>
+            
+            <textarea type="text" className="custom-input-youtube-play" rows="4" placeholder="Write a comment..." />
           </div>
           {showComments && <Comment />}
         </div>
       </div>
-      <div className="right">
+      {!showComments && <div className="right">
         <h2 style={{ marginLeft: "2.5vw" }}>
           Related Videos
           <img
@@ -239,7 +273,8 @@ export default function YouTubePlayerRow({videoUrl}) {
           />
         </h2>
         {renderVideoList(dummyVideos)}
-      </div>
+      </div>}
+      
     </div>
   );
 }
