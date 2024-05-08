@@ -53,7 +53,7 @@ export default function YouTubeRow({videoResults}) {
           }}
         />
       </h2>
-      {renderVideoList(videoResults)}
+      {renderVideoList(videoResults.videoList)}
     </div>
   );
 }

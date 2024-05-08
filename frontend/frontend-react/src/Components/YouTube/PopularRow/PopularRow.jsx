@@ -1,7 +1,6 @@
 import "./PopularRowCSS/PopularRow.css";
 import Cube from "../../../assets/Cube.png";
 import Star from "../../../assets/Star.png";
-import YouTubeCover from "../../../assets/YouTubeCover.png";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -31,9 +30,9 @@ const theme = createTheme({
   },
 });
 
-export default function PopularRow({setVideoResults}) {
+export default function PopularRow({setVideoResults,setInput,input}) {
   const [videos, setVideos] = useState([]);
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
 
   useEffect(() => {
     async function fetchTracks() {
@@ -54,11 +53,12 @@ export default function PopularRow({setVideoResults}) {
       if (input === "") {
         return;
       }
-        window.scrollBy({ top: window.innerHeight*1.8, left: 0, behavior: 'smooth' });
+        window.scrollBy({ top: window.innerHeight*4, left: 0, behavior: 'smooth' });
         event.preventDefault();
         const data = await getYouTubeSearch(input);
+        console.log("HandleKeyDown");
         console.log(data);
-        setVideoResults(data.videoList);
+        setVideoResults(data);
     }
   }
 

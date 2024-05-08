@@ -121,4 +121,69 @@ router.post('/click', async (req, res) => {
 
 })
 
+
+// require userId in query parameter, and filterText in request body
+router.post('/filter', async (req, res) => {
+
+    const userId = req.query.userId;
+
+    const filterText = req.body.filterText;
+
+
+    const adjustSignificanceUrl = concatenateUrl(engineConfig, engineConfig.adjustGenreSignificance);
+    const findYoutubeHistoryUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.findById);
+    const aiExtractionUrl = concatenateUrl(aiConfig, "/api/gpt/youtube/relevant");
+    const saveYoutubeHistoryUrl = concatenateUrl(mongoDBConfig, mongoDBConfig.saveData);
+
+
+    let relatedGenres, historyData;
+
+    // Step One: Fetch YouTube history data
+    try {
+        const historyResponse = await axios.get(findYoutubeHistoryUrl, { params: { id: userId } });
+        if (!historyResponse.data) {
+            return res.status(404).send({ message: 'YouTube history data not found' });
+        }
+        console.log(historyResponse.data)
+        historyData = historyResponse.data;
+    } catch (historyError) {
+        console.error('Error fetching YouTube history data:', historyError);
+        return res.status(500).send({ message: 'Error fetching YouTube history data' });
+    }
+
+    // Step Two: Send filterText to AI Endpoint
+    try{
+        relatedGenres = await axios.get(aiExtractionUrl, { params: { userInput: filterText } });
+        console.log(relatedGenres.data);
+    }catch(aiError){
+        console.error('Error fetching AI extractions:', aiError);
+        return res.status(500).send({ message: 'Error fetching AI extractions' });
+    }
+
+    // Step Three: Remove the related genres
+    try {
+        const updatedGenresResponse = await axios.post(adjustSignificanceUrl, {
+            indexMap: historyData.indexGenreMap,
+            genreDataList: historyData.genreDataList,
+            relatedGenres: relatedGenres.data,
+            isWanted: false
+        });
+        
+        historyData.genreDataList = updatedGenresResponse.data.genreDataList;
+        historyData.indexGenreMap = updatedGenresResponse.data.indexMap;
+    } catch (adjustError) {
+        console.error('Error adjusting genre significance:', adjustError);
+        return res.status(500).send({ message: 'Error adjusting genre significance' });
+    }
+
+    // Step Four: Save the updated history data
+    try {
+        const saveResponse = await axios.post(saveYoutubeHistoryUrl, historyData);
+        res.status(200).send(saveResponse.data);
+    } catch (saveError) {
+        console.error('Error saving YouTube history data:', saveError);
+        return res.status(500).send({ message: 'Error saving YouTube history data' });
+    }
+})
+
 export default router;

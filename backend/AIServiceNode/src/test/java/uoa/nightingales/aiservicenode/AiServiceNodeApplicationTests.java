@@ -43,6 +43,18 @@ class AiServiceNodeApplicationTests {
     }
 
     @Test
+    void testNotWanted() {
+        System.out.println(chatGptYoutubeRecommendService.getUserInputRelevantCategory("I want to watch Java videos"));
+        System.out.println(chatGptYoutubeRecommendService.getUserInputRelevantCategory("I want to watch Java videos"));
+    }
+
+    @Test
+    void testWanted(){
+        System.out.println(chatGptYoutubeRecommendService.getUserInputNotRelevantCategory(" i want to watch NBA related videos"));
+        System.out.println(chatGptYoutubeRecommendService.getUserInputNotRelevantCategory(" i want to learn some Java"));
+    }
+
+    @Test
     void testSet(){
         HashSet<String> set = new HashSet<>();
         set.add("VIDEO_GAMES");
