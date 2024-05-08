@@ -85,6 +85,7 @@ function App() {
             </>
           }
         />
+         <Route path="*" element={<Navigate replace to="/explore" />} />
 
         {/* Define other routes here */}
       </Routes>
