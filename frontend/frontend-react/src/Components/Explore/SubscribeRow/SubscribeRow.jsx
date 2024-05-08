@@ -5,8 +5,11 @@ import human3 from "../../../assets/subHuman3.png";
 import human4 from "../../../assets/subHuman4.png";
 import Combination from "../../../assets/subCombination.png";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { SubscribeRequest } from "../../../Requests/Auth/SubscribeRequest";
+import { useState } from "react";
 
 export default function SubscribeRow() {
+  const [email, setEmail] = useState("")
   return (
     <div className="SubscribeRowContainer">
       <div className="leftSub">
@@ -35,8 +38,14 @@ export default function SubscribeRow() {
                 type="text"
                 placeholder="Enter Your Mail"
                 className="emailInput"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
               />
-              <button className="submitButton">
+              <button className="submitButton" onClick={() => {
+                SubscribeRequest(email)
+              }}>
                 <ArrowForwardRoundedIcon />
               </button>
             </div>
