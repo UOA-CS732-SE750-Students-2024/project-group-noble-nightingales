@@ -4,23 +4,23 @@ import AIRecommendationRow from "../../Components/Spotify/AIRecommendationRow/AI
 import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
-import {getYouTubeRandomSearch} from "../../Requests/Youtube/YoutubeRequest"
-import { useState ,useEffect} from "react";
+import { getYouTubeRandomSearch } from "../../Requests/Youtube/YoutubeRequest";
+import { useState, useEffect } from "react";
 
 export default function YouTube() {
-  const [videoResults,setVideoResults] = useState([]);
-  
+  const [videoResults, setVideoResults] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchVideos() {
       //TODO: 把这里改成成推荐的function
       try {
-        const data = await getYouTubeRandomSearch(); 
+        const data = await getYouTubeRandomSearch();
         console.log(data);
-        setVideoResults(data.videoList);  
+        setVideoResults(data.videoList);
       } catch (error) {
-        console.error('Failed to fetch tracks:', error);
+        console.error("Failed to fetch tracks:", error);
       }
     }
     fetchVideos();
@@ -39,20 +39,22 @@ export default function YouTube() {
   //   setIsLoading(false);
   // };
 
-
   return (
     <div>
       <BallDynamic />
       <div className="YouTube-container">
-        <div>
-          <PopularRow setVideoResults={setVideoResults}/>
+        <div data-testid="popular-row">
+          <PopularRow setVideoResults={setVideoResults} />
         </div>
-        <div className="AIRecommendationContainer">
+        <div
+          className="AIRecommendationContainer"
+          data-testid="airecommendation-row"
+        >
           <AIRecommendationRow />
           <BallStatic />
         </div>
-        <div>
-          <YouTubeRow videoResults={videoResults}/>
+        <div data-testid="explore-youtube-row">
+          <YouTubeRow videoResults={videoResults} />
         </div>
       </div>
     </div>

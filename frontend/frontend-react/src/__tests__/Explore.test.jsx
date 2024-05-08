@@ -40,7 +40,9 @@ describe("Components", () => {
   });
 
   it("renders YouTubeRow component correctly", () => {
-    expect(renderedComponent.getByTestId("youtube-row")).toBeInTheDocument();
+    expect(
+      renderedComponent.getByTestId("explore-youtube-row")
+    ).toBeInTheDocument();
   });
 
   it("renders IntroRow component correctly", () => {
@@ -80,7 +82,7 @@ describe("IntroRow", () => {
     });
   });
 
-  it("renders links in YouTubeRow page correctly", () => {
+  it("renders links in YouTubeRow component correctly", () => {
     const linkContents = [
       { text: "YouTube", href: "/youtube" },
       { text: "Spotify", href: "/spotify" },
@@ -92,7 +94,7 @@ describe("IntroRow", () => {
     });
   });
 
-  it("renders images in YouTubeRow page correctly", () => {
+  it("renders images in YouTubeRow component correctly", () => {
     const altTexts = ["horse", "man", "captain"];
 
     altTexts.forEach((altText) => {
