@@ -1,5 +1,6 @@
 .Spotify-container{
-    z-index: 2;
+    position: relative;
+    z-index: 4;
     display: flex;
     color: white;
     flex-direction: column;
@@ -14,15 +15,15 @@
 .AIRecommendationContainer .staticBall{
     top: 85vh;
     right: 10vw;
-    background-image: radial-gradient(circle at center, rgb(22, 163, 132) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 300%);
+    background-image: radial-gradient(circle at center, rgb(10, 103, 83) 0%, rgba(2, 122, 92, 0.7) 50%, rgba(0, 0, 0, 0) 70%);
     width: 50vh;
     height: 50vh;
 }
 
 .SpotifyRowContainer .staticBall{
-    top: 180vh;
+    top: 200vh;
     right: 10vw;
-    background-image: radial-gradient(circle at center, rgb(224, 62, 230) 0%, rgba(110, 29, 119, 0.7) 50%, rgba(33, 10, 27, 0) 300%);;
+    background-image: radial-gradient(circle at center, rgb(224, 62, 230) 0%, rgba(110, 29, 119, 0.7) 50%, rgba(33, 10, 27, 0) 80%);;
     width: 60vh;
     height: 60vh;
 }
