@@ -2,6 +2,7 @@ package uoa.nightingales.mongodbservicenode.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -10,6 +11,7 @@ import uoa.nightingales.mongodbservicenode.pojos.YoutubeCommentData;
 import uoa.nightingales.mongodbservicenode.repositories.YoutubeCommentDataRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ import java.util.List;
 public class YoutubeCommentDataServiceImpl implements YoutubeCommentDataService{
 
     final YoutubeCommentDataRepository youtubeCommentDataRepository;
+    final CacheManager cacheManager;
 
     private final static String COLLECTION_NAME = "youtube_comment_data";
 
@@ -24,7 +27,10 @@ public class YoutubeCommentDataServiceImpl implements YoutubeCommentDataService{
     @Transactional(propagation = Propagation.REQUIRED)
     public YoutubeCommentData saveData(YoutubeCommentData data) {
         log.info("saving data: " + data + " to collection: " + COLLECTION_NAME);
-        return youtubeCommentDataRepository.save(data);
+        YoutubeCommentData save = youtubeCommentDataRepository.save(data);
+        Objects.requireNonNull(cacheManager.getCache(COLLECTION_NAME)).evictIfPresent(data.getVideoId());
+        log.info("evicting cache with video id: " + data.getVideoId());
+        return save;
     }
 
     @Override

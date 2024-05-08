@@ -8,5 +8,7 @@
     "createUser": "/api/users/create",
     "isUserAlreadyCreated": "/api/users/verify",
     "findById": "/api/youtube/history",
-    "saveData": "/api/youtube/history"
+    "saveData": "/api/youtube/history",
+    "getCommentsByVideoId": "/api/youtube/comments",
+    "saveComment": "/api/youtube/comments"
 }
