@@ -4,6 +4,7 @@ import AIRecommendationRow from "../../Components/YouTube/AIRecommendationRow/AI
 import YouTubeRow from "../../Components/YouTube/YouTubeRow/YouTubeRow";
 import BallDynamic from "../../Components/BallDynamic/Ball";
 import BallStatic from "../../Components/BallStatic/Ball";
+
 import {getYouTubeRandomSearch,getMoreVideo} from "../../Requests/Youtube/YoutubeRequest"
 import { useState ,useEffect} from "react";
 import LoadingAnimation from "../../Dialogs/Spotify/LoadingAnimation";
@@ -12,7 +13,7 @@ import { Button } from "@mui/material";
 export default function YouTube() {
   const [videoResults, setVideoResults] = useState({ videoList: [], nextPageToken: null, prevPageToken: null });
   const [input, setInput] = useState("");
-  
+
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,13 +21,15 @@ export default function YouTube() {
       //TODO: 把这里改成成推荐的function
       console.log("YOUTUBR.jsx")
       try {
+
         const data = await getYouTubeRandomSearch(); 
         console.log(data.videoList);
         // setVideoResults(data.videoList);  
         setVideoResults(data);  
         console.log(videoResults)
+
       } catch (error) {
-        console.error('Failed to fetch tracks:', error);
+        console.error("Failed to fetch tracks:", error);
       }
     }
     fetchVideos();
@@ -46,20 +49,23 @@ export default function YouTube() {
     setIsLoading(false);
   };
 
-
   return (
     <div>
       <BallDynamic />
       <div className="YouTube-container">
-        <div>
+
+        <div  data-testid="popular-row">
           <PopularRow setVideoResults={setVideoResults} setInput={setInput} input={input}/>
         </div>
-        <div className="AIRecommendationContainer">
+        <div 
+          className="AIRecommendationContainer"
+          data-testid="youtube-airecommendation-row"
+          >
           <AIRecommendationRow  setVideoResults={setVideoResults} />
           <BallStatic />
         </div>
-        <div>
-          <YouTubeRow videoResults={videoResults}/>
+        <div data-testid="explore-youtube-row">
+          <YouTubeRow videoResults={videoResults} />
         </div>
         <div style={{scale: 0.1, paddingBottom: "10vh", display: "flex", alignContent: "center", justifyContent: "center"}}>
         {isLoading ? <LoadingAnimation /> :<Button sx={{color: "#6ce946"}} onClick={() => loadMoreData()}>
