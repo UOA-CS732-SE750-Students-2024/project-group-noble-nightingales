@@ -5,9 +5,23 @@ import row13 from "../../../assets/row3.png";
 import row21 from "../../../assets/2row1.png";
 import row22 from "../../../assets/2row2.png";
 import row23 from "../../../assets/2row3.png";
-import { NavLink } from "react-router-dom";
-
+import { NavLink , useNavigate} from "react-router-dom";
+import { AuthContext } from "../../../ApplicationContext";
+import { useContext} from "react";
 export default function IntroRow() {
+  const [,,,,isAuthenticated] = useContext(AuthContext)
+  const navigate = useNavigate();
+  const handleNavigation = (event, path) => {
+    event.preventDefault(); // Prevent default link behavior
+    if (!isAuthenticated) {
+      navigate('/explore/login');
+    } else {
+      navigate(path);
+    }
+  };
+  const navigateToLogin = () => {
+    navigate('/explore/login');
+  };
   return (
     <div>
       <div className="introRowContainer">
@@ -25,7 +39,10 @@ export default function IntroRow() {
               <li>
                 <ul>
                   <li className="mediaTitle">
-                    <NavLink to="/youtube">YouTube</NavLink>
+                    
+                    <NavLink to="/youtube" onClick={(event) => handleNavigation(event, '/youtube')}>
+                      YouTube
+                    </NavLink>
                   </li>
                   <li className="mediaType">Videos</li>
                 </ul>
@@ -33,7 +50,9 @@ export default function IntroRow() {
               <li>
                 <ul>
                   <li className="mediaTitle">
-                    <NavLink to="/spotify">Spotify</NavLink>
+                    <NavLink to="/spotify" onClick={(event) => handleNavigation(event, '/spotify')}>
+                      Spotify
+                    </NavLink>
                   </li>
                   <li className="mediaType">Music</li>
                 </ul>
@@ -41,7 +60,7 @@ export default function IntroRow() {
               <li>
                 <ul>
                   <li className="mediaTitle">
-                    <NavLink to="/community"> &gt;&gt;&gt;&gt;</NavLink>
+                    <span> &gt;&gt;&gt;&gt;</span>
                   </li>
                   <li className="mediaType">Others</li>
                 </ul>
@@ -51,7 +70,7 @@ export default function IntroRow() {
 
           <ul className="buttonIntro">
             <li>
-              <span className="startExplor">Start Exploring</span>
+              <span className="startExplor" onClick={navigateToLogin}>Start Exploring</span>
             </li>
             <li>
               <NavLink className="newtoHere" to="/explore/signup">

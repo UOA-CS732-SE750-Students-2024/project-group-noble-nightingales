@@ -14,9 +14,20 @@ import OrangeBubble from "../../../assets/OrangeBubble.png";
 import OrangeChart from "../../../assets/OrangeProgress.png";
 import OrangeIndicator from "../../../assets/OrangeIndicator _bg.png";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import { NavLink } from "react-router-dom";
-
+import { NavLink , useNavigate} from "react-router-dom";
+import { AuthContext } from "../../../ApplicationContext";
+import { useContext} from "react";
 export default function AIRow() {
+  const [,,,,isAuthenticated] = useContext(AuthContext)
+  const navigate = useNavigate();
+  const handleNavigation = (event, path) => {
+    event.preventDefault(); // Prevent default link behavior
+    if (!isAuthenticated) {
+      navigate('/explore/login');
+    } else {
+      navigate(path);
+    }
+  };
   return (
     <div className="AIRowContainer">
       <div>
@@ -100,7 +111,7 @@ export default function AIRow() {
           <li>
             <ul className="ContentRecommandation">
               <li>
-                <NavLink to="/youtube" className="ContentRecommendationinside">
+                <NavLink to="/youtube" onClick={(event) => handleNavigation(event, '/youtube')} className="ContentRecommendationinside">
                   <span className=" ContentText">Content Recommendation</span>
                   <span className="arrow">
                     <ArrowForwardRoundedIcon />

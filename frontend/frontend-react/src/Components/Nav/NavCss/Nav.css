@@ -66,9 +66,16 @@
     display: flex;
     align-items: center;
 }
+.nav-container .logout{
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 7vw;
+    font-size: 1.86vh;
+    color: white;
+}
   
 .nav-container .nav-auth a {
-    font-size: 1.86vh;
+    
     margin-left:  1.86vh; /* Space between the Sign In and Create Account links */
     text-decoration: none;
     color: white; /* Set the text color */

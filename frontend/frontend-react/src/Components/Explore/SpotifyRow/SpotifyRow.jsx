@@ -1,15 +1,30 @@
 import "./SpotifyRowCSS/SpotifyRow.css";
 import { getSpotifyPopular } from "../../../Requests/Explore/YoutubeSpotifyRequest";
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext,useEffect, useState } from "react";
+import { AuthContext } from "../../../ApplicationContext";
 
 export default function SpotifyRow() {
   const [tracks, setTracks] = useState([]);
+  const [,,,,isAuthenticated] = useContext(AuthContext)
+  const navigate = useNavigate();
+  const handleNavigation = (event, path, track = null) => {
+    event.preventDefault(); 
+    if (!isAuthenticated) {
+      navigate('/explore/login');
+    } else {
+      if (track) {
+        setTracks(track); 
+      }
+      navigate(path);
+    }
+  };
+
   useEffect(() => {
     async function fetchTracks() {
       try {
-        // const array = await getSpotifyPopular();
-        // setTracks(array);
+        const array = await getSpotifyPopular();
+        setTracks(array);
       } catch (error) {
         console.error("Failed to fetch tracks:", error);
       }
@@ -23,7 +38,7 @@ export default function SpotifyRow() {
       <ul className="musicList">
         {musics.map((music) => (
           <li className="musicListElement" key={music.trackId}>
-            <NavLink to={`/spotify?trackId=${music.trackId}`}>
+            <NavLink to={`/spotify?trackId=${music.trackId}`} onClick={(event) => handleNavigation(event, `/spotify?trackId=${music.trackId}`, music)}>
               <img
                 className="musicImage"
                 src={music.coverImageUrl}
@@ -47,7 +62,7 @@ export default function SpotifyRow() {
   return (
     <div className="SpotifyRow-container">
       <h2>Popular Tracks</h2>
-      <NavLink className="navigationAllLink" to="/spotify">
+      <NavLink className="navigationAllLink" to="/spotify" onClick={(event) => handleNavigation(event, '/spotify')}>
         See All
       </NavLink>
       {renderMusicList(tracks)}

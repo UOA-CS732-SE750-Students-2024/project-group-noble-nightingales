@@ -20,7 +20,6 @@ export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginFailed, setIsLoginFailed] = useState(false);
   const [,,, setUserToken, isAuthenticated, setIsAuthenticated,, setUserId] = useContext(AuthContext);
@@ -35,7 +34,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submitted with:", { username, password, rememberMe });
+    console.log("Submitted with:", { username, password });
   };
 
   const login = async() => {
@@ -97,13 +96,6 @@ export default function Login() {
           </div>
           <div className={styles.rememberMeLine}>
             <label className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                id="rememberMe"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
-              Remember Me
             </label>
             <div className={styles.troubleLoggingLink} style={isAuthenticated ? {color: "#d3f85a"} : {color: "#f8725a"}}>
               {isAuthenticated ? "You have signed in" : "Not Signed In"} 
@@ -113,7 +105,7 @@ export default function Login() {
           {isLoading ? <ThemeProvider theme={progressTheme}><LinearProgress /></ThemeProvider> :<button onClick={() => {
             login();
           }} className={styles.loginButton} type="submit" style={isLoginFailed ? {background: "#f8725a"} : {}}>
-            {isAuthenticated ? "Already Signed In" : (isLoginFailed ? "Invalid User - Retry" : "Login")}
+            {isAuthenticated ? "Sign Out " : (isLoginFailed ? "Invalid User - Retry" : "Login")}
           </button>}
           <div className={styles.signUp}>
             Don&apos;t have an account?{" "}
