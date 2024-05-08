@@ -30,8 +30,8 @@ public class ChatGptYoutubeController {
     }
 
     @GetMapping("/not-relevant")
-    public ResponseEntity<List<String>> getNotRelevantCategories(@RequestParam String userInput) {
-        List<String> categories = chatGptYoutubeRecommendService.getUserInputNotRelevantCategory(userInput);
+    public ResponseEntity<String> getNotRelevantCategories(@RequestParam String userInput) {
+        String categories = chatGptYoutubeRecommendService.getUserInputNotRelevantCategory(userInput);
         return ResponseEntity.ok(categories);
     }
 

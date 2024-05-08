@@ -119,16 +119,12 @@ public class ChatGptYoutubeRecommendServiceImpl implements ChatGptYoutubeRecomme
     }
 
     @Override
-    public List<String> getUserInputNotRelevantCategory(String userInput) {
+    public String getUserInputNotRelevantCategory(String userInput) {
         log.info("Get Not Relevant category based on userInput");
         // Combine userInput with the relevant prompt and all categories
-        String message = String.format("%s %s %s", allCategories, userInput, youtubeDescPrompt);
+        String message = String.format("%s %s", userInput, youtubeDescPrompt);
         // Send the request to OpenAI's ChatGPT and get the response
-        String response = openAiChatClient.call(message);
-        // Split 'response' into an array of strings using comma as the separator
-        String[] responseArray = response.split(",");
-        List<String> responseList = new ArrayList<>(Arrays.asList(responseArray));
-        return CategoryCheck.CategoryExist(allCategoriesSet, responseList);
+        return openAiChatClient.call(message);
     }
 
     @Override
