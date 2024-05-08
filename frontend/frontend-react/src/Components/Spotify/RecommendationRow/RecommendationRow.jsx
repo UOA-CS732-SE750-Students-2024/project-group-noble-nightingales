@@ -16,7 +16,9 @@ export default function RecommendationRow({setCurrentTrack, recommendationChange
       try {
 
         const array = await getSpotifyRecommendation(userId); 
+        console.log(array)
         setTracks(array);  
+
       } catch (error) {
         console.error('Failed to fetch tracks:', error);
       }

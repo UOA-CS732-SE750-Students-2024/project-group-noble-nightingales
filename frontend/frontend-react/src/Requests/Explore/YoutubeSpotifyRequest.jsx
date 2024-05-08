@@ -1,7 +1,7 @@
 import axios from "axios"
 const baseUrl = import.meta.env.VITE_API_URL
 
-function generateRandomString() {
+export function generateRandomString() {
     const characters = 'abcdefghiklmnopqrstuvwxyz';
     let result = '';
     for (let i = 0; i < 4; i++) {

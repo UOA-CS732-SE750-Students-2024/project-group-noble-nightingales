@@ -15,7 +15,7 @@ router.get('/search', async (req, res) => {
     console.log(req.query);
     axios.get(url, { params: req.query })
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             res.json(response.data);
         })
         .catch(error => {

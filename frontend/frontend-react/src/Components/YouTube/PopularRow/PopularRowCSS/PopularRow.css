@@ -20,32 +20,39 @@
     display: flex;
     list-style-type: none;
     padding-top: 2vh;
-    margin-left: -2.2vw
+    margin-left: -4vw;
+    /* new code */
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    flex-direction: row;
+    width:80vw;
 }
 
 .PopularRow-container .videoList .videoListElement{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-right: 5.5vw; /* element gap*/
+    width: 20vw;
+    padding-right: 1vw; 
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 24vw; /* image width */
+    width: 18vw; /* image width */
     transition: width 0.5s ease-in-out; 
 }
 
 .PopularRow-container .videoList .videoListElement .videoImage:hover {
-    width: 25vw;
+    width: 20vw;
 }
 
 .PopularRow-container .videoList .videoInfo-container{
     display: flex;
     margin-top: 1vh;
-    margin-left: -6.5vw;
+    /* margin-left: -6.5vw; */
+    margin-left: 5em;
 }
 
 .PopularRow-container .videoList .videoInfo-container .playArrow{
@@ -56,15 +63,25 @@
     width: 30px; /* Adjust the width to fit the design */
     height: 30px; /* Adjust the height to fit the design */
     display: flex;
-    margin-left: -4vw;
+    margin-left: vw;
     margin-top: 2.7vh;
 }
 
 .PopularRow-container .videoList .videoInfo{
     display: flex;
     flex-direction: column;
+    list-style-type: none;
     align-items: self-start;
+    width: 20rem;
 }
+
+.PopularRow-container .videoList .videoInfo .videoTitle{
+    font-size: 1.9vh;
+    width: 20rem;
+    /* margin-left: 1vw; */
+    text-overflow: ellipsis;
+}
+
 
 @keyframes rotate-and-float {
     0% {

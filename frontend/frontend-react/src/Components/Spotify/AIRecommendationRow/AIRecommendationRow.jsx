@@ -102,7 +102,7 @@ const performAiFilter = async() => {
         <img
           src={StatsIcon}
           alt="Icon"
-          style={{ marginRight: "1vw", verticalAlign: "-1vh" }}
+          style={{ marginRight: "1vw", verticalAlign: "-1vh",marginTop:"4vh" }}
         />
         Embedded AI Recommendation
       </h2>

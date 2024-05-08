@@ -16,7 +16,7 @@ router.get('/default', async (req, res) => {
         };
         const response = await axios.get(url, { params });
 
-        console.log(response);
+        // console.log(response);
         res.json(response.data);
 
     } catch (error) {
