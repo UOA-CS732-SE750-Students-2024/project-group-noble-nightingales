@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.use('/video', defaultVideoRouter);
 
-router.use('/video',searchVideoRouter)
+router.use('/video', searchVideoRouter)
 
 router.use('/video', retrieveVideoRouter);
 

@@ -22,8 +22,26 @@ router.get('/search', async (req, res) => {
         console.error("Error during fetching default videos:", error.response ? error.response.data : error.message);
         res.status(500).send('Error during fetching default videos');
     }
-
-
 });
 
+router.get('/more', async (req, res) => {
+    const url = concatenateUrl(youtubeConfig, youtubeConfig.searchVideos);
+    console.log(url);
+    try {
+        const params = {
+            maxResults: req.query.maxResults,
+            query:req.query.query,
+            pageToken:req.query.pageToken
+        };
+        const response = await axios.get(url, { params });
+        console.log("search_videos.js 37")
+        // console.log(response.data);
+        res.json(response.data);
+
+    } catch (error) {
+        // if error occurs, please check if youtube service node has booted successfully
+        console.error("Error during fetching default videos:", error.response ? error.response.data : error.message);
+        res.status(500).send('Error during fetching default videos');
+    }
+});
 export default router;

@@ -61,7 +61,7 @@ export const getSpotifyRecommendation = async (userId) => {
 export const getYouTubePopular = async () => {
     try {
         const response = await axios.get(`${baseUrl}/api/video/default`);
-        console.log(response.data.videoList)
+        // console.log(response.data.videoList)
         return response.data.videoList;
     } catch (error) {
         console.error("Error retrieving data:", error);
