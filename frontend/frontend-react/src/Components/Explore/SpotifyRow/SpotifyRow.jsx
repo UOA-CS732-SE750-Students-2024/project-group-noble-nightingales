@@ -1,18 +1,17 @@
 import "./SpotifyRowCSS/SpotifyRow.css";
-import {getSpotifyPopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
+import { getSpotifyPopular } from "../../../Requests/Explore/YoutubeSpotifyRequest";
 import { NavLink } from "react-router-dom";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SpotifyRow() {
   const [tracks, setTracks] = useState([]);
   useEffect(() => {
     async function fetchTracks() {
       try {
-
-        const array = await getSpotifyPopular(); 
-        setTracks(array);  
+        // const array = await getSpotifyPopular();
+        // setTracks(array);
       } catch (error) {
-        console.error('Failed to fetch tracks:', error);
+        console.error("Failed to fetch tracks:", error);
       }
     }
     fetchTracks();
@@ -24,7 +23,7 @@ export default function SpotifyRow() {
       <ul className="musicList">
         {musics.map((music) => (
           <li className="musicListElement" key={music.trackId}>
-            <NavLink  to={`/spotify?trackId=${music.trackId}`}>
+            <NavLink to={`/spotify?trackId=${music.trackId}`}>
               <img
                 className="musicImage"
                 src={music.coverImageUrl}
