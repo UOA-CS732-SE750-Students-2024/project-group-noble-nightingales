@@ -4,5 +4,10 @@
     "getSpotifySearchText": "/api/spotify-recommendations/search",
     "getUnwantedSpotifyCreators": "/api/spotify-recommendations/filter",
     "getYoutubeCategories": "/api/gpt/youtube/youtube",
+
+    "getNotRelevantCategories":"/api/gpt/youtube/not-relevant",
+
+
     "getRelevantCategories": "/api/gpt/youtube/relevant"
+
 }

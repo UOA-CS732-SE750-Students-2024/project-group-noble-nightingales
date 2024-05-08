@@ -87,14 +87,14 @@ function App() {
             </>
           }
         />
-        <Route 
+        <Route
           path="/spotify/signin"
           element={
             <>
               <Nav />
               <SpotifySignIn />
             </>
-            }
+          }
         />
 
         {/* Define other routes here */}

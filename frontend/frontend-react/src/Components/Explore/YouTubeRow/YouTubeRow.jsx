@@ -1,9 +1,11 @@
 import "./YouTubeRowCSS/YouTubeRow.css";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { NavLink } from "react-router-dom";
+
 import { useContext, useEffect,useState } from "react";
 import {getYouTubePopular} from "../../../Requests/Explore/YoutubeSpotifyRequest"
 import { AuthContext } from "../../../ApplicationContext";
+
 
 
 export default function YouTubeRow() {
@@ -12,11 +14,11 @@ export default function YouTubeRow() {
   useEffect(() => {
     async function fetchTracks() {
       try {
-        const array = await getYouTubePopular(); 
-        setVideos(array);  
-        console.log(array)
+        // const array = await getYouTubePopular();
+        // setVideos(array);
+        // console.log(array)
       } catch (error) {
-        console.error('Failed to fetch tracks:', error);
+        console.error("Failed to fetch tracks:", error);
       }
     }
     fetchTracks();
@@ -27,10 +29,12 @@ export default function YouTubeRow() {
     return (
       <ul className="videoListt">
         {videos.map((video) => (
+
           <li className="videoListElement" key={video}>
               <NavLink to={{pathname: `/youtube/player`}} onClick={() => {
                   setCurrentVideo(video)
               }}>
+
               <img
                 className="videoImagee"
                 src={video.coverImgUrl}
@@ -40,8 +44,22 @@ export default function YouTubeRow() {
             <div className="videoInfo-container">
               <PlayArrowIcon className="playArroww" />
               <div className="videoInfo">
-                <span style={{ fontSize: "0.9rem", display:"flex", width:"12rem" }}>{video.title}</span>
-                <span style={{ fontSize: "1.6vh", color: "gray", paddingBottom: "2vh" }}>
+                <span
+                  style={{
+                    fontSize: "0.9rem",
+                    display: "flex",
+                    width: "12rem",
+                  }}
+                >
+                  {video.title}
+                </span>
+                <span
+                  style={{
+                    fontSize: "1.6vh",
+                    color: "gray",
+                    paddingBottom: "2vh",
+                  }}
+                >
                   Made By {video.channel.channelName}
                 </span>
               </div>
@@ -59,7 +77,6 @@ export default function YouTubeRow() {
         See All
       </NavLink>
       {renderVideoList(videos)}
-
     </div>
   );
 }

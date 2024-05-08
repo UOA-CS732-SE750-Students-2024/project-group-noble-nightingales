@@ -15,16 +15,21 @@ export const getYouTubeSearch = async (query) => {
     }
 }
 
+export const clickOnYoutube = async (description, userId) => {
+    try {
+        axios.post(`${baseUrl}/api/video/click`, { videoDescription: description, userId: userId });
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
 
 export const getYouTubeRandomSearch = async () => {
     const randomString = generateRandomString();
-    console.log("RANDOM SEARCH")
     try {
         const response = await axios.get(`${baseUrl}/api/video/search`, {
             params: { query: randomString, maxResults: 6  }
         });
-        console.log("RANDOM SEARCH")
-        console.log(response.data)
         return response.data;
     } catch (error) {
         console.error("Error retrieving data:", error.response.status);
@@ -36,6 +41,41 @@ export const getMoreVideo = async (nextPageToken,input) => {
         const response = await axios.get(`${baseUrl}/api/video/more`, {params: {nextPageToken: nextPageToken,query:input,maxResults: 20 }});
         return response.data;
     } catch (error) { 
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getYouTubeAiSearchResult = async (input) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/video/ai-search`, {
+            params: { userInput: input }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const filterVideo = async (userInput, userId) => {
+    try {
+        const response = await axios.post(`${baseUrl}/api/video/filter`, {
+            filterText: userInput
+        }, {params: {userId: userId}});
+        return response.data;
+    } catch (error) {
+        console.error("Error retrieving data:", error);
+    }
+}
+
+export const getYouTubeRecommendation = async (userId) => {
+    try {
+        const response = await axios.get(`${baseUrl}/api/video/recommendation`, {
+            params: {
+                userId: userId
+            }
+        });
+        return response.data;
+    } catch (error) {
         console.error("Error retrieving data:", error);
     }
 }
