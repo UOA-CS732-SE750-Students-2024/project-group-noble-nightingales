@@ -27,7 +27,10 @@ export default function Explore() {
         <div data-testid="explore-youtube-row">
           <YouTubeRow />
         </div>
-        <div className="popularTrackContainer" data-testid="spotify-row">
+        <div
+          className="popularTrackContainer"
+          data-testid="explore-spotify-row"
+        >
           <BallStatic />
           <SpotifyRow />
         </div>

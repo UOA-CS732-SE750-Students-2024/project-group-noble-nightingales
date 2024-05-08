@@ -48,7 +48,7 @@ export default function YouTube() {
         </div>
         <div
           className="AIRecommendationContainer"
-          data-testid="airecommendation-row"
+          data-testid="youtube-airecommendation-row"
         >
           <AIRecommendationRow />
           <BallStatic />

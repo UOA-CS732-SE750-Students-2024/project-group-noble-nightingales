@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import YouTube from "../Pages/YouTubePage/YouTube";
+import Spotify from "../Pages/SpotifyPage/Spotify";
 
 /**
  * Test that, if the test suite is called successfully
@@ -22,51 +22,79 @@ describe("Components", () => {
   beforeEach(() => {
     renderedComponent = render(
       <MemoryRouter initialEntries={["/"]}>
-        <YouTube />
+        <Spotify />
       </MemoryRouter>
     );
   });
 
-  it("renders PopularRow component correctly", () => {
-    expect(renderedComponent.getByTestId("popular-row")).toBeInTheDocument();
+  it("renders SearchTopRow component correctly", () => {
+    expect(renderedComponent.getByTestId("searchtop-row")).toBeInTheDocument();
+  });
+
+  it("renders RecommendationRow component correctly", () => {
+    expect(
+      renderedComponent.getByTestId("recommendation-row")
+    ).toBeInTheDocument();
   });
 
   it("renders AIRecommendationRow component correctly", () => {
     expect(
-      renderedComponent.getByTestId("youtube-airecommendation-row")
+      renderedComponent.getByTestId("spotify-airecommendation-row")
     ).toBeInTheDocument();
   });
 
-  it("renders YouTubeRow component correctly", () => {
+  it("renders Spotify component correctly", () => {
     expect(
-      renderedComponent.getByTestId("explore-youtube-row")
+      renderedComponent.getByTestId("spotify-spotify-row")
     ).toBeInTheDocument();
   });
 });
 
-/**************************************     PopularRow     **************************************/
+/**************************************     SearchTopRow     **************************************/
 
-describe("PopularRow", () => {
+describe("SearchTopRow", () => {
   let renderedComponent;
 
   beforeEach(() => {
     renderedComponent = render(
       <MemoryRouter initialEntries={["/"]}>
-        <YouTube />
+        <Explore />
       </MemoryRouter>
     );
   });
 
-  it("renders texts in YouTubeRow component correctly", () => {
-    const textContents = ["Popular video cube", "Popular video cube"];
+  it("renders texts in SearchTopRow component correctly", () => {
+    const textContents = ["Spotify", "Top Tracks"];
+
+    textContents.forEach((text) => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
+    });
+  });
+});
+
+/**************************************     RecommendationRow     **************************************/
+
+describe("RecommendationRow", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders texts in RecommendationRow component correctly", () => {
+    const textContents = ["New For You", "You May Like"];
 
     textContents.forEach((text) => {
       expect(renderedComponent.getByText(text)).toBeInTheDocument();
     });
   });
 
-  it("renders images in PopularRow component correctly", () => {
-    const altTexts = ["Popular video cube"];
+  it("renders images in RecommendationRow component correctly", () => {
+    const altTexts = ["cover"];
 
     altTexts.forEach((altText) => {
       expect(renderedComponent.getByAltText(altText)).toBeInTheDocument();
@@ -82,7 +110,7 @@ describe("AIRecommendationRow", () => {
   beforeEach(() => {
     renderedComponent = render(
       <MemoryRouter initialEntries={["/"]}>
-        <YouTube />
+        <Explore />
       </MemoryRouter>
     );
   });
@@ -92,7 +120,7 @@ describe("AIRecommendationRow", () => {
       "Embedded AI Recommendation",
       "AI Recommendations",
       "AI Filtering",
-      "ou have to put something in the text field to perform this operation.",
+      "You have to put something in the text field to perform this operation.",
     ];
 
     textContents.forEach((text) => {
@@ -101,9 +129,9 @@ describe("AIRecommendationRow", () => {
   });
 });
 
-/**************************************     YouTubeRow     **************************************/
+/**************************************     SpotifyRow     **************************************/
 
-describe("YouTubeRow", () => {
+describe("SpotifyRow", () => {
   let renderedComponent;
 
   beforeEach(() => {
@@ -114,8 +142,8 @@ describe("YouTubeRow", () => {
     );
   });
 
-  it("renders texts in YouTubeRow component correctly", () => {
-    const textContents = ["YouTube Videos For You"];
+  it("renders texts in SpotifyRow component correctly", () => {
+    const textContents = ["Spotify Musics For You"];
 
     textContents.forEach((text) => {
       expect(renderedComponent.getByText(text)).toBeInTheDocument();

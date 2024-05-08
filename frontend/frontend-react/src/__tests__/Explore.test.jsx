@@ -46,7 +46,9 @@ describe("Components", () => {
   });
 
   it("renders IntroRow component correctly", () => {
-    expect(renderedComponent.getByTestId("spotify-row")).toBeInTheDocument();
+    expect(
+      renderedComponent.getByTestId("explore-spotify-row")
+    ).toBeInTheDocument();
   });
 
   it("renders IntroRow component correctly", () => {
