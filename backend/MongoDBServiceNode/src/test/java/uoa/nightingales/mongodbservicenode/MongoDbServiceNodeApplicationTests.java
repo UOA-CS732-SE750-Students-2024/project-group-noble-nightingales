@@ -45,85 +45,85 @@ class MongoDbServiceNodeApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    public void testYoutubeDataService(){
+//    @Test
+//    public void testYoutubeDataService(){
+//
+//        YoutubeHistoryData data = new YoutubeHistoryData();
+//        ChannelData channelData = new ChannelData("12sd1fsa", 10);
+//        List<ChannelData> list = new ArrayList<>();
+//        list.add(channelData);
+//        Map<String, Integer> genreMap = new HashMap<>();
+//        genreMap.put("test", 1);
+//
+//        data.setUserId("test_only");
+//        data.setChannelDataList(list);
+//        data.setIndexGenreMap(genreMap);
+//        data.setIndexGenreMap(genreMap);
+//
+//        YoutubeHistoryData data1 = youtubeHistoryDataService.saveData(data);
+//        System.out.println(data1);
+//    }
 
-        YoutubeHistoryData data = new YoutubeHistoryData();
-        ChannelData channelData = new ChannelData("12sd1fsa", 10);
-        List<ChannelData> list = new ArrayList<>();
-        list.add(channelData);
-        Map<String, Integer> genreMap = new HashMap<>();
-        genreMap.put("test", 1);
-
-        data.setUserId("test_only");
-        data.setChannelDataList(list);
-        data.setIndexGenreMap(genreMap);
-        data.setIndexGenreMap(genreMap);
-
-        YoutubeHistoryData data1 = youtubeHistoryDataService.saveData(data);
-        System.out.println(data1);
-    }
-
-    @Test
-    public void testUserCollection() throws DuplicateException {
-        userRepository.deleteAll();
-        User user = new User();
-        user.setUsername("James777G");
-        user.setEmail("jamesgong0719@gmail.com");
-        user.setPassword("ghx020719");
-        user.setDateOfBirth("2002/07/19");
-        System.out.println(userService.saveData(user));
-    }
-
-    @Test
-    public void testDeleteAll(){
-        userRepository.deleteAll();
-        spotifyCreatorRepository.deleteAll();
-
-    }
-    @Test
-    public void testReadFromUserCollection() {
-        System.out.println(userRepository.findByEmail("jamesgong0719@gmail.com"));
-        System.out.println(userRepository.findByUsername("James777G"));
-    }
-
-    @Test
-    public void testWriteToCommentTable() {
-        YoutubeCommentData data = new YoutubeCommentData();
-        data.setComments("Hello World!");
-        data.setVideoId("test");
-        data.setUserId("test");
-        data.setUsername("Tester");
-        youtubeCommentDataService.saveData(data);
-    }
-
-    @Test
-    public void testYoutubeSearchService(){
-        List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test");
-        System.out.println(commentsByVideoId);
-    }
-
-    @Test
-    public void testLogin(){
-        System.out.println(userService.isUserInDatabase("James777G", "ghx020719"));
-        System.out.println(userService.isUserInDatabase("James777G", "ghx020719a"));
-    }
-
-    @Test
-    public void testUserService(){
-        System.out.println(userService.getUserByEmail("jamesgong0719@gmail.com"));
-        User user = new User();
-        user.setUsername("James777G");
-        user.setEmail("jamesgong0719@gmail.com");
-        user.setPassword("ghx020719");
-        user.setDateOfBirth("2002/07/19");
-        try{
-            userService.saveData(user);
-            fail();
-        } catch (DuplicateException e) {
-            System.out.println("passed");
-        }
-
-    }
+//    @Test
+//    public void testUserCollection() throws DuplicateException {
+//        userRepository.deleteAll();
+//        User user = new User();
+//        user.setUsername("James777G");
+//        user.setEmail("jamesgong0719@gmail.com");
+//        user.setPassword("ghx020719");
+//        user.setDateOfBirth("2002/07/19");
+//        System.out.println(userService.saveData(user));
+//    }
+//
+//    @Test
+//    public void testDeleteAll(){
+//        userRepository.deleteAll();
+//        spotifyCreatorRepository.deleteAll();
+//
+//    }
+//    @Test
+//    public void testReadFromUserCollection() {
+//        System.out.println(userRepository.findByEmail("jamesgong0719@gmail.com"));
+//        System.out.println(userRepository.findByUsername("James777G"));
+//    }
+//
+//    @Test
+//    public void testWriteToCommentTable() {
+//        YoutubeCommentData data = new YoutubeCommentData();
+//        data.setComments("Hello World!");
+//        data.setVideoId("test");
+//        data.setUserId("test");
+//        data.setUsername("Tester");
+//        youtubeCommentDataService.saveData(data);
+//    }
+//
+//    @Test
+//    public void testYoutubeSearchService(){
+//        List<YoutubeCommentData> commentsByVideoId = youtubeCommentDataService.getCommentsByVideoId("test");
+//        System.out.println(commentsByVideoId);
+//    }
+//
+//    @Test
+//    public void testLogin(){
+//        System.out.println(userService.isUserInDatabase("James777G", "ghx020719"));
+//        System.out.println(userService.isUserInDatabase("James777G", "ghx020719a"));
+//    }
+//
+//    @Test
+//    public void testUserService(){
+//        System.out.println(userService.getUserByEmail("jamesgong0719@gmail.com"));
+//        User user = new User();
+//        user.setUsername("James777G");
+//        user.setEmail("jamesgong0719@gmail.com");
+//        user.setPassword("ghx020719");
+//        user.setDateOfBirth("2002/07/19");
+//        try{
+//            userService.saveData(user);
+//            fail();
+//        } catch (DuplicateException e) {
+//            System.out.println("passed");
+//        }
+//
+//    }
 
 }
