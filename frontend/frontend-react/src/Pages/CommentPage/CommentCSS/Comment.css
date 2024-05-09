@@ -1,7 +1,7 @@
 .comments-container {
   position: fixed;
   top: 50%;
-  right: 5%;
+  right: 1%;
   transform: translateY(-50%);
   width: 50vh;
   height: 76vh;
