@@ -199,6 +199,8 @@ taskkill /PID <PID> /F
 | Wenliang Du | wdu735 | tthtilb@gmail.com  |
 | James Gai | jgai284 | jgai284@aucklanduni.ac.nz   |
 | Shiyan Gong | sgon512 | sgon512@aucklanduni.ac.nz   |
+| Yue Zhu| yzhu951 | yzhu951@aucklanduni.ac.nz   |
+
 
 
 
