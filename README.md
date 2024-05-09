@@ -1,5 +1,23 @@
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![AI](https://img.shields.io/badge/AI-007396?style=for-the-badge)
+
+
 # COMPSCI 732 / SOFTENG 750 project - Team Noble Nightingales
 
+Our Web Application is deployed on this [link](https://unimedia.azurewebsites.net/explore)
+
+- This application consists of two branches:
+  - main branch, which you can use to run the application in development mode
+  - BUILD-VERSION branch, which you can use to run the application after executing npm run build
+  - Further instructions are listed below
+
+## IMPORTRANT !!! Limitations of this application:
+- This application utilizes Youtube Data API V3 from Google APIs, which inherently comes with a daily token limit. This token limit is relatively low and can be consumed very quickly, therefore, it is normal if the application no longer functions after a series of reloads and searches. (No need to worry that much as long as you do not over test it)
+- The AI function of our application utilizes ChatGPT API, therefore, the performance of AI recommendation and filtering features are throttled by the capavilities of GPT-4
+- We have only designed the application UI for the ratio size of a laptop screen (normally 16:9) Therefore, it is expected that our UI does not shape properly under other screen size ratios
 
 # How To Run This Web App
 
