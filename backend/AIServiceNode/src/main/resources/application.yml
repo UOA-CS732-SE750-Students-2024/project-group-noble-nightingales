@@ -1,7 +1,7 @@
 spring:
   ai:
     openai:
-      api-key: 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
+      api-key: ${OPENAI_API_KEY}
 
 
 server:
