@@ -3,9 +3,89 @@
 
 # How To Run This Web App
 
-Firstly, set up all the environment variables
+Before running the application, it is important for you to have a basic initial understanding of the project structure. 
+- Frontend section consists of the react app, and the express frontend server
+- Backend section consists of 6 Java Springboot based servers
+- Therefore, you would need to run the additional 6 Java Springboot servers to fully run the application
+- Overall, this project uses a microservice architecture
+
+
+Firstly, set up all the environment variables and close the terminal / command prompt
 
 ## Set Up Your Java Environment
+
+### Run Using INTELLIJ IDEA (Option One)
+
+- Visit the [JetBrains download page](https://www.jetbrains.com/idea/download/) to download IntelliJ IDEA. Please choose the ultimate edition (we have education license when registered using school email)
+- Make sure your intellij is completely closed after setting the environment variables
+- Open the `backend` folder in Intellij
+- When first loading Intellij, please notice the **Load Maven Modules Pop Up** at the **Right Bottom Corner** of the Intellij screen, if shows up, click on **Load**
+- If you missed the pop up, you can either try reopening the `backend` folder
+- Alternatively, you can manually trigger a re-import of Maven dependencies:
+       - Navigate to `View > Tool Windows > Maven`.
+       - In the Maven project window, right-click on your project and select `Reload Project`.
+- In each _Node_, navigate to /src/main/java/uoa.nightingales.xxxxxx/xxxxxxxApplication.java, and run this application file for each node
+- If you encounter exceptions or warnings, it is because you specified your Java Version wrongly.
+  - You can fix this by clicking on File => Project Structure => SDK => Choose corretto-17
+  - If corretto-17 is not in the list => + Add SDK => Download SDK => Choose Version 17, and download the corretto version of JDK
+  - Correctly configured settings will look like
+ ![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100816909/fedd134d-e0fe-4f92-b313-389d71e7de2c)
+
+- Now rerun the application entry file for each service node if you did not run it successfully in the previous step
+- By now, you should have all the 6 Java Servers Running
+
+## Free the required ports
+- The required port numbers for this application are [30054, 30055, 30056, 30053, 30050, 30051, 5000]
+### For Linux/macOS
+
+1. **Check Port Usage:**
+   ```bash
+   sudo lsof -i :30054
+   sudo lsof -i :30055
+   sudo lsof -i :30056
+   sudo lsof -i :30053
+   sudo lsof -i :30050
+   sudo lsof -i :30051
+   sudo lsof -i :5000
+   ```
+2. If a process is using any of these ports, terminate it using its PID: `kill -9 PID`
+
+### For Windows
+```
+netstat -ano | findstr :30054
+netstat -ano | findstr :30055
+netstat -ano | findstr :30056
+netstat -ano | findstr :30053
+netstat -ano | findstr :30050
+netstat -ano | findstr :30051
+netstat -ano | findstr :5000
+```
+If a port is in use, terminate the process using taskkill with its PID:
+```
+taskkill /PID <PID> /F
+```
+
+**Also ensure MongoDB is running without authentication enabled (This is the default option if you have not changed it before)**
+
+## Run the application in development mode
+- You should already have had all 6 Java servers running
+- Navigate to frontend folder
+- cd frontend-react
+- npm install => npm run dev
+- cd..
+- cd frontend-server
+- npm install => npm start
+- Then you should be able to view our pages on browser
+
+## Run the application in production mode
+- You should still have had all 6 Java servers running
+- git checkout BUILD-VERSION
+- navigate to frontend-react folder
+- npm install => npm run build
+- navigate to frontend-server folder
+- npm install => npm start
+- Then you should be able to view our pages
+
 
 ### Checking Existing Java Installation
 
@@ -39,8 +119,26 @@ After installation, set JAVA_HOME and update the system PATH.
 #### Windows
 1. Search for "Edit the system environment variables" in the Control Panel.
 2. Click "Environment Variables".
-3. Set JAVA_HOME to your Java installation directory (e.g., C:\Program Files\Java\jdk-17).
+3. Set JAVA_HOME to your Java installation directory (e.g., C:\Program Files\Java\jdk-17.x.x).
 4. Add %JAVA_HOME%\bin to the Path variable.
 
-5. 
+#### Mac OS
+1. Open your shell profile file (~/.bash_profile, ~/.bashrc, or ~/.zshrc).
+2. Add the following lines:
+```bash
+export JAVA_HOME=`/usr/libexec/java_home -v17`
+export PATH=$JAVA_HOME/bin:$PATH
+```
+3. Apply the changes:
+```bash
+source ~/.bash_profile
+```
+### Check your installation
+- reopen terminal / command prompt and run `java -version`
+- [JDK 17 Installation Guide For Windows](https://www.youtube.com/watch?v=TVvcRHuv844)
+- [JDK 17 Installation Guide For MacOS](https://www.youtube.com/watch?v=8ujwW4iKsk0)
+- 
+
+
+
 
