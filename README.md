@@ -70,20 +70,20 @@ taskkill /PID <PID> /F
 ## Run the application in development mode
 - You should already have had all 6 Java servers running
 - Navigate to frontend folder
-- cd frontend-react
-- npm install => npm run dev
-- cd..
-- cd frontend-server
-- npm install => npm start
+- `cd frontend-react`
+- `npm install` => `npm run dev`
+- `cd..`
+- `cd frontend-server`
+- `npm install` => `npm start`
 - Then you should be able to view our pages on browser
 
 ## Run the application in production mode
 - You should still have had all 6 Java servers running
 - git checkout BUILD-VERSION
 - navigate to frontend-react folder
-- npm install => npm run build
+- `npm install` => `npm run build`
 - navigate to frontend-server folder
-- npm install => npm start
+- `npm install` => `npm start`
 - Then you should be able to view our pages
 
 
