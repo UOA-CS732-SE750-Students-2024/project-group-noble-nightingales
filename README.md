@@ -145,6 +145,64 @@ taskkill /PID <PID> /F
 - `npm install` => `npm start`
 - Then you should be able to view our pages
 
+## Pages
+### Explore Page 
+- #### Intro
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/548747cd-9896-4577-87ae-cf9f91f7707b)
+- #### Youtube Video
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/cb896e8c-94c3-4956-ab5f-6f6081cc45f5)
+
+- #### Spotify Video
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/b31075c2-80e8-4c73-8eb8-9bd924325622)
+
+- #### News Letter
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/b9b38755-c974-4de4-af47-d70e4f16ac19)
+
+
+
+### Login Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/743b9dca-51c7-44bf-b5f7-b935df99d193)
+
+
+### SignUp Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/a14ca1ca-a631-4e31-bf5d-6f16ccbb4b41)
+
+
+### YouTube Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/a7165432-691e-4e12-8a85-dafb99dcc723)
+
+
+### Youtube Player Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/c4ef7ff2-b40f-4dd3-b4f6-f34efd3d480a)
+
+
+### Youtube Comment Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/1efacb9e-f0e3-4f16-baef-0d2137cbb86d)
+
+
+### Spotify Page
+![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/3f3f9195-ddb8-4b23-bb86-4eeca0e6dbea)
+
+- #### Spotify Login Page
+  - This login is for logging into Spotify which would jump to the Spotify Website to login
+ ![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/ac3e5c0c-1f33-43af-bd6a-02d1f1c7c4cb)
+
+
+### AI Search & AI Filter
+ ![image](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/assets/100254883/8c17e06c-3da1-4ae5-9d00-5aaf42070897)
+
+## Contact
+| Name         | UPI         | Email               |
+|:-------------|:-----------:|:--------------------|
+| James Gong    | hgon777     | hgon777@aucklanduni.ac.nz   |
+| Chauncey Xu   | xxu511   | xxu511@aucklanduni.ac.nz  |
+| Wenliang Du | wdu735 | tthtilb@gmail.com  |
+| James Gai | jgai284 | jgai284@aucklanduni.ac.nz   |
+| Shiyan Gong | sgon512 | sgon512@aucklanduni.ac.nz   |
+
+
+
+
 
 
 
