@@ -79,7 +79,7 @@ taskkill /PID <PID> /F
 
 ## Run the application in production mode
 - You should still have had all 6 Java servers running
-- git checkout BUILD-VERSION
+- At root directory `git checkout BUILD-VERSION`
 - navigate to frontend-react folder
 - `npm install` => `npm run build`
 - navigate to frontend-server folder
