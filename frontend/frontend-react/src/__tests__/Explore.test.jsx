@@ -13,6 +13,45 @@ it("execute test suite", () => {
   }
   expect(sum(1, 2)).toBe(3);
 });
+/**************************************      AIRow       ****************************************/
+describe("AIRow Component", () => {
+  let renderedComponent;
+
+  beforeEach(() => {
+    renderedComponent = render(
+      <MemoryRouter>
+        <Explore />
+      </MemoryRouter>
+    );
+  });
+
+  it("renders texts correctly", () => {
+    const textContents = [
+      "Exploration of Embedded AI",
+      "96812 Users From All Over the World Have Tried It",
+      "Content Recommendation"
+    ];
+
+    textContents.forEach(text => {
+      expect(renderedComponent.getByText(text)).toBeInTheDocument();
+    });
+  });
+
+  it("renders images with specific alt texts correctly", () => {
+    const altTexts = ["AIBall", "Bubble", "Chart", "Indicator"];
+
+    altTexts.forEach(altText => {
+      expect(renderedComponent.getAllByAltText(altText).length).toBeGreaterThan(0);
+    });
+  });
+
+  it("renders NavLink with correct attributes", () => {
+    const navLink = renderedComponent.getByText("Content Recommendation").closest('a');
+    expect(navLink).toHaveAttribute("href", "/youtube");
+    expect(navLink).toHaveClass("ContentRecommendationinside");
+  });
+});
+
 
 /**************************************     Components     **************************************/
 
@@ -186,9 +225,9 @@ describe("SubRow", () => {
 
   it("renders texts in SubRow component correctly", () => {
     const textContents = [
-      "Popular Tracks",
       "News letter",
       "Subscribe Our Newsletter",
+      "Enter Your Mail"
     ];
 
     textContents.forEach((text) => {
