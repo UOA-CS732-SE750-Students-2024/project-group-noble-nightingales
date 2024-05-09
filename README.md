@@ -34,6 +34,65 @@ Firstly, set up all the environment variables and close the terminal / command p
 - Now rerun the application entry file for each service node if you did not run it successfully in the previous step
 - By now, you should have all the 6 Java Servers Running
 
+## Download Java 17 (Option 2)
+### Checking Existing Java Installation
+
+Before installing Java 17, it's important to check if you already have it installed.
+
+1. Open your command line interface:
+   - **Windows**: Open Command Prompt.
+   - **macOS/Linux**: Open Terminal.
+
+2. Check your Java version:
+   ```bash
+   java -version
+
+- If Java 17 is already installed and set as the default, you can proceed to running your application.
+- If another version is installed, or if Java is not installed, follow the installation steps below.
+
+### Installing Java 17
+
+**Oracle JDK 17**
+- Download from [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) Downloads.
+- Select the installer for your operating system and follow the on-screen instructions. Use the MSI installer if using Windows.
+
+### Installation Instructions
+- Windows: Run the downloaded installer and follow the instructions.
+- macOS: Open the .pkg file and follow the instructions.
+- Linux: Use a package manager or extract the tar.gz file to an appropriate location.
+
+### Setting Environment Variables
+After installation, set JAVA_HOME and update the system PATH.
+
+#### Windows
+1. Search for "Edit the system environment variables" in the Control Panel.
+2. Click "Environment Variables".
+3. Set `JAVA_HOME` to your Java installation directory (e.g., `C:\Program Files\Java\jdk-17.x.x`).
+4. Add `%JAVA_HOME%\bin` to the Path variable.
+
+#### Mac OS
+1. Open your shell profile file (~/.bash_profile, ~/.bashrc, or ~/.zshrc).
+2. Add the following lines:
+```bash
+export JAVA_HOME=`/usr/libexec/java_home -v17`
+export PATH=$JAVA_HOME/bin:$PATH
+```
+3. Apply the changes:
+```bash
+source ~/.bash_profile
+```
+### Check your installation
+- reopen terminal / command prompt and run `java -version`
+- [JDK 17 Installation Guide For Windows](https://www.youtube.com/watch?v=TVvcRHuv844)
+- [JDK 17 Installation Guide For MacOS](https://www.youtube.com/watch?v=8ujwW4iKsk0)
+
+### After Installing Java
+1. Download all the Jar files from [release](https://github.com/UOA-CS732-SE750-Students-2024/project-group-noble-nightingales/releases/tag/Spring-Cluster)
+2. navigate to the folder where you downloaded the jar files and run `java -jar xxxxxx.jar` on every service nodes e.g. `java -jar AIServiceNode-0.0.1-SNAPSHOT.jar`
+3. Make sure you open a **new** command window for each node
+
+**By now, you should have had all 6 spring servers running**
+
 ## Free the required ports
 - The required port numbers for this application are [30054, 30055, 30056, 30053, 30050, 30051, 5000]
 ### For Linux/macOS
@@ -86,58 +145,6 @@ taskkill /PID <PID> /F
 - `npm install` => `npm start`
 - Then you should be able to view our pages
 
-
-### Checking Existing Java Installation
-
-Before installing Java 17, it's important to check if you already have it installed.
-
-1. Open your command line interface:
-   - **Windows**: Open Command Prompt.
-   - **macOS/Linux**: Open Terminal.
-
-2. Check your Java version:
-   ```bash
-   java -version
-
-- If Java 17 is already installed and set as the default, you can proceed to running your application.
-- If another version is installed, or if Java is not installed, follow the installation steps below.
-
-### Installing Java 17
-
-**Oracle JDK 17**
-- Download from [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) Downloads.
-- Select the installer for your operating system and follow the on-screen instructions. Use the MSI installer if using Windows.
-
-### Installation Instructions
-- Windows: Run the downloaded installer and follow the instructions.
-- macOS: Open the .pkg file and follow the instructions.
-- Linux: Use a package manager or extract the tar.gz file to an appropriate location.
-
-### Setting Environment Variables
-After installation, set JAVA_HOME and update the system PATH.
-
-#### Windows
-1. Search for "Edit the system environment variables" in the Control Panel.
-2. Click "Environment Variables".
-3. Set JAVA_HOME to your Java installation directory (e.g., C:\Program Files\Java\jdk-17.x.x).
-4. Add %JAVA_HOME%\bin to the Path variable.
-
-#### Mac OS
-1. Open your shell profile file (~/.bash_profile, ~/.bashrc, or ~/.zshrc).
-2. Add the following lines:
-```bash
-export JAVA_HOME=`/usr/libexec/java_home -v17`
-export PATH=$JAVA_HOME/bin:$PATH
-```
-3. Apply the changes:
-```bash
-source ~/.bash_profile
-```
-### Check your installation
-- reopen terminal / command prompt and run `java -version`
-- [JDK 17 Installation Guide For Windows](https://www.youtube.com/watch?v=TVvcRHuv844)
-- [JDK 17 Installation Guide For MacOS](https://www.youtube.com/watch?v=8ujwW4iKsk0)
-- 
 
 
 
