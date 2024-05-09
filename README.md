@@ -1,3 +1,10 @@
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![AI](https://img.shields.io/badge/AI-007396?style=for-the-badge)
+
+
 # COMPSCI 732 / SOFTENG 750 project - Team Noble Nightingales
 
 Our Web Application is deployed on this [link](https://unimedia.azurewebsites.net/explore)
