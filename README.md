@@ -6,7 +6,7 @@
 
 
 # COMPSCI 732 / SOFTENG 750 project - Team Noble Nightingales
-
+## 10/19/2024 Update: The deployment page is no longer available due to AWS student account restrictions
 Our Web Application is deployed on this [link](https://unimedia.azurewebsites.net/explore)
 
 - This application consists of two branches:
